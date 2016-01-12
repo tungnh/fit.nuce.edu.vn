@@ -1,0 +1,203 @@
+﻿@{
+    ViewBag.Title = "Thêm mới từ khóa";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var commentViewhelper = (thanhhoa.gov.vn.Viewhelper.CommentViewhelper)ViewData["commentViewhelper"];
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-pencil"></i> Quản lý tin tức
+                </li>
+                <li class="active">
+                    <i class="fa fa-comment-o"></i> Thêm mới từ khóa
+                </li>
+            </ul>
+            <form data-validate="parsley" class="bs-example form-horizontal" name="form" method="post"
+                  action="saveregist">
+                @Html.Partial("_PartialErrMessage")
+                <input type="hidden" name="direction" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group m-b-sm">
+                                    <h5 class="page-header m-t-xs" style="font-weight: 600; padding-left: 10px;">
+                                        <i class="fa fa-foursquare"></i> Thêm mới từ khóa
+                                    </h5>
+                                    <div class="col-lg-6">
+                                        <label class="col-lg-2 control-label"
+                                               style="padding-right: 0px; text-align: left;">
+                                            Từ khóa
+                                        </label>
+                                        <div class="col-lg-7" style="padding-right: 0px;">
+                                            <input id="keysearch" type="text"
+                                                   class="form-control input-sm" placeholder="Từ khóa"
+                                                   name="key_band"
+                                                   data-required="true"
+                                                   data-required-message="Phải nhập vào từ khóa">
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <button type="submit" id="btn_search" onclick="add();" style="font-weight: bold;"
+                                                    class="btn btn-sm btn-s-sm btn-primary">
+                                                <i class="fa fa-plus"></i> Thêm
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <label class="control-span m-t-xs">
+                            <i class="fa fa-table"></i> Danh sách từ khóa
+                        </label>
+                        <div class="pull-right">
+                            <a href="index" style="font-weight: bold;"
+                               class="btn btn-sm btn-s-sm btn-default">
+                                <i class="fa fa-mail-reply"></i> Quay lại
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;">STT</th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Từ khóa
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width: 150px;">
+                                        Người tạo
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width: 150px;">
+                                        Ngày tạo
+                                    </th>
+                                    <th width="40px;" class="text-center" style="vertical-align: middle;">
+                                        Xóa
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i = (commentViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                                    if (commentViewhelper.LstKeyBand != null)
+                                    {
+                                        foreach (var item in commentViewhelper.LstKeyBand)
+                                        {
+                                            <tr>
+                                                <td align="center">@i</td>
+                                                <td>@item.key_band</td>
+                                                <td>@item.entry_username</td>
+                                                <td align="center" width="100">@item.entry_datetime.ToString("dd-MM-yyyy")</td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a href="deleteKey?id=@item.id" onclick="return confirm('Bạn có chắc chắn muốn xóa bản ghi này!');"><i class="fa fa-times text-danger text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                }
+
+
+                            </tbody>
+                        </table>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@commentViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                <c:if test="${list.totalCount > 0}">
+                                    <div class="col-md-4 hidden-sm">
+                                        <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                            Hiển thị trang <input type="text" size="5" name="page"
+                                                                  value="@commentViewhelper.Page" id="pageid"> / @commentViewhelper.TotalPage
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                                            <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                                                <li>
+                                                                    <a href="javascript: direction('first');">
+                                                                        <i class="fa fa-step-backward"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript: direction('ahead');">
+                                                                        <i class="fa fa-backward"></i>
+                                                                    </a>
+                                                                </li>
+                                                                @{
+                                                                    for (int j = @commentViewhelper.FirstPage; j <= commentViewhelper.LastPage; j++)
+                                                                    {
+                                                                        <li @if (j == commentViewhelper.Page) { @Html.Raw(" class='active'")  }>
+                                                                            <a href="javascript: selectPage(@j);">
+                                                                                @j
+                                                                            </a>
+                                                                        </li>
+                                                                    }
+                                                                }
+                                                                <li>
+                                                                    <a href="javascript: direction('next');">
+                                                                        <i class="fa fa-forward"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="javascript: direction('end');">
+                                                                        <i class="fa fa-step-forward"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </c:if>
+                                                </div>
+                                            </footer>
+                                        </div>
+                                    </section>
+                                </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $('#slActive').select2();
+    $('#slState').select2();
+    $('#slKey').select2();
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.action = "regist";
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.action = "regist";
+        document.form.submit();
+    }
+
+    function clearAll() {
+        $('#keysearch').val("");
+    }
+
+    function changeFilter(data) {
+        document.form.action = "Index";
+        document.form.submit();
+    }
+
+    function change(data) {
+        if (data != "") {
+            document.form.action = "changestate";
+            document.form.submit();
+        }
+    }
+</script>

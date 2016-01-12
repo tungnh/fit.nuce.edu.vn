@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "Danh sách hình ảnh";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var galleryViewhelper = (thanhhoa.gov.vn.Viewhelper.GalleryViewhelper)ViewData["galleryViewhelper"];
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-film"></i> Quản lý media
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách hình ảnh
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="index">
+                @Html.Partial("_PartialErrMessage")
+                <input type="hidden" name="direction" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group m-b-sm">
+                                    <div class="col-lg-9">
+                                        <label class="col-lg-2 control-label"
+                                               style="padding-right: 0px; text-align: left;">
+                                            Từ khóa
+                                        </label>
+                                        <div class="col-lg-9" style="padding-right: 0px;">
+                                            <input id="keysearch" type="text"
+                                                   class="form-control input-sm" placeholder="Từ khóa"
+                                                   name="keySearch" value="@galleryViewhelper.KeySearch">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="pull-right">
+                                            <button type="submit" id="btn_search" onclick="search();" style="font-weight: bold;"
+                                                    class="btn btn-sm btn-s-sm btn-primary">
+                                                <i class="fa fa-search"></i> Tìm kiếm
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger" style="font-weight: bold;"
+                                                    onclick="clearAll();">
+                                                <i class="fa fa-trash-o"></i> Xóa điều kiện
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        
+                        <div class="pull-right">
+                            <a href="regist" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Thêm mới</a>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;">STT</th>
+                                    <th class="text-center" style="vertical-align: middle;" width="150px;">
+                                        Hình ảnh
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Tiêu đề hình ảnh
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Người tạo
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Ngày tạo
+                                    </th>
+                                    <th width="40px;" class="text-center" style="vertical-align: middle;">
+                                        Sửa
+                                    </th>
+                                    <th width="40px;" class="text-center" style="vertical-align: middle;">
+                                        Xóa
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i = (galleryViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                                    if (galleryViewhelper.TotalCount > 0)
+                                    {
+                                        foreach (var item in galleryViewhelper.LstGallery)
+                                        {
+                                            <tr>
+                                                <td align="center">@i</td>
+                                                <td class="text-center"><img src="@item.attach_filepath" style="max-width: 100px;" /></td>
+                                                <td>@item.title</td>
+                                                <td align="center">@item.update_username</td>
+                                                <td align="center">@item.update_datetime.ToString("dd/MM/yyyy")</td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a href="edit?id=@item.id"><i class="fa fa-edit text-dark text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa bản ghi này không?')" href="delete?id=@item.id"><i class="fa fa-times text-danger text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@galleryViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                <c:if test="${list.totalCount > 0}">
+                                    <div class="col-md-4 hidden-sm">
+                                        <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                            Hiển thị trang <input type="text" size="5" name="page"
+                                                                  value="@galleryViewhelper.Page" id="pageid"> / @galleryViewhelper.TotalPage
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                        <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                            <li>
+                                                <a href="javascript: direction('first');">
+                                                    <i class="fa fa-step-backward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('ahead');">
+                                                    <i class="fa fa-backward"></i>
+                                                </a>
+                                            </li>
+                                            @{
+                                                for (int j = @galleryViewhelper.FirstPage; j <= galleryViewhelper.LastPage; j++)
+                                                {
+                                                    <li @if (j == galleryViewhelper.Page){@Html.Raw(" class='active'")}>
+                                                        <a href="javascript: selectPage(@j);" >
+                                                            @j
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                            <li>
+                                                <a href="javascript: direction('next');">
+                                                    <i class="fa fa-forward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('end');">
+                                                    <i class="fa fa-step-forward"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $('#slActive').select2();
+    $('#slState').select2();
+    $('#slKey').select2();
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function clearAll() {
+        $('#keysearch').val("");
+    }
+
+    function changeFilter(data) {
+        document.form.action = "Index";
+        document.form.submit();
+    }
+
+    function change(data) {
+        if (data != "") {
+            document.form.action = "changestate";
+            document.form.submit();
+        }
+    }
+</script>

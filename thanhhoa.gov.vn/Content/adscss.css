@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS ads scroll */
+
+.wrapAds {
+}
+.poAds {
+	display:block;
+	height:0;
+	width:1000px;
+	position:relative;
+	margin:0 auto;
+}
+.poAds > div {
+	display:block;
+	background:#fff;
+	height:300px;
+	width:120px;
+	position:absolute;
+	top:100px;
+	z-index:9996;
+}
+.adsLeft {
+	left:-130px;
+}
+.adsRight {
+	right:-130px;
+}
+.num {
+	display:none !important;
+}

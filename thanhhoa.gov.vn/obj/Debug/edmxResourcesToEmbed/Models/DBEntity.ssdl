@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="thanhhoa.gov.vnModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'thanhhoa.gov.vn.dbo.gov_doc_kind' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="gov_doc_kind">
+    <Key>
+      <PropertyRef Name="kid" />
+    </Key>
+    <Property Name="kid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kcode" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="description" Type="varchar" MaxLength="1000" />
+  </EntityType>
+  <EntityContainer Name="thanhhoagovvnModelStoreContainer">
+    <EntitySet Name="gov_doc_kind" EntityType="Self.gov_doc_kind" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[gov_doc_kind].[kid] AS [kid], 
+[gov_doc_kind].[kcode] AS [kcode], 
+[gov_doc_kind].[name] AS [name], 
+[gov_doc_kind].[description] AS [description]
+FROM [dbo].[gov_doc_kind] AS [gov_doc_kind]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

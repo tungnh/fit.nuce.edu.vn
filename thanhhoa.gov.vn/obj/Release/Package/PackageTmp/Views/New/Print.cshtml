@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "In trang";
+    Layout = null;
+    var news = (thanhhoa.gov.vn.Models.gov_news)ViewData["new"];
+    if (news == null)
+    {
+        Response.Redirect("/admin/error/error403");
+    }
+}
+<title>In trang</title>
+<style>
+    body {
+        font-size: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #262626;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+@Styles.Render("~/Content/news.css")
+    <div class="newsDetail" id="newsDetail" style="width: 40%; margin : 0px auto; font-size: 12px;">
+        <div id="div-print">
+            <h2 style="color: #003c95; font-size : 17px;"> @news.title</h2>
+            <div class="updateActi">
+                @{
+                    DateTime date = news.entry_datetime;
+                    int thu = (int)date.DayOfWeek + 1;
+                    if (thu == 1)
+                    {
+                        @Html.Raw("Chủ nhật, " + @date.ToString("dd/MM/yyyy"))
+                    }
+                    else
+                    {
+                        @Html.Raw("Thứ " + thu + ", " + @date.ToString("dd/MM/yyyy"))
+                    }
+                }
+                @news.entry_datetime.ToString("HH:ss tt ")
+            </div>
+
+            <h4 style="margin-bottom : 10px;"> @news.description</h4>
+            <div class="shareActi">
+               <a href="javascript: prints();" target="_blank" title="In bài viết"><img src="~/Images/i-printer.png"> In Trang (Ctrl + P) </a>
+            </div>
+            <div class="contNewsDetail">
+                @Html.Raw(news.new_content)
+
+            </div><!--end contNewsDetail-->
+
+        </div>
+</div>
+<!-- end news detail -->
+<script>
+    function prints() {
+        var originalContents = document.body.innerHTML;
+        //document.getElementById("newsDetail").innerHTML;
+        //$('#print').html(document.getElementById("divcontract").innerHTML);
+        var printContents = document.getElementById("div-print").innerHTML;
+
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
+

@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CNTTModelStoreContainer" CdmEntityContainer="CNTTEntities">
+    <EntitySetMapping Name="gov_access_history">
+      <EntityTypeMapping TypeName="CNTTModel.gov_access_history">
+        <MappingFragment StoreEntitySet="gov_access_history">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="time_access" ColumnName="time_access" />
+          <ScalarProperty Name="client_info" ColumnName="client_info" />
+          <ScalarProperty Name="username_access" ColumnName="username_access" />
+          <ScalarProperty Name="type_action" ColumnName="type_action" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_advertise">
+      <EntityTypeMapping TypeName="CNTTModel.gov_advertise">
+        <MappingFragment StoreEntitySet="gov_advertise">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="attach_file" ColumnName="attach_file" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="type_link" ColumnName="type_link" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="order_number" ColumnName="order_number" />
+          <ScalarProperty Name="begin_date" ColumnName="begin_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="active_flg" ColumnName="active_flg" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_album">
+      <EntityTypeMapping TypeName="CNTTModel.gov_album">
+        <MappingFragment StoreEntitySet="gov_album">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="album_title" ColumnName="album_title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="total_view" ColumnName="total_view" />
+          <ScalarProperty Name="order_number" ColumnName="order_number" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_answer">
+      <EntityTypeMapping TypeName="CNTTModel.gov_answer">
+        <MappingFragment StoreEntitySet="gov_answer">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
+          <ScalarProperty Name="hidden_flg" ColumnName="hidden_flg" />
+          <ScalarProperty Name="answer_content" ColumnName="answer_content" />
+          <ScalarProperty Name="answer_username" ColumnName="answer_username" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="answer_datetime" ColumnName="answer_datetime" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_comments">
+      <EntityTypeMapping TypeName="CNTTModel.gov_comments">
+        <MappingFragment StoreEntitySet="gov_comments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
+          <ScalarProperty Name="comments_content" ColumnName="comments_content" />
+          <ScalarProperty Name="total_like" ColumnName="total_like" />
+          <ScalarProperty Name="like_info" ColumnName="like_info" />
+          <ScalarProperty Name="active_flg" ColumnName="active_flg" />
+          <ScalarProperty Name="entry_datetime" ColumnName="entry_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_department">
+      <EntityTypeMapping TypeName="CNTTModel.gov_department">
+        <MappingFragment StoreEntitySet="gov_department">
+          <ScalarProperty Name="dept_id" ColumnName="dept_id" />
+          <ScalarProperty Name="dept_code" ColumnName="dept_code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_district">
+      <EntityTypeMapping TypeName="CNTTModel.gov_district">
+        <MappingFragment StoreEntitySet="gov_district">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="decription" ColumnName="decription" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="order_number" ColumnName="order_number" />
+          <ScalarProperty Name="show_map" ColumnName="show_map" />
+          <ScalarProperty Name="coordinates" ColumnName="coordinates" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_doc_draft">
+      <EntityTypeMapping TypeName="CNTTModel.gov_doc_draft">
+        <MappingFragment StoreEntitySet="gov_doc_draft">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="doc_code" ColumnName="doc_code" />
+          <ScalarProperty Name="doc_name" ColumnName="doc_name" />
+          <ScalarProperty Name="doc_summany" ColumnName="doc_summany" />
+          <ScalarProperty Name="doc_content" ColumnName="doc_content" />
+          <ScalarProperty Name="kind_id" ColumnName="kind_id" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="date_start_promulgate" ColumnName="date_start_promulgate" />
+          <ScalarProperty Name="date_end_promulgate" ColumnName="date_end_promulgate" />
+          <ScalarProperty Name="user_sign" ColumnName="user_sign" />
+          <ScalarProperty Name="active_flg" ColumnName="active_flg" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="attach_file_name" ColumnName="attach_file_name" />
+          <ScalarProperty Name="attach_file_path" ColumnName="attach_file_path" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_doc_kind">
+      <EntityTypeMapping TypeName="CNTTModel.gov_doc_kind">
+        <MappingFragment StoreEntitySet="gov_doc_kind">
+          <ScalarProperty Name="kid" ColumnName="kid" />
+          <ScalarProperty Name="kcode" ColumnName="kcode" />
+          <ScalarProperty Name="kname" ColumnName="kname" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_gallery">
+      <EntityTypeMapping TypeName="CNTTModel.gov_gallery">
+        <MappingFragment StoreEntitySet="gov_gallery">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="total_view" ColumnName="total_view" />
+          <ScalarProperty Name="attach_filepath" ColumnName="attach_filepath" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_group">
+      <EntityTypeMapping TypeName="CNTTModel.gov_group">
+        <MappingFragment StoreEntitySet="gov_group">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="group_name" ColumnName="group_name" />
+          <ScalarProperty Name="hidden_flg" ColumnName="hidden_flg" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_group_members">
+      <EntityTypeMapping TypeName="CNTTModel.gov_group_members">
+        <MappingFragment StoreEntitySet="gov_group_members">
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_group_permission">
+      <EntityTypeMapping TypeName="CNTTModel.gov_group_permission">
+        <MappingFragment StoreEntitySet="gov_group_permission">
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="module_id" ColumnName="module_id" />
+          <ScalarProperty Name="permission_number" ColumnName="permission_number" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_key_band">
+      <EntityTypeMapping TypeName="CNTTModel.gov_key_band">
+        <MappingFragment StoreEntitySet="gov_key_band">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="key_band" ColumnName="key_band" />
+          <ScalarProperty Name="entry_username" ColumnName="entry_username" />
+          <ScalarProperty Name="entry_datetime" ColumnName="entry_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_level_district">
+      <EntityTypeMapping TypeName="CNTTModel.gov_level_district">
+        <MappingFragment StoreEntitySet="gov_level_district">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="order_number" ColumnName="order_number" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_menu">
+      <EntityTypeMapping TypeName="CNTTModel.gov_menu">
+        <MappingFragment StoreEntitySet="gov_menu">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_parent" ColumnName="id_parent" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="ishome" ColumnName="ishome" />
+          <ScalarProperty Name="order_number" ColumnName="order_number" />
+          <ScalarProperty Name="link" ColumnName="link" />
+          <ScalarProperty Name="active_flg" ColumnName="active_flg" />
+          <ScalarProperty Name="entry_username" ColumnName="entry_username" />
+          <ScalarProperty Name="entry_datetime" ColumnName="entry_datetime" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_question">
+      <EntityTypeMapping TypeName="CNTTModel.gov_question">
+        <MappingFragment StoreEntitySet="gov_question">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="hidden_flg" ColumnName="hidden_flg" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="attach_file_name" ColumnName="attach_file_name" />
+          <ScalarProperty Name="attach_file_path" ColumnName="attach_file_path" />
+          <ScalarProperty Name="question_content" ColumnName="question_content" />
+          <ScalarProperty Name="question_datetime" ColumnName="question_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_question_category">
+      <EntityTypeMapping TypeName="CNTTModel.gov_question_category">
+        <MappingFragment StoreEntitySet="gov_question_category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="order_number" ColumnName="order_number" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_role">
+      <EntityTypeMapping TypeName="CNTTModel.gov_role">
+        <MappingFragment StoreEntitySet="gov_role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+          <ScalarProperty Name="update_username" ColumnName="update_username" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gov_user">
+      <EntityTypeMapping TypeName="CNTTModel.gov_user">
+        <MappingFragment StoreEntitySet="gov_user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="family_name" ColumnName="family_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="birth_day" ColumnName="birth_day" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="active_flg" ColumnName="active_flg" />
+          <ScalarProperty Name="hidden_flg" ColumnName="hidden_flg" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="district_id" ColumnName="district_id" />
+          <ScalarProperty Name="update_user_name" ColumnName="update_user_name" />
+          <ScalarProperty Name="update_datetime" ColumnName="update_datetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="gov_album_gallery" TypeName="CNTTModel.gov_album_gallery" StoreEntitySet="gov_album_gallery">
+      <EndProperty Name="gov_album">
+        <ScalarProperty Name="id" ColumnName="album_id" />
+      </EndProperty>
+      <EndProperty Name="gov_gallery">
+        <ScalarProperty Name="id" ColumnName="gallery_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

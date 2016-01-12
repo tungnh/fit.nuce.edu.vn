@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Chuyên mục hỏi đáp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var questionInfo = (thanhhoa.gov.vn.Models.QuestionModels)ViewData["questionInfo"];
+    var lstAnswer = (List<thanhhoa.gov.vn.Models.AnswerModels>)ViewData["lstAnswer"];
+    var lstQuestionCategory = (List<thanhhoa.gov.vn.Models.QuestionCategoryModels>)ViewData["lstQuestionCategory"];
+    var lstQuestion = (List<thanhhoa.gov.vn.Models.QuestionModels>)ViewData["lstQuestion"];
+}
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<div class="mainMod">
+    <div class="modLeftMain">
+
+        <div class="breackrum">
+            <a class="bkHome" href="">Hỏi đáp</a>
+            <a href="">Chi tiết hỏi đáp</a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modHoidap">
+
+            <div class="activitiRec">
+                <h3>Chi tiết câu hỏi / trả lời</h3>
+            </div>
+            <!--end hanh dong -->
+            @{
+                if (questionInfo != null)
+                {
+                    <!-- chi tiet cau hoi -->
+                    <div class="wrapFaqDetail">
+
+                        <div class="wrapQuestion">
+                            <h4>Câu hỏi: <strong>@questionInfo.Title</strong></h4>
+                            <ul class="persunFaq">
+                                <li><em>Người hỏi:</em>@questionInfo.FullName</li>
+                                <li><em>Địa chỉ:</em>@questionInfo.Address</li>
+                                <li><em>Ngày:</em> @questionInfo.QuestionDatetime</li>
+                            </ul>
+                            <div class="contFaq">
+                                @questionInfo.QuestionContent
+
+                                <i><a href="javascript: void(0);" class="replyFaq">Trả lời</a>@if (lstAnswer != null && lstAnswer.Count > 0)
+                                { @Html.Raw(lstAnswer.Count) }
+                                else
+                                { @Html.Raw("0")}</i>
+                            </div>
+                        </div><!-- end question -->
+                        @foreach (var item in lstAnswer)
+                        {
+                            if (item.UserInfo != null)
+                            {
+                                <div class="wrapAnswer">
+                                    <h4>Trả lời: <strong>@questionInfo.Title</strong></h4>
+                                    <ul class="persunFaq">
+                                        <li><em>Người trả lời:</em>@item.UserInfo.FamilyName @item.UserInfo.FirstName</li>
+                                        <li><em>Chức vụ:</em>@item.UserInfo.RoleName</li>
+                                        <li><em>Ngày:</em> @item.AnswerDatetime</li>
+                                    </ul>
+                                    <div class="contFaq">
+                                        @item.AnswerContent
+                                        <span class="arrow7"></span>
+
+                                    </div>
+
+                                </div><!-- end answer -->
+                            }
+                        }
+                    </div>
+                    <!-- end chi tiet cau hoi -->
+                }
+                else
+                {
+                    @Html.Raw("Khong co du lieu")
+                }
+            }
+
+        </div>
+        <!-- end module van ban phap quy -->
+
+        <div class="modTindadua tdd_faq">
+            <h3>Các câu hỏi cùng lĩnh vực khác</h3>
+            <ul>
+                @{
+                    foreach (var item in lstQuestion)
+                    {
+                        <li><a href="detail?id=@item.Id">@item.Title</a><span>(@item.QuestionDatetime)</span></li>
+                    }
+                }
+            </ul>
+        </div>
+        <!-- end tin da dua -->
+
+
+    </div>
+    <!-- end left main w=670 -->
+    <!-- colum right 300 emtry -->    
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+
+<script>
+    function filterByCategory(id, name) {
+        $('#questionCategoryName').val(name);
+        $('#questionCategoryId').val(id);
+        document.form.action = "Index";
+        document.form.submit();
+    }
+</script>

@@ -1,0 +1,266 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@{
+    ViewBag.Title = "Danh sách tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var newViewhelper = (thanhhoa.gov.vn.Viewhelper.NewViewhelper)ViewData["newViewhelper"];
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-pencil"></i> Quản lý tin tức
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách tin tức
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="index">
+                @Html.Partial("_PartialErrMessage")
+                <input type="hidden" name="direction">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel panel-default" style="margin-bottom : 10px;">
+                            <div class="panel-body">
+                                <div class="form-group m-b-sm">
+                                    <div class="col-lg-9">
+                                        <label class="col-lg-2 control-label"
+                                               style="padding-right: 0px; text-align: left;">
+                                            Từ khóa
+                                        </label>
+                                        <div class="col-lg-9" style="padding-right: 0px;">
+                                            <input id="keysearch" type="text"
+                                                   class="form-control input-sm" placeholder="Từ khóa"
+                                                   name="keySearch" value="@newViewhelper.KeySearch">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="pull-right">
+                                            <button type="submit" id="btn_search" onclick="search();"
+                                                    class="btn btn-sm btn-s-sm btn-primary">
+                                                <i class="fa fa-search"></i> Tìm kiếm
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger"
+                                                    onclick="clearAll();">
+                                                <i class="fa fa-trash-o"></i> Xóa điều kiện
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <select id="menuFilter" name="menuFilter" onchange="change();" style="width: 276px;">
+                            <option value="0">
+                                Lọc theo danh mục (Tất cả)
+                            </option>
+                            @{
+                                foreach (var item in newViewhelper.LstMenu) { 
+                                    <option value="@item.id" @if(item.id == newViewhelper.MenuFilter){ @Html.Raw(" selected")}>
+                                        @Html.Raw(item.title)
+                                    </option>
+                                }
+                            }
+                        </select>
+                        <div class="pull-right">
+                            <select name="changeActive" id="changeActive" onchange="changeActive1();" style="width: 180px;">
+                                <option value="" >Chuyển trạng thái sang</option>
+                                <option value="True">Hiển thị</option>
+                                <option value="False">Không hiển thị</option>
+                            </select>&nbsp;
+                            <a href="javascript: remove();" style="font-weight: bold;"
+                               class="btn btn-sm btn-s-sm btn-danger">
+                                <i class="fa fa-trash-o"></i> Xóa
+                            </a>
+                            <a href="regist" style="font-weight: bold;"
+                               class="btn btn-sm btn-s-sm btn-primary">
+                                <i class="fa fa-plus"></i> Thêm mới
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width: 40px;">
+                                        <input type="checkbox" />
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;">STT</th>
+                                    <th class="text-center" style="vertical-align: middle; width : 12%;">
+                                        Hình ảnh
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width: 20%">
+                                        Tên bài viết
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Trích dẫn
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width: 12%;">Danh mục chứa</th>
+                                    <th class="text-center" style="vertical-align: middle; width : 70px;">
+                                        Trạng thái
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">Đường dẫn</th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Sửa
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Xóa
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (newViewhelper.TotalCount > 0)
+                                    {
+                                    int i = (newViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                                    foreach (var item in newViewhelper.LstNew)
+                                    {
+                                        <tr>
+                                            <td align="center" width="40px"><input type="checkbox" name="checkID" id="ckCheckID" value="@item.id"></td>
+                                            <td align="center">@i</td>
+                                            <td width="12%"><img style="max-width : 100%; max-height: 100px;" src="@item.avatar" /></td>
+                                            <td>@item.title</td>
+                                            <td>@Html.Raw(item.description)</td>
+                                            <td>@Html.Raw(item.gov_menu.title)</td>
+                                            <td class="text-center" style="vertical-align: middle;">@if (!item.active_flg){<div class="label bg-danger">@Html.Raw("<b>Không hiển thị</b>")</div> }</td>
+                                            <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                <a href="#modal-form" onclick="loadLink('@Utils.getLinkDefault(item.id, TypeLink.tintuc)')" data-toggle="modal"><i class="fa fa-link text-dark text" style="font-size : 15px;"></i></a>
+                                            </td>
+                                            <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                <a href="edit?id=@item.id"><i class="fa fa-edit text-dark text" style="font-size : 15px;"></i></a>
+                                            </td>
+                                            <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                <a href="delete?id=@item.id" onclick="return confirm('Bạn có chắc chắn muốn xóa bản ghi này!');"><i class="fa fa-times text-danger text" style="font-size : 15px;"></i></a>
+                                            </td>
+                                        </tr>
+                                        i++;
+                                    }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="modal fade" id="modal-form">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="row" style="padding: 0px 10px;">
+                                            <p style="margin: 0px;" id="link"></p>
+                                            <script>
+                                                function loadLink(link) {
+                                                    $('#link').html(link);
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@newViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                <c:if test="${list.totalCount > 0}">
+                                    <div class="col-md-4 hidden-sm">
+                                        <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                            Hiển thị trang <input type="text" size="5" name="page"
+                                            value="@newViewhelper.Page" id="pageid"> / @newViewhelper.TotalPage
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                        <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                            <li>
+                                                <a href="javascript: direction('first');">
+                                                    <i class="fa fa-step-backward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('ahead');">
+                                                    <i class="fa fa-backward"></i>
+                                                </a>
+                                            </li>
+                                            @if (newViewhelper.FirstPage > 1)
+                                            {
+                                                <li>
+                                                    <a>...</a>
+                                                </li>
+                                            }
+                                            @{
+                                                for (int j = newViewhelper.FirstPage; j <= newViewhelper.LastPage; j++)
+                                                {
+                                                    <li @if (j == newViewhelper.Page){ @Html.Raw(" class='active'") }>
+                                                        <a href="javascript: selectPage(@j);"> @j</a>
+                                                    </li>
+                                                }
+                                            }
+                                            @if (newViewhelper.TotalPage > newViewhelper.LastPage)
+                                            {
+                                                <li>
+                                                    <a>...</a>
+                                                </li>
+                                            }
+                                            <li>
+                                                <a href="javascript: direction('next');">
+                                                    <i class="fa fa-forward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('end');">
+                                                    <i class="fa fa-step-forward"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $('#menuFilter').select2();
+    $('#changeActive').select2();
+
+    function change() {
+        document.form.submit();
+    }
+
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function remove() {
+        if (confirm('Bạn có chắc chắn muôn xóa')) {
+            document.form.action = "delete";
+            document.form.submit();
+        }
+    }
+
+    function changeActive1() {
+        document.form.action = "changeActive";
+        document.form.submit();
+    }
+</script>

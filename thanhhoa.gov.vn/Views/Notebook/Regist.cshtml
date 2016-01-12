@@ -1,0 +1,269 @@
+﻿@using thanhhoa.gov.vn.Models;
+@{
+    ViewBag.Title = "Đăng ký Lưu bút ra trường";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = (String)ViewData["message"];
+    var error = (String)ViewData["error"];
+    var lstCourse = (List<gov_course>)ViewData["lstCourse"];
+    var lstSpecialized = (List<gov_specialized>)ViewData["lstSpecialized"]; 
+}
+
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<link href="~/Content/sign-up.css" rel="stylesheet" />
+<script src="~/Scripts/map/select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Scripts/map/select2.css" />
+
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="modHoidap">
+            <form action="/cuu-sinh-vien/luu-but-ra-truong/dang-ky-thong-tin" method="post" name="form" id="form" enctype="multipart/form-data">
+                <div class="breackrum">
+                    <a class="bkHome" href="/"><b>Trang chủ</b></a>
+                    <a href="javascript: void(0);"><b>Cựu sinh viên</b></a>
+                    <a href="/cuu-sinh-vien/luu-but-ra-truong"><b>Lưu bút ra trường</b></a>
+                    <a href="javascript: void(0);"><b>Đăng ký thông tin</b></a>
+                </div>
+                @{
+                    if (message != null)
+                    {
+                        <div style="color: #118B11; background-color: #FAFAFA; border: 1px solid #118B11 ; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
+                            <strong>@Html.Raw(message)</strong>
+                        </div>
+                    }
+                    else if (error != null)
+                    {
+                        <div style="color: red; background-color: #FAFAFA; border: 1px solid red; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
+                            <strong>@Html.Raw(error)</strong>
+                        </div>
+                    }
+                }
+                <fieldset style="border: 1px solid #c2cae6; padding: 10px; ">
+                    <legend style="padding: 0.2em 0.5em; border: 1px solid #c2cae6; text-align: left; font-weight: bold;">Thông tin lưu bút ra trường</legend>
+                    <table class="tableSignup" width="100%" cellspacing="0" cellpadding="0" style="border: none;">
+                        <tr>
+                            <td class="tdLeftSignup"></td>
+                            <td>(<span class="spanRed">*</span>) <em>Bắt buộc nhập</em></td>
+                        </tr>
+                        <tr id="tr_lop">
+                            <td class="tdLeftSignup">Lớp <span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" style="width: 100px;" type="text" name="lop" id="lop" required></td>
+                        </tr>
+                        <tr id="tr_specialized_id">
+                            <td class="tdLeftSignup">Chuyên ngành <span class="spanRed">*</span>:</td>
+                            <td>
+                                <select id="specialized_id" name="specialized_id" style="width: 250px;" required>
+                                    <option value="0">Lựa chọn</option>
+                                    @{
+                                        foreach (var item in lstSpecialized)
+                                        {
+                                            <option value="@item.id">@item.specialized_name</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id="tr_course_id">
+                            <td class="tdLeftSignup">Khóa <span class="spanRed">*</span>:</td>
+                            <td>
+                                <select id="course_id" name="course_id" style="width: 250px;">
+                                    <option value="0">Lựa chọn</option>
+                                    @{
+                                        foreach (var item in lstCourse)
+                                        {
+                                            <option value="@item.id">@item.course_name</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id="tr_title">
+                            <td class="tdLeftSignup">Tiêu đề <span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" type="text" name="title" id="title" style="width: 98%;" required></td>
+                        </tr>
+                        <tr id="tr_email">
+                            <td class="tdLeftSignup">Email <span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" required type="email" name="email" id="email" style="width: 98%;"></td>
+                        </tr>
+                        <tr id="tr_remember">
+                            <td class="tdLeftSignup">Kỷ niệm nào khiến bạn cười khi nghĩ về Khoa CNTT <span class="spanRed">*</span>:</td>
+                            <td>
+                                <textarea style="width: 100%" rows="4" name="remember" id="remember" required></textarea>
+                            </td>
+                        </tr>
+                        <tr id="tr_teacher">
+                            <td class="tdLeftSignup">Giảng viên nào trong Khoa được bạn giành nhiều tình cảm đặc biệt nhất <span class="spanRed">*</span>:</td>
+                            <td>
+                                <textarea style="width: 100%" rows="4" name="teacher" id="teacher" required></textarea>
+                            </td>
+                        </tr>
+                        <tr id="tr_dream">
+                            <td class="tdLeftSignup">Sau khi tốt nghiệp, ước mơ của bạn là gì <span class="spanRed">*</span>:</td>
+                            <td>
+                                <textarea style="width: 100%" rows="4" name="dream" id="dream" required></textarea>
+                            </td>
+                        </tr>
+                        <tr id="tr_note">
+                            <td class="tdLeftSignup">Lời nhắn các em sinh viên khóa sau <span class="spanRed">*</span>:</td>
+                            <td>
+                                <textarea style="width: 100%" rows="4" name="note" id="note" required></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdLeftSignup"></td>
+                            <td>
+                                <div>
+                                    <img id="img-captcha" src="/cuu-sinh-vien/luu-but-ra-truong/get-captcha">
+                                    <img id="re-captcha" src="~/Images/i-reCapcha.png" style="margin-bottom: 15px; margin-left: 15px; cursor: pointer;" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="tr_captcha">
+                            <td class="tdLeftSignup">Mã xác nhận:</td>
+                            <td>
+                                <div>
+                                    <input class="inp_signup" type="text" name="captcha" id="captcha" required>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="tdOk">
+                                <input type="button" value="Đăng ký" onclick="save();" style="border: none;" class="btn_login" />
+                                <input type="reset" value="Hủy bỏ" style="border: none;" class="btn_login" />
+                                <a href="/cuu-sinh-vien/luu-but-ra-truong" class="btn_login">Quay lại</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+            <!-- end module dang ky -->
+        </div>
+        <!-- end module van ban phap quy -->
+
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+
+<script>
+    $('#specialized_id').select2();
+    $('#course_id').select2();
+
+    $('form').bind("keypress", function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    function save() {
+        resetValidate();
+        if (validate()) {
+            $.ajax({
+                type: "GET",
+                url: "/cuu-sinh-vien/luu-but-ra-truong/check-captcha",
+                data: "captcha=" + $('#captcha').val(),
+                success: function (data) {
+                    if ($('#captcha').val() != data)
+                        $('#tr_captcha').addClass("trErr");
+                    else {
+                        $.ajax({
+                            type: "GET",
+                            url: "/cuu-sinh-vien/luu-but-ra-truong/check-email",
+                            data: "email=" + $('#email').val(),
+                            success: function (data1) {
+                                if (data1 == 'True') {
+                                    document.form.submit();
+                                } else {
+                                    alert("Email đã được đăng ký!");
+                                    $('#tr_email').addClass("trErr");
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+    function resetValidate() {
+        $('#tr_lop').removeClass("trErr");
+        $('#tr_specialized_id').removeClass("trErr");
+        $('#tr_course_id').removeClass("trErr");
+        $('#tr_title').removeClass("trErr");
+        $('#tr_email').removeClass("trErr");
+        $('#tr_remember').removeClass("trErr");
+        $('#tr_teacher').removeClass("trErr");
+        $('#tr_dream').removeClass("trErr");
+        $('#tr_note').removeClass("trErr");
+        $('#tr_captcha').removeClass("trErr");
+    }
+
+    function validate() {
+        var check = true;
+        var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+        if ($('#lop').val() == "") {
+            $('#tr_lop').addClass("trErr");
+            check = false;
+        }
+        if ($('#specialized_id').val() == 0) {
+            $('#tr_specialized_id').addClass("trErr");
+            check = false;
+        }
+        if ($('#course_id').val() == 0) {
+            $('#tr_course_id').addClass("trErr");
+            check = false;
+        }
+        if ($('#title').val() == "") {
+            $('#tr_title').addClass("trErr");
+            check = false;
+        }
+        if ($('#email').val() == "") {
+            $('#tr_email').addClass("trErr");
+            check = false;
+        } else if (!reg.test($('#email').val())) {
+            $('#tr_email').addClass("trErr");
+            check = false;
+        }
+        if ($('#remember').val() == "") {
+            $('#tr_remember').addClass("trErr");
+            check = false;
+        }
+        if ($('#teacher').val() == "") {
+            $('#tr_teacher').addClass("trErr");
+            check = false;
+        }
+        if ($('#dream').val() == "") {
+            $('#tr_dream').addClass("trErr");
+            check = false;
+        }
+        if ($('#note').val() == "") {
+            $('#tr_note').addClass("trErr");
+            check = false;
+        }
+        if ($('#captcha').val() == "") {
+            $('#tr_captcha').addClass("trErr");
+            check = false;
+        }
+        return check;
+    }
+
+    $('#re-captcha').bind("click", function () {
+        $.ajax({
+            type: 'GET',
+            url: "/cuu-sinh-vien/luu-but-ra-truong/get-captcha",
+            success: function (data) {
+                $('#img-captcha').attr("src", "/cuu-sinh-vien/luu-but-ra-truong/get-captcha");
+            }
+        });
+    });
+</script>

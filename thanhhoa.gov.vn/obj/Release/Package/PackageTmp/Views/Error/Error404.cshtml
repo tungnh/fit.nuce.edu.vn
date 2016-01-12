@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Error";
+    Layout = Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .pager {
+        padding-left: 0;
+        margin: 10px 0;
+        text-align: center;
+        list-style: none;
+    }
+
+        .pager li {
+            display: inline;
+        }
+            .pager li > a, .pager li > span {
+                display: inline-block;
+                padding: 5px 14px;
+                background-color: #ffffff;
+                border: 1px solid #dddddd;
+                border-radius: 15px;
+                color: black;
+            }
+                .pager li > a:hover, .pager li > a:focus {
+                    text-decoration: none;
+                    background-color: #eeeeee;
+                }
+    a {
+        color: #2e3e4e;
+        text-decoration: none;
+    }
+</style>
+<div class="mainMod">
+    <div class="modLeftMain">
+
+        <div class="breackrum">
+            <a class="bkHome" href="/">404</a>
+        <!--end breackrum-->
+        </div>
+
+        <div class="modMulti">
+            <div style="text-align: center; padding-top: 20px;">
+                <p style="font: 400 25px/40px arial; color: #a80000;">
+                    <img src="~/Images/bg_title_404.gif" alt=""> <strong>Không tìm thấy đường dẫn này</strong>
+                </p>
+                <ul class="pager">
+                    <li><a onclick="history.go(-1);" style="cursor: pointer;">← Quay lại</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_PartialLeft")
+
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+</div>

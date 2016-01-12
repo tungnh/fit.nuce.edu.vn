@@ -1,0 +1,307 @@
+﻿@using thanhhoa.gov.vn.Utility
+@using thanhhoa.gov.vn.Models
+@{
+    ViewBag.Title = "Cập nhật nhóm người sử dụng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var groupInfo = (thanhhoa.gov.vn.Models.gov_group)ViewData["groupInfo"];
+}
+
+@functions{
+    public int getPermissionNumber(int moduleId, List<gov_group_permission> lstPermission)
+    {
+        if (lstPermission.Where(a => a.module_id == moduleId) != null && lstPermission.Where(a => a.module_id == moduleId).Count() > 0)
+            return lstPermission.Where(a => a.module_id == moduleId).FirstOrDefault().permission_number;
+        return 0;
+    }
+
+    public bool HassPermission(TypeAudit audit, int permission)
+    {
+        if (((int)audit & permission) == (int)audit)
+            return true;
+        return false;
+    }
+}
+<link href="~/Areas/Admin/Resources/js/nestable/nestable.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Resources/js/nestable/jquery.nestable.js"></script>
+<script src="~/Areas/Admin/Resources/js/nestable/demo.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-user"></i> Quản trị Người dùng
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách nhóm người sử dụng
+                </li>
+                <li class="active">
+                    <i class="fa fa-edit"></i> Cập nhật nhóm người sử dụng
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveEdit">
+                                @{
+                                    if (groupInfo != null)
+                                    {
+                                        <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                            <i class="fa fa-foursquare"></i> Cập nhật nhóm người sử dụng
+                                        </h5>
+                                        <input hidden name="id" value="@groupInfo.id" />
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Tên nhóm <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="groupName" value="@groupInfo.group_name" class="form-control input-sm"
+                                                       data-required="true"
+                                                       data-required-message="Trường tên nhóm ngừoi dùng không được để trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Phân quyền :
+                                            </span>
+                                            <div class="col-sm-3">
+                                                <div class="dd" id="nestable1">
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item dd3-item" data-id="2">
+                                                            <div class="dd3-content"><strong>Quản lý danh mục</strong></div>
+                                                            <ol class="dd-list">
+                                                                <li class="dd-item" data-id="4">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleDanhMuc" @{if (HassPermission(TypeAudit.Addnew, getPermissionNumber(1, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")   }} value="1" /> Thêm mới</label></div> </div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="3">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleDanhMuc" @{if (HassPermission(TypeAudit.Edit, getPermissionNumber(1, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="2" /> Chỉnh sửa</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="4">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleDanhMuc" @{if (HassPermission(TypeAudit.Delete, getPermissionNumber(1, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="4" /> Xóa</label></div></div>
+                                                                </li>
+                                                            </ol>
+                                                        </li>
+                                                        <li class="dd-item" data-id="2">
+                                                            <div class="dd3-content"><strong>Quản lý tin tức</strong></div>
+                                                            <ol class="dd-list">
+                                                                <li class="dd-item" data-id="4">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleTinTuc" @{if (HassPermission(TypeAudit.Addnew, getPermissionNumber(2, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="1" /> Thêm mới</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="3">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleTinTuc" @{if (HassPermission(TypeAudit.Edit, getPermissionNumber(2, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="2" /> Chỉnh sửa</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="4">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleTinTuc" @{if (HassPermission(TypeAudit.Delete, getPermissionNumber(2, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="4" /> Xóa</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="4">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleTinTuc" @{if (HassPermission(TypeAudit.ManagerComment, getPermissionNumber(2, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="8" /> Quản lý bình luận</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="4">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleTinTuc" @{if (HassPermission(TypeAudit.ManagerStudent, getPermissionNumber(2, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="16" /> Nhận email khi có bài viết mới</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="4">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleTinTuc" @{if (HassPermission(TypeAudit.SlideTrangChu, getPermissionNumber(2, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")      }} value="65536" /> Biên tập Slide trang chủ</label></div></div>
+                                                                </li>
+                                                            </ol>
+                                                        </li>
+
+                                                        <li class="dd-item" data-id="15">
+                                                            <div class="dd3-content"><strong> Quản lý media</strong></div>
+                                                            <ol class="dd-list">
+                                                                <li class="dd-item" data-id="16">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleMedia" @{if (HassPermission(TypeAudit.Video, getPermissionNumber(4, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="64" /> Quản lý video</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="17">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleMedia" @{if (HassPermission(TypeAudit.Album, getPermissionNumber(4, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="128" /> Quản lý album</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="18">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleMedia" @{if (HassPermission(TypeAudit.Gallery, getPermissionNumber(4, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="256" /> Quản lý hình ảnh</label></div></div>
+                                                                </li>
+                                                            </ol>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="dd" id="nestable2">
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="15">
+                                                            <div class="dd3-content"><strong> Quản lý điểm thi</strong></div>
+                                                            <ol class="dd-list">
+                                                                <li class="dd-item" data-id="11">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleDiemThi" @{if (HassPermission(TypeAudit.Addnew, getPermissionNumber((int)TypeModule.MODULE_DIEMTHI, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="1" /> Thêm mới</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="11">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleDiemThi" @{if (HassPermission(TypeAudit.Edit, getPermissionNumber((int)TypeModule.MODULE_DIEMTHI, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="2" /> Sửa</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="11">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleDiemThi" @{if (HassPermission(TypeAudit.Delete, getPermissionNumber((int)TypeModule.MODULE_DIEMTHI, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="4" /> Xóa</label></div></div>
+                                                                </li>
+                                                            </ol>
+                                                        </li>
+
+                                                        <li class="dd-item" data-id="10">
+                                                            <div class="dd3-content"><strong> Quản lý văn bản</strong></div>
+                                                            <ol class="dd-list">
+                                                                <li class="dd-item" data-id="11">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleVanBan" @{if (HassPermission(TypeAudit.Addnew, getPermissionNumber((int)TypeModule.MODULE_VANBAN, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="1" /> Thêm mới</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="11">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleVanBan" @{if (HassPermission(TypeAudit.Edit, getPermissionNumber((int)TypeModule.MODULE_VANBAN, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="2" /> Sửa</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="11">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleVanBan" @{if (HassPermission(TypeAudit.Delete, getPermissionNumber((int)TypeModule.MODULE_VANBAN, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="4" /> Xóa</label></div></div>
+                                                                </li>
+                                                            </ol>
+                                                        </li>
+                                                        
+                                                        <li class="dd-item" data-id="19">
+                                                            <div class="dd3-content"><strong> Quản trị Người dùng</strong></div>
+                                                            <ol class="dd-list">
+                                                                <li class="dd-item" data-id="10">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleNguoiDung" @{if (HassPermission(TypeAudit.GroupUser, getPermissionNumber((int)TypeModule.MODULE_NGUOIDUNG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")      }} value="2048" />  <strong style="color: red;">Quản lý nhóm người dùng</strong></label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="10">
+                                                                    <div class="dd3-content"><strong> Quản lý người dùng</strong></div>
+                                                                    <ol class="dd-list">
+                                                                        <li class="dd-item" data-id="11">
+                                                                            <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleNguoiDung" @{if (HassPermission(TypeAudit.Addnew, getPermissionNumber((int)TypeModule.MODULE_NGUOIDUNG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="1" /> Thêm mới</label></div></div>
+                                                                        </li>
+                                                                        <li class="dd-item" data-id="11">
+                                                                            <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleNguoiDung" @{if (HassPermission(TypeAudit.Edit, getPermissionNumber((int)TypeModule.MODULE_NGUOIDUNG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="2" /> Sửa</label></div></div>
+                                                                        </li>
+                                                                        <li class="dd-item" data-id="11">
+                                                                            <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleNguoiDung" @{if (HassPermission(TypeAudit.Delete, getPermissionNumber((int)TypeModule.MODULE_NGUOIDUNG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="4" /> Xóa</label></div></div>
+                                                                        </li>
+                                                                    </ol>
+                                                                </li>
+                                                            </ol>
+                                                        </li>
+                                                        @*<li class="dd-item" data-id="15">
+                                                            <div class="dd3-content"><strong> Quản lý hỏi đáp</strong></div>
+                                                            <ol class="dd-list">
+                                                                <li class="dd-item" data-id="18">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHoiDap" @{if (HassPermission(TypeAudit.QuestionCategory, getPermissionNumber((int)TypeModule.MODULE_HOIDAP, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="512" /> Quản lý lĩnh vực câu hỏi</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="17">
+                                                                    <div class="dd3-content"> Quản lý câu hỏi và trả lời</div>
+                                                                    <ol class="dd-list">
+                                                                        <li class="dd-item" data-id="16">
+                                                                            <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHoiDap" @{if (HassPermission(TypeAudit.Delete, getPermissionNumber((int)TypeModule.MODULE_HOIDAP, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="4" /> Quản lý</label></div></div>
+                                                                        </li>
+                                                                        <li class="dd-item" data-id="17">
+                                                                            <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHoiDap" @{if (HassPermission(TypeAudit.AnswerQuestion, getPermissionNumber((int)TypeModule.MODULE_HOIDAP, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="1024" /> Trả lời câu hỏi</label></div></div>
+                                                                        </li>
+                                                                    </ol>
+                                                                </li>
+                                                            </ol>
+                                                        </li>*@
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="dd" id="nestable3">
+                                                    <ol class="dd-list">
+                                                        <li class="dd-item" data-id="15">
+                                                            <div class="dd3-content"><strong> Quản lý Cựu sinh viên</strong></div>
+                                                            <ol class="dd-list">
+                                                                <li class="dd-item" data-id="18">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleCuuSinhVien" @{if (HassPermission(TypeAudit.ManagerStudent, getPermissionNumber((int)TypeModule.MODULE_CUUSINHVIEN, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="16" /> Quản lý Cựu sinh viên</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="18">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleCuuSinhVien" @{if (HassPermission(TypeAudit.ManagerNotebook, getPermissionNumber((int)TypeModule.MODULE_CUUSINHVIEN, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="32" /> Quản lý Lưu bút ra trường</label></div></div>
+                                                                </li>
+                                                            </ol>
+                                                        </li>
+                                                        <li class="dd-item" data-id="19">
+                                                            <div class="dd3-content"><strong> Quản trị hệ thống</strong></div>
+                                                            <ol class="dd-list">
+                                                                <li class="dd-item" data-id="10">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHeThong" @{if (HassPermission(TypeAudit.TruyCapHeThong, getPermissionNumber((int)TypeModule.MODULE_HETHONG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="4096" /> Lịch sử truy cập hệ thống</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="10">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHeThong" @{if (HassPermission(TypeAudit.CoCauToChuc, getPermissionNumber((int)TypeModule.MODULE_HETHONG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")   }} value="8192" /> Quản lý Cơ cấu tổ chức</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="10">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHeThong" @{if (HassPermission(TypeAudit.ChucVu, getPermissionNumber((int)TypeModule.MODULE_HETHONG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")    }} value="131072" /> Quản lý Chức vụ</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="10">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHeThong" @{if (HassPermission(TypeAudit.Course, getPermissionNumber((int)TypeModule.MODULE_HETHONG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="524288" /> Quản lý Khóa học</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="10">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHeThong" @{if (HassPermission(TypeAudit.QuangCao, getPermissionNumber((int)TypeModule.MODULE_HETHONG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="16384" /> Quản lý Quảng cáo</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="10">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHeThong" @{if (HassPermission(TypeAudit.BackupDatabase, getPermissionNumber((int)TypeModule.MODULE_HETHONG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")     }} value="262144" /> Quản lý Backup dữ liệu</label></div></div>
+                                                                </li>
+                                                                <li class="dd-item" data-id="10">
+                                                                    <div class="dd3-content"><div class="checkbox"><label><input type="checkbox" name="moduleHeThong" @{if (HassPermission(TypeAudit.CauHinhHeThong, getPermissionNumber((int)TypeModule.MODULE_HETHONG, groupInfo.gov_group_permission.ToList()))) { @Html.Raw(" checked")      }} value="32768" /> Quản lý Cấu hình hệ thống</label></div></div>
+                                                                </li>
+                                                            </ol>
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs m-t-md">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Người tạo:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@groupInfo.entry_username</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Thời gian tạo:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@groupInfo.entry_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Người cập nhật cuối:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@groupInfo.update_username</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Thời gian cập nhật cuối:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@groupInfo.update_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="line line-dashed line-lg pull-in"></div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l-md"></span>
+                                            <div class="col-lg-6">
+                                                <input type="submit" class="btn btn-sm btn-primary"
+                                                       style="width: 90px;" value="Lưu" />
+                                                <a href="index" class="btn btn-sm btn-danger"
+                                                   data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<font color='red'><b>Nhóm Người dùng không tồn tại, hoặc đã bị xóa!</b></font> Nhấn vào <a href='index' style='text-decoration: underline;'>đây</a> để quay lại");
+                                    }
+                                }
+
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+</script>
+

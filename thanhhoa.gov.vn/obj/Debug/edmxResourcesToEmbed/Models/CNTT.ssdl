@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CNTTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="gov_access_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="time_access" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="client_info" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="username_access" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="type_action" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="description" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_advertise">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="200" />
+    <Property Name="attach_file" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="link" Type="varchar" MaxLength="200" />
+    <Property Name="type_link" Type="tinyint" />
+    <Property Name="department" Type="varchar" MaxLength="200" />
+    <Property Name="price" Type="int" />
+    <Property Name="note" Type="varchar" MaxLength="200" />
+    <Property Name="order_number" Type="int" />
+    <Property Name="begin_date" Type="datetime" Nullable="false" />
+    <Property Name="end_date" Type="datetime" Nullable="false" />
+    <Property Name="location" Type="int" />
+    <Property Name="active_flg" Type="tinyint" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" />
+    <Property Name="update_datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="gov_album">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="album_title" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="500" />
+    <Property Name="avatar" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="total_view" Type="int" />
+    <Property Name="order_number" Type="int" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_album_gallery">
+    <Key>
+      <PropertyRef Name="album_id" />
+      <PropertyRef Name="gallery_id" />
+    </Key>
+    <Property Name="album_id" Type="int" Nullable="false" />
+    <Property Name="gallery_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_answer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="question_id" Type="int" Nullable="false" />
+    <Property Name="hidden_flg" Type="tinyint" Nullable="false" />
+    <Property Name="answer_content" Type="text" Nullable="false" />
+    <Property Name="answer_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="answer_datetime" Type="datetime" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_comments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="full_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="parent_id" Type="int" />
+    <Property Name="news_id" Type="int" Nullable="false" />
+    <Property Name="comments_content" Type="text" />
+    <Property Name="total_like" Type="int" />
+    <Property Name="like_info" Type="text" />
+    <Property Name="active_flg" Type="tinyint" Nullable="false" />
+    <Property Name="entry_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_department">
+    <Key>
+      <PropertyRef Name="dept_id" />
+    </Key>
+    <Property Name="dept_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dept_code" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="description" Type="text" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_district">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="level" Type="int" Nullable="false" />
+    <Property Name="decription" Type="varchar" MaxLength="200" />
+    <Property Name="link" Type="varchar" MaxLength="200" />
+    <Property Name="order_number" Type="int" Nullable="false" />
+    <Property Name="show_map" Type="tinyint" Nullable="false" />
+    <Property Name="coordinates" Type="text" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_doc_draft">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="doc_code" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="doc_name" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="doc_summany" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="doc_content" Type="text" />
+    <Property Name="kind_id" Type="int" Nullable="false" />
+    <Property Name="department_id" Type="int" Nullable="false" />
+    <Property Name="date_start_promulgate" Type="datetime" />
+    <Property Name="date_end_promulgate" Type="datetime" />
+    <Property Name="user_sign" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="active_flg" Type="tinyint" />
+    <Property Name="note" Type="text" />
+    <Property Name="attach_file_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="attach_file_path" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_doc_kind">
+    <Key>
+      <PropertyRef Name="kid" />
+    </Key>
+    <Property Name="kid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kcode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="kname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="200" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_gallery">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="200" />
+    <Property Name="total_view" Type="int" />
+    <Property Name="attach_filepath" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="group_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="hidden_flg" Type="tinyint" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="gov_group_members">
+    <Key>
+      <PropertyRef Name="group_id" />
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="group_id" Type="int" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_group_permission">
+    <Key>
+      <PropertyRef Name="group_id" />
+      <PropertyRef Name="module_id" />
+    </Key>
+    <Property Name="group_id" Type="int" Nullable="false" />
+    <Property Name="module_id" Type="int" Nullable="false" />
+    <Property Name="permission_number" Type="int" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_key_band">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="key_band" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="entry_username" Type="varchar" MaxLength="50" />
+    <Property Name="entry_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_level_district">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="order_number" Type="int" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="id_parent" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="200" />
+    <Property Name="description" Type="varchar" MaxLength="200" />
+    <Property Name="ishome" Type="tinyint" Nullable="false" />
+    <Property Name="order_number" Type="int" />
+    <Property Name="link" Type="varchar" MaxLength="200" />
+    <Property Name="active_flg" Type="tinyint" Nullable="false" />
+    <Property Name="entry_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="entry_datetime" Type="datetime" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="full_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="department" Type="varchar" MaxLength="200" />
+    <Property Name="title" Type="text" Nullable="false" />
+    <Property Name="hidden_flg" Type="tinyint" Nullable="false" />
+    <Property Name="category_id" Type="int" Nullable="false" />
+    <Property Name="attach_file_name" Type="varchar" MaxLength="200" />
+    <Property Name="attach_file_path" Type="varchar" MaxLength="200" />
+    <Property Name="question_content" Type="text" />
+    <Property Name="question_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_question_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="200" />
+    <Property Name="order_number" Type="int" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_name" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="update_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_user">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="family_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="birth_day" Type="varchar" MaxLength="50" />
+    <Property Name="sex" Type="tinyint" Nullable="false" />
+    <Property Name="mobile" Type="varchar" MaxLength="20" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+    <Property Name="address" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="active_flg" Type="tinyint" Nullable="false" />
+    <Property Name="hidden_flg" Type="tinyint" Nullable="false" />
+    <Property Name="role_id" Type="int" Nullable="false" />
+    <Property Name="district_id" Type="int" />
+    <Property Name="update_user_name" Type="varchar" MaxLength="50" />
+    <Property Name="update_datetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="gov_album_gallery_ibfk_1">
+    <End Role="gov_album" Type="Self.gov_album" Multiplicity="1" />
+    <End Role="gov_album_gallery" Type="Self.gov_album_gallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_album">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_album_gallery">
+        <PropertyRef Name="album_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_album_gallery_ibfk_2">
+    <End Role="gov_gallery" Type="Self.gov_gallery" Multiplicity="1" />
+    <End Role="gov_album_gallery" Type="Self.gov_album_gallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_gallery">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_album_gallery">
+        <PropertyRef Name="gallery_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_answer_question_fk">
+    <End Role="gov_question" Type="Self.gov_question" Multiplicity="1" />
+    <End Role="gov_answer" Type="Self.gov_answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_answer">
+        <PropertyRef Name="question_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_district_ibfk_1">
+    <End Role="gov_level_district" Type="Self.gov_level_district" Multiplicity="1" />
+    <End Role="gov_district" Type="Self.gov_district" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_level_district">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_district">
+        <PropertyRef Name="level" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_doc_draft_ibfk_1">
+    <End Role="gov_doc_kind" Type="Self.gov_doc_kind" Multiplicity="1" />
+    <End Role="gov_doc_draft" Type="Self.gov_doc_draft" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_doc_kind">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="gov_doc_draft">
+        <PropertyRef Name="kind_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_doc_draft_ibfk_2">
+    <End Role="gov_department" Type="Self.gov_department" Multiplicity="1" />
+    <End Role="gov_doc_draft" Type="Self.gov_doc_draft" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_department">
+        <PropertyRef Name="dept_id" />
+      </Principal>
+      <Dependent Role="gov_doc_draft">
+        <PropertyRef Name="department_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_group_members_ibfk_1">
+    <End Role="gov_group" Type="Self.gov_group" Multiplicity="1" />
+    <End Role="gov_group_members" Type="Self.gov_group_members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_group_members">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_group_members_ibfk_2">
+    <End Role="gov_user" Type="Self.gov_user" Multiplicity="1" />
+    <End Role="gov_group_members" Type="Self.gov_group_members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="gov_group_members">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_group_permission_ibfk_2">
+    <End Role="gov_group" Type="Self.gov_group" Multiplicity="1" />
+    <End Role="gov_group_permission" Type="Self.gov_group_permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_group_permission">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_question_ibfk_1">
+    <End Role="gov_question_category" Type="Self.gov_question_category" Multiplicity="1" />
+    <End Role="gov_question" Type="Self.gov_question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_question_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_question">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_user_ibfk_1">
+    <End Role="gov_role" Type="Self.gov_role" Multiplicity="1" />
+    <End Role="gov_user" Type="Self.gov_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_user">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CNTTModelStoreContainer">
+    <EntitySet Name="gov_access_history" EntityType="Self.gov_access_history" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_advertise" EntityType="Self.gov_advertise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_album" EntityType="Self.gov_album" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_album_gallery" EntityType="Self.gov_album_gallery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_answer" EntityType="Self.gov_answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_comments" EntityType="Self.gov_comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_department" EntityType="Self.gov_department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_district" EntityType="Self.gov_district" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_doc_draft" EntityType="Self.gov_doc_draft" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_doc_kind" EntityType="Self.gov_doc_kind" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_gallery" EntityType="Self.gov_gallery" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_group" EntityType="Self.gov_group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_group_members" EntityType="Self.gov_group_members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_group_permission" EntityType="Self.gov_group_permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_key_band" EntityType="Self.gov_key_band" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_level_district" EntityType="Self.gov_level_district" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_menu" EntityType="Self.gov_menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_question" EntityType="Self.gov_question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_question_category" EntityType="Self.gov_question_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_role" EntityType="Self.gov_role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gov_user" EntityType="Self.gov_user" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="gov_album_gallery_ibfk_1" Association="Self.gov_album_gallery_ibfk_1">
+      <End Role="gov_album" EntitySet="gov_album" />
+      <End Role="gov_album_gallery" EntitySet="gov_album_gallery" />
+    </AssociationSet>
+    <AssociationSet Name="gov_album_gallery_ibfk_2" Association="Self.gov_album_gallery_ibfk_2">
+      <End Role="gov_gallery" EntitySet="gov_gallery" />
+      <End Role="gov_album_gallery" EntitySet="gov_album_gallery" />
+    </AssociationSet>
+    <AssociationSet Name="gov_answer_question_fk" Association="Self.gov_answer_question_fk">
+      <End Role="gov_question" EntitySet="gov_question" />
+      <End Role="gov_answer" EntitySet="gov_answer" />
+    </AssociationSet>
+    <AssociationSet Name="gov_district_ibfk_1" Association="Self.gov_district_ibfk_1">
+      <End Role="gov_level_district" EntitySet="gov_level_district" />
+      <End Role="gov_district" EntitySet="gov_district" />
+    </AssociationSet>
+    <AssociationSet Name="gov_doc_draft_ibfk_1" Association="Self.gov_doc_draft_ibfk_1">
+      <End Role="gov_doc_kind" EntitySet="gov_doc_kind" />
+      <End Role="gov_doc_draft" EntitySet="gov_doc_draft" />
+    </AssociationSet>
+    <AssociationSet Name="gov_doc_draft_ibfk_2" Association="Self.gov_doc_draft_ibfk_2">
+      <End Role="gov_department" EntitySet="gov_department" />
+      <End Role="gov_doc_draft" EntitySet="gov_doc_draft" />
+    </AssociationSet>
+    <AssociationSet Name="gov_group_members_ibfk_1" Association="Self.gov_group_members_ibfk_1">
+      <End Role="gov_group" EntitySet="gov_group" />
+      <End Role="gov_group_members" EntitySet="gov_group_members" />
+    </AssociationSet>
+    <AssociationSet Name="gov_group_members_ibfk_2" Association="Self.gov_group_members_ibfk_2">
+      <End Role="gov_user" EntitySet="gov_user" />
+      <End Role="gov_group_members" EntitySet="gov_group_members" />
+    </AssociationSet>
+    <AssociationSet Name="gov_group_permission_ibfk_2" Association="Self.gov_group_permission_ibfk_2">
+      <End Role="gov_group" EntitySet="gov_group" />
+      <End Role="gov_group_permission" EntitySet="gov_group_permission" />
+    </AssociationSet>
+    <AssociationSet Name="gov_question_ibfk_1" Association="Self.gov_question_ibfk_1">
+      <End Role="gov_question_category" EntitySet="gov_question_category" />
+      <End Role="gov_question" EntitySet="gov_question" />
+    </AssociationSet>
+    <AssociationSet Name="gov_user_ibfk_1" Association="Self.gov_user_ibfk_1">
+      <End Role="gov_role" EntitySet="gov_role" />
+      <End Role="gov_user" EntitySet="gov_user" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

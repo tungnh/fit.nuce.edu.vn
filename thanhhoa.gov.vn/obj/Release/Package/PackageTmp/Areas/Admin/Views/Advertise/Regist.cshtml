@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "Thêm mới quảng cáo";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-gears"></i> Quản trị hệ thống
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách quảng cáo
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Thêm mới quảng cáo
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới quảng cáo
+                                </h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Tiêu đề <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="title" class="form-control input-sm" 
+                                               data-required="true"
+                                               data-required-message="Trường tiêu đề không được bỏ trống"/>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Tên cơ quan, tổ chức <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="department"
+                                               data-required="true"
+                                               data-required-message="Trường Cơ quan tổ chức không được bỏ trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Hình ảnh hiển thị <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="hidden" value="/Images/no.jpg" name="attach_file" id="attachFile" class="form-control input-sm" />
+                                        <input type="button" class="btnSearch" id="btnHinhAnh" value="File quảng cáo" style="width : 150px;" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <img src="/Images/no.jpg" id="images" style="max-height: 100px;" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Link quảng cáo <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="link"
+                                               data-required="true"
+                                               data-required-message="Trường link quảng cáo không được bỏ trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="checkbox" name="type_link" value="TRUE" /> Hiển thị trong tab mới
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Vị trí hiển thị :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <select name="location" id="location">
+                                            <option value="1">Trang nhất </option>
+                                            <option value="2">Menu bên phải </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                @*<div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Giá tiền <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="price" class="form-control input-sm" />
+                                    </div>
+                                </div>*@
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Ngày bắt đầu <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input class="input-sm input-sm form-control" style="width: 276px;" name="begin_date" id="startDate"
+                                               type="text"
+                                               value="@Html.Raw(DateTime.Now.ToString("yyyy/MM/dd"))" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Ngày kết thúc <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input class="input-sm input-s form-control" style="width: 276px;" name="end_date" id="endDate"
+                                               type="text"
+                                               value="@Html.Raw(DateTime.Now.ToString("yyyy/MM/dd"))" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Số thứ tự <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="order_number"
+                                               data-required="true"
+                                               data-required-message="Trường số thứ tự không được bỏ trống"
+                                               data-type="number"
+                                               data-type-number-message="Phải nhập đúng định dạng số"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Ghi chú
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <textarea cols="50" rows="3" class="form-control input-sm" name="note"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+    $('#btnHinhAnh').click(function () {
+        var ckfinder = new CKFinder();
+        ckfinder.selectActionFunction = function (fileUrl) {
+            $('#attachFile').val(fileUrl);
+            $('#images').attr("src", fileUrl);
+        };
+        ckfinder.popup();
+    });
+
+    $(document).ready(
+		function () {
+		    $('#startDate').datepicker({
+		        format: "yyyy/mm/dd",
+		        todayBtn: true,
+		        clearBtn: true,
+		        autoclose: true,
+		        todayHighlight: true
+		    });
+
+		    $('#startDate').change(function (e) {
+		        $('#endDate').datepicker("remove");
+		        var find = '/';
+		        var re = new RegExp(find, 'g');
+		        var datestart = this.value.toString().replace(re, "-");
+		        if (datestart == "")
+		            datestart = "2014/01/01";
+		        $('#endDate').datepicker({
+		            format: "yyyy/mm/dd",
+		            startDate: datestart,
+		            todayBtn: true,
+		            clearBtn: true,
+		            autoclose: true,
+		            todayHighlight: true
+		        });
+		    });
+
+		    $('#endDate').datepicker({
+		        format: "yyyy/mm/dd",
+		        startDate: $('#startDate').val(),
+		        todayBtn: true,
+		        clearBtn: true,
+		        autoclose: true,
+		        todayHighlight: true
+		    });
+
+		    $('#endDate').change(function (e) {
+		        $('#startDate').datepicker("remove");
+		        var find = '/';
+		        var re = new RegExp(find, 'g');
+		        var dateend = this.value.toString().replace(re, "-");
+		        if (dateend == "" || dateend > new Date())
+		            dateend = "new Date()";
+		        $('#startDate').datepicker({
+		            format: "yyyy/mm/dd",
+		            endDate: dateend,
+		            todayBtn: true,
+		            clearBtn: true,
+		            autoclose: true,
+		            todayHighlight: true
+		        });
+		    });
+		});
+
+    $('#location').select2();
+</script>
+

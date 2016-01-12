@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Tạo mới album";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-film"></i> Quản lý media
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách hình ảnh
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Thêm mới hình ảnh
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới hình ảnh
+                                </h5>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-1 control-span" style="padding-right: 0px;">
+                                        Tiêu đề <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="title" class="form-control input-sm"
+                                               data-required="true"
+                                               data-required-message="Trường tiêu đề không được để trống"
+                                               placeholder="Đặt tên cho album" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l" >
+                                    <span class="col-lg-1 control-span" style="padding-right: 0px;">
+                                        <input type="button" class=" btnSearch" id="brower" value="Chọn ảnh" style="width : 100%;" />
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input hidden value="/Images/no.jpg" name="attach_filepath" id="attachFilepath">
+                                        <img src="/Images/no.jpg" id="images" style="max-width: 200px;" />
+                                    </div>
+                                </div>
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;"></h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-1 control-span"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $(function () {
+        $('#brower').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#images').attr("src", fileUrl);
+                $('#attachFilepath').val(fileUrl);
+            };
+            ckfinder.popup();
+        });
+    });
+</script>

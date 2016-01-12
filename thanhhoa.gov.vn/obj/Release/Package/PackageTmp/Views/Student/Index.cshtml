@@ -1,0 +1,200 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@using thanhhoa.gov.vn.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Danh sách cựu sinh viên tiêu biểu";
+    var lstStudent = (List<thanhhoa.gov.vn.Models.gov_person>)ViewData["lstStudent"];
+    var studentViewhelper = (thanhhoa.gov.vn.Viewhelper.StudentViewhelper)ViewData["studentViewhelper"];
+}
+<script src="~/Scripts/map/select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Scripts/map/select2.css" />
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<link href="~/Content/sign-up.css" rel="stylesheet" />
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="/"><b>Trang chủ</b></a>
+            <a href="javascript: void(0);"><b>Cựu sinh viên</b></a>
+            <a href="javascript: void(0);"><b>Cựu sinh viên tiêu biểu</b></a>
+        </div>
+        <!--end breackrum-->
+
+        <div style=" display: block; margin-bottom: 10px; height: 26px; line-height: 26px;">
+            <a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/dang-ky-cuu-sinh-vien" class="aSearchAdvancedVb">Đăng ký thông tin cựu sinh viên</a>
+        </div>
+        <!-- main module -->
+        <div class="newsDetail">
+            <form name="form" action="cuu-sinh-vien-tieu-bieu" method="post">
+                <input type="hidden" name="direction" />
+                <input type="hidden" name="page" value="@studentViewhelper.Page" />
+                <div class="boxS2">
+                    <div class="topbox">
+                        <div class="borderleft">
+                        </div>
+                        <div class="borderright">
+                        </div>
+                    </div>
+                    <div class="midbox">
+                        <div class="detail_mid">
+
+                            <table border="0" width="100%" cellpadding="5" cellspacing="5" style="margin: 0 auto">
+                                <tbody>
+                                    <tr>
+                                        <td width="50px" align="left">
+                                            Từ khóa:
+                                        </td>
+                                        <td align="center" colspan="3">
+                                            <div class="input_l">
+                                                <div class="input_r">
+                                                    <input name="keySearch" type="text" value="@studentViewhelper.KeySearch" class="input_style">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="15%" align="center">
+                                            <div class="btn_style fr">
+                                                <input type="submit" value="Tìm kiếm">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="90px" align="left">
+                                            Chuyên ngành:
+                                        </td>
+                                        <td align="center">
+                                            <select id="slChuyenNganh" name="specializedFilter" style="width: 100%;" onchange="search();">
+                                                <option value="0">Tất cả</option>
+                                                @{
+                                                    foreach (var item in studentViewhelper.LstSpecialized)
+                                                    {
+                                                        <option value="@item.id" @if(item.id == studentViewhelper.SpecializedFilter){@Html.Raw(" selected")}>@item.specialized_name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </td>
+                                        <td width="60px" align="right">
+                                            Khóa:
+                                        </td>
+                                        <td align="center" width="100px;">
+                                            <select id="slKhoa" name="courseFilter" style="width: 100%;" onchange="search();">
+                                                <option>Tất cả</option>
+                                                @{
+                                                    foreach (var item in studentViewhelper.LstCourse)
+                                                    {
+                                                        <option value="@item.id" @if(item.id == studentViewhelper.CourseFilter){ @Html.Raw(" selected")}>@item.course_name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="bottombox">
+                        <div class="borderleft">
+                        </div>
+                        <div class="borderright">
+                        </div>
+                    </div>
+                </div>
+                <div class="boxS2">
+                    <div class="topbox">
+                        <div class="borderleft">
+                        </div>
+                        <div class="borderright">
+                        </div>
+                    </div>
+                    <div class="midbox">
+                        <div class="detail_mid">
+                            @{
+                                int i = 0;
+                                if (studentViewhelper.TotalCount > 0) { 
+                                    foreach (var item in studentViewhelper.LstStudent)
+                                    {
+                                        if (i % 2 == 0)
+                                        {
+                                            @Html.Raw("<div class=\"items-row cols-2 row-1\" style=\"margin-top: 0px; margin-right: 0px; margin-left: 0px; padding: 0px; text-align: justify; overflow: hidden; color: rgb(51, 51, 51); font-family: arial, helvetica, sans-serif; font-size: 12.8000001907349px; margin-bottom: 10px !important;\">");
+                                        }
+                                        <div class="item column-1" style="margin: 0px; padding: 0px; width: 50%; float: left; line-height: 18px;">
+                                            <p style="margin: 0px; padding: 4px 0px; line-height: 1.7em;"><b><span lang="EN-US" style="margin: 0px; padding: 0px; font-size: 10pt; font-family: Arial; color: black;"><font color="#095197"><span style="border-color: initial; border-image-source: initial; border-image-slice: initial; border-image-width: initial; border-image-outset: initial; border-image-repeat: initial;"><a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/@Utils.ConvertToUnSign(item.full_name)-@item.id"><img alt="@item.full_name" class="cke-resize" src="@{if(item.avatar != null){ @Html.Raw(item.avatar)} else {@Html.Raw("/Images/avatar_default.jpg")}}" style="margin: 0px 5px; padding: 0px; border: 0px none; width: 90px; height: 105px; float: left;" /></a></span></font></span></b><a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/@Utils.ConvertToUnSign(item.full_name)-@item.id"><span style="color:#008080; font-size: 14px;"><strong>@item.full_name</strong></span></a><br style="margin: 0px; padding: 0px;"></p>
+                                            <p style="margin: 0px; padding: 0 5px 0 5px; font-size: 10pt; font-family: Arial; "><strong>Chuyên ngành:</strong> @item.gov_specialized.specialized_name</p>
+                                            <p style="margin: 0px; padding: 0 5px 0 5px; font-size: 10pt; font-family: Arial; "><strong>Lớp:</strong> @item.lop - <strong>Khóa học:</strong> @item.gov_course.course_name</p>
+                                            <p style="margin: 0px; padding: 0 5px 0 5px; font-size: 10pt; font-family: Arial; "><strong>Email:</strong> @if(item.show_email){<a href="mailto:@item.email" style="margin: 0px; padding: 0px; color: rgb(9, 81, 151); text-decoration: none;">@item.email</a>} else { @Html.Raw("******")}
+                                            <p style="margin: 0px; padding: 0 5px 0 5px; font-size: 10pt; font-family: Arial;"><strong>Điện thoại LH:</strong> @if(item.show_tel) {@Html.Raw(item.phone) } else{ @Html.Raw("******")}</p>
+                                            <p style="margin: 0px; padding: 0 5px 0 5px; font-size: 10pt; font-family: Arial;"><strong>Cơ quan công tác:</strong> @if(item.show_department) { @Html.Raw(item.department) } else{ @Html.Raw("******")}</p>
+                                            <p style="margin: 0px; padding: 0 5px 0 5px; font-size: 10pt; font-family: Arial;"><strong>Địa chỉ:</strong> @if(item.show_address){ @Html.Raw(item.address)} else{@Html.Raw("******")}</p>
+                                            <p class="readmore" style="margin: 0px; padding: 4px 0px; line-height: 1.7em;">
+                                                <a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/@Utils.ConvertToUnSign(item.full_name)-@item.id" style="display: block; background: url(/Upload/Images/sprites.png) 0px 5px no-repeat;   margin-left: 5px;padding: 2px 0px 2px 15px;font-size: 11px;line-height: 15px;color: #333;text-decoration: none;text-align: left;">Xem chi tiết...</a>
+                                            </p>
+                                        </div>
+                                        i++;
+                                        if (i % 2 == 0)
+                                        {
+                                            @Html.Raw("</div>");
+                                            <div class="dotline">
+                                                &nbsp;
+                                            </div>
+                                        }
+                                    }
+                                    if (studentViewhelper.LstStudent.Count % 2 != 0)
+                                    {
+                                        @Html.Raw("</div>");
+                                    }
+                                }
+                            }
+                            <div class="dotline">
+                                &nbsp;
+                            </div>
+                            <div class="surrounded">
+
+                                <div class="pagingListnews">
+                                    <h4><span style="float: left; line-height: 22px; display: inline-block; color: #4679D0;">Tổng số @studentViewhelper.TotalCount dữ liệu đã tìm thấy.</span></h4>
+                                    <a href="javascript: direction('ahead');">&larr;</a>
+                                    @{
+                                        for (int j = studentViewhelper.FirstPage; j <= studentViewhelper.LastPage; j++)
+                                        {
+                                            <a href="javascript: selectPage(@j)" @if (j == studentViewhelper.Page) { @Html.Raw("class='act1'")     }>@j</a>
+                                        }
+                                    }
+                                    <a href="javascript: direction('next')">&rarr;</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="bottombox">
+                        <div class="borderleft">
+                        </div>
+                        <div class="borderright">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- end news detail -->
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+<script>
+    $('#slChuyenNganh').select2();
+    $('#slKhoa').select2();
+
+    function search() {
+        document.form.submit();
+    }
+
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+</script>

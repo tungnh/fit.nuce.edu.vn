@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "Cập nhật lịch tiếp dân";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var notifyInfo = (thanhhoa.gov.vn.Models.NotifyModels)ViewData["notifyInfo"];
+}
+<script src="~/Areas/Admin/Resources/js/wysiwyg/jquery.hotkeys.js" cache="false"></script>
+<script src="~/Areas/Admin/Resources/js/wysiwyg/bootstrap-wysiwyg.js" cache="false"></script>
+<script src="~/Areas/Admin/Resources/js/wysiwyg/demo.js" cache="false"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i> Quản lý lịch công tác - tiếp dân
+                    </a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Cập nhật lịch tiếp công dân
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="form" method="post" action="SaveEdit">
+                                @{
+                                    if (notifyInfo != null)
+                                    {
+                                        <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                            <i class="fa fa-foursquare"></i> Cập nhật lịch tiếp công dân
+                                        </h5>
+                                        <input type="hidden" name="content" id="content" />
+                                        <input type="hidden" name="id" value="@notifyInfo.Id" />
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Tiêu đề <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="title" class="form-control input-sm parsley-validated"
+                                                       value="@notifyInfo.Title"
+                                                       data-required="true"
+                                                       data-required-message="Trường tiêu đề không được để trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Nội dung <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-sm-9">
+                                                <div class="btn-toolbar m-b-sm btn-editor"
+                                                     data-role="editor-toolbar" data-target="#editor">
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-default btn-sm dropdown-toggle"
+                                                           data-toggle="dropdown" title="Font">
+                                                            <i class="fa fa-font"></i><b class="caret"></b>
+                                                        </a>
+                                                        <ul class="dropdown-menu"></ul>
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-default btn-sm dropdown-toggle"
+                                                           data-toggle="dropdown" title="Font Size">
+                                                            <i class="fa fa-text-height"></i>&nbsp;<b class="caret"></b>
+                                                        </a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a data-edit="fontSize 5"><font size="5">Huge</font></a></li>
+                                                            <li><a data-edit="fontSize 3"><font size="3">Normal</font></a></li>
+                                                            <li><a data-edit="fontSize 1"><font size="1">Small</font></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-default btn-sm" data-edit="bold"
+                                                           title="Bold (Ctrl/Cmd+B)"><i class="fa fa-bold"></i></a>
+                                                        <a class="btn btn-default btn-sm" data-edit="italic"
+                                                           title="Italic (Ctrl/Cmd+I)"><i class="fa fa-italic"></i></a>
+                                                        <a class="btn btn-default btn-sm"
+                                                           data-edit="strikethrough" title="Strikethrough">
+                                                            <i class="fa fa-strikethrough"></i>
+                                                        </a> <a class="btn btn-default btn-sm" data-edit="underline"
+                                                                title="Underline (Ctrl/Cmd+U)">
+                                                            <i class="fa fa-underline"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-default btn-sm"
+                                                           data-edit="insertunorderedlist" title="Bullet list">
+                                                            <i class="fa fa-list-ul"></i>
+                                                        </a> <a class="btn btn-default btn-sm"
+                                                                data-edit="insertorderedlist" title="Number list">
+                                                            <i class="fa fa-list-ol"></i>
+                                                        </a> <a class="btn btn-default btn-sm" data-edit="outdent"
+                                                                title="Reduce indent (Shift+Tab)">
+                                                            <i class="fa fa-dedent"></i>
+                                                        </a> <a class="btn btn-default btn-sm" data-edit="indent"
+                                                                title="Indent (Tab)"><i class="fa fa-indent"></i></a>
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-default btn-sm" data-edit="justifyleft"
+                                                           title="Align Left (Ctrl/Cmd+L)">
+                                                            <i class="fa fa-align-left"></i>
+                                                        </a> <a class="btn btn-default btn-sm" data-edit="justifycenter"
+                                                                title="Center (Ctrl/Cmd+E)">
+                                                            <i class="fa fa-align-center"></i>
+                                                        </a> <a class="btn btn-default btn-sm" data-edit="justifyright"
+                                                                title="Align Right (Ctrl/Cmd+R)">
+                                                            <i class="fa fa-align-right"></i>
+                                                        </a> <a class="btn btn-default btn-sm" data-edit="justifyfull"
+                                                                title="Justify (Ctrl/Cmd+J)">
+                                                            <i class="fa fa-align-justify"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-default btn-sm dropdown-toggle"
+                                                           data-toggle="dropdown" title="Hyperlink">
+                                                            <i class="fa fa-link"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu">
+                                                            <div class="input-group m-l-xs m-r-xs">
+                                                                <input class="form-control input-sm" placeholder="URL"
+                                                                       type="text" data-edit="createLink" />
+                                                                <div class="input-group-btn">
+                                                                    <button class="btn btn-default btn-sm" type="button">Add</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <a class="btn btn-default btn-sm" data-edit="unlink"
+                                                           title="Remove Hyperlink"><i class="fa fa-cut"></i></a>
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-default btn-sm"
+                                                           title="Insert picture (or just drag & drop)"
+                                                           id="pictureBtn"><i class="fa fa-picture-o"></i></a> <input type="file" data-role="magic-overlay"
+                                                                                                                      data-target="#pictureBtn" data-edit="insertImage" />
+                                                    </div>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-default btn-sm" data-edit="undo"
+                                                           title="Undo (Ctrl/Cmd+Z)"><i class="fa fa-undo"></i></a>
+                                                        <a class="btn btn-default btn-sm" data-edit="redo"
+                                                           title="Redo (Ctrl/Cmd+Y)"><i class="fa fa-repeat"></i></a>
+                                                    </div>
+                                                    <input type="text" class="form-control-trans pull-left"
+                                                           data-edit="inserttext" id="voiceBtn" x-webkit-speech=""
+                                                           style="width: 25px; height: 28px;">
+                                                </div>
+                                                <div id="editor" class="form-control"
+                                                     style="overflow: scroll; height: 600px; max-height: 600px">
+                                                    @Html.Raw(notifyInfo.Content)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="line line-dashed line-lg pull-in"></div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l-md"></span>
+                                            <div class="col-lg-6">
+                                                <a href="javascript: save();" class="btn btn-sm btn-primary" style="width: 90px;">Lưu</a>
+                                                <a href="index" class="btn btn-sm btn-danger" style="width: 90px;">Hủy bỏ</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<font color='red'><b>Lịch tiếp công dân không tồn tại, hoặc đã bị xóa!</b></font> Nhấn vào <a href='index' style='text-decoration: underline;'>đây</a> để quay lại");
+                                    }
+                                }
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+
+    function save() {
+        document.form.content.value = $('#editor').html();
+        document.form.submit();
+    }
+</script>
+

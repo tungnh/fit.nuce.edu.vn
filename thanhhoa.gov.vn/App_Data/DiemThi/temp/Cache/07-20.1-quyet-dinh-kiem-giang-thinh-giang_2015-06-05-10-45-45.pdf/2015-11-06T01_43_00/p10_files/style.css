@@ -1,0 +1,264 @@
+sup {
+	position: relative;
+	top: -0.4em;
+	vertical-align: baseline;
+}
+sub {
+	position: relative;
+	top: 0.4em;
+	vertical-align: baseline;
+}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+@media screen and (min-device-pixel-ratio:0), (-webkit-min-device-pixel-ratio:0), (min--moz-device-pixel-ratio: 0) { .view { font-size:10em; transform:scale(0.1); -moz-transform:scale(0.1); -webkit-transform:scale(0.1); -moz-transform-origin:top left; -webkit-transform-origin:top left; } }
+.layer { }.ie { font-size: 1pt; }
+.ie body { font-size: 12em; }
+.pg10htm01 {
+	position: absolute;
+	white-space: nowrap;
+}
+.pg10htm02 {
+	height: 66em;
+	font-size: 1em;
+	margin: 0em;
+	line-height: 0.0em;
+	display: block;
+	border-style: none;
+	width: 51em;
+}
+.pg10htm03 {
+	position: relative;
+	width: 51em;
+}
+.pg10htm04 {
+	height: 6.6em;
+}
+.ie .pg10htm04 {
+	height: 66em;
+}
+.pg10htm05 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.446286);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+@font-face {
+	font-family:"LECHCI+TimesNewRomanPS-BoldMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=7057f0b7-0001-0000-0000-000000000000.woff") format("woff");
+}
+.pg10htm06 {
+	font-size: 1.088328em;
+	font-family: "LECHCI+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg10htm07 {
+	line-height: 1.107422em;
+}
+.pg10htm08 {
+	letter-spacing: 0.0013em;
+}
+
+.ie .pg10htm08 {
+	letter-spacing: 0.0234px;
+}
+@font-face {
+	font-family:"SHNLME+TimesNewRomanPS-BoldMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=1be9bb50-0001-0000-0000-000000000000.woff") format("woff");
+}
+.pg10htm09 {
+	font-size: 1.088328em;
+	font-family: "SHNLME+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg10htm10 {
+	letter-spacing: 0.0061em;
+}
+
+.ie .pg10htm10 {
+	letter-spacing: 0.1059px;
+}
+.pg10htm11 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-2.4);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+.pg10htm12 {
+	letter-spacing: 0.0076em;
+}
+
+.ie .pg10htm12 {
+	letter-spacing: 0.1315px;
+}
+.pg10htm13 {
+	letter-spacing: 0.0036em;
+}
+
+.ie .pg10htm13 {
+	letter-spacing: 0.0624px;
+}
+.pg10htm14 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.8);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+.pg10htm15 {
+	letter-spacing: 0.0021em;
+}
+
+.ie .pg10htm15 {
+	letter-spacing: 0.0361px;
+}
+@font-face {
+	font-family:"LKCIMF+TimesNewRomanPSMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=90149ae8-0000-0000-0000-000000000000.woff") format("woff");
+}
+.pg10htm16 {
+	font-size: 1.088328em;
+	font-family: "LKCIMF+TimesNewRomanPSMT";
+	color: #000000;
+}
+.pg10htm17 {
+	letter-spacing: 0em;
+}
+
+.ie .pg10htm17 {
+	letter-spacing: 0px;
+}
+.pg10htm18 {
+	letter-spacing: 0.0047em;
+}
+
+.ie .pg10htm18 {
+	letter-spacing: 0.0816px;
+}
+@font-face {
+	font-family:"BPDEFK+TimesNewRomanPSMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=970a1ee8-0000-0000-0000-000000000000.woff") format("woff");
+}
+.pg10htm19 {
+	font-size: 1.088328em;
+	font-family: "BPDEFK+TimesNewRomanPSMT";
+	color: #000000;
+}
+.pg10htm20 {
+	letter-spacing: 0.0048em;
+}
+
+.ie .pg10htm20 {
+	letter-spacing: 0.0842px;
+}
+.pg10htm21 {
+	letter-spacing: 0.0035em;
+}
+
+.ie .pg10htm21 {
+	letter-spacing: 0.0605px;
+}
+.pg10htm22 {
+	letter-spacing: 0.0025em;
+}
+
+.ie .pg10htm22 {
+	letter-spacing: 0.0429px;
+}
+.pg10htm23 {
+	letter-spacing: 0.0052em;
+}
+
+.ie .pg10htm23 {
+	letter-spacing: 0.0903px;
+}
+.pg10htm24 {
+	letter-spacing: 0.0031em;
+}
+
+.ie .pg10htm24 {
+	letter-spacing: 0.0531px;
+}
+.pg10htm25 {
+	letter-spacing: 0.0041em;
+}
+
+.ie .pg10htm25 {
+	letter-spacing: 0.0714px;
+}
+.pg10htm26 {
+	letter-spacing: 0.0042em;
+}
+
+.ie .pg10htm26 {
+	letter-spacing: 0.0735px;
+}
+.pg10htm27 {
+	letter-spacing: 0.0043em;
+}
+
+.ie .pg10htm27 {
+	letter-spacing: 0.0755px;
+}
+.pg10htm28 {
+	letter-spacing: 0.0002em;
+}
+
+.ie .pg10htm28 {
+	letter-spacing: 0.0037px;
+}
+.pg10htm29 {
+	letter-spacing: 0.0012em;
+}
+
+.ie .pg10htm29 {
+	letter-spacing: 0.0212px;
+}
+.pg10htm30 {
+	letter-spacing: 0.0028em;
+}
+
+.ie .pg10htm30 {
+	letter-spacing: 0.048px;
+}
+.pg10htm31 {
+	letter-spacing: 0.0044em;
+}
+
+.ie .pg10htm31 {
+	letter-spacing: 0.0765px;
+}
+.pg10htm32 {
+	letter-spacing: 0.0029em;
+}
+
+.ie .pg10htm32 {
+	letter-spacing: 0.051px;
+}
+.pg10htm33 {
+	letter-spacing: 0.0018em;
+}
+
+.ie .pg10htm33 {
+	letter-spacing: 0.0319px;
+}
+.pg10htm34 {
+	letter-spacing: 0.0022em;
+}
+
+.ie .pg10htm34 {
+	letter-spacing: 0.0383px;
+}
+.pg10htm35 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.246798);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+.pg10htm36 {
+	font-size: 0.938214em;
+	font-family: "LKCIMF+TimesNewRomanPSMT";
+	color: #000000;
+}

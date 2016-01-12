@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Danh sách kênh RSS";
+    var lstRSS = (List<thanhhoa.gov.vn.Models.gov_menu>)ViewData["lstRSS"];
+}
+<style>
+    .title_block {
+        border-bottom: 1px dotted #E2E2E3;
+        font: 700 14px arial;
+        padding-bottom: 10px;
+    }
+    .txt_block_rss {
+        padding: 10px 0 0;
+    }
+        .txt_block_rss p {
+            padding: 0 0 10px;
+            font: 400 12px arial;
+        }
+    .list_item_rss li a.ico_respone_rss {
+        float: right;
+    }
+    .list_item_rss li a {
+        font: 400 14px arial;
+    }
+    .list_item_rss li {
+        float: left;
+        padding: 0 0 5px;
+        margin: 0 0 5px;
+        border-bottom: 1px dotted #e2e2e3;
+        width: 100%;
+    }
+    .ico_respone_rss {
+        width: 50px;
+        height: 18px;
+        display: inline-block;
+        background: url(../Images/icon_resonesive.gif) no-repeat;
+        background-position: -202px 0;
+    }
+</style>
+<script src="~/Scripts/marquee.js"></script>
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="/"><b>Trang chủ</b></a>
+            <a href="javascript: void(0);"><b>RSS</b></a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modVanban" style="border: 1px solid #eee; padding: 10px 10px;">
+            <div class="right block_txt_right_rss">
+                <div class="title_block width_common">Khái niệm RSS</div>
+                <div class="content_block width_common txt_block_rss">
+                    <p>
+                        RSS ( viết tắt từ Really Simple Syndication ) là một tiêu chuẩn định dạng tài liệu dựa trên XML nhằm giúp người sử dụng dễ dàng cập nhật và tra cứu thông tin một cách nhanh chóng và thuận tiện nhất bằng cách tóm lược thông tin vào trong một đoạn dữ liệu ngắn gọn, hợp chuẩn.
+                    </p>
+                    <p>
+                        Dữ liệu này được các chương trình đọc tin chuyên biệt ( gọi là News reader) phân tích và hiển thị trên máy tính của người sử dụng. Trên trình đọc tin này, người sử dụng có thể thấy những tin chính mới nhất, tiêu đề, tóm tắt và cả đường link để xem toàn bộ tin.
+                    </p>
+                </div>
+
+                <div class="title_block width_common">Điều khoản sử dụng</div>
+                <div class="content_block width_common txt_block_rss">
+                    <p>
+                        Các nguồn kênh tin được cung cấp miễn phí cho các cá nhân và các tổ chức phi lợi nhuận. Chúng tôi yêu cầu bạn cung cấp rõ các thông tin cần thiết khi bạn sử dụng các nguồn kênh tin này từ <a href="http://fit.nuce.edu.vn" target="_blank"><strong>fit.nuce.edu.vn</strong></a>.
+                    </p>
+                    <p>
+                        <a href="http://fit.nuce.edu.vn" target="_blank"><strong>Fit.nuce.edu.vn</strong></a> có quyền yêu cầu bạn ngừng cung cấp và phân tán thông tin dưới dạng này ở bất kỳ thời điểm nào và với bất kỳ lý do nào.
+                    </p>
+                </div>
+                <div class="title_block width_common" style="margin-bottom: 5px;">Danh sách kênh RSS do fit.nuce.edu.vn cung cấp</div>
+                <div class="list_item_rss list_left">
+                    <ul style="padding-left: 10px;">
+                        @{
+                            foreach (var item in lstRSS)
+                            {
+                                 <li><a target="_blank" href="/home/GetRss?cid=@item.id">@item.title </a> <a target="_blank" class="ico_respone_rss" href="/home/GetRss?cid=@item.id">&nbsp;</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+</div>
+
+

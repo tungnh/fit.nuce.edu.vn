@@ -1,0 +1,86 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@{
+    ViewBag.Title = "Liên hệ";
+    var data = (List<thanhhoa.gov.vn.Models.gov_system_config>)ViewData["data"];
+}
+<link rel="stylesheet" type="text/css" href="~/Scripts/map/leaflet.css" />
+<link rel="stylesheet" type="text/css" href="~/Scripts/map/leaflet.fullscreen.css" />
+<link rel="stylesheet" type="text/css" href="~/Scripts/map/MarkerCluster.css" />
+<link rel="stylesheet" type="text/css" href="~/Scripts/map/MarkerCluster.Default.css" />
+
+<script src="~/Scripts/map/leaflet.js"></script>
+<script src="~/Scripts/map/Leaflet.fullscreen.min.js"></script>
+<script src="http://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+<script src="~/Scripts/map/leaflet-google.js"></script>
+<script src="~/Scripts/map/leaflet.markercluster-src.js"></script>
+<style>
+    .ui-coordinates {
+        position: absolute;
+        top: 5px;
+        left: 40px;
+        padding: 5px 10px;
+        color: #fff;
+        font-size: 11px;
+        line-height: 18px;
+        border-radius: 3px;
+        max-height: 240px;
+        overflow: auto;
+        z-index: 100;
+    }
+        
+</style>
+
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="/"><b>Trang chủ</b></a>
+            <a href="javascript: void(0);"><b>Liên hệ</b></a>
+        </div>
+        <h3 style="text-transform: uppercase; font-size: 17px; padding-bottom: 5px; border-bottom: 1px dotted #E2E2E3;"><a href="javascript: void(0);">@Html.Raw(data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_NAME)).value_config)</a></h3>
+        <p style="padding-top: 5px;"><strong>@data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_ADDRESS)).lable_config:</strong>  @Html.Raw(data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_ADDRESS)).value_config)</p>
+        <p style="line-height: 15pt;"><strong>@data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_TEL)).lable_config:</strong> @Html.Raw(data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_TEL)).value_config)</p>
+        @*<p style=" line-height: 15pt;"><strong>@data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_FAX)).lable_config:</strong> @data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_FAX)).value_config</p>*@
+        <p style=" line-height: 15pt;"><strong>@data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_EMAIL_CONTACT)).lable_config:</strong> @Html.Raw(data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_EMAIL_CONTACT)).value_config)</p>
+        <p style=" line-height: 15pt;"><strong>@data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_TIME_WORK)).lable_config:</strong> @Html.Raw(data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_TIME_WORK)).value_config)</p>
+        <div class="container" style="padding-top: 10px;">
+            <div class="col-md-8 nopadding">
+                <div id='map' style="width:100%;height:400px;margin-bottom:50px;border:solid 1px #ddd;border-radius:5px;">
+                    <div id='coordinates' class='ui-coordinates'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+</div>
+<script type="text/javascript">
+    var tileOSM = L
+        .tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                attribution: 'Map data &copy; <a href="http://osp.com.vn/">OSP</a> 2015.'
+            });
+    //Google Maps !
+    map = new L.Map('map', {
+        center: new L.LatLng(16.771454, 106.983042),
+        zoom: 5,
+        /* toàn màn hình */
+        fullscreenControl: true,
+        doubleClickZoom: false
+
+    });
+
+    var googleLayer = new L.Google('ROADMAP');
+    map.addLayer(googleLayer);
+    L.control.layers({
+        "Google Maps": googleLayer,
+        "OpenStreetmap": tileOSM
+    }).addTo(map);
+    map.options.maxZoom = 20;
+    var markers = L.markerClusterGroup();
+    var mk = new L.marker([ @data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_MAPSX)).value_config,  @data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_MAPSY)).value_config]).addTo(map).bindPopup("Khoa Công nghệ thông tin - Đại học Xây Dựng").openPopup();
+    var group = new L.featureGroup([mk]);
+    map.fitBounds(group.getBounds());
+</script>
+

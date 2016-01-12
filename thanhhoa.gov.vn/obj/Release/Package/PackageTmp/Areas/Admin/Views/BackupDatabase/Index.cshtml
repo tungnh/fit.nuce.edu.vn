@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "Danh sách file backup";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var backupDatabaseViewhelper = (thanhhoa.gov.vn.Viewhelper.BackupDatabaseViewhelper)ViewData["backupDatabaseViewhelper"];
+    
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-user"></i> Quản trị Hệ thống
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách file backup
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="index">
+                <input type="hidden" name="direction" />
+                @Html.Partial("_PartialErrMessage")
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <div class="pull-right">
+                            <a href="backup" style="font-weight: bold;"
+                               class="btn btn-sm btn-s-sm btn-default">
+                                <i class="fa fa-folder-open-o"></i> Backup dữ liệu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width: 40px;">
+                                        <input type="checkbox" />
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;">STT</th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Tên file
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;" width="15%;">
+                                        Thời gian tạo
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;" width="15%;">
+                                        Kích thước
+                                    </th>
+                                    <th width="40px;" class="text-center" style="vertical-align: middle;">
+                                        Xóa
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i = (backupDatabaseViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                                    if (backupDatabaseViewhelper.TotalCount > 0)
+                                    {
+                                        foreach (var item in backupDatabaseViewhelper.LstBackupDatabase)
+                                        {
+                                            <tr>
+                                                <td align="center" width="40px"><input type="checkbox" name="checkID" id="ckCheckID" value="@item.Name"></td>
+                                                <td align="center">@i</td>
+                                                <td><a href="download?file_name=@item.Name">@item.Name</a></td>
+                                                <td class="text-center" style="vertical-align: middle;">@item.CreationTime.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                                                <td align="center">@(String.Format("{0:f2}", item.Length / (float)1048576)) MB</td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa bản ghi này không?')" href="remove?file_name=@item.Name"><i class="fa fa-times text-danger text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@backupDatabaseViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                <c:if test="${list.totalCount > 0}">
+                                    <div class="col-md-4 hidden-sm">
+                                        <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                            Hiển thị trang <input type="text" size="5" name="page"
+                                                                  value="@backupDatabaseViewhelper.Page" id="pageid"> / @backupDatabaseViewhelper.TotalPage
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                        <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                            <li>
+                                                <a href="javascript: direction('first');">
+                                                    <i class="fa fa-step-backward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('ahead');">
+                                                    <i class="fa fa-backward"></i>
+                                                </a>
+                                            </li>
+                                            @{
+                                                for (int j = @backupDatabaseViewhelper.FirstPage; j <= backupDatabaseViewhelper.LastPage; j++)
+                                                {
+                                                    <li @if (j == backupDatabaseViewhelper.Page){@Html.Raw(" class='active'")}>
+                                                        <a href="javascript: selectPage(@j);" >
+                                                            @j
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                            <li>
+                                                <a href="javascript: direction('next');">
+                                                    <i class="fa fa-forward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('end');">
+                                                    <i class="fa fa-step-forward"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $('#filterGuest').select2();
+    $('#filterActive').select2();
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function clearAll() {
+        $('#keysearch').val("");
+    }
+
+    function filter() {
+        document.form.submit();
+    }
+</script>

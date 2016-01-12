@@ -1,0 +1,217 @@
+﻿@{
+    ViewBag.Title = "Lưu bút ra trường";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var notebookViewhelper = (thanhhoa.gov.vn.Viewhelper.NotebookViewhelper)ViewData["notebookViewhelper"];
+    @functions {
+        public String getDisp(String input, int count)
+        {
+            if (input == null)
+            {
+                return  null;
+            }
+            if (input.Length > count)
+            {
+                int index = count;
+                while (index < input.Length && input.ElementAt(index) != ' ')
+                {
+                    index++;
+                }
+                String titleReturn = (index == input.Length) ? input.Substring(0, index) : input.Substring(0, index) + " ... ";
+                return  titleReturn;
+            }
+            return input;
+        }
+    }
+}
+<script src="~/Scripts/map/select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Scripts/map/select2.css" />
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<link href="~/Content/sign-up.css" rel="stylesheet" />
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="/">Trang chủ</a>
+            <a href="javascript: void(0);">Cựu sinh viên</a>
+            <a href="javascript: void(0);">Lưu bút ra trường</a>
+        </div>
+        <div style=" display: block; margin-bottom: 10px; height: 26px; line-height: 26px;">
+            <a href="/cuu-sinh-vien/luu-but-ra-truong/dang-ky-thong-tin" class="aSearchAdvancedVb">Đăng ký lưu bút</a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modHoidap">
+            <form action="luu-but-ra-truong" method="post" name="form">
+                <input type="hidden" name="direction" />
+                <input type="hidden" name="page" value="@notebookViewhelper.Page" />
+                <div class="boxS2">
+                    <div class="topbox">
+                        <div class="borderleft">
+                        </div>
+                        <div class="borderright">
+                        </div>
+                    </div>
+                    <div class="midbox">
+                        <div class="detail_mid">
+
+                            <table border="0" width="100%" cellpadding="5" cellspacing="5" style="margin: 0 auto">
+                                <tbody>
+                                    <tr>
+                                        <td width="50px" align="left">
+                                            Từ khóa:
+                                        </td>
+                                        <td align="center" colspan="3">
+                                            <div class="input_l">
+                                                <div class="input_r">
+                                                    <input name="keySearch" type="text" value="@notebookViewhelper.KeySearch" class="input_style">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="15%" align="center">
+                                            <div class="btn_style fr">
+                                                <input type="submit" value="Tìm kiếm">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="90px" align="left">
+                                            Chuyên ngành:
+                                        </td>
+                                        <td align="center">
+                                            <select id="slChuyenNganh" name="specializedFilter" style="width: 100%;" onchange="search();">
+                                                <option value="0">Tất cả</option>
+                                                @{
+                                                    foreach (var item in notebookViewhelper.LstSpecialized)
+                                                    {
+                                                        <option value="@item.id" @if (item.id == notebookViewhelper.SpecializedFilter) { @Html.Raw(" selected") }>@item.specialized_name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </td>
+                                        <td width="60px" align="right">
+                                            Khóa:
+                                        </td>
+                                        <td align="center" width="100px;">
+                                            <select id="slKhoa" name="courseFilter" style="width: 100%;" onchange="search();">
+                                                <option>Tất cả</option>
+                                                @{
+                                                    foreach (var item in notebookViewhelper.LstCourse)
+                                                    {
+                                                        <option value="@item.id" @if (item.id == notebookViewhelper.CourseFilter) { @Html.Raw(" selected")  }>@item.course_name</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </td>
+                                        <td width="15%" align="center"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="bottombox">
+                        <div class="borderleft">
+                        </div>
+                        <div class="borderright">
+                        </div>
+                    </div>
+                </div>
+                <div class="boxS2">
+                    <div class="topbox">
+                        <div class="borderleft">
+                        </div>
+                        <div class="borderright">
+                        </div>
+                    </div>
+                    <div class="midbox">
+                        <div class="detail_mid">
+                            @{
+                                if (notebookViewhelper.TotalCount > 0)
+                                {
+                                    foreach (var item in notebookViewhelper.LstNotebook)
+                                    {
+                                        <div class="listQuest">
+                                            <p>
+                                                <span class="typeQues">
+                                                    <a href="javascript: void(0);">@item.title </a>
+                                                </span> <span class="time">(@item.entry_datetime.ToString("dd/MM/yyy"))</span>
+                                            </p>
+                                            <p>
+                                                <strong>Chuyên ngành:</strong>
+                                                &nbsp;@item.gov_specialized.specialized_name.
+                                                <strong>Khóa:</strong>
+                                                &nbsp;@item.gov_course.course_name.
+                                                <strong>Lớp:</strong>
+                                                &nbsp;@item.lop
+                                                <br /><strong>Kỷ niệm khiến bạn cười khi nghĩ về Khoa CNTT:</strong>
+                                                &nbsp;@item.remember
+                                                <br /><strong>Giảng viên trong Khoa được bạn giành nhiều tình cảm đặc biệt nhất:</strong>
+                                                &nbsp;@item.teacher
+                                                <br /><strong>Ước mơ sau khi tốt nghiệp:</strong>
+                                                &nbsp;@item.dream
+                                                <br /><strong>Lời nhắn các em sinh viên khóa sau:</strong>
+                                                &nbsp;@item.note
+                                            </p>
+
+                                        </div>
+                                        <div class="dotline">
+                                            &nbsp;
+                                        </div>
+                                    }
+                                }
+                            }
+
+                            <div class="surrounded">
+
+                                <div class="pagingListnews">
+                                    <h4><span style="float: left; line-height: 22px; display: inline-block; color: #4679D0;">Tổng số @notebookViewhelper.TotalCount dữ liệu đã tìm thấy.</span></h4>
+                                    <a href="javascript: direction('ahead');">&larr;</a>
+                                    @{
+                                        for (int j = notebookViewhelper.FirstPage; j <= notebookViewhelper.LastPage; j++)
+                                        {
+                                            <a href="javascript: selectPage(@j)" @if (j == notebookViewhelper.Page) { @Html.Raw("class='act1'")   }>@j</a>
+                                        }
+                                    }
+                                    <a href="javascript: direction('next')">&rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottombox">
+                        <div class="borderleft">
+                        </div>
+                        <div class="borderright">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    <!-- end left main w=670 -->
+
+    @Html.Partial("_PartialLeft")
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+
+<script>
+    $('#slChuyenNganh').select2();
+    $('#slKhoa').select2();
+
+    function search() {
+        document.form.submit();
+    }
+
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+</script>

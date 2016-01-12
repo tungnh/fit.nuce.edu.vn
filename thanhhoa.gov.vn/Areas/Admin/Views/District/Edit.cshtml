@@ -1,0 +1,107 @@
+﻿@model List<thanhhoa.gov.vn.Models.MenuModels>
+@{
+    ViewBag.Title = "Regist";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i> Trang
+                        chủ
+                    </a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Thêm mới danh mục
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                @{
+                                    if (Model != null)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
+                                }
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới danh mục
+                                </h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Danh mục cha :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <select name="parentId" id="slMenuParent" style="width : 276px;">
+                                            <option>Root</option>
+                                            @{
+                                                foreach (var item in Model) { 
+                                                    <option value="@item.Id">@item.Title</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Tên danh mục:  <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="title" class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Đường dẫn <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="link" class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Mô tả
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <textarea cols="50" rows="3" class="form-control input-sm" name="description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Số thứ tự <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="orderNumber" class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+</script>
+

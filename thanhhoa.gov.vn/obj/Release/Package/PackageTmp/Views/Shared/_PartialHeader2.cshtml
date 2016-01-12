@@ -1,0 +1,129 @@
+﻿@using thanhhoa.gov.vn.Utility
+@using thanhhoa.gov.vn.Models
+@{
+    var lstMenuHeader = (List<thanhhoa.gov.vn.Models.gov_menu>)ViewData["lstMenu"];
+    var newViewhelper = (thanhhoa.gov.vn.Viewhelper.NewViewhelper)ViewData["newViewhelper"];
+    var sysConfig = (List<gov_system_config>)ViewData["sysConfig"];
+}
+@helper showMenu(int root, List<thanhhoa.gov.vn.Models.gov_menu> lstMenu){
+    <ul class='ulNav'>
+        @foreach (var item in lstMenu.Where(m => m.id_parent.Equals(root))) {
+            <li>
+                <a href="@item.link">@item.title</a>
+                @{
+                    var submenu = lstMenu.Where(m => m.id_parent.Equals(item.id)).Count();
+                    if (submenu > 0)
+                    {
+                        @showMenu(item.id, lstMenu)
+                    }
+                }
+            </li>
+        }
+    </ul>
+}
+    <div id="top" style="height: 130px; background: url(/Images/bgBanner.png) top center repeat-x;">
+        
+        <div class="wrapper">
+            <div class="trongdong">
+                <div id="Stage" class="EDGE-16884271"></div>
+            </div>
+
+            <div class="slideBanner">
+                <div id="sldider" class="ndivoSlider">
+                    <img src="@sysConfig.Single(s => s.key_config == Constant.CONFIG_KEY_SLIDE_BANNER_FILE_PATH).value_config" />
+                </div>
+
+            </div>
+                <!-- end slide banner -->
+            <div class="logo">
+                <a href="#">
+                    <img src="@sysConfig.Single(s => s.key_config == Constant.CONFIG_KEY_LOGO_FILE_PATH).value_config" />
+                </a>
+            </div>
+                <!--end logo-->
+            <div class="banner">
+                <img src="@sysConfig.Single(s => s.key_config == Constant.CONFIG_KEY_BANNER_FILE_PATH).value_config">
+            </div>
+                <!--end logo-->
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="navMenu">
+        <div class="wrapper" id="myslidemenu">
+            <!--<span class="iconHome"></span>-->
+            @showMenu(0, lstMenuHeader)
+        </div>
+    </div>
+    <!--end barMenu-->
+    <div id="barMenu">
+        <div class="wrapper">
+
+            <div class="date">
+                @{
+                    DateTime date = DateTime.Now;
+                    int thu = (int)date.DayOfWeek + 1;
+                    if (thu == 1) { 
+                        @Html.Raw("Chủ nhật, " + @date.ToString("dd/MM/yyyy"))
+                    }
+                    else { 
+                        @Html.Raw("Thứ " + thu + ", " + @date.ToString("dd/MM/yyyy"))
+                    }
+                }
+            </div>
+            <!-- end date-->
+
+            <div class="rightBar">
+                <div class="functionMod">
+                    <div class="login">
+
+
+                    </div>
+                    <ul class="quickLink">
+                        <!-- enable khi chua dang nhap
+                        <li class="linkLogin"><a href="">Đăng nhập</a></li>
+                        -->
+                        <li class="linkContact"><a href="/trang-chu/danh-ba">Danh bạ</a></li>
+                        <li class="linkSitemap"><a href="/trang-chu/so-do-trang">Sơ đồ trang</a></li>
+                        <li class="linkContact"><a href="/trang-chu/lien-he">Liên hệ</a></li>
+                        <li class="linkRss"><a href="/trang-chu/rss">Rss</a></li>
+                    </ul>
+                </div>
+                <div class="boxSearch">
+                    <form name="fHomeSearch" action="/home/index" method="post">
+                        <input type="text" id="keySearch" name="keySearch" value="@if(newViewhelper != null){@Html.Raw(newViewhelper.KeySearch)}" class="inpSearch" placeholder="Nhập từ khóa tìm kiếm...">
+                        <a href="javascript: search();" class="aSearch"></a>
+                    </form>
+                </div>
+                <!-- end box search -->
+                <div class="flag">
+
+                    <div class="click-nav2">
+                        <ul class="no-js">
+                            <li>
+                                <a class="clicker2">
+                                    <img src="~/Images/flag_vn.png" alt="Icon">
+                                </a>
+                                <ul class="ulFlag">
+                                    <li>
+                                        <a href="#">
+                                            <img src="~/Images/flag_en.png" alt="Icon">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end flag -->
+            </div>
+            <!-- end right bar -->
+        </div>
+    </div>
+    <!--end sub menu-->
+    
+<script>
+    function search() {
+        var search = $('#keySearch').val();
+        document.fHomeSearch.submit();
+    }
+</script>

@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "Danh sách Album";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var albumViewhelper = (thanhhoa.gov.vn.Viewhelper.AlbumViewhelper)ViewData["albumViewhelper"];
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-film"></i> Quản lý media
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách album
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="index">
+                <input type="hidden" name="direction" />
+                @Html.Partial("_PartialErrMessage")
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group m-b-sm">
+                                    <div class="col-lg-9">
+                                        <label class="col-lg-2 control-label"
+                                               style="padding-right: 0px; text-align: left;">
+                                            Tên Album
+                                        </label>
+                                        <div class="col-lg-9" style="padding-right: 0px;">
+                                            <input id="keysearch" type="text"
+                                                   class="form-control input-sm" placeholder="Tên album"
+                                                   name="keySearch" value="@albumViewhelper.KeySearch">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="pull-right">
+                                            <button type="submit" id="btn_search" onclick="search();"
+                                                    class="btn btn-sm btn-s-sm btn-primary">
+                                                <i class="fa fa-search"></i> Tìm kiếm
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger"
+                                                    onclick="clearAll();">
+                                                <i class="fa fa-trash-o"></i> Xóa điều kiện
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <label class="control-span m-t-xs">
+                            <i class="fa fa-table"></i> Danh sách danh mục
+                        </label>
+                        <div class="pull-right">
+                            <a href="regist" style="font-weight: bold;"
+                               class="btn btn-sm btn-s-sm btn-primary">
+                                <i class="fa fa-plus"></i> Tạo album
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;">STT</th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Tên Album
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Mô tả
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Người tạo
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;">
+                                        Số lượt xem
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Sửa
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Xóa
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width: 40px;">
+                                        Danh sách ảnh
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i = (albumViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                                    if (albumViewhelper.LstAlbum != null) { 
+                                        foreach (var item in albumViewhelper.LstAlbum)
+                                        {
+                                            <tr>
+                                                <td align="center">@i</td>
+                                                <td>@item.album_title</td>
+                                                <td align="center">@item.description</td>
+                                                <td></td>
+                                                <td class="text-center">@item.total_view</td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a href="edit?albumId=@item.id"><i class="fa fa-edit text-dark text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a href="delete?id=@item.id" onclick="return confirm('Bạn có chắc chắn muốn xóa bản ghi này không?');"><i class="fa fa-times text-danger text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="listimages?albumId=@item.id"><i class="fa fa-picture-o" style="font-size : 15px;"></i></a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@albumViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                @{
+                                    if (albumViewhelper.TotalCount > 0)
+                                    {
+                                        <div class="col-md-4 hidden-sm">
+                                            <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                                Hiển thị trang <input type="text" size="5" name="page"
+                                                                      value="@albumViewhelper.Page" id="pageid"> / @albumViewhelper.TotalPage
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                            <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                                <li>
+                                                    <a href="javascript: direction('first');">
+                                                        <i class="fa fa-step-backward"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript: direction('ahead');">
+                                                        <i class="fa fa-backward"></i>
+                                                    </a>
+                                                </li>
+                                                @{
+                                                    for (int j = @albumViewhelper.FirstPage; j <= albumViewhelper.LastPage; j++)
+                                                    {
+                                                        <li @if(j== albumViewhelper.Page) {@Html.Raw(" class='active'")}>
+                                                            <a href="javascript: selectPage(@j);" >
+                                                                @j
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                }
+                                                <li>
+                                                    <a href="javascript: direction('next');">
+                                                        <i class="fa fa-forward"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript: direction('end');">
+                                                        <i class="fa fa-step-forward"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function remove(id) {
+        document.form.method = "GET";
+        document.form.action = "Delete?id=" + id;
+        document.form.submit();
+    }
+</script>

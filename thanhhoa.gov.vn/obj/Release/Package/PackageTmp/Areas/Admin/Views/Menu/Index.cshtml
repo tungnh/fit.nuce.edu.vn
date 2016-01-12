@@ -1,0 +1,240 @@
+﻿@using thanhhoa.gov.vn.Services
+@using thanhhoa.gov.vn.Utility
+@using thanhhoa.gov.vn.Models
+@{
+    ViewBag.Title = "Quản lý danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var menuViewhelper = (thanhhoa.gov.vn.Viewhelper.MenuViewhelper)ViewData["menuViewhelper"];
+    var userInfo = (thanhhoa.gov.vn.Models.gov_user)Session["currentUser"];
+    if (userInfo == null)
+    {
+        Response.Redirect("/admin/account/logon");
+    }
+    CNTTDHXDEntities _cnttDB = new CNTTDHXDEntities();
+    List<gov_menu> lstMenu = _cnttDB.gov_menu.ToList();
+}
+
+@helper getMenuParent(int idParent, List<thanhhoa.gov.vn.Models.gov_menu> lstMenu) {
+    if (idParent == 0)
+    {
+        @Html.Raw("Root");
+    }
+    else
+    {
+        gov_menu menuInfo = lstMenu.Where(m => m.id == idParent).FirstOrDefault();
+        if (menuInfo != null)
+        {
+            @Html.Raw(menuInfo.title);
+        }
+    }
+}
+
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-bookmark-o"></i> Quản lý danh mục
+                    </a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách danh mục
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="index">
+                <input type="hidden" name="direction" />
+                @Html.Partial("_PartialErrMessage")
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group m-b-sm">
+                                    <div class="col-lg-9">
+                                        <label class="col-lg-2 control-label"
+                                               style="padding-right: 0px; text-align: left;">
+                                            Tên danh mục
+                                        </label>
+                                        <div class="col-lg-9" style="padding-right: 0px;">
+                                            <input id="keysearch" type="text"
+                                                   class="form-control input-sm" placeholder="Tên danh mục"
+                                                   name="keySearch" value="@menuViewhelper.KeySearch">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="pull-right">
+                                            <button type="submit" id="btn_search" onclick="search();"
+                                                    class="btn btn-sm btn-s-sm btn-primary">
+                                                <i class="fa fa-search"></i> Tìm kiếm
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger"
+                                                    onclick="clearAll();">
+                                                <i class="fa fa-trash-o"></i> Xóa điều kiện
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <label class="control-span m-t-xs">
+                            <i class="fa fa-table"></i> Danh sách danh mục
+                        </label>
+                        <div class="pull-right">
+                            @{
+                                if (SercurityServices.HasPermission((int)TypeModule.DANHMUC, userInfo.username, TypeAudit.Addnew))
+                                {
+                                    <a href="regist" style="font-weight: bold;"
+                                       class="btn btn-sm btn-s-sm btn-primary">
+                                        <i class="fa fa-plus"></i> Thêm mới
+                                    </a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;">STT</th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Tên danh mục
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Danh mục cha
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Mô tả
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width: 150px;">Trạng thái hiển thị</th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Số thứ tự
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Sửa
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Xóa
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i = (menuViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                                    if (menuViewhelper.TotalCount > 0) {
+                                    foreach (var item in menuViewhelper.LstMenuModels)
+                                    {
+                                        <tr>
+                                            <td align="center">@i</td>
+                                            <td>@item.title</td>
+                                            <td>@getMenuParent(item.id_parent, lstMenu)</td>
+                                            <td align="center">@item.description</td>
+                                            <td align="center">
+                                                @{
+                                                    if (!@item.active_flg)
+                                                    {
+                                                        <div class="label bg-danger">@Html.Raw("<b>Không hiển thị</b>")</div> 
+                                                    }
+                                                }
+                                            </td>
+                                            <td align="center">@item.order_number</td>
+                                            <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                @if (SercurityServices.HasPermission((int)TypeModule.DANHMUC, userInfo.username, TypeAudit.Edit))
+                                                {
+                                                    <a href="edit?id=@item.id"><i class="fa fa-edit text-dark text" style="font-size : 15px;"></i></a>
+                                                }
+                                                
+                                            </td>
+                                            <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                @if (SercurityServices.HasPermission((int)TypeModule.DANHMUC, userInfo.username, TypeAudit.Delete))
+                                                {
+                                                    <a href="delete?id=@item.id"  onclick="return confirm('Bạn có chắc chắn muốn xóa bản ghi này!');"><i class="fa fa-times text-danger text" style="font-size : 15px;"></i></a>
+                                                }
+                                                
+                                            </td>
+                                        </tr>
+                                        i++;
+                                    }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@menuViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                <c:if test="${list.totalCount > 0}">
+                                    <div class="col-md-4 hidden-sm">
+                                        <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                            Hiển thị trang <input type="text" size="5" name="page"
+                                                                  value="@menuViewhelper.Page" id="pageid"> / @menuViewhelper.TotalPage
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                        <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                            <li>
+                                                <a href="javascript: direction('first');">
+                                                    <i class="fa fa-step-backward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('ahead');">
+                                                    <i class="fa fa-backward"></i>
+                                                </a>
+                                            </li>
+                                            @{
+                                                for (int j = menuViewhelper.FirstPage; j <= menuViewhelper.LastPage; j++)
+                                                {
+                                                    <li @if(j==menuViewhelper.Page) {@Html.Raw(" class='active'")}>
+                                                        <a href="javascript: selectPage(@j);" >
+                                                            @j
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                            <li>
+                                                <a href="javascript: direction('next');">
+                                                    <i class="fa fa-forward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('end');">
+                                                    <i class="fa fa-step-forward"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+</script>

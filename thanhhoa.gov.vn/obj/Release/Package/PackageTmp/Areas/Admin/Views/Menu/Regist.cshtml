@@ -1,0 +1,169 @@
+﻿@model List<thanhhoa.gov.vn.Models.gov_menu>
+@{
+    ViewBag.Title = "Regist";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-bookmark-o"></i> Quản lý danh mục
+                    </a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Thêm mới danh mục
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới danh mục
+                                </h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Danh mục cha :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <select name="id_parent" id="slMenuParent" style="width : 276px;">
+                                            <option>Root</option>
+                                            @{
+                                                foreach (var item in Model)
+                                                {
+                                                    <option value="@item.id">@item.title</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Tên danh mục <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="title"
+                                               class="form-control input-sm"
+                                               data-required="true"
+                                               data-required-message="Trường tên danh mục không được để trống" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span  m-l" style="padding-right: 0px;">
+                                        <input type="button" class=" btnSearch" id="brower" value="Chọn ảnh" style="width : 100%;" />
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input hidden value="/Images/no.jpg" name="avatar" id="attachFilepath">
+                                        <img src="/Images/no.jpg" id="images" style="max-width: 200px;" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Loại đường dẫn <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="typeLink" value="TRUE" checked onclick="changeHide();" /> <strong>Đường dẫn mặc định</strong>
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="typeLink" value="FALSE" onclick="changeHide();" /> <strong>Đường dẫn chuyên mục</strong> 
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs" id="div-link">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Đường dẫn :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="link" value="javascript: void(0);" class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Mô tả
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <textarea cols="50"
+                                                  data-maxlength="200"
+                                                  data-maxlength-message="Trường mô tả không được vượt quá 200 ký tự"
+                                                  rows="3" class="form-control input-sm" name="description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Số thứ tự <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="order_number"
+                                               class="form-control input-sm"
+                                               data-type="number"
+                                               data-type-number-message="Phải nhập đúng định dạng số"
+                                               data-required="true"
+                                               data-required-message="Trường số thứ tự không được để trống" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Hiển thị:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <input type="checkbox" name="ishome"
+                                                   value="TRUE" /> Hiển thị trên trang chủ
+                                        </label><br/>
+                                        <label>
+                                            <input type="checkbox" name="isleft"
+                                                   value="TRUE" /> Hiển thị trên menu bên trái
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+    changeHide();
+    function changeHide() {
+        if (document.fmenu.typeLink[0].checked) {
+            $('#div-link').hide();
+        } else if (document.fmenu.typeLink[1].checked) {
+            $('#div-link').show();
+        }
+    }
+
+    $(function () {
+        $('#brower').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#images').attr("src", fileUrl);
+                $('#attachFilepath').val(fileUrl);
+            };
+            ckfinder.popup();
+        });
+    });
+</script>
+

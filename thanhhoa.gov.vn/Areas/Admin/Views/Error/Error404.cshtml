@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Error";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section id="content">
+    <div class="row m-n">
+        <div class="centering text-center error-container">
+            <div class="text-center">
+                <h2 class="without-margin">
+                    Rất tiếc. Có lỗi xảy ra
+                </h2>
+                <h4 class="text-danger">Bạn không thể xóa dữ liệu này. Vì có liên quan đến bảng khác. Vui lòng thử lại sau</h4>
+            </div>
+            <hr>
+            <ul class="pager">
+                <li><a onclick="history.go(-1);" style="cursor: pointer;">&larr; Quay lại</a></li>
+            </ul>
+        </div>
+    </div>
+</section>

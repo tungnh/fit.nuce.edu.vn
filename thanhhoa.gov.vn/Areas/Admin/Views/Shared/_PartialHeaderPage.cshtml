@@ -1,0 +1,125 @@
+﻿@using thanhhoa.gov.vn.Models;
+@using thanhhoa.gov.vn.Utility;
+@{
+    var userInfo = (gov_user)Session["currentUser"];
+    if (userInfo == null)
+    {
+        Response.Redirect("/admin/account/logon");
+    }
+    var _cnttDHXD = new CNTTDHXDEntities();
+    var lstMessageSystem = _cnttDHXD.gov_message_system.Where(m => m.gov_user.username.Equals(userInfo.username)).OrderByDescending(m => m.entry_datetime).ToList();
+    int total = lstMessageSystem.Where(m => m.status == false).Count();
+}
+<header class="bg-dark dk header navbar navbar-fixed-top-xs">
+    <div class="navbar-header aside-md" style="width: 50%">
+        <a class="btn btn-link visible-xs"
+           data-toggle="class:nav-off-screen" data-target="#nav">
+            <i class="fa fa-bars"></i>
+        </a> <a href="#" class="navbar-brand" data-toggle="fullscreen">
+            <img src="../../Images/logo.png" class="m-r-sm">KHOA CÔNG NGHỆ THÔNG TIN
+        </a> <a class="btn btn-link visible-xs" data-toggle="dropdown"
+                data-target=".nav-user">
+            <i class="fa fa-cog"></i>
+        </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
+        <li class="hidden-xs" onclick="changeMessage();">
+            <a href="#" class="dropdown-toggle dk"
+               data-toggle="dropdown">
+                <i class="fa fa-bell"></i> <span class="badge badge-sm up bg-danger m-l-n-sm count" id="totalMessage">@if(total > 0){@Html.Raw(total)}</span>
+            </a>
+            <section class="dropdown-menu aside-xl">
+                <section class="panel bg-white">
+                    <div class="panel-heading b-light bg-light">
+                        <strong>
+                            Thông báo!
+                        </strong>
+                    </div>
+                    <div class="list-group list-group-alt animated fadeInRight" style="overflow-x: auto; max-height: 300px;">
+                        @{
+                            foreach (var item in lstMessageSystem)
+                            {
+                                DateTime now = DateTime.Now;
+                                TimeSpan result = new TimeSpan();
+                                result = now - item.entry_datetime;
+                                String rs = "";
+                                if (@result.TotalSeconds < 60)
+                                {
+                                    rs = "Vài giây trước";
+                                }
+                                else if (@result.TotalMinutes < 60)
+                                {
+                                    rs = Convert.ToInt32(result.TotalMinutes).ToString() + " phút trước";
+                                }
+                                else if (@result.TotalHours < 24)
+                                {
+                                    rs = Convert.ToInt32(result.TotalHours).ToString() + " giờ trước";
+                                }
+                                else if (@result.TotalHours < 48)
+                                {
+                                    rs = "Hôm qua lúc " + @item.entry_datetime.ToString("HH:mm");
+                                }
+                                else
+                                {
+                                    rs = item.entry_datetime.ToString("dd 'Tháng' MM yyyy");
+                                }
+                                <a href="@item.link" class="media list-group-item" style="display: block;">
+                                    <span class="pull-left thumb-sm text-center">
+                                        @{
+                                            if(item.type_message == Constant.MESSAGE_TYPE_COMMENT){
+                                                <i class="fa fa-comment-o fa-2x text-danger"></i>
+                                            }
+                                            else if (item.type_message == Constant.MESSAGE_TYPE_STUDENT)
+                                            {
+                                                <i class="fa fa-credit-card fa-2x text-info"></i>
+                                            }
+                                            else if (item.type_message == Constant.MESSAGE_TYPE_NOTEBOOK)
+                                            {
+                                                <i class="fa fa-paste fa-2x text-primary"></i>
+                                            }
+                                        }
+                                    </span>
+                                    <span class="media-body block m-b-none">
+                                        @Html.Raw(item.content_message)<br>
+                                        <small class="text-muted"> @Html.Raw(rs)</small>
+                                    </span>
+                                </a>
+                            }
+                        }
+                    </div>
+                    <div class="panel-footer text-sm">
+                        <a href="#" class="pull-right"><i class="fa fa-check text-primary"></i> Xem tất cả</a> <a href="#" data-toggle="class:show animated fadeInRight">&nbsp;</a>
+                    </div>
+                </section>
+            </section>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle"
+               data-toggle="dropdown">
+                <span class="thumb-sm avatar pull-left">
+                    <img src="@userInfo.avatar">
+                </span> @{if(userInfo != null){ @Html.Raw(userInfo.username)}} <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu animated fadeInRight">
+                <span class="arrow top"></span>
+                <li>
+                    <a href="/Admin/Account/LogOut">Đăng xuất</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</header>
+<script>
+    function changeMessage() {
+        $('#totalMessage').html("");
+        $.ajax({
+            type: "GET",
+            url: "/admin/home/ResetMessageSystem",
+            success: function (data) {
+            }
+        });
+    }
+    /*var $msg = '<a href="#" class="media list-group-item">' + '<span class="pull-left thumb-sm text-center">' + '<i class="fa fa-comment-o fa-2x text-success"></i>' + '</span>' + '<span class="media-body block m-b-none">' + 'Sophi sent you a email<br>' + '<small class="text-muted">1 minutes ago</small>' + '</span>' + '</a>';
+    function addMsg($msg) { var $el = $('.nav-user'), $n = $('.count:first', $el), $v = parseInt($n.text()); $('.count', $el).fadeOut().fadeIn().text($v + 1); $($msg).hide().prependTo($el.find('.list-group')).slideDown().css('display', 'block'); }
+    setTimeout(function () { addMsg($msg); }, 1500);*/
+</script>

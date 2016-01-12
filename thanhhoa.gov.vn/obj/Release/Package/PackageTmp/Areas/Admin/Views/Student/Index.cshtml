@@ -1,0 +1,255 @@
+﻿@{
+    ViewBag.Title = "Danh sách cựu sinh viên";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var studentViewhelper = (thanhhoa.gov.vn.Viewhelper.StudentViewhelper)ViewData["studentViewhelper"];
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-credit-card"></i> Cựu sinh viên
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách cựu sinh viên
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="index">
+                @Html.Partial("_PartialErrMessage")
+                <input type="hidden" name="direction" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group m-b-sm">
+                                    <div class="col-lg-9">
+                                        <label class="col-lg-2 control-label"
+                                               style="padding-right: 0px; text-align: left;">
+                                            Từ khóa
+                                        </label>
+                                        <div class="col-lg-9" style="padding-right: 0px;">
+                                            <input id="keysearch" type="text"
+                                                   class="form-control input-sm" placeholder="Từ khóa"
+                                                   name="keySearch" value="@studentViewhelper.KeySearch">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="pull-right">
+                                            <button type="submit" id="btn_search" onclick="search();" style="font-weight: bold;"
+                                                    class="btn btn-sm btn-s-sm btn-primary">
+                                                <i class="fa fa-search"></i> Tìm kiếm
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger" style="font-weight: bold;"
+                                                    onclick="clearAll();">
+                                                <i class="fa fa-trash-o"></i> Xóa điều kiện
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <select name="filterActive" id="filterActive" onchange="filter();" style="width: 180px;">
+                            <option value="" @if (String.IsNullOrWhiteSpace(studentViewhelper.FilterActive)) { @Html.Raw(" selected")  }>Lọc trạng thái (Tất cả)</option>
+                            <option value="True" @if (!String.IsNullOrWhiteSpace(studentViewhelper.FilterActive) && studentViewhelper.FilterActive.Equals("True")) { @Html.Raw(" selected")   }>Hiển thị</option>
+                            <option value="False" @if (!String.IsNullOrWhiteSpace(studentViewhelper.FilterActive) && studentViewhelper.FilterActive.Equals("False")) { @Html.Raw(" selected")    }>Không hiển thị</option>
+                        </select>&nbsp;
+                        <select name="specializedFilter" id="specializedFilter" onchange="filter();" style="width: 240px;">
+                            <option value="0" @if (String.IsNullOrWhiteSpace(studentViewhelper.FilterActive)) { @Html.Raw(" selected")        }>Lọc theo chuyên nghành (Tất cả)</option>
+                            @{
+                                foreach (var item in studentViewhelper.LstSpecialized)
+                                {
+                                    <option value="@item.id" @if (item.id == studentViewhelper.SpecializedFilter) { @Html.Raw(" selected") }>@item.specialized_name</option>
+                                }
+                            }
+                        </select>&nbsp;
+                        <select name="courseFilter" id="courseFilter" onchange="filter();" style="width: 180px;">
+                            <option value="0" @if (String.IsNullOrWhiteSpace(studentViewhelper.FilterActive)) { @Html.Raw(" selected")        }>Lọc theo khóa (Tất cả)</option>
+                            @{
+                                foreach (var item in studentViewhelper.LstCourse)
+                                {
+                                    <option value="@item.id" @if (item.id == studentViewhelper.CourseFilter) { @Html.Raw(" selected") }>@item.course_name</option>
+                                }
+                            }
+                        </select>
+                        <div class="pull-right">
+                            <select name="changeActive" id="changeActive" onchange="change();" style="width: 180px;">
+                                <option value="">Chuyển trạng thái sang</option>
+                                <option value="True">Hiển thị</option>
+                                <option value="False">Không hiển thị</option>
+                            </select>&nbsp;
+                            <!--<a href="regist" style="font-weight: bold;"
+                               class="btn btn-sm btn-s-sm btn-primary">
+                                <i class="fa fa-plus"></i> Thêm mới
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width: 40px;">
+                                        <input type="checkbox" />
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;">STT</th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Họ và tên
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Lớp/Khóa học
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">Cơ quan</th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Email
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Số điện thoại
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Địa chỉ
+                                    </th>
+                                    <th class="text-center" width="8%" style="vertical-align: middle;">
+                                        Trạng thái
+                                    </th>
+                                    <th width="40px;" class="text-center" style="vertical-align: middle;">
+                                        Sửa
+                                    </th>
+                                    <th width="40px;" class="text-center" style="vertical-align: middle;">
+                                        Xóa
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i = (studentViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                                    if (studentViewhelper.TotalCount > 0)
+                                    {
+                                        foreach (var item in studentViewhelper.LstStudent)
+                                        {
+                                            <tr>
+                                                <td align="center" width="40px"><input type="checkbox" name="ids" id="ckCheckID" value="@item.id"></td>
+                                                <td align="center">@i</td>
+                                                <td>@item.full_name</td>
+                                                <td>Chuyên nghành: @item.gov_specialized.specialized_name <br/>Lớp: @item.lop - Khóa học: @item.gov_course.course_name </td>
+                                                <td>@item.department</td>
+                                                <td>@item.email</td>
+                                                <td align="center">@item.phone</td>
+                                                <td>@item.address</td>
+                                                <td align="center">
+                                                    @{
+                                                        if (!@item.active_flg)
+                                                        {
+                                                            <div class="label bg-danger">@Html.Raw("<b>Không hiển thị</b>")</div> 
+                                                        }
+                                                    }
+                                                    
+                                                </td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a href="edit?id=@item.id"><i class="fa fa-edit text-dark text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa bản ghi này không?')" href="delete?id=@item.id"><i class="fa fa-times text-danger text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@studentViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                <c:if test="${list.totalCount > 0}">
+                                    <div class="col-md-4 hidden-sm">
+                                        <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                            Hiển thị trang <input type="text" size="5" name="page"
+                                                                  value="@studentViewhelper.Page" id="pageid"> / @studentViewhelper.TotalPage
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                        <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                            <li>
+                                                <a href="javascript: direction('first');">
+                                                    <i class="fa fa-step-backward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('ahead');">
+                                                    <i class="fa fa-backward"></i>
+                                                </a>
+                                            </li>
+                                            @{
+                                                for (int j = @studentViewhelper.FirstPage; j <= studentViewhelper.LastPage; j++)
+                                                {
+                                                    <li @if (j == studentViewhelper.Page){@Html.Raw(" class='active'")}>
+                                                        <a href="javascript: selectPage(@j);" >
+                                                            @j
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                            <li>
+                                                <a href="javascript: direction('next');">
+                                                    <i class="fa fa-forward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('end');">
+                                                    <i class="fa fa-step-forward"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $('#changeActive').select2();
+    $('#filterActive').select2();
+    $('#specializedFilter').select2();
+    $('#courseFilter').select2();
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function clearAll() {
+        $('#keysearch').val("");
+    }
+
+    function filter() {
+        document.form.submit();
+    }
+
+    function change() {
+        document.form.action = "changeActive";
+        document.form.submit();
+    }
+</script>

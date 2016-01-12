@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Chi tiết văn bản";
+    var documentInfo = (thanhhoa.gov.vn.Models.gov_doc_draft)ViewData["documentInfo"];
+}
+<link href="~/Content/tcvb.css" rel="stylesheet" />
+<script src="~/Scripts/marquee.js"></script>
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="/"><b>Trang chủ</b></a>
+            <a href="javascript: void(0);"><b>Văn bản</b></a>
+            <a href="javascript: void(0);"><b>Chi tiết văn bản</b></a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modVanban" style="border-bottom: none;">
+            <form name="fromSearch" enctype="multipart/form-data" action="Index" method="post" onsubmit="search();">
+
+                <div id="contentdetail" style="border: 1px solid #eee; border-radius: 4px;">
+                    <div style="padding: 10px;">
+                        <div>
+                            <div>
+                                <div id="divviewdetail">
+                                    <table style="width:100%" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <tr><td class="td-document-label">Chi tiết văn bản</td></tr>
+                                            <tr><td class="td-sokyhieu" style="padding-top:12px;">@documentInfo.doc_code</td></tr>
+                                            <tr><td class="td-trichyeu">@documentInfo.doc_summany</td></tr>
+                                            <tr>
+                                                <td>
+                                                    <table class="tb-vbpq" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="tb-vbpq-td-label" width="200px">Ngày ban hành</td>
+                                                                <td>@documentInfo.date_start_promulgate.ToString("dd/MM/yyyy")</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="tb-vbpq-td-label">Người ký</td>
+                                                                <td>@documentInfo.user_sign</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="tb-vbpq-td-label">Tài liệu đính kèm</td>
+                                                                <td><a target="_blank" href="@documentInfo.attach_file_path" class="attachment" style="font-size:12px;font-family:Arial;cursor:pointer">@documentInfo.attach_file_name</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" class="btquaylai"><a id="lnkbackpage" onclick="history.go(-1);"><img src="~/Images/restore.gif" onclick="history.go(-1);" style="cursor:pointer; border=0">&nbsp;Trở về trang trước</a></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--end paging list news -->
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+</div>
+<script>
+
+    function filter(type, id, name) {
+        document.fromSearch.isSearch.value = 'false';
+        document.fromSearch.filterId.value = id;
+        document.fromSearch.filterInt.value = type;
+        document.fromSearch.filterName.value = name;
+        document.fromSearch.submit();
+    }
+</script>

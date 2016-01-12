@@ -1,0 +1,511 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Lịch tiếp công dân";
+    var calendarViewhelper = (thanhhoa.gov.vn.Viewhelper.CalendarViewhelper)ViewData["calendarViewhelper"];
+    var lstWorktime = (List<thanhhoa.gov.vn.Models.WorktimeModels>)ViewData["lstWorktime"];
+    var lstNewXemNhieu = (List<thanhhoa.gov.vn.Models.NewModels>)ViewData["lstNewXemNhieu"];
+}
+<script src="~/Scripts/marquee.js"></script>
+@functions{
+    public DateTime getFirstDayOfWeek(int weekNum)
+    {
+        int year = DateTime.Now.Year;
+        DateTime d1;
+        DateTime.TryParse("01/01/" + year, out d1);
+        d1 = d1.AddDays(7 * weekNum);
+        while (d1.DayOfWeek != DayOfWeek.Monday)
+        {
+            d1 = d1.AddDays(-1);
+        }
+        return d1;
+
+    }
+    public List<thanhhoa.gov.vn.Models.CalendarModels> getListCalendarBydate(DateTime date, List<thanhhoa.gov.vn.Models.CalendarModels> lstCalendar)
+    {
+        List<thanhhoa.gov.vn.Models.CalendarModels> lstResult = new List<thanhhoa.gov.vn.Models.CalendarModels>();
+        foreach (var item in lstCalendar)
+        {
+            if (date == item.Date)
+            {
+                lstResult.Add(item);
+            }
+        }
+        return lstResult;
+    }
+
+    public List<thanhhoa.gov.vn.Models.CalendarModels> getListCalendarByTime(int time, List<thanhhoa.gov.vn.Models.CalendarModels> lstCalendar)
+    {
+        List<thanhhoa.gov.vn.Models.CalendarModels> lstResult = new List<thanhhoa.gov.vn.Models.CalendarModels>();
+        foreach (var item in lstCalendar)
+        {
+            if (time == item.TimeRf)
+            {
+                lstResult.Add(item);
+            }
+        }
+        return lstResult;
+    }
+}
+
+<link href="~/Scripts/colorbox-master/colorbox.css" rel="stylesheet" />
+<link href="~/Scripts/colorbox-master/Com_colorbox.css" rel="stylesheet" />
+<script src="~/Scripts/colorbox-master/jquery.colorbox.js"></script>
+<script src="~/Scripts/colorbox-master/set_colorbox.js"></script>
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<style type="text/css">
+    .cssStyleLich {
+        padding: 0px 20px 10px 10px;
+    }
+
+        .cssStyleLich img {
+            font-size: 12pt;
+        }
+
+    .cssTable {
+        border-top: 1px solid #C6DBFF;
+        border-left: 1px solid #C6DBFF;
+        border-bottom: 1px solid #C6DBFF;
+        border-collapse: collapse;
+    }
+
+        .cssTable tr {
+        }
+
+    .cssTitle {
+        font-weight: bold;
+        text-align: center;
+        background: #E8EEF7;
+    }
+
+        .cssTitle td {
+            border-right: 1px solid #C6DBFF;
+            border-collapse: collapse;
+            height: 40px;
+        }
+
+    .cssTableTitle td {
+        font-weight: bold;
+        text-align: center;
+        border-right: 1px solid #C6DBFF;
+        border-collapse: collapse;
+    }
+
+    .cssTableItems td {
+        height: 40px;
+        padding: 5px;
+    }
+
+    .cssItems td {
+        border-top: 1px solid #C6DBFF;
+        border-right: 1px solid #C6DBFF;
+        border-collapse: collapse;
+    }
+
+    .cssItems {
+    }
+
+    .cssDateH {
+        background-color: #FBFECD;
+    }
+
+    .cssTableNgayTrongTuan {
+        text-align: center;
+        font-size: 14pt;
+        font-weight: bold;
+        border-collapse: collapse;
+        color: Red;
+    }
+
+        .cssTableNgayTrongTuan td {
+            border-collapse: collapse;
+            height: 40px;
+        }
+
+    .cssMainTable {
+        border: 1px solid #C6DBFF;
+        border-collapse: collapse;
+    }
+
+        .cssMainTable td {
+            border-bottom: 1px solid #C6DBFF;
+            border-right: 1px solid #C6DBFF;
+            border-collapse: collapse;
+            text-align: center;
+            height: 60px;
+        }
+        .cssMainTable td:last-child {
+                border-right: none;
+        }
+        .cssMainTable>tr:nth-child(odd) > td {
+            border-bottom: none;
+        }
+        
+        .cssMonthTitle {
+            color: Red;
+            font-size: 14pt;
+            font-weight: bold;
+        }
+
+    .cssTest {
+        display: none;
+        border: 1px red solid;
+    }
+
+    .divabc {
+        position: relative;
+    }
+
+    .divabc {
+        display: block;
+    }
+
+    .cssChiTietCV {
+        display: none;
+        border: 2px solid red;
+        position: absolute;
+        background-color: Lime;
+        padding: 5px;
+        width: 260px;
+        padding-top: 50px;
+    }
+
+    .cssTableNgayTrongThang td:hover {
+        background-color: #FBFECD;
+    }
+
+    .cssLichNumber {
+        font-size: 25pt;
+        font-weight: bold;
+        font-family: Arial;
+        color: Blue;
+    }
+
+    .stickytooltip {
+        box-shadow: 5px 5px 8px #FBFECD; /*shadow for CSS3 capable browsers.*/
+        -webkit-box-shadow: 2px 2px 8px #FBFECD;
+        -moz-box-shadow: 2px 2px 8px #FBFECD;
+        display: none;
+        position: absolute;
+        display: none;
+        border: 5px solid #FBFECD; /*Border around tooltip*/
+        background: white;
+        z-index: 3000;
+    }
+
+        .stickytooltip .stickystatus { /*Style for footer bar within tooltip*/
+            background: black;
+            color: Red;
+            padding-top: 5px;
+            text-align: center;
+            font: bold 11px Arial;
+        }
+
+    .atip {
+        width: 400px !important;
+        height: 200px;
+        scroll-x: auto;
+        display: auto;
+        overflow: scroll;
+        padding: 10px 10px;
+    }
+
+    .count {
+        color: Teal;
+        font-weight: bold;
+    }
+</style>
+<div class="mainMod">
+
+    <!-- modLeft200-->
+    <div class="modLeft200">
+
+        <div class="mod200">
+            <div class="title8">
+                <h2>Tin xem nhiều</h2>
+            </div>
+            <!--end title 8 -->
+            <div class="contMod200">
+                <ul class="ul_list1" id="marTinnoibat">
+                    @{
+                        foreach (var item in lstNewXemNhieu)
+                        {
+                            <li><a href="/new/index?id=@item.Id">@item.Title</a></li>
+                        }
+                    }
+                </ul>
+                <script>new Marquee("marTinnoibat", 0, 1, 178, 320, 40, 0, 500)</script>
+            </div>
+        </div>
+        <!--end mod200-->
+        <!-- end ads3 -->
+
+        @Html.Partial("_PartialStatisticsAccess")
+        <!-- end module Statistics -->
+
+    </div>
+    <!--end modLeft200-->
+
+    <div class="mod2colStyle">
+
+        <div class="breackrum">
+            <a class="bkHome" href="index.html">Trang chính</a>
+            <a href="#">Lịch công tác - tiếp dân</a>
+        </div>
+        <!--end breackrum-->
+        <div class="cssStyleLich">
+            <a href="javascript: changeView(1);"><img src="~/Images/week.gif" style="border:none;vertical-align:middle;">  Lịch tuần</a>  | <a target="_blank" href="lichtiepdan">
+                <img src="~/Images/month.gif" style="border:none;vertical-align:middle;"> Lịch tiếp công dân
+            </a>
+        </div>
+        <div class="modMulti">
+            <h3 style="color:Red;font-size:15px;text-align:center; padding: 10px 0px;">
+                <span id="ctl00_m_Calendar1_ctl00_lblTitle">LỊCH CÔNG TÁC CỦA THƯỜNG TRỰC UBND TỈNH</span>
+            </h3>
+        </div>
+        <form name="formCalendar" method="post" action="calendar">
+            <input hidden name="typeView" id="typeView" value="@calendarViewhelper.TypeView" />
+            <div id="ctl00_m_Calendar1_ctl00_detailCalendar">
+                @{
+                    if (calendarViewhelper.TypeView == 1)
+                    {
+                        <div class="cssContainer">
+                            <div class="cssCalTitle">
+
+                                <table width="100%" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3" align="center"></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center;">
+                                                <b style="color: Blue;">
+                                                    Tuần thứ
+                                                    <select name="weekNum" onchange="changeTime();" id="calendarWeeknum">
+                                                        @{
+                                                            for (int i = 1; i <= 52; i++)
+                                                            {
+                                                                DateTime fistDay = @getFirstDayOfWeek(i);
+                                                                DateTime lastDay = fistDay.AddDays(6);
+                                                                //DateTime.Now >= fistDay && DateTime.Now <= lastDay
+                                                                <option value="@i" @{if (calendarViewhelper.WeekNum == i) { @Html.Raw(" selected ")   }}>Tuần @if (i < 10)
+                                                                {@Html.Raw("0")}@i [Từ @fistDay.ToString("dd/MM/yyy") - Đến @lastDay.ToString("dd/MM/yyy")]</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                    năm
+                                                    2015
+                                                </b>
+                                                <br>
+                                                <p id="week">
+                                                    (<span style="font-style: italic;">Tuần</span> <span class="count">@calendarViewhelper.WeekNum</span> <span style="font-style: italic;">Từ ngày:</span>  <span class="count">@calendarViewhelper.FromDate.ToString("dd/MM/yyyy")</span> - <span style="font-style: italic;">Đến ngày:</span> <span class="count">@calendarViewhelper.ToDate.ToString("dd/MM/yyyy")</span>)
+                                                </p>
+                                                <br>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cssContent">
+                                <table class="cssTable" width="100%" cellspacing="0" cellpadding="0">
+                                    <tbody>
+                                        <tr class="cssTitle">
+                                            <td style="width:9%;">Thứ/Ngày</td>
+                                            <td style="width:91%;">
+                                                <table class="cssTableTitle" width="100%" cellspacing="0" cellpadding="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td style="width: 10%;">Thời gian</td>
+                                                            <td style="width: 50%;">Nội dung</td>
+                                                            <td style="width: 20%;">Địa điểm</td>
+                                                            <td style="width: 20%; border-right: none;">Người chủ trì</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        @{
+                        for (int i = 0; i < 7; i++)
+                        {
+                            Boolean check = true;
+                            <tr class="cssItems">
+                                <td style="width:9%;background-color:#E8EEF7;text-align:center"><b>@getDayOfWeekVN(calendarViewhelper.FromDate.AddDays(i))</b><br>@calendarViewhelper.FromDate.AddDays(i).ToString("dd/MM/yyyy")</td>
+
+                                <td style="width:91%; border-top: none;">
+                                    <table class="cssTableItems" width="100%" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                            @{
+                            var listCalendar = getListCalendarBydate(calendarViewhelper.FromDate.AddDays(i), calendarViewhelper.LstCalendar);
+                            if (listCalendar.Count > 0)
+                            {
+                                foreach (var time in lstWorktime)
+                                {
+                                    var listCalendarByTime = getListCalendarByTime(time.Id, listCalendar);
+                                    if (listCalendarByTime.Count > 0)
+                                    {
+                                        var item = listCalendarByTime.First();
+                                        <tr class="none">
+                                            <td style="width: 10%;"><strong>@item.Time</strong></td>
+                                            <td style="width: 50%;"><div>@item.Description</div></td>
+                                            <td style="width: 20%; ">@item.Location</td>
+                                            <td style="width: 20%;  border-right: none;">@item.PersonExecute</td>
+                                        </tr>
+                                    }
+                                    for (int j = 1; j < listCalendarByTime.Count; j++)
+                                    {
+                                        var item = listCalendarByTime[j];
+                                        <tr class="none">
+                                            <td style="width: 10%; border-top: none;"></td>
+                                            <td style="width: 50%;"><div>@item.Description</div></td>
+                                            <td style="width: 20%;">@item.Location</td>
+                                            <td style="width: 20%; border-right: none;">@item.PersonExecute</td>
+                                        </tr>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td style="border-right: none;"><strong><font color="red">Không có dữ liệu</font></strong></td>
+                                </tr>
+                            }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="cssStyleLich">
+                            <span class="count">Chọn tháng :</span>
+                            <select name="ctl00$m$Calendar1$ctl00$dropMonth" onchange="javascript:setTimeout('__doPostBack(\'ctl00$m$Calendar1$ctl00$dropMonth\',\'\')', 0)" id="ctl00_m_Calendar1_ctl00_dropMonth">
+                                <option value="1">1</option>
+                            </select>
+                            <span class="count">Chọn năm :</span>
+                            <select name="ctl00$m$Calendar1$ctl00$dropYear" onchange="javascript:setTimeout('__doPostBack(\'ctl00$m$Calendar1$ctl00$dropYear\',\'\')', 0)" id="ctl00_m_Calendar1_ctl00_dropYear">
+                                <option value="2020">2020</option>
+                            </select>
+                        </div>
+                        <table class="cssMainTable" width="100%" cellspacing="0" cellpadding="0">
+                            <tbody>
+                                <tr>
+                                    <td width="12%" style="background:#DDDDDD;"></td>
+                                    <td width="88%">
+                                        <table class="cssTableNgayTrongTuan" width="100%" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="14.2%" style="border-bottom: none;">Chủ nhật</td>
+                                                    <td width="14.2%" style="border-bottom: none;">Thứ 2</td>
+                                                    <td width="14.2%" style="border-bottom: none;">Thứ 3</td>
+                                                    <td width="14.2%" style="border-bottom: none;">Thứ 4</td>
+                                                    <td width="14.2%" style="border-bottom: none;">Thứ 5</td>
+                                                    <td width="14.2%" style="border-bottom: none;">Thứ 6</td>
+                                                    <td width="14.2%" style="border-bottom: none;">Thứ bảy</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="12%" style="text-align:center;background:#DDDDDD;">
+                                        <span class="cssMonthTitle">Tháng <br>6/2016</span>
+                                    </td>
+                                    <td width="88%">
+                                        <table class="cssTableNgayTrongThang" width="100%" cellspacing="0" cellpadding="0">
+                                            <tbody>
+                                                @{
+                                                    int mounth = 6;
+                                                    int year = 2015;
+                                                    DateTime d1;
+                                                    DateTime.TryParse("01/" + mounth + "/" + year, out d1);
+                                                    while(d1.Month != mounth){
+                                                        
+                                                    }
+                                                    for (int i = 22; i <= 25; i++)
+                                                    {
+                                                        <tr>
+                                                            <td width="14.2%">&nbsp;</td>
+                                                            <td width="14.2%">&nbsp;</td>
+                                                            <td width="14.2%">&nbsp;</td>
+                                                            <td width="14.2%"><span class="cssLichNumber">1</span></td>
+                                                            <td width="14.2%"><span class="cssLichNumber">2</span></td>
+                                                            <td width="14.2%"><span class="cssLichNumber">3</span></td>
+                                                            <td width="14.2%"><span class="cssLichNumber">4</span></td>
+                                                        </tr>
+                                                    }
+                                                }
+                                                
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    }
+                }
+            </div>
+
+        </form>
+    </div>
+    <!-- end left main w=670 -->
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+@{
+    @functions{
+
+        public String getDayOfWeekVN(DateTime d)
+        {
+            String result = "";
+            switch (d.DayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    result = "Thứ Hai";
+                    break;
+
+                case DayOfWeek.Tuesday:
+                    result = "Thứ Ba";
+                    break;
+
+                case DayOfWeek.Wednesday:
+                    result = "Thứ Tư";
+                    break;
+
+                case DayOfWeek.Thursday:
+                    result = "Thứ Năm";
+                    break;
+
+                case DayOfWeek.Friday:
+                    result = "Thứ Sáu";
+                    break;
+
+                case DayOfWeek.Saturday:
+                    result = "Thứ Bảy";
+                    break;
+
+                case DayOfWeek.Sunday:
+                    result = "Chủ Nhật";
+                    break;
+            }
+            return result;
+        }
+    }
+}
+<script>
+    function changeTime(data) {
+        document.formCalendar.submit();
+    }
+
+    function changeView(type) {
+        document.formCalendar.typeView.value = type;
+        document.formCalendar.submit();
+    }
+</script>

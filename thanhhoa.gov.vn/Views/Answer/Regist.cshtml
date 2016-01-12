@@ -1,0 +1,203 @@
+﻿@{
+    ViewBag.Title = "Chuyên mục hỏi đáp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var lstQuestionCategory = (List<thanhhoa.gov.vn.Models.QuestionCategoryModels>)ViewData["lstQuestionCategory"];
+    var questionModel = (thanhhoa.gov.vn.Models.QuestionModels)ViewData["questionModel"];
+}
+
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<link href="~/Content/sign-up.css" rel="stylesheet" />
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="modHoidap">
+            <form action="SaveRegist" method="post" name="form" enctype="multipart/form-data">
+                <input type="hidden" name="questionCategoryId" id="questionCategoryId" />
+                <input type="hidden" name="questionCategoryName" id="questionCategoryName" />
+                <div class="title10"><h2>Gửi câu hỏi</h2></div>
+                <table class="tableSignup" width="100%" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="tdLeftSignup"></td>
+                        <td>(<span class="spanRed">*</span>) <em>Bắt buộc nhập</em></td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Họ và tên <span class="spanRed">*</span>:</td>
+                        <td><input class="inp_signup" onkeypress="removeError(this);" type="text" id="fullName" name="fullName" value="@questionModel.FullName"></td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Email <span class="spanRed">*</span>:</td>
+                        <td><input class="inp_signup" onkeypress="removeError(this);" type="text" id="email" name="email" value="@questionModel.Email"></td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Số điện thoại:</td>
+                        <td><input class="inp_signup" type="text" name="phone" value="@questionModel.Phone"></td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Địa chỉ liên hệ:</td>
+                        <td><input class="inp_signup" type="text" name="address" value="@questionModel.Address"></td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Cơ quan:</td>
+                        <td><input class="inp_signup" type="text" name="department" value="@questionModel.Department"></td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Tiêu đề <span class="spanRed">*</span>:</td>
+                        <td><input class="inp_signup" onkeypress="removeError(this);" type="text" id="title" name="title" value="@questionModel.Title"></td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Danh mục hỏi đáp <span class="spanRed">*</span>:</td>
+                        <td>
+                            <select class="inp_signup inp_cmndPlace" onchange="removeError(this);" name="categoryId" id="categoryId">
+                                <option value="0">-- Lựa chọn danh mục --</option>
+                                @{
+                                    foreach (var item in lstQuestionCategory)
+                                    {
+                                        <option value="@item.Id">&nbsp; @item.Name</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Nội dung <span class="spanRed">*</span>:</td>
+                        <td><textarea cols="80" rows="7" onkeypress="removeError(this);" name="questionContent" id="questionContent">@questionModel.QuestionContent</textarea>
+                        <td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Đính kèm :</td>
+                        <td><input type="file" name="File" id="File"></td>
+                    </tr>
+                    <tr>
+                        <td class="tdLeftSignup">Mã xác nhận:</td>
+                        <td>
+                            <div>
+                                <input class="inp_signup" type="text" name="captcha" id="captcha" onkeypress="removeError(this);">
+                                <img id="img-captcha" src="@Url.Action("getCaptcha")">
+                                <img id="re-captcha" src="~/Images/i-reCapcha.png" style="  cursor: pointer;" />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" class="tdLeftSignup">Quy định chung:</td>
+                        <td>
+                            <div class="quydinhchung">
+                                <p><strong> Cá nhân và tổ chức khi gửi câu hỏi phải nghiêm túc tuân thủ theo các nội dung sau đây :</strong></p><p>
+                                    <strong>1.</strong> Không sử dụng các từ ngữ, câu hỏi có nội dung làm ảnh hưởng đến uy tín, danh dự của cá nhân, tổ chức khác hoặc chứa đựng các từ ngữ thông tục, ảnh hưởng tới văn hóa và thuần phong mỹ tục.
+                                </p><p>
+                                    <strong>2.</strong> Cá nhân, tổ chức sẽ tự chịu trách nhiệm với nội dung câu hỏi của mình tùy theo mức độ ảnh hưởng của nội dung câu hỏi đó.
+                                </p><p>
+                                    <strong>3.</strong> Các nội dung thông tin từ chuyên mục Hỏi - Đáp không thể được sử dụng hay trích dẫn làm căn cứ pháp lý cho bất kỳ trường hợp nào.
+                                </p><p>
+                                    <strong>4.</strong> Câu hỏi trái với các nội dung nêu trên sẽ bị xóa mà không cần thông báo trước.
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td class="tdOk">
+                            <p><input type="checkbox"> <strong>Tôi đồng ý với các quy định trên</strong></p>
+                            <a href="javascript: save();" class="btn_login">Gửi câu hỏi</a>
+                            <a href="javascript: reset();" class="btn_login">Hủy bỏ</a>
+                            <a href="index" class="btn_login">Quay lại</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+            <!-- end module dang ky -->
+
+
+        </div>
+        <!-- end module van ban phap quy -->
+
+
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+
+<script>
+    function filterByCategory(id, name) {
+        $('#questionCategoryName').val(name);
+        $('#questionCategoryId').val(id);
+        document.form.action = "Index";
+        document.form.submit();
+    }
+
+    function reset() {
+
+    }
+
+    function save() {
+        //alert(check)
+        $.ajax({
+            type: "GET",
+            url: "checkCaptcha",
+            data: "captcha=" + $("#img-captcha").val,
+            success: function (data) {
+                if (check()){
+                    if ($('#captcha').val() == data) {
+                        document.form.submit();
+                    } else {
+                        $('#captcha').val("");
+                        $('#captcha').addClass(" inp_error");
+                    }
+                }
+            }
+        });
+        
+    }
+
+    function check() {
+        var check = true;
+        if (document.form.fullName.value == "") {
+            $('#fullName').addClass(" inp_error");
+            check = false;
+        }
+        if (document.form.email.value == "") {
+            $('#email').addClass(" inp_error");
+            check = false;
+        }
+        if (document.form.title.value == "") {
+            $('#title').addClass(" inp_error");
+            check = false;
+        }
+        if (document.form.categoryId.value == "0") {
+            $('#categoryId').addClass(" inp_error");
+            check = false;
+        }
+        if (document.form.questionContent.value == "") {
+            $('#questionContent').addClass(" inp_error");
+            check = false;
+        }
+        if (document.form.captcha.value == "") {
+            $('#captcha').addClass(" inp_error");
+            check = false;
+        }
+        return check;
+    }
+
+    function removeError(e) {
+        $(e).removeClass("inp_error");
+        if ($(e).val() == "") {
+            $(e).addClass(" inp_error");
+        }
+    }
+
+    $('#re-captcha').bind("click", function () {
+        $.ajax({
+            type: 'GET',
+            url: "getCaptcha",
+            success: function (data) {
+                $('#img-captcha').attr("src", "getCaptcha");
+            }
+        });
+    });
+</script>

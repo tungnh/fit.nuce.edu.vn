@@ -1,0 +1,33 @@
+﻿function convertVideo(id, urlImages, urlVideo) {
+    var result = "";
+    result += "<div id='" + id + "'>";
+    result += "</div>";
+    result += "<script type='text/javascript'>";
+    result += "jwplayer('" + id + "').setup({";
+    result += "'primary': 'flash',";
+    result += "playlist: [{ file: '" + urlVideo + "', image: '" + urlImages + "' }],";
+    result += "advertising: {";
+    result += "client: 'googima'";
+    result += "},";
+    result += "'bufferlength': '1',";
+    result += "'mute': 'false',";
+    result += "'controls': 'true',";
+    result += "'width': '100%',";
+    result += "'height': '100%',";
+    result += "'aspectratio': '16:9',";
+    result += "'repeat': 'always',";
+    result += "'quality': 'high',";
+    result += "'shownavigation': 'true',";
+    result += "'autostart': 'false',";
+    result += "'item': '0',";
+    result += "'display.showmute': 'false',";
+    result += "'dock': 'true',";
+    result += "'skin': 'glow',";
+    result += "'stretching': 'exactfit',";
+    result += "ga: {},";
+    result += "events: {";
+    result += "}";
+    result += "});";
+    result += "</script>";
+    return result;
+}

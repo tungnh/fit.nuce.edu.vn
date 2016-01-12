@@ -1,0 +1,52 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@{
+    ViewBag.Title = "Danh sách Album";
+    var lstAlbum = (List<thanhhoa.gov.vn.Models.gov_album>)ViewData["lstAlbum"];
+}
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<div class="mainMod">
+    <div class="modLeftMain">
+
+        <div class="breackrum">
+            <a class="bkHome" href="/">Trang chủ</a>
+            <a href="javascript: void(0);">Thư viện ảnh</a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modMulti">
+
+            <div class="titleMultimedia">
+                <h3>Loạt thư viện ảnh</h3>
+            </div>
+
+            <!-- chi tiet multimedia -->
+            <div class="wrapMultimedia">
+
+                <ul class="albumImages listAlbImg">
+                    @{
+                        foreach (var item in lstAlbum)
+                        {
+                            <li>
+                                <a href="@Utils.getLinkDefault(item.id, TypeLink.album)"><img style="width: 100%; height: 100%;" src="@item.avatar" alt="@item.album_title" title="@item.album_title"></a>
+                                <p>@item.album_title</p>
+                                <i>@item.gov_album_gallery.Count ảnh (@item.total_view Lượt xem)</i>
+                            </li>
+                        }
+                    }
+                    <br class="clear">
+                </ul>
+
+            </div>
+            <!-- end chi tiet multimedia -->
+
+        </div>
+        <!-- end module multimedia -->
+
+
+    </div>
+    @Html.Partial("_PartialLeft")
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->

@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Tra cứu văn bản";
+    var docViewhelper = (thanhhoa.gov.vn.Viewhelper.DocumentViewhepler)ViewData["docViewhelper"];
+}
+<link href="~/Content/sign-up.css" rel="stylesheet" />
+<script src="~/Scripts/marquee.js"></script>
+<div class="mainMod">
+    
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="/"><b>Trang chủ</b></a>
+            <a href="javascript: void(0);"><b>Văn bản</b></a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modVanban">
+            <form name="fromSearch" enctype="multipart/form-data" action="/giang-vien/van-ban" method="post" onsubmit="search();">
+                <input type="hidden" name="page" value="@docViewhelper.Page" />
+                <input type="hidden" name="direction" />
+                <div class="boxSearchVB" id="boxSimple">
+                    <p><b>TÌM KIẾM</b></p>
+                    <p>(<a target="_blank" href="/giang-vien/van-ban/huong-dan-tra-cuu">Hướng dẫn tra cứu</a>)</p>
+                    <label>Từ khóa:</label><input type="text" class="in_searchvb" name="keySearch" id="keySearchDoc" value="@docViewhelper.KeySearch">
+                    <input type="submit" class="btnSearch" value="Tim kiem" />
+                    <div>
+                        <input type="radio" name="typeSearch" @{if (docViewhelper.TypeSearch == 1) { @Html.Raw(" checked")  }} value="1">
+                        <label>Toàn văn</label>
+                        &nbsp; &nbsp;
+                        <input type="radio" name="typeSearch" @{if (docViewhelper.TypeSearch == 2) { @Html.Raw(" checked")  }} value="2">
+                        <label>Số hiệu, trích yếu</label>
+                    </div>
+                </div>
+            </form>
+            <!-- end box search van ban-->
+
+            <table class="tableVanban" width="100%" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
+                <tr class="trTitleVB">
+                    <td width="15%" style="border-right: 1px solid #CCCCCC;">Số ký hiệu</td>
+                    <td>Văn bản</td>
+                </tr>
+                @{
+                    int i = (docViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                    if (docViewhelper.TotalCount > 0)
+                    {
+                        foreach (var item in docViewhelper.LstDocument)
+                        {
+                            <tr>
+                                <td>@Html.Raw(item.doc_code)</td>
+                                <td>
+                                    <a href="/giang-vien/van-ban/chi-tiet-van-ban-@item.id" class="aTitleVB">@Html.Raw(item.doc_name)</a>
+                                    @Html.Raw(item.doc_summany)
+                                    <a href="/document/Download?id=@item.id" class="aDownVB">Tải về</a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                }
+            </table>
+            <div class="pagingListnews">
+                <span style="float: left; padding-left: 10px;">Tổng số: <b style="color: red;">@docViewhelper.TotalCount</b> văn bản</span>
+                <a href="javascript: direction('ahead');">&larr;</a>
+                @if (docViewhelper.FirstPage > 1)
+                {@Html.Raw(" ... ")}
+                @{
+                    for (int j = docViewhelper.FirstPage; j <= docViewhelper.LastPage; j++)
+                    {
+                        <a href="javascript: selectPage(@j);" @if (docViewhelper.Page == j) { @Html.Raw(" class='act1'") }>@j</a>
+                    }
+                }
+                @if (docViewhelper.LastPage < docViewhelper.TotalPage)
+                {@Html.Raw(" ... ")}
+                <a href="javascript: direction('next');">&rarr;</a>
+            </div>
+            <!--end paging list news -->
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+</div>
+<script>
+    $('#keySearchDoc').focus();
+
+    function selectPage(data) {
+        document.fromSearch.page.value = data;
+        document.fromSearch.submit();
+    }
+
+    function direction(data) {
+        document.fromSearch.direction.value = data;
+        document.fromSearch.submit();
+    }
+
+    function search() {
+        //document.fromSearch.isSearch.value = 'true';
+    }
+</script>

@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Thêm mới cơ quan ban hành";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-gears"></i> Quản trị hệ thống
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách cơ cấu tổ chức
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Thêm mới cơ cấu tổ chức
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới cơ cấu tổ chức
+                                </h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Tên cơ quan <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="30" name="name" class="form-control input-sm parsley-validated" data-required="true"
+                                               data-required-message="Trường Tên cơ quan không được bỏ trống" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Đường dẫn :
+                                    </span>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="30" name="link" class="form-control input-sm parsley-validated" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Mô tả :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <textarea rows="4" name="description" cols="50" class="form-control input-sm"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Số thứ tự <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" size="30" name="order_number" class="form-control input-sm parsley-validated"
+                                               data-type="number"
+                                               data-type-number-message="Phải nhập đúng định dạng số"
+                                               data-required="true"
+                                               data-required-message="Trường Số thứ tự không được bỏ trống" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <label>
+                                            <input type="checkbox" name="is_home" value="true" /> Hiển thị trên trang chủ
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+</script>

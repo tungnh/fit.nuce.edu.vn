@@ -1,0 +1,267 @@
+﻿@{
+    ViewBag.Title = "Cập nhật thông tin  cựu sinh viên";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var personInfo = (thanhhoa.gov.vn.Models.gov_person)ViewData["personInfo"];
+    var lstSpecialized = (List<thanhhoa.gov.vn.Models.gov_specialized>)ViewData["lstSpecialized"];
+    var lstCourse = (List<thanhhoa.gov.vn.Models.gov_course>)ViewData["lstCourse"];
+}
+<script src="~/Areas/Admin/Resources/ckeditor/ckeditor.js"></script>
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-credit-card"></i> Cựu sinh viên
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách cựu sinh viên
+                </li>
+                <li class="active">
+                    <i class="fa fa-edit"></i> Cập nhật thông tin cựu sinh viên
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveEdit">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Cập nhật thông tin cựu sinh viên
+                                </h5>
+                                @{
+                                    if(personInfo != null){
+                                        <input hidden name="id" value="@personInfo.id" />
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Họ và tên <font color="red">*</font>:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="full_name"
+                                                       class="form-control input-sm"
+                                                       value="@personInfo.full_name"
+                                                       data-required="true"
+                                                       data-required-message="Trường họ tên không được để trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Chuyên nghành :
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <select id="slChuyenNganh" name="specialized_id" style="width: 100%;" onchange="search();">
+                                                    <option value="0">Tất cả</option>
+                                                    @{
+                                                        foreach (var item in lstSpecialized)
+                                                        {
+                                                            <option value="@item.id" @if (item.id == personInfo.specialized_id) { @Html.Raw(" selected")   }>@item.specialized_name</option>
+                                                        }
+                                                    }
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Khóa học <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-lg-2">
+                                                <select id="slKhoa" name="course_id" style="width: 100%;" onchange="search();">
+                                                    <option>Tất cả</option>
+                                                    @{
+                                                        foreach (var item in lstCourse)
+                                                        {
+                                                            <option value="@item.id" @if (item.id == personInfo.course_id) { @Html.Raw(" selected")   }>@item.course_name</option>
+                                                        }
+                                                    }
+                                                </select>
+
+                                            </div>
+                                            <span class="col-lg-1 control-span m-l">
+                                                Lớp:  <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-lg-2">
+                                                <input type="text" name="lop"
+                                                       value="@personInfo.lop"
+                                                       class="form-control input-sm"
+                                                       data-required="true"
+                                                       data-required-message="Trường lớp không được để trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Email :
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="text"
+                                                       value="@personInfo.email"
+                                                       data-required="true"
+                                                       data-required-message="Email không được bỏ trống"
+                                                       name="email" class="form-control input-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Điện thoại:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="phone"
+                                                       value="@personInfo.phone"
+                                                       data-required="true"
+                                                       data-required-message="Điện thoại không được bỏ trống"
+                                                       class="form-control input-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Địa chỉ liên hệ:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="address" value="@personInfo.address"
+                                                       data-required="true"
+                                                       data-required-message="Địa chỉ liên hệ không được bỏ trống"
+                                                       class="form-control input-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Cơ quan:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="department" value="@personInfo.department"
+                                                       data-required="true"
+                                                       data-required-message="Cơ quan không được bỏ trống"
+                                                       class="form-control input-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Giới thiệu về bản thân :
+                                            </span>
+                                            <div class="col-lg-9">
+                                                <textarea cols="50" rows="3" class="form-control input-sm" id="description" name="description">@personInfo.description</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Cho phép hiển thị các thông tin :
+                                            </span>
+                                            <div class="col-lg-9">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="show_email" @if (personInfo.show_email) { @Html.Raw(" checked")    } value="TRUE"> Email
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="show_tel" @if (personInfo.show_tel) { @Html.Raw(" checked")    } value="TRUE"> Điện thoại
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="show_address" @if (personInfo.show_address) { @Html.Raw(" checked")   } value="TRUE"> Địa chỉ liên hệ
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="show_department" @if (personInfo.show_department) { @Html.Raw(" checked")  } value="TRUE"> Cơ quan công tác
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="show_shared" @if (personInfo.show_shared) { @Html.Raw(" checked") } value="TRUE"> Chia sẻ cá nhân
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Mật mã:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="password" name="code" id="code"
+                                                       value="@personInfo.code"
+                                                       data-required="true"
+                                                       data-required-message="Mật mã không được bỏ trống"
+                                                       class="form-control input-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Nhập lại mật mã:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="password" name="re_code"
+                                                       value="@personInfo.code"
+                                                       data-required="true"
+                                                       data-required-message="Xác nhận mật mã không được bỏ trống"
+                                                       data-equalto="#code"
+                                                       data-equalto-message="Xác nhận mật khẩu không chính xác"
+                                                       class="form-control input-sm" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Ảnh đại diện <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-lg-7">
+                                                <input type="hidden" name="avatar" value="@personInfo.avatar" id="avatar">
+                                                <input type="button" class="btnSearch" id="btnAvatar" value="Chọn ảnh" style="width : 200px;" /> &nbsp; <span id="urlAvatar"> Không có hình ảnh nào được chọn</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                            </span>
+                                            <div class="col-lg-7">
+                                                <img src="@personInfo.avatar" id="images" style="max-width: 200px;" />
+                                            </div>
+                                        </div>
+                                        <div class="line line-dashed line-lg pull-in"></div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l-md"></span>
+                                            <div class="col-lg-6">
+                                                <input type="submit" class="btn btn-sm btn-primary"
+                                                       style="width: 90px;" value="Lưu" />
+                                                <a href="index" class="btn btn-sm btn-danger"
+                                                   data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<font color='red'><b>Cựu sinh viên không tồn tại, hoặc đã bị xóa!</b></font> Nhấn vào <a href='index' style='text-decoration: underline;'>đây</a> để quay lại");
+                                    }
+                                }
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+
+    $('#slKhoa').select2();
+    $('#slChuyenNganh').select2();
+    $(function () {
+        $('#btnAvatar').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#urlAvatar').html(fileUrl);
+                $('#avatar').val(fileUrl);
+                $('#images').attr("src", fileUrl);
+                urlImages = fileUrl;
+            };
+            ckfinder.popup();
+        });
+    });
+
+    var ckeditor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, { language: languageCode });
+    }
+    $(function () { createEditor('vi', 'description') });
+</script>
+

@@ -1,0 +1,293 @@
+﻿@{
+    ViewBag.Title = "Danh sách câu hỏi";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var questionViewhelper = (thanhhoa.gov.vn.Viewhelper.QuestionViewhelper)ViewData["questionViewhelper"];
+    
+    @functions {
+        public String getDisp(String input, int count)
+        {
+            if (input == null)
+            {
+                return  null;
+            }
+            if (input.Length > count)
+            {
+                int index = count;
+                while (index < input.Length && input.ElementAt(index) != ' ')
+                {
+                    index++;
+                }
+                String titleReturn = (index == input.Length) ? input.Substring(0, index) : input.Substring(0, index) + " ... ";
+                return  titleReturn;
+            }
+            return input;
+        }
+    }
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-file-text-o"></i> Quản lý lĩnh vực hỏi đáp
+                    </a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-location-arrow"></i> Danh sách lĩnh vực hỏi đáp
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="index">
+                <input type="hidden" name="direction" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group m-b-sm">
+                                    <div class="col-lg-9">
+                                        <label class="col-lg-2 control-label"
+                                               style="padding-right: 0px; text-align: left;">
+                                            Từ khóa
+                                        </label>
+                                        <div class="col-lg-9" style="padding-right: 0px;">
+                                            <input id="keysearch" type="text"
+                                                   class="form-control input-sm" placeholder="Từ khóa"
+                                                   name="keySearch" value="@questionViewhelper.KeySearch">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="pull-right">
+                                            <button type="submit" id="btn_search" onclick="search();"
+                                                    class="btn btn-sm btn-s-sm btn-primary">
+                                                <i class="fa fa-search"></i> Tìm kiếm
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger"
+                                                    onclick="clearAll();">
+                                                <i class="fa fa-trash-o"></i> Xóa điều kiện
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <select onchange="changeFilter1();" name="changeFilter" id="slFilter">
+                            <option value="" selected="selected" >Lọc theo lĩnh vực câu hỏi</option>
+                            @{
+                                foreach (var item in questionViewhelper.LstQuestionCategory)
+                                {
+                                    <option value="@item.Id" >@item.Name</option>
+                                }
+                            }
+                        </select>
+                        <div class="pull-right">
+                            <select onchange="change(this.value);" name="changeState" id="slActive">
+                                <option value="" selected="selected" disabled>
+                                    Chuyển trạng thái thành
+                                </option>
+                                <option value="false">Hiển thị</option>
+                                <option value="true">Không hiển thị (band) </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width: 40px;">
+                                        <input type="checkbox" />
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;" width="12%">
+                                        Họ tên
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Tiêu đề
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;" >
+                                        Lĩnh vực câu hỏi
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;" width="40%">
+                                        Nội dung
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Thời gian
+                                    </th>
+                                    <th width="80px;" class="text-center" style="vertical-align: middle;">
+                                        Trả lời
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Hiển thị
+                                    </th>
+                                    <th width="40px;" class="text-center" style="vertical-align: middle;">
+                                        Xóa
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i = (questionViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                                    if (questionViewhelper.TotalCount > 0) { 
+                                        foreach (var item in questionViewhelper.LstQuestion)
+                                        {
+                                            <tr>
+                                                <td align="center" width="40px"><input type="checkbox" name="checkID" id="ckCheckID" value="@item.Id"></td>
+                                                <td>@item.FullName</td>
+                                                <td align="center">@item.Title</td>
+                                                <td>@item.CategoryName</td>
+                                                <td align="center">
+                                                    @{
+                                                        var str = getDisp(item.QuestionContent, 200);
+                                                        @Html.Raw(str)
+                                                        if(str.Length < item.QuestionContent.Length){
+                                                            <i class="fa fa-search-plus text-primary text" style="cursor: pointer;" onclick="viewDetail(this, '@item.QuestionContent', event);"></i>
+                                                        }
+                                                    }
+                                                    
+                                                </td>
+                                                <td align="center">@item.QuestionDatetime.ToString("dd/MM/yyyy")</td>
+                                                <td><a href="answer?questionid=@item.Id">Trả lời (<font color="red"><strong>@item.CountAnswer</strong></font>)</a></td>
+                                                <td align="center">
+                                                    @if (item.HiddenFlg == false)
+                                                    {@Html.Raw("<i class='fa fa-check text-primary'></i>")}
+                                                </td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa bản ghi này không?')" href="delete?id=@item.Id"><i class="fa fa-times text-danger text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <div class="popover fade right" id="viewdetail" style="display: none;">
+                            <div class="arrow"></div>
+                            <h3 class="popover-title">
+                                <button type="button" onclick="hideDetail();"
+                                        class="close pull-right" data-dismiss="popover">
+                                    ×
+                                </button>
+                                Thông tin chi tiết
+                            </h3>
+                            <div class="popover-content">
+                                <div class="scrollable" style="height: 150px;"></div>
+                            </div>
+                        </div>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@questionViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                <c:if test="${list.totalCount > 0}">
+                                    <div class="col-md-4 hidden-sm">
+                                        <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                            Hiển thị trang <input type="text" size="5" name="page"
+                                                                  value="@questionViewhelper.Page" id="pageid"> / @questionViewhelper.TotalPage
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                        <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                            <li>
+                                                <a href="javascript: direction('first');">
+                                                    <i class="fa fa-step-backward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('ahead');">
+                                                    <i class="fa fa-backward"></i>
+                                                </a>
+                                            </li>
+                                            @{
+                                                for (int j = @questionViewhelper.FirstPage; j <= questionViewhelper.LastPage; j++)
+                                                {
+                                                    <li @if (j == questionViewhelper.Page){@Html.Raw(" class='active'")}>
+                                                        <a href="javascript: selectPage(@j);" >
+                                                            @j
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                            <li>
+                                                <a href="javascript: direction('next');">
+                                                    <i class="fa fa-forward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('end');">
+                                                    <i class="fa fa-step-forward"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $('#slActive').select2();
+    $('#slFilter').select2();
+
+    function change(data) {
+        if (data != "") {
+            document.form.action = "changestate";
+            document.form.submit();
+        }
+    }
+
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function clearAll() {
+        $('#keysearch').val("");
+    }
+
+    function hideDetail() {
+        $("#viewdetail").css("display", "none");
+        $('#viewdetail').removeClass('in');
+        setTimeout(function () {
+            $("#viewdetail").offset({
+                left: 0,
+                top: 0
+            });
+        }, 500);
+    }
+
+    function viewDetail(item, text, e) {
+        $("#viewdetail").css("display", "block");
+        $("#viewdetail").addClass("in");
+        $("#viewdetail").offset({
+            left: e.pageX + 20,
+            top: e.pageY - 80
+        });
+        $("#viewdetail .scrollable").html(text);
+    }
+
+    function changeFilter1() {
+            document.form.submit();
+    }
+</script>

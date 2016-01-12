@@ -1,0 +1,254 @@
+﻿@{
+    ViewBag.Title = "Tra cứu nâng cao";
+    var lstDocuments = (List<thanhhoa.gov.vn.Models.DocumentModels>)ViewData["lstDocuments"];
+}
+
+<script src="~/Scripts/marquee.js"></script>
+<div class="mainMod">
+    <!-- modLeft200-->
+    <div class="modLeft200">
+
+        <div class="mod200">
+            <div class="title8">
+                <h2>Cơ quan ban hành</h2>
+            </div>
+            <!--end title 8 -->
+            <div class="contMod200">
+                <ul class="filterVBPQ">
+                    @{
+                        var lstDepartment = (List<thanhhoa.gov.vn.Models.DepartmentModels>)ViewData["lstDepartment"];
+                        foreach (var lst in lstDepartment)
+                        {
+                            <li>
+                                @Html.ActionLink(lst.Name, "#")
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+        <!-- end mod200 -->
+
+        <div class="mod200">
+            <div class="title8">
+                <h2>Loại Văn Bản</h2>
+            </div>
+            <!--end title 8 -->
+            <div class="contMod200">
+
+                <ul class="filterVBPQ">
+                    @{
+                        var lstDocumentKind = (List<thanhhoa.gov.vn.Models.DocumentKindModels>)ViewData["lstDocumentKind"];
+                        foreach (var lst in lstDocumentKind)
+                        {
+                            <li>
+                                @Html.ActionLink(lst.Name, "#")
+                            </li>
+                        }
+                    }
+                </ul>
+
+            </div>
+        </div>
+        <!-- end mod200 -->
+
+        <div class="mod200">
+            <div class="title8">
+                <h2>Thời Gian Ban Hành</h2>
+            </div>
+            <!--end title 8 -->
+            <div class="contMod200">
+
+                <ul class="filterVBPQ">
+                    @{
+                        DateTime time = DateTime.Now;
+                    }
+                    <li><a href="#">2006 Đến 2015</a></li>
+                    <li><a href="#">1996 Đến 2005</a></li>
+                    <li><a href="#">1986 Đến 1995</a></li>
+                    <li><a href="#">1976 Đến 1985</a></li>
+                    <li><a href="#">1966 Đến 1975</a></li>
+                    <li><a href="#">1956 Đến 1965</a></li>
+                    <li><a href="#">1945 Đến 1955</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- end mod200 -->
+
+    </div>
+    <div class="modLeftMain modCenter">
+
+        <div class="breackrum">
+            <a class="bkHome" href="">Trang chính</a>
+            <a href="">Văn bản pháp quy</a>
+            <a href="">Tra cứu văn bản</a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modVanban">
+            <form name="fromSearch" enctype="multipart/form-data" action="Search" method="post">
+                <div class="boxSearchVB">
+                    <p style="margin-bottom : 10px;"><b>TÌM KIẾM NÂNG CAO</b></p>
+                    <div>
+                        <table width="100%" cellspacing="7">
+                            <tr>
+                                <td width="150px">Số ký hiệu</td>
+                                <td align="left">
+                                    <input type="text" name="docCode" size="30">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td >Từ khóa</td>
+                                <td align="left">
+                                    <input type="text" name="keySearch" size="30">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td align="left">
+                                    <input type="radio" name="rdLuaChon" value="1" checked/><label> Toàn văn</label>
+                                    &nbsp; &nbsp;
+                                    <input type="radio" name="rdLuaChon" value="2" /><label> Trích yếu</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Loại Văn Bản</td>
+                                <td align="left">
+                                    <select name="slDocumentKind" style="font-family: Verdana,sans-serif; font-size : 12px;">
+                                        <option value="0">---- Tất cả ---</option>
+                                        @{
+                                            foreach (var lst in lstDocumentKind)
+                                            {
+                                                <option value="@lst.Kid">@lst.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cơ quan ban hành</td>
+                                <td align="left">
+                                    <select name="slDepartmentId" style="font-family: Verdana,sans-serif; font-size : 12px;">
+                                        <option value="0">---- Tất cả ---</option>
+                                        @{
+                                            foreach (var lst in lstDepartment)
+                                            {
+                                                <option value="@lst.DeptId">@lst.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Người ký</td>
+                                <td align="left"><input type="text" name="userSign" size="30"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td align="left"><input type="submit" class="btnSearch" value="Tìm Kiếm"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td align="right"><a href="Index">Quay lại tìm kiếm</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </form>
+            <!-- end box search van ban-->
+
+            <table class="tableVanban" width="100%" cellspacing="0" cellpadding="0" style="margin-top : 10px;">
+                <tr class="trTitleVB">
+                    <td width="5%">STT</td>
+                    <td>Văn bản</td>
+                </tr>
+                @{
+                    int i = 0;
+                    foreach (var item in lstDocuments)
+                    {
+                        i++;
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                @Html.ActionLink(item.DocName, "#", "", new { @class = "aTitleVB" })
+                                @item.DocSummany
+                                @Html.ActionLink("Tải về", "/Download", new { id = @item.Id }, new { @class = "aDownVB" })
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    <div class="modRightMain">
+
+        <div class="modTopRight tinduthao">
+            <div class="wrapModTopRight">
+                <div class="title2">
+                    <a href="#">
+                        <h2>Tin dự thảo văn bản</h2>
+                    </a>
+                </div>
+                <ul class="ulTinduthao" id="marTinduthao">
+                    <li>
+                        <h5><a href="">Luật Nhà ở (sửa đổi)</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Khóa XIII - Đang cập nhật</p>
+                    </li>
+                    <li>
+                        <h5><a href="">Luật Hải quan (sửa đổi)</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Khóa XIII - Kỳ họp thứ 7</p>
+                    </li>
+                    <li>
+                        <h5><a href="">Luật sửa đổi, bổ sung một số điều của Luật hôn nhân và gia đình</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Khóa XIII - Kỳ họp thứ 7</p>
+                    </li>
+                    <li>
+                        <h5><a href="">Luật xây dựng (sửa đổi)</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Đang cập nhật - Kỳ họp thứ 7</p>
+                    </li>
+                    <li>
+                        <h5><a href="">Luật Bảo hiểm xã hội (sửa đổi)</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Khóa XIII - Kỳ họp thứ 8</p>
+                    </li>
+                    <li>
+                        <h5><a href="">Luật Bảo vệ môi trường (sửa đổi)</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Khóa XIII - Kỳ họp thứ 7</p>
+                    </li>
+                    <li>
+                        <h5><a href="">Luật tiếp công dân</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Khóa XIII - Kỳ họp thứ 6</p>
+                    </li>
+                    <li>
+                        <h5><a href="">Luật sửa đổi, bổ sung một số điều của Luật Công chứng</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Khóa XIII - Kỳ họp thứ 6</p>
+                    </li>
+                    <li>
+                        <h5><a href="">Luật quản lý, sử dụng vốn nhà nước đầu tư vào doanh nghiệp</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Khóa XIII - Kỳ họp thứ 7</p>
+                    </li>
+                    <li>
+                        <h5><a href="">Luật Thực hành tiết kiệm, chống lãng phí (sửa đổi)</a></h5>
+                        <span>Cơ quan trình: Chính phủ</span>
+                        <p>Dự kiến thông qua tại: Khóa XIII - Kỳ họp thứ 6</p>
+                    </li>
+                </ul>
+                <script>new Marquee("marTinduthao", 0, 1, 280, 200, 40, 0, 500)</script>
+            </div>
+        </div>
+        @Html.Partial("_PartialStatisticsAccess")
+        <!-- end module Statistics -->
+    </div>
+    <div class="clear"></div>
+</div>

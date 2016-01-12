@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Thêm mới Video";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/video.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-film"></i> Quản lý media
+                </li>
+                <li class="active">
+                    <a href="index.html">
+                        <i class="fa fa-camera"></i> Video
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="index.html">
+                        <i class="fa fa-plus"></i> Thêm mới Video
+                    </a>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới video
+                                </h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Tiêu đề <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="title"
+                                               data-required="true"
+                                               data-required-message="Trường tiêu đề không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Mô tả
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <textarea cols="50" rows="3" class="form-control input-sm" name="description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span  m-l">
+                                        Ảnh đại diện :
+                                    </span>
+                                    <div class="col-lg-9">
+                                        <input type="hidden" name="avatar" id="avatar">
+                                        <input type="button" class="btnSearch" id="btnAvatar" value="Chọn ảnh" style="width : 200px;" /> &nbsp; <span id="urlAvatar"> Không có hình ảnh nào được chọn</span>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span  m-l">
+                                        Video :
+                                    </span>
+                                    <div class="col-lg-9">
+                                        <input type="hidden" name="attach_filepath" id="attachFilepath" />
+                                        <input type="hidden" name="linkvideo" id="linkvideo" />
+                                        <input type="button" class="btnSearch" id="btnVideo" value="Chọn video" style="width : 200px;" /> &nbsp; <span id="urlVideo"> Không có video nào được chọn</span>
+                                    </div>
+
+                                </div>
+
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+<script>
+    var urlImages = "";
+    $(function () {
+        $('#btnAvatar').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#urlAvatar').html(fileUrl);
+                $('#avatar').val(fileUrl);
+                urlImages = fileUrl;
+            };
+            ckfinder.popup();
+        });
+
+        $('#btnVideo').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#urlVideo').html(fileUrl);
+                $('#attachFilepath').val(fileUrl);
+                /*var date = new Date();
+                var id = "video_" + date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds();
+                $("#linkvideo").val(convertVideo(id, urlImages, fileUrl));*/
+            };
+            ckfinder.popup();
+        });
+    });
+</script>

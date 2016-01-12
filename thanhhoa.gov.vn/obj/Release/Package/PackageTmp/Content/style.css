@@ -1,0 +1,423 @@
+﻿@charset "utf-8";
+/* CSS by tienducdesign@gmail.com */
+
+* {
+	margin:0px;
+	padding:0px;
+}
+body {
+	background:#fff url(../Images/bgMain.png) repeat;
+	font-size:13px;
+	font-family: Arial, Helvetica, sans-serif;
+	color:#262626;
+	padding:0;
+	margin:0;
+}
+h1,h2, h3,h4, h5, h6 {
+}
+a {
+	color:#003c95;
+	text-decoration:none;
+}
+a:hover {
+	color:#00a708;
+	cursor:pointer;
+}
+img {	border:none;}
+ul {
+	margin:0;
+	padding:0;
+}
+li {list-style:none;}
+p {	margin:3px 0;}
+.clear {	clear:both;}
+.f_left {	float:left;}
+.f_right {	float:right;}
+input:focus, textarea:focus, select:focus { outline: none !important;}
+/*#############################################*/
+/*                END general                  */
+/*#############################################*/
+
+.wrapper {
+	display:block;
+	width:1000px;
+	margin: 0px auto;
+}
+#top {
+	display:block;
+	width:auto;
+	overflow:hidden;
+	background:url(../Images/bgBannerie8.png) top center repeat-x\0/;
+}
+#top .wrapper {
+	position:relative;
+}
+
+.logo {
+	display:block;
+	width:115px;
+	float:left;
+	margin-right:15px;
+	padding-top:10px;
+	z-index:66;
+}
+
+.logo img {
+	display:block;
+	max-width:100%;
+	max-height:100%;
+	z-index:6855555 !important;
+}
+.banner {
+	position:absolute;
+	top:0;
+	left:125px;
+	display:block;
+	width:580px;
+	height:80px;
+	padding-top:25px;
+	overflow:hidden;
+	z-index:65;
+}
+.trongdong {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:60;
+}
+.slideBanner {
+	position:absolute;
+	top:0;
+	right:0;
+	display:block;
+	width:360px;
+	height:130px;
+	background:none;
+	margin:0;
+	padding:0;
+	z-index:61;
+}
+
+#navMenu {
+	display:block;
+	height:30px;
+	background:url(../Images/bgNavMenuSleek.png) top left repeat;
+}
+.downarrowclass {
+	display:none;
+}
+.iconHome {
+	display:block;
+	height:30px;
+	width:23px;
+	float:left;
+	border-right:1px solid #0a4e95;
+	background:url(../Images/i_home.png) no-repeat left 50%;
+}
+.ulNav {
+	display:block;
+	float:left;
+	line-height:30px;
+}
+.ulNav li {
+	float:left;
+	height:30px;
+	margin:0;
+	padding:0 12px;
+	border-left:1px solid #337bc5;
+	border-right:1px solid #0a4e95;
+	position:relative;
+}
+.ulNav > li:last-child {
+	border-right:none;
+}
+.ulNav li:hover {
+	background:url(../Images/liHover.png) top left repeat-x;
+}
+.ulNav li a {
+	color:white;
+	font-weight:bold;
+	text-shadow:1px 1px black;
+    display: block;
+}
+.ulNav li ul {
+	position:absolute;
+	padding:0;
+	margin:0;
+	z-index:555;
+    display: none;
+}
+.ulNav li ul li {
+	display:block;
+	height:auto;
+	margin:0;
+	padding-left:20px;
+	line-height:normal;
+	width:160px;
+	border:none;
+	border-bottom:1px solid #337bc5;
+	background:#0e56a0 url(../Images/bul_1.png) 8px 13px no-repeat;
+}
+.ulNav li ul li:hover {
+	background:#013c78 url(../Images/bul_1H.png) 8px 13px no-repeat;
+}
+.ulNav li ul li a {
+	font-weight:normal;
+    display: block;
+    padding:10px;
+}
+/* ######### CSS classes applied to down and right arrow images  ######### */
+.downarrowclass{
+position: absolute;
+top: 12px;
+right: 7px;
+}
+.rightarrowclass{
+position: absolute;
+top: 15px;
+right: 5px;
+}
+/* #####^^## CSS classes applied to down and right arrow images  ######### */
+
+#barMenu {
+	display:block;
+	height:30px;
+	background:#eee url(../Images/bgBarMenu.png) top left repeat-x;
+}
+
+.date {
+	display:block;
+	float:left;
+	height:16px;
+	margin-top:7px;
+	padding-top:4px;
+	padding-left:20px;
+	color:#b15353;
+	font-size:10px;
+	background:url(../Images/i_calendar.png) left top no-repeat;
+}
+
+.rightBar {
+	display:block;
+	float:right;
+	padding-top:5px;
+}
+
+.functionMod {
+	display:block;
+	float:left;
+}
+.login {
+	display:block;
+	float:left;
+}
+.quickLink {
+	display:block;
+	float:left;
+}
+.quickLink li {
+	display:block;
+	float:left;
+	padding-left:18px;
+	margin:5px;
+}
+.linkLogin {background:url(../Images/i-login.png) 2px 50% no-repeat;}
+.linkSitemap {background:url(../Images/bul_sitemap.png) 2px 50% no-repeat;}
+.linkContact {background:url(../Images/bul_email.png) left 50% no-repeat;}
+.linkRss {background:url(../Images/bul_rss.png) left 50% no-repeat;}
+.linkLogin:hover {background:url(../Images/i-loginH.png) 2px 50% no-repeat;}
+.linkSitemap:hover {background:url(../Images/bul_sitemapH.png) 2px 50% no-repeat;}
+.linkContact:hover {background:url(../Images/bul_emailH.png) left 50% no-repeat;}
+.linkRss:hover {background:url(../Images/bul_rssH.png) left 50% no-repeat;}
+.quickLink li a {	color:#292929; }
+.quickLink li a:hover {	color:#0d62ba; }
+
+.click-nav {
+	display:block;
+}
+.click-nav ul li {
+	padding:2px;
+	position:relative;
+}
+.clicker {
+	height:12px;
+	display:block;
+	padding:4px 7px 6px 24px;
+	background: url(../Images/i-profile.png) 5px 2px no-repeat;
+	cursor:pointer;
+	z-index:222;
+	-o-transition-duration: 0.5s;
+	-moz-transition-duration: 0.5s;
+	-webkit-transition-duration: 0.5s;
+	-khtml-transition-duration: 0.5s;
+}
+.click-nav .active,
+.clicker:hover {
+	background:#fcfcfc url(../Images/i-profile.png) 5px 2px no-repeat;
+}
+.click-nav ul.ulProfile {
+	position:absolute;
+	width:180px;
+	background:white;
+	padding:0;
+	padding-bottom:5px;
+	box-shadow:0 3px 5px gray;
+	z-index:10000;
+}
+.click-nav ul.ulProfile li {
+	padding:5px 8px;
+	border-bottom:1px solid #eee;
+}
+.click-nav ul.ulProfile li:hover {
+	background:#fcfcfc;
+}
+.click-nav ul.ulProfile li img {
+	margin-right:10px;
+	position:relative;
+	top:3px;
+}
+
+.click-nav2 {
+	display:block;
+	background:white;
+	padding:4px 7px;
+	margin-left:7px;
+	border-radius:2px;
+	z-index:233;
+}
+.click-nav2 li {
+	position:relative;
+}
+.clicker2 {
+	display:block;
+	width:18px;
+	padding-right:14px;
+	cursor:pointer;
+	background:white url(../Images/arrow1.png) right 5px no-repeat;
+}
+.clicker2:hover {
+	background:white url(../Images/arrow2.png) right 5px no-repeat;
+}
+.ulFlag {
+	position:absolute;
+	left:-7px;
+	padding:5px 19px 5px 7px;
+	background:white;
+	border-radius:0 2px 2px 0;
+	z-index:10001;
+}
+.ulFlag li {
+	padding:2px 0;
+}
+
+.boxSearch {
+	display:block;
+	float:left;
+}
+.inpSearch {
+	display:block;
+	float:left;
+	width:200px;
+	height:20px;
+	padding:0 8px;
+	border:1px solid #3b5998;
+	border-right:none;
+	border-radius: 3px 0 0 3px;
+}
+.aSearch {
+	display:block;
+	float:left;
+	width:27px;
+	height:20px;
+	background:#3b5998 url(../Images/i_search.png) 50% 50% no-repeat;
+	border:1px solid #3b5998;
+	border-left:none;
+	border-radius: 0 3px 3px 0;
+}
+.aSearch:hover {
+	background:#860000 url(../Images/i_search.png) 50% 50% no-repeat;
+}
+
+.flag {
+	display:block;
+	float:left;
+}
+
+/*#############################################*/
+/*                END top                      */
+/*#############################################*/
+
+#navFooter {
+	display:block;
+	height:30px;
+	background:url(../Images/bgNavFooterSleek.png) top left repeat;
+}
+.ulNavFooter {
+	line-height:30px;
+	color:white;
+}
+.ulNavFooter li {
+	display:inline-block;
+	padding:0 10px;
+}
+.ulNavFooter li:first-child {
+	padding-left:0;
+}
+.ulNavFooter li a {
+	color:white;
+}
+
+.copyright {
+	display:block;
+	float:left;
+	width:100%;
+	padding:0;
+    margin-bottom: 20px;
+	/**padding-left:12%;
+	background:url(../Images/logochim.png) left 40px no-repeat;*/
+}
+.copyright p {
+	padding:2px 0;
+	color:gray;
+	text-shadow:1px 1px white;
+}
+.copyright .pNameCom {
+	font-family:tahoma;
+	font-size:1.2em;
+	font-weight:bold;
+	color:#004d97;
+	text-transform:uppercase;
+	padding:12px 0;
+}
+.rightBottom {
+	display:block;
+	width:20%;
+	float:right;
+	text-align:right;
+	margin-top:50px;
+}
+.rightBottom a {
+	display:block;
+	margin-bottom:10px;
+}
+
+/*#############################################*/
+/*                END bottom                   */
+/*#############################################*/
+
+#middle {
+	display:block;
+	height:auto;
+}
+#middle .wrapper {
+	background:white;
+	height:auto;
+	padding:10px 0;
+}
+
+/*#############################################*/
+/*                END middle                  */
+/*#############################################*/
+
+
+

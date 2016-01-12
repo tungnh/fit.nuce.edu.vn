@@ -1,0 +1,137 @@
+﻿@{
+    ViewBag.Title = "Cập nhật cơ quan ban hành";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var department = (thanhhoa.gov.vn.Models.gov_department)ViewData["department"];
+}
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-gears"></i> Quản trị hệ thống
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách cơ cấu tổ chức
+                </li>
+                <li class="active">
+                    <i class="fa fa-edit"></i> Cập nhật cơ cấu tổ chức
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveEdit">
+                                @{
+                                    if (department != null)
+                                    {
+                                        <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                            <i class="fa fa-foursquare"></i> Cập nhật cơ cấu tổ chức
+                                        </h5>
+                                        <input type="hidden" name="id" value="@department.id" />
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Tên cơ quan <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-sm-6">
+                                                <input type="text" size="30" name="name" value="@department.name" class="form-control input-sm parsley-validated" data-required="true"
+                                                       data-required-message="Trường Tên cơ quan ban hành không được bỏ trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Đường dẫn :
+                                            </span>
+                                            <div class="col-sm-6">
+                                                <input type="text" size="30" name="link" value="@department.link"  class="form-control input-sm parsley-validated" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Mô tả :
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <textarea rows="4" name="description" cols="50" class="form-control input-sm">@department.description</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Số thứ tự <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-sm-6">
+                                                <input type="text" size="30" name="order_number" value="@department.order_number" class="form-control input-sm parsley-validated"
+                                                       data-type="number"
+                                                       data-type-number-message="Phải nhập đúng định dạng số"
+                                                       data-required="true"
+                                                       data-required-message="Trường Số thự tự không được bỏ trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <label>
+                                                    <input type="checkbox" name="is_home" value="true" @if(department.is_home == true) {@Html.Raw(" checked")} /> Hiển thị trên trang chủ
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs m-t-md">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Người tạo:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                 <strong><i>@department.entry_username</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Thời gian tạo:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                 <strong><i>@department.entry_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Người cập nhật cuối:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                 <strong><i>@department.update_username</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Thời gian cập nhật cuối:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@department.update_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="line line-dashed line-lg pull-in"></div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l-md"></span>
+                                            <div class="col-lg-6">
+                                                <input type="submit" class="btn btn-sm btn-primary"
+                                                       style="width: 90px;" value="Lưu" />
+                                                <a href="index" class="btn btn-sm btn-danger"
+                                                   data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<font color='red'><b>Cơ quan ban hành không tồn tại, hoặc đã bị xóa!</b></font> Nhấn vào <a href='index' style='text-decoration: underline;'>đây</a> để quay lại");
+                                    }
+                                }
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+</script>

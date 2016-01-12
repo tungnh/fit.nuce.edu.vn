@@ -1,0 +1,25 @@
+.panel .table-striped>tbody>tr:nth-child(odd)>td, .panel .table-striped>tbody.cust-list>tr:nth-child(odd)>td
+	{
+	background-color: #f9f9f9 !important;
+}
+.panel .table-striped>tbody.cust-list>tr>td.center-text {
+	text-align: center;
+	vertical-align: middle;
+}
+.panel .table-striped>tbody.cust-list>tr>th.center-text {
+	text-align: center;
+	vertical-align: middle;
+}
+.specifictimehide {
+	display: none !important;
+}
+
+.specifictimeshow {
+	display: inline-block !important;
+}
+.bg-info{
+	color: white;
+}
+.property-advanced, .property-car{
+	display:none;
+}

@@ -1,0 +1,270 @@
+﻿@using thanhhoa.gov.vn.Models;
+@{
+    ViewBag.Title = "Thay đổi thông tin cựu sinh viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = (String)ViewData["message"];
+    var err = (String)ViewData["err"];
+    var email = (String)ViewData["email"];
+    var lstCourse = (List<gov_course>)ViewData["lstCourse"];
+    var lstSpecialized = (List<gov_specialized>)ViewData["lstSpecialized"];
+    var studentInfo = (gov_person)ViewData["studentInfo"];
+}
+<link href="~/Content/step-bar-style.css" rel="stylesheet" />
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<link href="~/Content/sign-up.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="~/Scripts/map/select2.css" />
+
+<script src="~/Scripts/map/select2.min.js"></script>
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="modHoidap">
+            <form action="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/@studentInfo.id/thay-doi-thong-tin" method="post" name="form" id="form" enctype="multipart/form-data">
+                <input hidden name="description" id="description" value="@studentInfo.description" />
+                <input hidden name="id" id="id" value="@studentInfo.id" />
+                <div class="breackrum">
+                    <a class="bkHome" href="/"><b>Trang chủ</b></a>
+                    <a href="javascript: void(0);"><b>Cựu sinh viên</b></a>
+                    <a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu"><b>Cựu sinh viên tiêu biểu</b></a>
+                    <a href="javascript: void(0);"><b>Thay đổi thông tin cựu sinh viên</b></a>
+                </div>
+                <div style="min-height: 100px;">
+                    <div class="checkout-wrap">
+                        <ul class="checkout-bar">
+                            <li class="visited">Xác nhận mật mã</li>
+                            <li class="active">Thay đổi thông tin</li>
+                            <li class="">Thành công</li>
+                        </ul>
+                    </div>
+                </div>
+                @{
+                    if (message != null)
+                    {
+                        <div style="color: #118B11; background-color: #FAFAFA; border: 1px solid #118B11 ; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
+                            <strong>@Html.Raw(message)</strong>
+                        </div>
+                    }
+                }
+                @{
+                    if (err != null)
+                    {
+                        <div style="color: red; background-color: #FAFAFA; border: 1px solid red; ; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
+                            <strong>@Html.Raw(err)</strong>
+                        </div>
+                    }
+                }
+                <fieldset style="border: 1px solid #c2cae6; padding: 10px;">
+                    <legend style="padding: 0.2em 0.5em; border: 1px solid #c2cae6; text-align: left; font-weight: bold;">Thông tin cựu sinh viên</legend>
+                    <table class="tableSignup" width="100%" cellspacing="0" cellpadding="0" style="border: none;">
+                        <tr>
+                            <td class="tdLeftSignup"></td>
+                            <td>(<span class="spanRed">*</span>) <em>Bắt buộc nhập</em></td>
+                        </tr>
+                        <tr id="tr_full_name">
+                            <td class="tdLeftSignup">Họ và tên <span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" type="text" id="full_name" name="full_name" value="@studentInfo.full_name"></td>
+                        </tr>
+                        <tr id="tr_lop">
+                            <td class="tdLeftSignup">Lớp <span class="spanRed">*</span>: </td>
+                            <td><input class="inp_signup" type="text" name="lop" id="lop" value="@studentInfo.lop"></td>
+                        </tr>
+                        <tr id="tr_specialized_id">
+                            <td class="tdLeftSignup">Chuyên ngành <span class="spanRed">*</span>:</td>
+                            <td>
+                                <select id="specialized_id" name="specialized_id" style="width: 262px;">
+                                    <option value="0">Lựa chọn</option>
+                                    @{
+                                        foreach (var item in lstSpecialized)
+                                        {
+                                            <option value="@item.id" @if (studentInfo.specialized_id == item.id) { @Html.Raw(" selected") }>@item.specialized_name</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id="tr_course_id">
+                            <td class="tdLeftSignup">Khóa học <span class="spanRed">*</span>:</td>
+                            <td>
+                                <select id="course_id" name="course_id" style="width: 262px;">
+                                    <option value="0">Lựa chọn</option>
+                                    @{
+                                        foreach (var item in lstCourse)
+                                        {
+                                            <option value="@item.id" @if (studentInfo.course_id == item.id) { @Html.Raw(" selected") }>@item.course_name</option>
+                                        }
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id="tr_email">
+                            <td class="tdLeftSignup">Email <span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" type="email" name="email" id="email" value="@studentInfo.email"></td>
+                        </tr>
+                        <tr id="tr_phone">
+                            <td class="tdLeftSignup">Điện thoại <span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" type="text" name="phone" id="phone" value="@studentInfo.phone"></td>
+                        </tr>
+                        <tr id="tr_address">
+                            <td class="tdLeftSignup">Địa chỉ liên hệ <span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" type="text" name="address" id="address" value="@studentInfo.address"></td>
+                        </tr>
+                        <tr id="tr_department">
+                            <td class="tdLeftSignup">Cơ quan <span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" type="text" name="department" id="department" value="@studentInfo.department"></td>
+                        </tr>
+                        <tr id="tr_">
+                            <td class="tdLeftSignup">Chia sẻ về bản thân :</td>
+                            <td><textarea cols="70" rows="7" name="editor1" id="editor1">@studentInfo.description</textarea>
+                            <td>
+                        </tr>
+                        <tr>
+                            <td class="tdLeftSignup">Cho phép hiển thị các thông tin :</td>
+                            <td>
+                                <div class="quydinhchung" style="height: 140px; padding: 5px 10px;">
+                                    <p>
+                                        <label style="cursor: pointer;"><input type="checkbox" checked name="show_email" value="TRUE" /> Email</label>
+                                    </p>
+                                    <p>
+                                        <label style="cursor: pointer;"><input type="checkbox" checked name="show_tel" value="TRUE" /> Điện thoại</label>
+                                    </p>
+                                    <p>
+                                        <label style="cursor: pointer;"><input type="checkbox" checked name="show_address" value="TRUE" /> Địa chỉ liên hệ</label>
+                                    </p>
+                                    <p>
+                                        <label style="cursor: pointer;"><input type="checkbox" checked name="show_department" value="TRUE" /> Cơ quan</label>
+                                    </p>
+                                    <p>
+                                        <label style="cursor: pointer;"><input type="checkbox" checked name="show_shared" value="TRUE" /> Chia sẻ về bản thân</label>
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdLeftSignup">Ảnh đại diện :</td>
+                            <td>
+                                <input type="file" name="File" id="File">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdLeftSignup"></td>
+                            <td>
+                                <img style="width: 100px;" id="preview_image" src="@{if(studentInfo.avatar != null){ @Html.Raw(studentInfo.avatar)} else{ @Html.Raw("/Images/avatar_default.jpg")}}" alt="Ảnh đại diện" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="tdOk">
+                                <input type="button" value="Xác nhận" onclick="save();" style="border: none;" class="btn_login" />
+                                <a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu" class="btn_login">Quay lại</a>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+            <!-- end module dang ky -->
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+</div>
+<!--end main module-->
+
+<script type="text/javascript">
+    $('#specialized_id').select2();
+    $('#course_id').select2();
+
+    $(function () {
+        function readURL(input, target) {
+            var size = input.files[0];
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                var image_target = $(target);
+                reader.onload = function (e) {
+                    image_target.attr('src',
+                            e.target.result).show();
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("body").on("change", "#File", function () {
+            readURL(this, "#preview_image")
+        });
+    });
+
+    var ckeditor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, { language: languageCode });
+    }
+    $(function () { createEditor('vi', 'editor1') });
+
+    $('form').bind("keypress", function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    function save() {
+        resetValidate();
+        if (validate()) {
+            $('#description').val(CKEDITOR.instances.editor1.getData());
+            document.form.submit();
+        }
+    }
+
+    function resetValidate() {
+        $('#tr_full_name').removeClass("trErr");
+        $('#tr_lop').removeClass("trErr");
+        $('#tr_email').removeClass("trErr");
+        $('#tr_specialized_id').removeClass("trErr");
+        $('#tr_course_id').removeClass("trErr");
+        $('#tr_phone').removeClass("trErr");
+        $('#tr_address').removeClass("trErr");
+        $('#tr_department').removeClass("trErr");
+    }
+
+    function validate() {
+        var check = true;
+        var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+        if ($('#full_name').val() == "") {
+            $('#tr_full_name').addClass("trErr");
+            check = false;
+        }
+        if ($('#lop').val() == "") {
+            $('#tr_lop').addClass("trErr");
+            check = false;
+        }
+        if ($('#specialized_id').val() == 0) {
+            $('#tr_specialized_id').addClass("trErr");
+            check = false;
+        }
+        if ($('#course_id').val() == 0) {
+            $('#tr_course_id').addClass("trErr");
+            check = false;
+        }
+        if ($('#email').val() == "") {
+            $('#tr_email').addClass("trErr");
+            check = false;
+        } else if (!reg.test($('#email').val())) {
+            $('#tr_email').addClass("trErr");
+            check = false;
+        }
+        if ($('#phone').val() == "") {
+            $('#tr_phone').addClass("trErr");
+            check = false;
+        }
+        if ($('#address').val() == "") {
+            $('#tr_address').addClass("trErr");
+            check = false;
+        }
+        if ($('#department').val() == "") {
+            $('#tr_department').addClass("trErr");
+            check = false;
+        }
+        return check;
+    }
+</script>

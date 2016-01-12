@@ -1,0 +1,371 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var userInfo = (thanhhoa.gov.vn.Models.gov_user)ViewData["userInfo"];
+    var error = (String)ViewData["error"];
+    var message = (String)ViewData["message"];
+}
+<style>
+    .panel-header-new {
+        font-size: 20px;
+        padding-left: 0px;
+    }
+
+    .input-file-row-1:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
+    }
+
+    .input-file-row-1 {
+        display: inline-block;
+        margin-top: 25px;
+        position: relative;
+    }
+
+    #preview_image {
+        width: 90px;
+        height: 90px;
+        margin: 2px 0px 0px 5px;
+        border-radius: 10px;
+    }
+
+    .upload-file-container {
+        position: relative;
+        width: 100px;
+        height: 137px;
+        overflow: hidden;
+        background: url(/Images/AeUEdJb.png) top center no-repeat;
+        float: left;
+        margin-left: 23px;
+    }
+
+    .upload-file-container-text {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        color: #719d2b;
+        line-height: 17px;
+        text-align: center;
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100px;
+        height: 35px;
+    }
+
+        .upload-file-container-text > span {
+            border-bottom: 1px solid #719d2b;
+            cursor: pointer;
+        }
+
+    .one_opacity_0 {
+        opacity: 0;
+        height: 0;
+        width: 1px;
+        float: left;
+    }
+
+    .text-danger {
+        font-weight: normal;
+    }
+</style>
+
+<section id="content">
+    <section class="vbox">
+        <header class="header bg-white b-b b-light">
+            <p style="font-weight: bold; font-size: 15px;">Thông tin cá nhân</p>
+        </header>
+        <section class="scrollable">
+            <section class="hbox stretch">
+                <aside class="aside-lg bg-light lter b-r">
+                    <section class="vbox">
+                        <section class="scrollable">
+                            <div class="wrapper">
+                                <div class="clearfix m-b">
+                                    <a href="#" class="pull-left thumb m-r">
+                                        <img src="@userInfo.avatar" class="img-circle">
+                                    </a>
+                                    <div class="clear">
+                                        <div class="h4 m-t-xs m-b-xs">@userInfo.family_name @userInfo.first_name</div>
+                                        <small class="text-muted"><i class="fa fa-map-marker"></i> @userInfo.address</small>
+                                    </div>
+                                </div>
+                                <div class="btn-group btn-group-justified m-b">
+                                    <a class="btn btn-default btn-rounded" href="javascript: changeHide();">
+                                        <i class="fa fa-edit"></i> Thay đổi thông tin cá nhân
+                                    </a>
+                                </div>
+                                <div class="btn-group btn-group-justified m-b">
+                                    <a class="btn btn-default btn-rounded" href="javascript: changePassword();">
+                                        <i class="fa fa-unlock"></i> Thay đổi Mật khẩu
+                                    </a>
+                                </div>
+                                <div>
+                                    <small class="text-uc text-xs text-muted">CHỨC VỤ</small>
+                                    <p>@userInfo.gov_role.role_name</p>
+                                    <small class="text-uc text-xs text-muted">BỘ PHẬN</small>
+                                    <p>@userInfo.gov_department.name</p>
+                                    <small class="text-uc text-xs text-muted">THÔNG TIN CÁ NHÂN</small>
+                                    <p>Họ tên: @userInfo.family_name @userInfo.first_name
+                                    <br/>Giới tính: @{if(userInfo.sex == true){ @Html.Raw("Nam")} else {@Html.Raw(" Nữ")}}
+                                    <br/>Ngày sinh: @userInfo.birth_day
+                                    <br/>Email: @userInfo.email
+                                    <br/>Tel: @userInfo.mobile
+                                    <br/>Di động: @userInfo.phone
+                                    <br/>Địa chỉ: @userInfo.address</br>
+
+                                    <div class="line"></div>
+                                    <small class="text-uc text-xs text-muted">Liên kết</small>
+                                    <p class="m-t-sm">
+                                        <a target="_blank" href="https://twitter.com" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-twitter"></i></a> 
+                                        <a target="_blank" href="http://www.facebook.com.vn" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-facebook"></i></a> 
+                                        <a target="_blank" href="http://www.googleplus.com" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </aside>
+                <aside class="bg-white">
+                    <section class="vbox">
+                        <div style="padding: 5px;" id="div-message">
+                            @{
+                                if (message != null)
+                                {
+                                    <div style="color: #118B11; background-color: #FAFAFA;; border: 1px solid #118B11; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; ">
+                                        <strong>@Html.Raw(message)</strong>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        
+                        <div id="div-content" style="display: none; padding: 5px">
+                            <form class="bs-example form-horizontal" data-validate="parsley"
+                                  enctype="multipart/form-data" action="ChangeProfile" method="post"
+                                  name="changeProfileForm">
+                                <input type="hidden" name="id" value="@userInfo.id" />
+                                <input type="hidden" name="username" value="@userInfo.username" />
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Cập nhật thông tin tài khoản
+                                </h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Tài khoản đăng
+                                        nhập <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-3">
+                                        <input type="text" disabled value="@userInfo.username" class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Họ đệm <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="family_name" value="@userInfo.family_name"
+                                               class="form-control input-sm"
+                                               data-required="true" placeholder="Họ đệm">
+                                    </div>
+                                    <span class="col-lg-1 control-span">
+                                        Tên <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="first_name" value="@userInfo.first_name"
+                                               class="form-control input-sm" data-required="true"
+                                               placeholder="Tên">
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">Ngày sinh:</span>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="birth_day" value="@userInfo.birth_day"
+                                               class="form-control input-sm" placeholder="Ngày sinh">
+                                    </div>
+                                    <span class="col-lg-1 control-span m-l">Giới tính:</span>
+                                    <div class="col-lg-2">
+                                        <select name="sex" class="form-control input-sm">
+                                            <option value="true" @if(userInfo.sex == true){@Html.Raw(" selected")}>Nam</option>
+                                            <option value="false" @if(userInfo.sex == false){@Html.Raw(" selected")}>Nữ</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">Địa chỉ:</span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="address" value="@userInfo.address"
+                                               class="form-control input-sm" placeholder="Địa chỉ">
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">Email:</span>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="email" data-type="email" value="@userInfo.email"
+                                               class="form-control input-sm" placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Điện thoại cố
+                                        định:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="phone" value="@userInfo.phone"
+                                               class="form-control input-sm" data-type="phone"
+                                               placeholder="Điện thoại cố định">
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Điện thoại di
+                                        động:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <input type="text" name="mobile" class="form-control input-sm" value="@userInfo.mobile"
+                                               data-type="phone" placeholder="Điện thoại di động">
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l"></span>
+                                    <div class="col-lg-4">
+                                        <label><input type="checkbox" name="is_shared" value="TRUE" @if (userInfo.is_shared) { @Html.Raw("checked") } /> Cho phép hiển thị thông tin cá nhân trên danh bạ</label>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <fieldset>
+                                        <div class="input-file-row-1">
+                                            <div class="upload-file-container">
+                                                <img id="preview_image" src="@userInfo.avatar" alt="" />
+                                                <div class="upload-file-container-text">
+                                                    <div class='one_opacity_0'>
+                                                        <input type="file" name="File" id="File">
+                                                    </div>
+                                                    <span> Ảnh đại diện </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in" style="margin-left: 0px; margin-right: 0px;"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l"></span>
+                                    <div class="col-lg-6">
+                                        <button type="submit" class="btn btn-sm btn-primary"
+                                                style="width: 90px;">
+                                            Lưu
+                                        </button>
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <input hidden id="i-password" value="@error"/>
+                        <div id="div-password" style="display: none; padding: 5px;">
+                            
+                            <form class="bs-example form-horizontal" data-validate="parsley"
+                                  enctype="multipart/form-data" action="ChangePassword" method="post"
+                                  name="changePasswordForm" >
+                                <input type="hidden" name="username" value="@userInfo.username" />
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thay đổi mật khẩu
+                                </h5>
+                                @{
+                                    if (error != null) { 
+                                        <div style="color: red; background-color: #FAFAFA; border: 1px solid red ; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
+                                            <strong>@Html.Raw(error)</strong>
+                                        </div>
+                                    }
+                                }
+
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-3 control-span m-l">Mật khẩu cũ <font color="red">*</font>:</span>
+                                    <div class="col-lg-7">
+                                        <input type="password" name="passwordOld"
+                                               data-required="true"
+                                               data-required-message="Mật khẩu cũ không được bỏ trống"
+                                               class="form-control input-sm" placeholder="Nhập vào mật khẩu cũ">
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-3 control-span m-l">Mật khẩu mới <font color="red">*</font>:</span>
+                                    <div class="col-lg-7">
+                                        <input type="password" name="passwordNew" id="passwordNew"
+                                               data-required="true"
+                                               data-required-message="Mật khẩu mới không được bỏ trống"
+                                               class="form-control input-sm" placeholder="Nhập vào mật khẩu mới">
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-3 control-span m-l">Xác nhận mật khẩu <font color="red">*</font>:</span>
+                                    <div class="col-lg-7">
+                                        <input type="password" name="confirmPasswordNew"
+                                               data-equalto="#passwordNew"
+                                               data-required="true"
+                                               data-required-message="Nhập lại mật khẩu không được bỏ trống"
+                                               data-equalto-message="Xác nhận mật khẩu không chính xác"
+                                               class="form-control input-sm" placeholder="Xác nhận mật khẩu">
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in" style="margin-left: 0px; margin-right: 0px;"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l"></span>
+                                    <div class="col-lg-6">
+                                        <button type="submit" class="btn btn-sm btn-primary"
+                                                style="width: 90px;">
+                                            Lưu
+                                        </button>
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </aside>
+            </section>
+        </section>
+    </section>
+    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+</section>
+
+<script>
+    $(function () {
+        function readURL(input, target) {
+            var size = input.files[0];
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                var image_target = $(target);
+                reader.onload = function (e) {
+                    image_target.attr('src',
+                            e.target.result).show();
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("body").on("change", "#File", function () {
+            readURL(this, "#preview_image")
+        });
+    });
+
+    if ($('#i-password').val() != "") {
+        $('#div-password').css("display", "block");
+    }
+
+    function changeHide() {
+        $('#div-content').slideToggle("slow");
+        $('#div-password').css("display", "none");
+        $('#div-message').css("display", "none");
+    }
+
+    function changePassword() {
+        $('#div-content').css("display", "none");
+        $('#div-password').slideToggle("slow");
+        $('#div-message').css("display", "none");
+    }
+
+</script>

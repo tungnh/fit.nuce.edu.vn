@@ -1,0 +1,117 @@
+/*
+    Colorbox Core Style:
+*/
+.wrapidData {
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+
+.wrapimgLightbox {
+	display:block;
+	float:left;
+	height:100%;
+	width:100%;
+	background:black;
+}
+.wrapimgLightbox div {
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	display:block;
+}
+.wrapimgLightbox div img {
+	display:block;
+	max-width:100%;
+	width:auto;
+	height:100%;
+	margin:0 auto;
+}
+/*end left*/
+
+.wrapCommentImg {
+	display:block;
+	float:right;
+	width:26%;
+	height:100%;
+	padding:10px 2%;
+	background:white;
+	position:relative;
+}
+.nameImage {
+	display:block;
+	max-height:3.5em;
+	overflow:hidden;
+}
+.activeComment {
+	margin:10px 0;
+	color:#6d84b4;
+}
+.activeComment span {
+	margin-left:5px;
+}
+.arrow8 {
+	display:block;
+	height:5px;
+	width:100%;
+	background:#fff url(../../img/arrow8.png) 5px 0 no-repeat;
+}
+.wrapTotalCom {
+	display:block;
+	background:#EDEFF4;
+	height:65%\0/;
+	max-height:65%;
+	overflow-y:auto;
+	padding:0;
+}
+.comArow {
+	display:block;
+	padding:3px 5px;
+	font-size:11px;
+	color:#333;
+	border-bottom:1px solid white;
+}
+.comArow strong {
+	color:#3b5998;
+}
+.comArow p {
+	margin:5px;
+}
+.comArow span {
+	color:#3b5998;
+	text-align:right;
+}
+
+.postComt {
+	display:block;
+	width:auto;
+	background:#EDEFF4;
+	padding:10px;
+	padding-top:5px;
+	border-top:1px solid white;
+}
+.postComt p {
+	font-size:11px;
+	font-weight:bold;
+	color:#6d84b4;
+}
+.postComt input {
+	border:1px solid #eee;
+	background:white;
+	height:22px;
+	width:94%;
+	padding:0 3%;
+}
+
+@media only screen and (max-height: 400px) {
+.comArow p {
+	color:red;
+}
+.wrapTotalCom {
+	height:40%\0/;
+	max-height:40%;
+}
+.nameImage {
+	height:2.5em;
+}
+}

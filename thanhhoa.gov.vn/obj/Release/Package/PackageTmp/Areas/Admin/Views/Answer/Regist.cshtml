@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Thêm mới lịch công tác";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var questionInfo = (thanhhoa.gov.vn.Models.QuestionModels)ViewData["questionInfo"];
+}
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i> Danh sách câu hỏi
+                    </a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Danh sách câu trả lời
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Thêm mới câu trả lời
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới câu trả lời
+                                </h5>
+                                <input hidden name="questionId" value="@questionInfo.Id" />
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Lĩnh vực câu hỏi:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <table class="table m-b-none">
+                                            <tr>
+                                                <td style="border-left: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1; ">@questionInfo.CategoryId</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                         Nội dung câu hỏi:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <table class="table m-b-none">
+                                            <tr>
+                                                <td style="border-left: 1px solid #e1e1e1; border-bottom: 1px solid #e1e1e1; ">@questionInfo.QuestionContent</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Nội dung trả lời <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <textarea cols="50" rows="3" class="form-control input-sm parsley-validated" data-required="true" name="answerContent"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="/admin/question/answer?questionid=@questionInfo.Id" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+</script>
+

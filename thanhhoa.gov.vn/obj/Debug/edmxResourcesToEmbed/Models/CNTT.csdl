@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CNTTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="gov_access_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="time_access" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="client_info" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username_access" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type_action" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_advertise">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="attach_file" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="type_link" Type="Byte" />
+    <Property Name="department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="order_number" Type="Int32" />
+    <Property Name="begin_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="location" Type="Int32" />
+    <Property Name="active_flg" Type="Byte" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="update_datetime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_album">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="album_title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total_view" Type="Int32" />
+    <Property Name="order_number" Type="Int32" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_gallery" Relationship="Self.gov_album_gallery" FromRole="gov_album" ToRole="gov_gallery" />
+  </EntityType>
+  <EntityType Name="gov_answer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="question_id" Type="Int32" Nullable="false" />
+    <Property Name="hidden_flg" Type="Byte" Nullable="false" />
+    <Property Name="answer_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="answer_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="answer_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_question" Relationship="Self.gov_answer_question_fk" FromRole="gov_answer" ToRole="gov_question" />
+  </EntityType>
+  <EntityType Name="gov_comments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="full_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="parent_id" Type="Int32" />
+    <Property Name="news_id" Type="Int32" Nullable="false" />
+    <Property Name="comments_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="total_like" Type="Int32" />
+    <Property Name="like_info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="active_flg" Type="Byte" Nullable="false" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_department">
+    <Key>
+      <PropertyRef Name="dept_id" />
+    </Key>
+    <Property Name="dept_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dept_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_doc_draft" Relationship="Self.gov_doc_draft_ibfk_2" FromRole="gov_department" ToRole="gov_doc_draft" />
+  </EntityType>
+  <EntityType Name="gov_district">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="level" Type="Int32" Nullable="false" />
+    <Property Name="decription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="link" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="order_number" Type="Int32" Nullable="false" />
+    <Property Name="show_map" Type="Byte" Nullable="false" />
+    <Property Name="coordinates" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_level_district" Relationship="Self.gov_district_ibfk_1" FromRole="gov_district" ToRole="gov_level_district" />
+  </EntityType>
+  <EntityType Name="gov_doc_draft">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="doc_code" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="doc_name" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="doc_summany" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="doc_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="kind_id" Type="Int32" Nullable="false" />
+    <Property Name="department_id" Type="Int32" Nullable="false" />
+    <Property Name="date_start_promulgate" Type="DateTime" Precision="3" />
+    <Property Name="date_end_promulgate" Type="DateTime" Precision="3" />
+    <Property Name="user_sign" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active_flg" Type="Byte" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="attach_file_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="attach_file_path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="gov_department" Relationship="Self.gov_doc_draft_ibfk_2" FromRole="gov_doc_draft" ToRole="gov_department" />
+    <NavigationProperty Name="gov_doc_kind" Relationship="Self.gov_doc_draft_ibfk_1" FromRole="gov_doc_draft" ToRole="gov_doc_kind" />
+  </EntityType>
+  <EntityType Name="gov_doc_kind">
+    <Key>
+      <PropertyRef Name="kid" />
+    </Key>
+    <Property Name="kid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kcode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="kname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_doc_draft" Relationship="Self.gov_doc_draft_ibfk_1" FromRole="gov_doc_kind" ToRole="gov_doc_draft" />
+  </EntityType>
+  <EntityType Name="gov_gallery">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="total_view" Type="Int32" />
+    <Property Name="attach_filepath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_album" Relationship="Self.gov_album_gallery" FromRole="gov_gallery" ToRole="gov_album" />
+  </EntityType>
+  <EntityType Name="gov_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hidden_flg" Type="Byte" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="gov_group_members" Relationship="Self.gov_group_members_ibfk_1" FromRole="gov_group" ToRole="gov_group_members" />
+    <NavigationProperty Name="gov_group_permission" Relationship="Self.gov_group_permission_ibfk_2" FromRole="gov_group" ToRole="gov_group_permission" />
+  </EntityType>
+  <EntityType Name="gov_group_members">
+    <Key>
+      <PropertyRef Name="group_id" />
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_group" Relationship="Self.gov_group_members_ibfk_1" FromRole="gov_group_members" ToRole="gov_group" />
+    <NavigationProperty Name="gov_user" Relationship="Self.gov_group_members_ibfk_2" FromRole="gov_group_members" ToRole="gov_user" />
+  </EntityType>
+  <EntityType Name="gov_group_permission">
+    <Key>
+      <PropertyRef Name="group_id" />
+      <PropertyRef Name="module_id" />
+    </Key>
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <Property Name="module_id" Type="Int32" Nullable="false" />
+    <Property Name="permission_number" Type="Int32" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_group" Relationship="Self.gov_group_permission_ibfk_2" FromRole="gov_group_permission" ToRole="gov_group" />
+  </EntityType>
+  <EntityType Name="gov_key_band">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="key_band" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_level_district">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="order_number" Type="Int32" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_district" Relationship="Self.gov_district_ibfk_1" FromRole="gov_level_district" ToRole="gov_district" />
+  </EntityType>
+  <EntityType Name="gov_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="id_parent" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ishome" Type="Byte" Nullable="false" />
+    <Property Name="order_number" Type="Int32" />
+    <Property Name="link" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="active_flg" Type="Byte" Nullable="false" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="department" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hidden_flg" Type="Byte" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="attach_file_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="attach_file_path" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="question_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="question_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_answer" Relationship="Self.gov_answer_question_fk" FromRole="gov_question" ToRole="gov_answer" />
+    <NavigationProperty Name="gov_question_category" Relationship="Self.gov_question_ibfk_1" FromRole="gov_question" ToRole="gov_question_category" />
+  </EntityType>
+  <EntityType Name="gov_question_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="order_number" Type="Int32" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_question" Relationship="Self.gov_question_ibfk_1" FromRole="gov_question_category" ToRole="gov_question" />
+  </EntityType>
+  <EntityType Name="gov_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_user" Relationship="Self.gov_user_ibfk_1" FromRole="gov_role" ToRole="gov_user" />
+  </EntityType>
+  <EntityType Name="gov_user">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="family_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="birth_day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sex" Type="Byte" Nullable="false" />
+    <Property Name="mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="active_flg" Type="Byte" Nullable="false" />
+    <Property Name="hidden_flg" Type="Byte" Nullable="false" />
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+    <Property Name="district_id" Type="Int32" />
+    <Property Name="update_user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_group_members" Relationship="Self.gov_group_members_ibfk_2" FromRole="gov_user" ToRole="gov_group_members" />
+    <NavigationProperty Name="gov_role" Relationship="Self.gov_user_ibfk_1" FromRole="gov_user" ToRole="gov_role" />
+  </EntityType>
+  <Association Name="gov_answer_question_fk">
+    <End Role="gov_question" Type="Self.gov_question" Multiplicity="1" />
+    <End Role="gov_answer" Type="Self.gov_answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_answer">
+        <PropertyRef Name="question_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_doc_draft_ibfk_2">
+    <End Role="gov_department" Type="Self.gov_department" Multiplicity="1" />
+    <End Role="gov_doc_draft" Type="Self.gov_doc_draft" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_department">
+        <PropertyRef Name="dept_id" />
+      </Principal>
+      <Dependent Role="gov_doc_draft">
+        <PropertyRef Name="department_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_district_ibfk_1">
+    <End Role="gov_level_district" Type="Self.gov_level_district" Multiplicity="1" />
+    <End Role="gov_district" Type="Self.gov_district" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_level_district">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_district">
+        <PropertyRef Name="level" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_doc_draft_ibfk_1">
+    <End Role="gov_doc_kind" Type="Self.gov_doc_kind" Multiplicity="1" />
+    <End Role="gov_doc_draft" Type="Self.gov_doc_draft" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_doc_kind">
+        <PropertyRef Name="kid" />
+      </Principal>
+      <Dependent Role="gov_doc_draft">
+        <PropertyRef Name="kind_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_group_members_ibfk_1">
+    <End Role="gov_group" Type="Self.gov_group" Multiplicity="1" />
+    <End Role="gov_group_members" Type="Self.gov_group_members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_group_members">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_group_permission_ibfk_2">
+    <End Role="gov_group" Type="Self.gov_group" Multiplicity="1" />
+    <End Role="gov_group_permission" Type="Self.gov_group_permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_group_permission">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_group_members_ibfk_2">
+    <End Role="gov_user" Type="Self.gov_user" Multiplicity="1" />
+    <End Role="gov_group_members" Type="Self.gov_group_members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="gov_group_members">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_question_ibfk_1">
+    <End Role="gov_question_category" Type="Self.gov_question_category" Multiplicity="1" />
+    <End Role="gov_question" Type="Self.gov_question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_question_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_question">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_user_ibfk_1">
+    <End Role="gov_role" Type="Self.gov_role" Multiplicity="1" />
+    <End Role="gov_user" Type="Self.gov_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_user">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_album_gallery">
+    <End Role="gov_album" Type="Self.gov_album" Multiplicity="*" />
+    <End Role="gov_gallery" Type="Self.gov_gallery" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="CNTTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="gov_access_history" EntityType="Self.gov_access_history" />
+    <EntitySet Name="gov_advertise" EntityType="Self.gov_advertise" />
+    <EntitySet Name="gov_album" EntityType="Self.gov_album" />
+    <EntitySet Name="gov_answer" EntityType="Self.gov_answer" />
+    <EntitySet Name="gov_comments" EntityType="Self.gov_comments" />
+    <EntitySet Name="gov_department" EntityType="Self.gov_department" />
+    <EntitySet Name="gov_district" EntityType="Self.gov_district" />
+    <EntitySet Name="gov_doc_draft" EntityType="Self.gov_doc_draft" />
+    <EntitySet Name="gov_doc_kind" EntityType="Self.gov_doc_kind" />
+    <EntitySet Name="gov_gallery" EntityType="Self.gov_gallery" />
+    <EntitySet Name="gov_group" EntityType="Self.gov_group" />
+    <EntitySet Name="gov_group_members" EntityType="Self.gov_group_members" />
+    <EntitySet Name="gov_group_permission" EntityType="Self.gov_group_permission" />
+    <EntitySet Name="gov_key_band" EntityType="Self.gov_key_band" />
+    <EntitySet Name="gov_level_district" EntityType="Self.gov_level_district" />
+    <EntitySet Name="gov_menu" EntityType="Self.gov_menu" />
+    <EntitySet Name="gov_question" EntityType="Self.gov_question" />
+    <EntitySet Name="gov_question_category" EntityType="Self.gov_question_category" />
+    <EntitySet Name="gov_role" EntityType="Self.gov_role" />
+    <EntitySet Name="gov_user" EntityType="Self.gov_user" />
+    <AssociationSet Name="gov_answer_question_fk" Association="Self.gov_answer_question_fk">
+      <End Role="gov_question" EntitySet="gov_question" />
+      <End Role="gov_answer" EntitySet="gov_answer" />
+    </AssociationSet>
+    <AssociationSet Name="gov_doc_draft_ibfk_2" Association="Self.gov_doc_draft_ibfk_2">
+      <End Role="gov_department" EntitySet="gov_department" />
+      <End Role="gov_doc_draft" EntitySet="gov_doc_draft" />
+    </AssociationSet>
+    <AssociationSet Name="gov_district_ibfk_1" Association="Self.gov_district_ibfk_1">
+      <End Role="gov_level_district" EntitySet="gov_level_district" />
+      <End Role="gov_district" EntitySet="gov_district" />
+    </AssociationSet>
+    <AssociationSet Name="gov_doc_draft_ibfk_1" Association="Self.gov_doc_draft_ibfk_1">
+      <End Role="gov_doc_kind" EntitySet="gov_doc_kind" />
+      <End Role="gov_doc_draft" EntitySet="gov_doc_draft" />
+    </AssociationSet>
+    <AssociationSet Name="gov_group_members_ibfk_1" Association="Self.gov_group_members_ibfk_1">
+      <End Role="gov_group" EntitySet="gov_group" />
+      <End Role="gov_group_members" EntitySet="gov_group_members" />
+    </AssociationSet>
+    <AssociationSet Name="gov_group_permission_ibfk_2" Association="Self.gov_group_permission_ibfk_2">
+      <End Role="gov_group" EntitySet="gov_group" />
+      <End Role="gov_group_permission" EntitySet="gov_group_permission" />
+    </AssociationSet>
+    <AssociationSet Name="gov_group_members_ibfk_2" Association="Self.gov_group_members_ibfk_2">
+      <End Role="gov_user" EntitySet="gov_user" />
+      <End Role="gov_group_members" EntitySet="gov_group_members" />
+    </AssociationSet>
+    <AssociationSet Name="gov_question_ibfk_1" Association="Self.gov_question_ibfk_1">
+      <End Role="gov_question_category" EntitySet="gov_question_category" />
+      <End Role="gov_question" EntitySet="gov_question" />
+    </AssociationSet>
+    <AssociationSet Name="gov_user_ibfk_1" Association="Self.gov_user_ibfk_1">
+      <End Role="gov_role" EntitySet="gov_role" />
+      <End Role="gov_user" EntitySet="gov_user" />
+    </AssociationSet>
+    <AssociationSet Name="gov_album_gallery" Association="Self.gov_album_gallery">
+      <End Role="gov_album" EntitySet="gov_album" />
+      <End Role="gov_gallery" EntitySet="gov_gallery" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

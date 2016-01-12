@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Cập nhật cơ quan ban hành";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var course = (thanhhoa.gov.vn.Models.gov_course)ViewData["course"];
+}
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-gears"></i> Quản trị hệ thống
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách khóa học
+                </li>
+                <li class="active">
+                    <i class="fa fa-edit"></i> Cập nhật khóa học
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveEdit">
+                                @{
+                                    if (course != null)
+                                    {
+                                        <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                            <i class="fa fa-foursquare"></i> Cập nhật khóa học
+                                        </h5>
+                                        <input type="hidden" name="id" value="@course.id" />
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Tên khóa học <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-sm-6">
+                                                <input type="text" size="30" name="course_name" value="@course.course_name" class="form-control input-sm parsley-validated" data-required="true"
+                                                       data-required-message="Trường Tên khóa học không được bỏ trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs m-t-md">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Người tạo:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                 <strong><i>@course.entry_username</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Thời gian tạo:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                 <strong><i>@course.entry_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Người cập nhật cuối:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                 <strong><i>@course.update_username</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Thời gian cập nhật cuối:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@course.update_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="line line-dashed line-lg pull-in"></div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l-md"></span>
+                                            <div class="col-lg-6">
+                                                <input type="submit" class="btn btn-sm btn-primary"
+                                                       style="width: 90px;" value="Lưu" />
+                                                <a href="index" class="btn btn-sm btn-danger"
+                                                   data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<font color='red'><b>Khóa học không tồn tại, hoặc đã bị xóa!</b></font> Nhấn vào <a href='index' style='text-decoration: underline;'>đây</a> để quay lại");
+                                    }
+                                }
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+</script>

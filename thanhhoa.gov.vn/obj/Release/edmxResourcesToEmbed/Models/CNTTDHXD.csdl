@@ -1,0 +1,921 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CNTTDHXDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CNTTDHXDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="gov_access_history" EntityType="CNTTDHXDModel.gov_access_history" />
+    <EntitySet Name="gov_access_module" EntityType="CNTTDHXDModel.gov_access_module" />
+    <EntitySet Name="gov_access_type" EntityType="CNTTDHXDModel.gov_access_type" />
+    <EntitySet Name="gov_advertise" EntityType="CNTTDHXDModel.gov_advertise" />
+    <EntitySet Name="gov_album_gallery" EntityType="CNTTDHXDModel.gov_album_gallery" />
+    <EntitySet Name="gov_answer" EntityType="CNTTDHXDModel.gov_answer" />
+    <EntitySet Name="gov_comments" EntityType="CNTTDHXDModel.gov_comments" />
+    <EntitySet Name="gov_course" EntityType="CNTTDHXDModel.gov_course" />
+    <EntitySet Name="gov_department" EntityType="CNTTDHXDModel.gov_department" />
+    <EntitySet Name="gov_district" EntityType="CNTTDHXDModel.gov_district" />
+    <EntitySet Name="gov_doc_draft" EntityType="CNTTDHXDModel.gov_doc_draft" />
+    <EntitySet Name="gov_doc_kind" EntityType="CNTTDHXDModel.gov_doc_kind" />
+    <EntitySet Name="gov_gallery" EntityType="CNTTDHXDModel.gov_gallery" />
+    <EntitySet Name="gov_group" EntityType="CNTTDHXDModel.gov_group" />
+    <EntitySet Name="gov_group_members" EntityType="CNTTDHXDModel.gov_group_members" />
+    <EntitySet Name="gov_group_permission" EntityType="CNTTDHXDModel.gov_group_permission" />
+    <EntitySet Name="gov_key_band" EntityType="CNTTDHXDModel.gov_key_band" />
+    <EntitySet Name="gov_level_district" EntityType="CNTTDHXDModel.gov_level_district" />
+    <EntitySet Name="gov_menu" EntityType="CNTTDHXDModel.gov_menu" />
+    <EntitySet Name="gov_message_system" EntityType="CNTTDHXDModel.gov_message_system" />
+    <EntitySet Name="gov_news" EntityType="CNTTDHXDModel.gov_news" />
+    <EntitySet Name="gov_notebook" EntityType="CNTTDHXDModel.gov_notebook" />
+    <EntitySet Name="gov_notify" EntityType="CNTTDHXDModel.gov_notify" />
+    <EntitySet Name="gov_person" EntityType="CNTTDHXDModel.gov_person" />
+    <EntitySet Name="gov_question" EntityType="CNTTDHXDModel.gov_question" />
+    <EntitySet Name="gov_question_category" EntityType="CNTTDHXDModel.gov_question_category" />
+    <EntitySet Name="gov_role" EntityType="CNTTDHXDModel.gov_role" />
+    <EntitySet Name="gov_slide_home" EntityType="CNTTDHXDModel.gov_slide_home" />
+    <EntitySet Name="gov_specialized" EntityType="CNTTDHXDModel.gov_specialized" />
+    <EntitySet Name="gov_statistic_access" EntityType="CNTTDHXDModel.gov_statistic_access" />
+    <EntitySet Name="gov_system_config" EntityType="CNTTDHXDModel.gov_system_config" />
+    <EntitySet Name="gov_testscore" EntityType="CNTTDHXDModel.gov_testscore" />
+    <EntitySet Name="gov_type_news" EntityType="CNTTDHXDModel.gov_type_news" />
+    <EntitySet Name="gov_user" EntityType="CNTTDHXDModel.gov_user" />
+    <EntitySet Name="gov_video" EntityType="CNTTDHXDModel.gov_video" />
+    <EntitySet Name="gov_work_schedule" EntityType="CNTTDHXDModel.gov_work_schedule" />
+    <EntitySet Name="gov_work_time" EntityType="CNTTDHXDModel.gov_work_time" />
+    <EntitySet Name="sysdiagrams" EntityType="CNTTDHXDModel.sysdiagram" />
+    <AssociationSet Name="gov_access_history_fk1" Association="CNTTDHXDModel.gov_access_history_fk1">
+      <End Role="gov_access_type" EntitySet="gov_access_type" />
+      <End Role="gov_access_history" EntitySet="gov_access_history" />
+    </AssociationSet>
+    <AssociationSet Name="gov_access_type_fk1" Association="CNTTDHXDModel.gov_access_type_fk1">
+      <End Role="gov_access_module" EntitySet="gov_access_module" />
+      <End Role="gov_access_type" EntitySet="gov_access_type" />
+    </AssociationSet>
+    <AssociationSet Name="gov_album_gallery_ibfk_2" Association="CNTTDHXDModel.gov_album_gallery_ibfk_2">
+      <End Role="gov_gallery" EntitySet="gov_gallery" />
+      <End Role="gov_album_gallery" EntitySet="gov_album_gallery" />
+    </AssociationSet>
+    <AssociationSet Name="gov_answer_question_fk" Association="CNTTDHXDModel.gov_answer_question_fk">
+      <End Role="gov_question" EntitySet="gov_question" />
+      <End Role="gov_answer" EntitySet="gov_answer" />
+    </AssociationSet>
+    <AssociationSet Name="fk_gov_notebook_course" Association="CNTTDHXDModel.fk_gov_notebook_course">
+      <End Role="gov_course" EntitySet="gov_course" />
+      <End Role="gov_notebook" EntitySet="gov_notebook" />
+    </AssociationSet>
+    <AssociationSet Name="fk_gov_person_course" Association="CNTTDHXDModel.fk_gov_person_course">
+      <End Role="gov_course" EntitySet="gov_course" />
+      <End Role="gov_person" EntitySet="gov_person" />
+    </AssociationSet>
+    <AssociationSet Name="gov_user_ibfk_2" Association="CNTTDHXDModel.gov_user_ibfk_2">
+      <End Role="gov_department" EntitySet="gov_department" />
+      <End Role="gov_user" EntitySet="gov_user" />
+    </AssociationSet>
+    <AssociationSet Name="gov_district_ibfk_1" Association="CNTTDHXDModel.gov_district_ibfk_1">
+      <End Role="gov_level_district" EntitySet="gov_level_district" />
+      <End Role="gov_district" EntitySet="gov_district" />
+    </AssociationSet>
+    <AssociationSet Name="gov_group_members_ibfk_1" Association="CNTTDHXDModel.gov_group_members_ibfk_1">
+      <End Role="gov_group" EntitySet="gov_group" />
+      <End Role="gov_group_members" EntitySet="gov_group_members" />
+    </AssociationSet>
+    <AssociationSet Name="gov_group_permission_ibfk_2" Association="CNTTDHXDModel.gov_group_permission_ibfk_2">
+      <End Role="gov_group" EntitySet="gov_group" />
+      <End Role="gov_group_permission" EntitySet="gov_group_permission" />
+    </AssociationSet>
+    <AssociationSet Name="gov_group_members_ibfk_2" Association="CNTTDHXDModel.gov_group_members_ibfk_2">
+      <End Role="gov_user" EntitySet="gov_user" />
+      <End Role="gov_group_members" EntitySet="gov_group_members" />
+    </AssociationSet>
+    <AssociationSet Name="gov_news_ibfk_4" Association="CNTTDHXDModel.gov_news_ibfk_4">
+      <End Role="gov_menu" EntitySet="gov_menu" />
+      <End Role="gov_news" EntitySet="gov_news" />
+    </AssociationSet>
+    <AssociationSet Name="gov_message_system_user" Association="CNTTDHXDModel.gov_message_system_user">
+      <End Role="gov_user" EntitySet="gov_user" />
+      <End Role="gov_message_system" EntitySet="gov_message_system" />
+    </AssociationSet>
+    <AssociationSet Name="fk_gov_specialized_class" Association="CNTTDHXDModel.fk_gov_specialized_class">
+      <End Role="gov_specialized" EntitySet="gov_specialized" />
+      <End Role="gov_notebook" EntitySet="gov_notebook" />
+    </AssociationSet>
+    <AssociationSet Name="fk_gov_person_specialized" Association="CNTTDHXDModel.fk_gov_person_specialized">
+      <End Role="gov_specialized" EntitySet="gov_specialized" />
+      <End Role="gov_person" EntitySet="gov_person" />
+    </AssociationSet>
+    <AssociationSet Name="gov_question_ibfk_1" Association="CNTTDHXDModel.gov_question_ibfk_1">
+      <End Role="gov_question_category" EntitySet="gov_question_category" />
+      <End Role="gov_question" EntitySet="gov_question" />
+    </AssociationSet>
+    <AssociationSet Name="gov_user_ibfk_1" Association="CNTTDHXDModel.gov_user_ibfk_1">
+      <End Role="gov_role" EntitySet="gov_role" />
+      <End Role="gov_user" EntitySet="gov_user" />
+    </AssociationSet>
+    <AssociationSet Name="gov_work_schedule_ibfk_2" Association="CNTTDHXDModel.gov_work_schedule_ibfk_2">
+      <End Role="gov_work_time" EntitySet="gov_work_time" />
+      <End Role="gov_work_schedule" EntitySet="gov_work_schedule" />
+    </AssociationSet>
+    <EntitySet Name="gov_album" EntityType="CNTTDHXDModel.gov_album" />
+    <AssociationSet Name="gov_album_gallery_ibfk_1" Association="CNTTDHXDModel.gov_album_gallery_ibfk_1">
+      <End Role="gov_album" EntitySet="gov_album" />
+      <End Role="gov_album_gallery" EntitySet="gov_album_gallery" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="gov_access_history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="time_access" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="client_info" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="public_info" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="username_access" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="type_access" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="gov_access_type" Relationship="CNTTDHXDModel.gov_access_history_fk1" FromRole="gov_access_history" ToRole="gov_access_type" />
+  </EntityType>
+  <EntityType Name="gov_access_module">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="module_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="gov_access_type" Relationship="CNTTDHXDModel.gov_access_type_fk1" FromRole="gov_access_module" ToRole="gov_access_type" />
+  </EntityType>
+  <EntityType Name="gov_access_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="type_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="module_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="gov_access_history" Relationship="CNTTDHXDModel.gov_access_history_fk1" FromRole="gov_access_type" ToRole="gov_access_history" />
+    <NavigationProperty Name="gov_access_module" Relationship="CNTTDHXDModel.gov_access_type_fk1" FromRole="gov_access_type" ToRole="gov_access_module" />
+  </EntityType>
+  <EntityType Name="gov_advertise">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="attach_file" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="type_link" Type="Boolean" />
+    <Property Name="department" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Int32" />
+    <Property Name="note" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="order_number" Type="Int32" />
+    <Property Name="begin_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="location" Type="Int32" />
+    <Property Name="active_flg" Type="Boolean" Nullable="false" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_album_gallery">
+    <Key>
+      <PropertyRef Name="album_id" />
+      <PropertyRef Name="gallery_id" />
+    </Key>
+    <Property Name="album_id" Type="Int32" Nullable="false" />
+    <Property Name="gallery_id" Type="Int32" Nullable="false" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_gallery" Relationship="CNTTDHXDModel.gov_album_gallery_ibfk_2" FromRole="gov_album_gallery" ToRole="gov_gallery" />
+    <NavigationProperty Name="gov_album" Relationship="CNTTDHXDModel.gov_album_gallery_ibfk_1" FromRole="gov_album_gallery" ToRole="gov_album" />
+  </EntityType>
+  <EntityType Name="gov_answer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="question_id" Type="Int32" Nullable="false" />
+    <Property Name="hidden_flg" Type="Boolean" Nullable="false" />
+    <Property Name="answer_content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="answer_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="answer_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_question" Relationship="CNTTDHXDModel.gov_answer_question_fk" FromRole="gov_answer" ToRole="gov_question" />
+  </EntityType>
+  <EntityType Name="gov_comments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="full_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="parent_id" Type="Int32" />
+    <Property Name="news_id" Type="Int32" Nullable="false" />
+    <Property Name="comments_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="total_like" Type="Int32" />
+    <Property Name="like_info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="active_flg" Type="Boolean" Nullable="false" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_course">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="course_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_notebook" Relationship="CNTTDHXDModel.fk_gov_notebook_course" FromRole="gov_course" ToRole="gov_notebook" />
+    <NavigationProperty Name="gov_person" Relationship="CNTTDHXDModel.fk_gov_person_course" FromRole="gov_course" ToRole="gov_person" />
+  </EntityType>
+  <EntityType Name="gov_department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="order_number" Type="Int32" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="is_home" Type="Boolean" Nullable="false" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_user" Relationship="CNTTDHXDModel.gov_user_ibfk_2" FromRole="gov_department" ToRole="gov_user" />
+  </EntityType>
+  <EntityType Name="gov_district">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="level" Type="Int32" Nullable="false" />
+    <Property Name="decription" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="order_number" Type="Int32" Nullable="false" />
+    <Property Name="show_map" Type="Boolean" Nullable="false" />
+    <Property Name="coordinates" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_level_district" Relationship="CNTTDHXDModel.gov_district_ibfk_1" FromRole="gov_district" ToRole="gov_level_district" />
+  </EntityType>
+  <EntityType Name="gov_doc_draft">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="doc_code" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="doc_name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="doc_summany" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="doc_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="doc_type" Type="Boolean" Nullable="false" />
+    <Property Name="score" Type="Double" />
+    <Property Name="date_start_promulgate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="user_sign" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="active_flg" Type="Boolean" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="attach_file_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="attach_file_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_doc_kind">
+    <Key>
+      <PropertyRef Name="kid" />
+    </Key>
+    <Property Name="kid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kcode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="kname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_gallery">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="total_view" Type="Int32" />
+    <Property Name="attach_filepath" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_album_gallery" Relationship="CNTTDHXDModel.gov_album_gallery_ibfk_2" FromRole="gov_gallery" ToRole="gov_album_gallery" />
+  </EntityType>
+  <EntityType Name="gov_group">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="group_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="hidden_flg" Type="Boolean" Nullable="false" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_group_members" Relationship="CNTTDHXDModel.gov_group_members_ibfk_1" FromRole="gov_group" ToRole="gov_group_members" />
+    <NavigationProperty Name="gov_group_permission" Relationship="CNTTDHXDModel.gov_group_permission_ibfk_2" FromRole="gov_group" ToRole="gov_group_permission" />
+  </EntityType>
+  <EntityType Name="gov_group_members">
+    <Key>
+      <PropertyRef Name="group_id" />
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_group" Relationship="CNTTDHXDModel.gov_group_members_ibfk_1" FromRole="gov_group_members" ToRole="gov_group" />
+    <NavigationProperty Name="gov_user" Relationship="CNTTDHXDModel.gov_group_members_ibfk_2" FromRole="gov_group_members" ToRole="gov_user" />
+  </EntityType>
+  <EntityType Name="gov_group_permission">
+    <Key>
+      <PropertyRef Name="group_id" />
+      <PropertyRef Name="module_id" />
+    </Key>
+    <Property Name="group_id" Type="Int32" Nullable="false" />
+    <Property Name="module_id" Type="Int32" Nullable="false" />
+    <Property Name="permission_number" Type="Int32" Nullable="false" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_group" Relationship="CNTTDHXDModel.gov_group_permission_ibfk_2" FromRole="gov_group_permission" ToRole="gov_group" />
+  </EntityType>
+  <EntityType Name="gov_key_band">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="key_band" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_level_district">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="order_number" Type="Int32" Nullable="false" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_district" Relationship="CNTTDHXDModel.gov_district_ibfk_1" FromRole="gov_level_district" ToRole="gov_district" />
+  </EntityType>
+  <EntityType Name="gov_menu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_parent" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ishome" Type="Boolean" Nullable="false" />
+    <Property Name="isleft" Type="Boolean" Nullable="false" />
+    <Property Name="isrss" Type="Boolean" Nullable="false" />
+    <Property Name="order_number" Type="Int32" />
+    <Property Name="link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="active_flg" Type="Boolean" Nullable="false" />
+    <Property Name="entry_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="gov_news" Relationship="CNTTDHXDModel.gov_news_ibfk_4" FromRole="gov_menu" ToRole="gov_news" />
+  </EntityType>
+  <EntityType Name="gov_message_system">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="content_message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="type_message" Type="Int32" Nullable="false" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="Boolean" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="gov_user" Relationship="CNTTDHXDModel.gov_message_system_user" FromRole="gov_message_system" ToRole="gov_user" />
+  </EntityType>
+  <EntityType Name="gov_news">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menu_id" Type="Int32" Nullable="false" />
+    <Property Name="type_id" Type="Int32" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="new_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="new_source" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="total_view" Type="Int32" Nullable="false" />
+    <Property Name="is_tinlq" Type="Boolean" Nullable="false" />
+    <Property Name="is_comment" Type="Boolean" Nullable="false" />
+    <Property Name="is_shared" Type="Boolean" Nullable="false" />
+    <Property Name="is_home" Type="Boolean" Nullable="false" />
+    <Property Name="score" Type="Double" />
+    <Property Name="active_flg" Type="Boolean" Nullable="false" />
+    <Property Name="entry_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="meta_keyword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="meta_desciption" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="gov_menu" Relationship="CNTTDHXDModel.gov_news_ibfk_4" FromRole="gov_news" ToRole="gov_menu" />
+  </EntityType>
+  <EntityType Name="gov_notebook">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="specialized_id" Type="Int32" Nullable="false" />
+    <Property Name="course_id" Type="Int32" Nullable="false" />
+    <Property Name="lop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="remember" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="teacher" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dream" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="active_flg" Type="Boolean" Nullable="false" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="gov_course" Relationship="CNTTDHXDModel.fk_gov_notebook_course" FromRole="gov_notebook" ToRole="gov_course" />
+    <NavigationProperty Name="gov_specialized" Relationship="CNTTDHXDModel.fk_gov_specialized_class" FromRole="gov_notebook" ToRole="gov_specialized" />
+  </EntityType>
+  <EntityType Name="gov_notify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="gov_person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="lop" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="specialized_id" Type="Int32" Nullable="false" />
+    <Property Name="course_id" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="active_flg" Type="Boolean" Nullable="false" />
+    <Property Name="department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="news_id" Type="Int32" Nullable="false" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="show_email" Type="Boolean" Nullable="false" />
+    <Property Name="show_tel" Type="Boolean" Nullable="false" />
+    <Property Name="show_address" Type="Boolean" Nullable="false" />
+    <Property Name="show_department" Type="Boolean" Nullable="false" />
+    <Property Name="show_shared" Type="Boolean" Nullable="false" />
+    <Property Name="code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_course" Relationship="CNTTDHXDModel.fk_gov_person_course" FromRole="gov_person" ToRole="gov_course" />
+    <NavigationProperty Name="gov_specialized" Relationship="CNTTDHXDModel.fk_gov_person_specialized" FromRole="gov_person" ToRole="gov_specialized" />
+  </EntityType>
+  <EntityType Name="gov_question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="department" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hidden_flg" Type="Boolean" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="attach_file_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="attach_file_path" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="question_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="question_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_answer" Relationship="CNTTDHXDModel.gov_answer_question_fk" FromRole="gov_question" ToRole="gov_answer" />
+    <NavigationProperty Name="gov_question_category" Relationship="CNTTDHXDModel.gov_question_ibfk_1" FromRole="gov_question" ToRole="gov_question_category" />
+  </EntityType>
+  <EntityType Name="gov_question_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="category_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="order_number" Type="Int32" Nullable="false" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_question" Relationship="CNTTDHXDModel.gov_question_ibfk_1" FromRole="gov_question_category" ToRole="gov_question" />
+  </EntityType>
+  <EntityType Name="gov_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_user" Relationship="CNTTDHXDModel.gov_user_ibfk_1" FromRole="gov_role" ToRole="gov_user" />
+  </EntityType>
+  <EntityType Name="gov_slide_home">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="attach_file_path" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="order_number" Type="Int32" Nullable="false" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="link" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_specialized">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="specialized_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_notebook" Relationship="CNTTDHXDModel.fk_gov_specialized_class" FromRole="gov_specialized" ToRole="gov_notebook" />
+    <NavigationProperty Name="gov_person" Relationship="CNTTDHXDModel.fk_gov_person_specialized" FromRole="gov_specialized" ToRole="gov_person" />
+  </EntityType>
+  <EntityType Name="gov_statistic_access">
+    <Key>
+      <PropertyRef Name="date" />
+    </Key>
+    <Property Name="date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="count" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="gov_system_config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="key_config" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="lable_config" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="value_config" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_testscore">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="test_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="test_class" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="attach_file_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="entry_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="namhoc" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="kythi" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="attach_file_path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="file_format" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="gov_type_news">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type_name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_user">
+    <Key>
+      <PropertyRef Name="username" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="family_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="birth_day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sex" Type="Boolean" Nullable="false" />
+    <Property Name="mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="active_flg" Type="Boolean" Nullable="false" />
+    <Property Name="hidden_flg" Type="Boolean" Nullable="false" />
+    <Property Name="role_id" Type="Int32" Nullable="false" />
+    <Property Name="department_id" Type="Int32" Nullable="false" />
+    <Property Name="avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="update_user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="is_shared" Type="Boolean" Nullable="false" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_department" Relationship="CNTTDHXDModel.gov_user_ibfk_2" FromRole="gov_user" ToRole="gov_department" />
+    <NavigationProperty Name="gov_group_members" Relationship="CNTTDHXDModel.gov_group_members_ibfk_2" FromRole="gov_user" ToRole="gov_group_members" />
+    <NavigationProperty Name="gov_message_system" Relationship="CNTTDHXDModel.gov_message_system_user" FromRole="gov_user" ToRole="gov_message_system" />
+    <NavigationProperty Name="gov_role" Relationship="CNTTDHXDModel.gov_user_ibfk_1" FromRole="gov_user" ToRole="gov_role" />
+  </EntityType>
+  <EntityType Name="gov_video">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="avatar" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="attach_filepath" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="gov_work_schedule">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="time" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="location" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="person_execute" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="update_username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_work_time" Relationship="CNTTDHXDModel.gov_work_schedule_ibfk_2" FromRole="gov_work_schedule" ToRole="gov_work_time" />
+  </EntityType>
+  <EntityType Name="gov_work_time">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="gov_work_schedule" Relationship="CNTTDHXDModel.gov_work_schedule_ibfk_2" FromRole="gov_work_time" ToRole="gov_work_schedule" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="gov_access_history_fk1">
+    <End Type="CNTTDHXDModel.gov_access_type" Role="gov_access_type" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_access_history" Role="gov_access_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_access_type">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_access_history">
+        <PropertyRef Name="type_access" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_access_type_fk1">
+    <End Type="CNTTDHXDModel.gov_access_module" Role="gov_access_module" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_access_type" Role="gov_access_type" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_access_module">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_access_type">
+        <PropertyRef Name="module_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_album_gallery_ibfk_2">
+    <End Type="CNTTDHXDModel.gov_gallery" Role="gov_gallery" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_album_gallery" Role="gov_album_gallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_gallery">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_album_gallery">
+        <PropertyRef Name="gallery_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_answer_question_fk">
+    <End Type="CNTTDHXDModel.gov_question" Role="gov_question" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_answer" Role="gov_answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_answer">
+        <PropertyRef Name="question_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_gov_notebook_course">
+    <End Type="CNTTDHXDModel.gov_course" Role="gov_course" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_notebook" Role="gov_notebook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_course">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_notebook">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_gov_person_course">
+    <End Type="CNTTDHXDModel.gov_course" Role="gov_course" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_person" Role="gov_person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_course">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_person">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_user_ibfk_2">
+    <End Type="CNTTDHXDModel.gov_department" Role="gov_department" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_user" Role="gov_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_department">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_user">
+        <PropertyRef Name="department_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_district_ibfk_1">
+    <End Type="CNTTDHXDModel.gov_level_district" Role="gov_level_district" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_district" Role="gov_district" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_level_district">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_district">
+        <PropertyRef Name="level" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_group_members_ibfk_1">
+    <End Type="CNTTDHXDModel.gov_group" Role="gov_group" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_group_members" Role="gov_group_members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_group_members">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_group_permission_ibfk_2">
+    <End Type="CNTTDHXDModel.gov_group" Role="gov_group" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_group_permission" Role="gov_group_permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_group">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_group_permission">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_group_members_ibfk_2">
+    <End Type="CNTTDHXDModel.gov_user" Role="gov_user" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_group_members" Role="gov_group_members" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="gov_group_members">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_news_ibfk_4">
+    <End Type="CNTTDHXDModel.gov_menu" Role="gov_menu" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_news" Role="gov_news" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_menu">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_news">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_message_system_user">
+    <End Type="CNTTDHXDModel.gov_user" Role="gov_user" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_message_system" Role="gov_message_system" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_user">
+        <PropertyRef Name="username" />
+      </Principal>
+      <Dependent Role="gov_message_system">
+        <PropertyRef Name="username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_gov_specialized_class">
+    <End Type="CNTTDHXDModel.gov_specialized" Role="gov_specialized" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_notebook" Role="gov_notebook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_specialized">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_notebook">
+        <PropertyRef Name="specialized_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_gov_person_specialized">
+    <End Type="CNTTDHXDModel.gov_specialized" Role="gov_specialized" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_person" Role="gov_person" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_specialized">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_person">
+        <PropertyRef Name="specialized_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_question_ibfk_1">
+    <End Type="CNTTDHXDModel.gov_question_category" Role="gov_question_category" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_question" Role="gov_question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_question_category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_question">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_user_ibfk_1">
+    <End Type="CNTTDHXDModel.gov_role" Role="gov_role" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_user" Role="gov_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_user">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="gov_work_schedule_ibfk_2">
+    <End Type="CNTTDHXDModel.gov_work_time" Role="gov_work_time" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_work_schedule" Role="gov_work_schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_work_time">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_work_schedule">
+        <PropertyRef Name="time" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="gov_album">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="album_title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="avatar" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="total_view" Type="Int32" />
+    <Property Name="order_number" Type="Int32" />
+    <Property Name="update_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="update_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="entry_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="entry_datetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="gov_album_gallery" Relationship="CNTTDHXDModel.gov_album_gallery_ibfk_1" FromRole="gov_album" ToRole="gov_album_gallery" />
+  </EntityType>
+  <Association Name="gov_album_gallery_ibfk_1">
+    <End Type="CNTTDHXDModel.gov_album" Role="gov_album" Multiplicity="1" />
+    <End Type="CNTTDHXDModel.gov_album_gallery" Role="gov_album_gallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gov_album">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gov_album_gallery">
+        <PropertyRef Name="album_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

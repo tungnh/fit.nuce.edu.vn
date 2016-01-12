@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "Cập nhật hình ảnh";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var galleryInfo = (thanhhoa.gov.vn.Models.gov_gallery)ViewData["galleryInfo"];
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-film"></i> Quản lý media
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách hình ảnh
+                </li>
+                <li class="active">
+                    <i class="fa fa-edit"></i> Cập nhật hình ảnh
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            @{
+                                if (galleryInfo != null)
+                                {
+                                    <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveEdit">
+                                        <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                            <i class="fa fa-foursquare"></i> Cập nhật hình ảnh
+                                        </h5>
+                                        <input hidden name="id" value="@galleryInfo.id" />
+                                        <div class="form-group m-b-xs m-l">
+                                            <span class="col-lg-2 control-span  m-l" style="padding-right: 0px;">
+                                                Tiêu đề :
+                                            </span>
+                                            <div class="col-lg-7">
+                                                <input type="text" name="title" value="@galleryInfo.title"
+                                                       data-required="true"
+                                                       data-required-message="Trường tiêu đề không được để trống"
+                                                       class="form-control input-sm" placeholder="Đặt tên cho album" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs m-l">
+                                            <span class="col-lg-2 control-span  m-l" style="padding-right: 0px;">
+                                                <input type="button" class=" btnSearch" id="brower" value="Chọn ảnh" style="width : 100%;" />
+                                            </span>
+                                            <div class="col-lg-7">
+                                                <input hidden value="@galleryInfo.attach_filepath" name="attach_filepath" id="attachFilepath">
+                                                <img src="@galleryInfo.attach_filepath" id="images" style="max-width: 200px;" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs m-t-md">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Người tạo:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@galleryInfo.entry_username</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Thời gian tạo:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@galleryInfo.entry_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Người cập nhật cuối:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@galleryInfo.update_username</i></strong>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Thời gian cập nhật cuối:
+                                            </span>
+                                            <div class="col-lg-4">
+                                                <strong><i>@galleryInfo.update_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                            </div>
+                                        </div>
+                                        <h5 class="page-header m-t-xs" style="font-weight: 600;"></h5>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-1 control-span"></span>
+                                            <div class="col-lg-6">
+                                                <input type="submit" class="btn btn-sm btn-primary"
+                                                       style="width: 90px;" value="Lưu" />
+                                                <a href="index" class="btn btn-sm btn-danger"
+                                                   data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                }
+                                else
+                                {
+                                    @Html.Raw("<font color='red'><b>Hình ảnh không tồn tại, hoặc đã bị xóa!</b></font> Nhấn vào <a href='index' style='text-decoration: underline;'>đây</a> để quay lại");
+                                }
+                            }
+                            
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $(function () {
+        $('#brower').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#images').attr("src", fileUrl);
+                $('#attachFilepath').val(fileUrl);
+            };
+            ckfinder.popup();
+        });
+    });
+</script>

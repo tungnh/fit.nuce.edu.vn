@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "Comment";
+    Layout = null;
+    var lstComment = (List<thanhhoa.gov.vn.Models.gov_comments>)ViewData["lstComment"];
+}
+
+@functions{
+    public List<thanhhoa.gov.vn.Models.gov_comments> getCommentChirld(int parentId, List<thanhhoa.gov.vn.Models.gov_comments> lstComment)
+    {
+        return lstComment.Where(c => c.parent_id == parentId).ToList();
+    }
+
+    public String getTime(DateTime time)
+    {
+        DateTime now = DateTime.Now;
+        TimeSpan result = new TimeSpan();
+        result = now - time;
+        String rs = "";
+        if (@result.TotalSeconds < 60)
+        {
+            rs = "Vài giây trước";
+        }
+        else if (@result.TotalMinutes < 60)
+        {
+            rs = Convert.ToInt32(result.TotalMinutes).ToString() + " phút trước";
+        }
+        else if (@result.TotalHours < 24)
+        {
+            rs = Convert.ToInt32(result.TotalHours).ToString() + " giờ trước";
+        }
+        else if (@result.TotalHours < 48)
+        {
+            rs = "Hôm qua lúc " + time.ToString("HH:mm");
+        }
+        else
+        {
+            rs = time.ToString("dd 'Tháng' MM yyyy");
+        }
+        return rs;
+    }
+}
+
+@helper showComment(int commentRoot, List<thanhhoa.gov.vn.Models.gov_comments> lstComment)
+{
+    var lstCommentChirld = getCommentChirld(0, lstComment);
+    if (lstCommentChirld.Count() > 0)
+    {
+        foreach (var item in lstCommentChirld)
+        {
+            <h4>@item.comments_content</h4>
+            <span><a href="">@item.full_name - @getTime(@item.entry_datetime)</span>
+            var lst = getCommentChirld(item.id, lstComment);
+            <div class="replyAndLike">
+                <a href="javascript: void(0);" class="aReply" onclick="showReply(@item.id);"><img src="~/Images/i-reply.png"> Trả lời:</a> <strong>@lst.Count()</strong> |
+                <a href="javascript: like(@item.id, @item.total_like);" class="aLike"> Thích </a><img src="~/Images/i-like.png"> <strong id="@item.id">@item.total_like</strong>
+            </div>
+            <div class="expadComment contenBoxcom" id="replyBox_@item.id" style="border: 1px solid #eee; border-radius: 0 5px 5px 5px; display: none;">
+                <table class="tableWriteCom" width="100%" cellspacing="3" cellpadding="0">
+                    <tr>
+                        <td width="20%">Họ và tên:</td>
+                        <td width="32%"><input type="text" onkeypress="removeError(this);" id="fullName_@item.id" name="fullName_@item.id" size="17"></td>
+                        <td width="3%">&nbsp;</td>
+                        <td width="13%">E-mail:</td>
+                        <td width="32%"><input type="text" onkeypress="removeError(this);" id="email_@item.id" name="email_@item.id"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"><label>Nội dung:</label> <textarea onkeypress="removeError(this);" class="in_contComt" id="commentsContent_@item.id" name="commentsContent_@item.id"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"><a class="aSendCom" href="javascript: commentReply(@item.id);">Gửi bình luận của bạn</a></td>
+                    </tr>
+                </table>
+            </div>
+
+            foreach (var itemC in lst)
+            {
+                <div class="replyCom">
+                    <p>
+                        @itemC.comments_content
+
+                    </p>
+                    <span><a href="">@itemC.full_name</a> - @getTime(itemC.entry_datetime)</span>
+                    <div class="replyAndLike">
+                        <a href="javascript: likeChild(@itemC.id, @itemC.total_like);" class="aLike"> Thích </a><img src="~/Images/i-like.png"> <strong id="@itemC.id">@itemC.total_like</strong>
+                    </div>
+                </div>
+            }
+        }
+    }
+}
+<div class="title_comment">
+    <a name="xem_loi_binh" href=""></a>
+    <a class="aTitle aComment" href="">Bình luận <span>(@lstComment.Count())</span></a>
+    <a class="alink" href="#viet_loi_binh">Viết lời bình &uarr;</a>
+    <div class="expadComment">
+        <div class="wrapComment">
+            <div class="comAlon" id="comAlon">
+                @showComment(0, lstComment)
+            </div><!--end one comment -->
+        </div>
+    </div>
+</div>
+<script>
+
+    function showReply(data) {
+        $('#replyBox_' + data).slideToggle("slow");
+    }
+</script>

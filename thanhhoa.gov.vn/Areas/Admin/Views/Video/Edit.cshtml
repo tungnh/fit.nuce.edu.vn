@@ -1,0 +1,148 @@
+﻿@{
+    ViewBag.Title = "Chỉnh sửa Video";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var videoInfo = (thanhhoa.gov.vn.Models.gov_video) ViewData["videoInfo"];
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<script src="~/Scripts/video.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-film"></i> Quản lý media
+                </li>
+                <li class="active">
+                    <a href="index.html">
+                        <i class="fa fa-camera"></i> Video
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="index.html">
+                        <i class="fa fa-edit"></i> Chỉnh sửa Video
+                    </a>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveEdit">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Cập nhật video
+                                </h5>
+                                <input hidden name="id" value="@videoInfo.id" />
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span">
+                                        Tiêu đề <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="title" value="@videoInfo.title"
+                                               data-required="true"
+                                               data-required-message="Trường tiêu đề không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span">
+                                        Mô tả
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <textarea cols="50" rows="3" class="form-control input-sm" name="description">@videoInfo.description</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span">
+                                        Ảnh đại diện :
+                                    </span>
+                                    <div class="col-lg-9">
+                                        <input type="hidden" name="avatar" value="@videoInfo.avatar" id="avatar">
+                                        <input type="button" class="btnSearch" id="btnAvatar" value="Chọn ảnh" style="width : 200px;" /> &nbsp; <span id="urlAvatar"> @{if(String.IsNullOrWhiteSpace(videoInfo.avatar)){@Html.Raw("Không có hình ảnh nào được chọn")} else {@Html.Raw(videoInfo.avatar)}}</span>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span">
+                                        Video :
+                                    </span>
+                                    <div class="col-lg-9">
+                                        <input type="hidden" name="attach_filepath" value="@videoInfo.attach_filepath" id="attachFilepath" />
+                                        <input type="hidden" name="linkvideo" id="linkvideo" />
+                                        <input type="button" class="btnSearch" id="btnVideo" value="Chọn video" style="width : 200px;" /> &nbsp; <span id="urlVideo"> @{if(String.IsNullOrWhiteSpace(videoInfo.attach_filepath)){@Html.Raw("Không có video nào được chọn")} else{@Html.Raw(videoInfo.attach_filepath)}}</span>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-t-md">
+                                    <span class="col-lg-2 control-span">
+                                        Người tạo:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <strong><i>@videoInfo.entry_username</i></strong>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span">
+                                        Thời gian tạo:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <strong><i>@videoInfo.entry_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span">
+                                        Người cập nhật cuối:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <strong><i>@videoInfo.update_username</i></strong>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span">
+                                        Thời gian cập nhật cuối:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <strong><i>@videoInfo.update_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+<script>
+    var urlImages = "";
+    $(function () {
+        $('#btnAvatar').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#urlAvatar').html(fileUrl);
+                $('#avatar').val(fileUrl);
+                urlImages = fileUrl;
+            };
+            ckfinder.popup();
+        });
+
+        $('#btnVideo').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#urlVideo').html(fileUrl);
+                $('#attachFilepath').val(fileUrl);
+                /*var date = new Date();
+                var id = "video_" + date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds();
+                $("#linkvideo").val(convertVideo(id, urlImages, fileUrl));*/
+            };
+            ckfinder.popup();
+        });
+    });
+</script>

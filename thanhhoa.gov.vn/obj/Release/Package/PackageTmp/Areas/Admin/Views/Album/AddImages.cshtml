@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "Quản lý Album";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var galleryViewhelper = (thanhhoa.gov.vn.Viewhelper.GalleryViewhelper)ViewData["galleryViewhelper"];
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-film"></i> Quản lý media
+                </li>
+                <li class="active">
+                    <i class="fa fa-search"></i> Danh sách album
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="addimages">
+                <input type="hidden" name="albumId" value="@galleryViewhelper.AlbumId">
+                <input type="hidden" name="direction" />
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <a href="javascript: save();" style="font-weight: bold;"
+                           class="btn btn-sm btn-s-sm btn-primary">
+                            <i class="fa fa-save"></i> Lưu
+                        </a> 
+                        <select name="filter" id="filter" onchange="filterAlbum();" style="width: 276px;">
+                            <option value="false">Tất cả</option>
+                            <option value="true" @{if(galleryViewhelper.Filter){@Html.Raw(" selected")}}>Ảnh không thuộc album nào</option>
+                        </select>
+                        <div class="pull-right">
+                            
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;"><input type="checkbox" name="" /></th>
+                                    <th class="text-center" style="vertical-align: middle;" width="150px;">
+                                        Hình ảnh
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Mô tả
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width : 100px;">
+                                        Người tạo
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;" width="150px;">
+                                        Ngày tạo
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (galleryViewhelper.LstGallery != null) { 
+                                        foreach (var item in galleryViewhelper.LstGallery)
+                                        {
+                                            <tr>
+                                                <td align="center"><input type="checkbox" name="checkId" value="@item.id" /></td>
+                                                <td class="text-center"><img src="@item.attach_filepath" style="max-width: 100px;"/></td>
+                                                <td align="center">@item.title</td>
+                                                <td>@item.update_username</td>
+                                                <td>@item.update_datetime</td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@galleryViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                @{
+                                    if (galleryViewhelper.TotalCount > 0)
+                                    {
+                                        <div class="col-md-4 hidden-sm">
+                                            <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                                Hiển thị trang <input type="text" size="5" name="page"
+                                                                      value="@galleryViewhelper.Page" id="pageid"> / @galleryViewhelper.TotalPage
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                            <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                                <li>
+                                                    <a href="javascript: direction('first');">
+                                                        <i class="fa fa-step-backward"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript: direction('ahead');">
+                                                        <i class="fa fa-backward"></i>
+                                                    </a>
+                                                </li>
+                                                @{
+                                                    for (int j = @galleryViewhelper.FirstPage; j <= galleryViewhelper.LastPage; j++)
+                                                    {
+                                                        <li @if(j== galleryViewhelper.Page) {@Html.Raw(" class='active'")}>
+                                                            <a href="javascript: selectPage(@j);" >
+                                                                @j
+                                                            </a>
+                                                        </li>
+                                                    }
+                                                }
+                                                <li>
+                                                    <a href="javascript: direction('next');">
+                                                        <i class="fa fa-forward"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript: direction('end');">
+                                                        <i class="fa fa-step-forward"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+
+    $('#filter').select2();
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function save() {
+        document.form.action = "saveaddimages";
+        document.form.submit();
+    }
+
+    function filterAlbum() {
+        document.form.submit();
+    }
+</script>

@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "Thêm mới ngừoi dùng vào nhóm người sử dụng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var groupMemberViewhelper = (thanhhoa.gov.vn.Viewhelper.GroupMemberViewhelper)ViewData["groupMemberViewhelper"];
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-user"></i> Quản trị Người dùng
+                </li>
+                <li class="active">
+                    <i class="fa fa-list"></i> Danh sách người sử dụng thuộc nhóm
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Thêm mới người sử dụng vào nhóm
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="addgroupmember">
+                <input type="hidden" name="groupId" value="@groupMemberViewhelper.GroupId">
+                <input type="hidden" name="direction" />
+                @Html.Partial("_PartialErrMessage")
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <a href="javascript: add();" style="font-weight: bold;"
+                           class="btn btn-sm btn-s-sm btn-default">
+                            <i class="fa fa-save"></i> Lưu
+                        </a>
+                        <a href="listgroupmember?groupId=@groupMemberViewhelper.GroupId" style="font-weight: bold;"
+                           class="btn btn-sm btn-s-sm btn-default text-danger">
+                            <i class="fa fa-mail-reply"></i> Quay lại
+                        </a>
+                        <div class="pull-right">
+
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;"><input type="checkbox" /></th>
+                                    <th class="text-center" style="vertical-align: middle;" width="150px;">
+                                        Tài khoản
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Họ và tên
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width : 100px;">
+                                        Người tạo
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;" width="150px;">
+                                        Ngày tạo
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (groupMemberViewhelper.TotalCount > 0)
+                                    {
+                                        foreach (var item in groupMemberViewhelper.LstUser)
+                                        {
+                                            <tr>
+                                                <td align="center"><input type="checkbox" name="username" value="@item.username" /></td>
+                                                <td class="text-center">@item.username</td>
+                                                <td align="center">@item.family_name @item.first_name</td>
+                                                <td>@item.update_user_name</td>
+                                                <td>@item.update_datetime</td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@groupMemberViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                @{
+                                    if (groupMemberViewhelper.TotalCount > 0)
+                                    {
+                                        <div class="col-md-4 hidden-sm">
+                                            <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                                Hiển thị trang <input type="text" size="5" name="page"
+                                                                      value="@groupMemberViewhelper.Page" id="pageid"> / @groupMemberViewhelper.TotalPage
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                                                <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                                                    <li>
+                                                                        <a href="javascript: direction('first');">
+                                                                            <i class="fa fa-step-backward"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="javascript: direction('ahead');">
+                                                                            <i class="fa fa-backward"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    @{
+                                        for (int j = @groupMemberViewhelper.FirstPage; j <= groupMemberViewhelper.LastPage; j++)
+                                        {
+                                            <li @if (j == groupMemberViewhelper.Page) { @Html.Raw(" class='active'") }>
+                                                <a href="javascript: selectPage(@j);">
+                                                    @j
+                                                </a>
+                                            </li>
+                                        }
+                                                                    }
+                                                                    <li>
+                                                                        <a href="javascript: direction('next');">
+                                                                            <i class="fa fa-forward"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="javascript: direction('end');">
+                                                                            <i class="fa fa-step-forward"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                    }
+                                }
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+
+    $('#filter').select2();
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function add() {
+        document.form.action = "saveaddgroupmember";
+        document.form.submit();
+    }
+</script>

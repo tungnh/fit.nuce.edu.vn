@@ -1,0 +1,81 @@
+﻿@model thanhhoa.gov.vn.Models.LoginModel
+@{
+    Layout = null;
+}
+<script src="~/Scripts/jquery-1.8.1.min.js"></script>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/LO_GO.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Areas/Admin/Resources/css/login.css" rel="stylesheet" />
+</head>
+<body class="signInBg">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+    @Html.AntiForgeryToken()
+    
+        <!-- Default to mouse class, so that things don't look wacky if the script somehow doesn't apply a class -->
+        <div id="mainLogonDiv" class="mouse">
+            
+            <div class="logonContainer">
+                <div id="lgnDiv" class="logonDiv">
+                    <div class="logonHeader">
+
+                        <div class="singInTextHeader">
+                            <div class="textDo singInTextHeaderHTTDT">TRƯỜNG ĐẠI HỌC XÂY DỰNG</div>
+                            <div class="textXanh singInTextHeaderUBND">KHOA CÔNG NGHỆ THÔNG TIN</div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="logonThongBao">
+                        <div class="logonThongBaoTieuDe textDo">Thông báo:</div>
+                        <div class="logonThongBaoContent">Từ ngày 18/5/2015, hệ thống website Khoa Công nghệ thông tin - Trường Đại học Xây Dựng Hà Nội chính thức đưa vào sử dụng trên địa chỉ: <a target="_blank" href="http://fit.nuce.edu.vn">fit.nuce.edu.vn</a></div>
+                    </div>
+                    <p style="color: red;">@Html.ValidationSummary(true)</p>
+                    <div class="logonInfo">
+                        <div class="logonUsername">
+                            <div class="logonUsernameTitle">@Html.LabelFor(m => m.UserName):</div>
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "signInInputText" })
+                            <font style="margin-left: 105px;" color="red">@Html.ValidationMessageFor(m => m.UserName)</font>
+                        </div>
+                        <div class="logonPassword">
+                            <div class="logonPasswordTitle">@Html.LabelFor(m => m.Password)</div>
+                            @Html.PasswordFor(m => m.Password, new { @class = "signInInputText" })
+                            <font style="margin-left: 105px;" color="red">@Html.ValidationMessageFor(m => m.Password)</font>
+                        </div>
+                    </div>
+                    <div class="signInEnter">
+                        <div class="signinbutton" role="button" tabindex="0" style="padding-top: 5px;">
+                            <a href="javascript: clkLgn();">
+                                <img src="~/Areas/Admin/Resources/images/login1.png" alt="Đăng nhập">
+                            </a>
+                            <button type="submit" style="display: none;" id="btnSubmit"></button>
+                        </div>
+                    </div>
+                    <div class="logonLink">
+                        <a href="/Custom/HDSD_MailExchange2013_v3.0.pdf" target="_blank">Tài liệu hướng dẫn sử dụng thư điện tử </a>
+                        <a href="http://fit.nuce.edu.vn" target="_blank" style="color: #ff0000">Kích vào đây để truy cập vào website của Khoa Công nghệ thông tin - Đại học Xây dựng Hà Nội </a>
+                    </div>
+                    <div class="logonFooter">
+                        Thông tin hỗ trợ: Khoa Công nghệ thông tin - Đại học xây dựng Hà Nội<br>
+                        ĐT: (84-4)3 869 7940 - Email: <a href="mailto:fit.nuce.edu.vn@gmail.com">fit.nuce.edu.vn@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</body>
+</html>
+<script>
+
+    function clkLgn() {
+        $('#btnSubmit').click();
+    }
+
+    $('#UserName').focus();
+</script>

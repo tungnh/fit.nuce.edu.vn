@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = "Sửa đổi lưu bút ra trường";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var notebook = (thanhhoa.gov.vn.Models.gov_notebook)ViewData["notebookInfo"];
+    var lsSpecialized = (List<thanhhoa.gov.vn.Models.gov_specialized>)ViewData["lstSpecialized"];
+    var lstCourse = (List<thanhhoa.gov.vn.Models.gov_course>)ViewData["lstCourse"];
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-credit-card"></i> Cựu sinh viên
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách lưu bút ra trường
+                </li>
+                <li class="active">
+                    <i class="fa fa-edit"></i> Cập nhật lưu bút ra trường
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveEdit">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Cập nhật lưu bút ra trường
+                                </h5>
+                                @{
+                                    if(notebook != null){
+                                        <input hidden name="id" value="@notebook.id" />
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Tiêu đề <font color="red">*</font>:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="title"
+                                                       class="form-control input-sm"
+                                                       value="@notebook.title"
+                                                       data-required="true"
+                                                       data-required-message="Trường tiêu đề không được để trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Email <font color="red">*</font>:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <input type="text" name="email"
+                                                       class="form-control input-sm"
+                                                       value="@notebook.email"
+                                                       data-required="true"
+                                                       data-required-message="Trường Email không được để trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Chuyên nghành <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <select name="specialized_id" id="specialized_id" style="width: 276px;">
+                                                    @{
+                                                        foreach (var item in lsSpecialized)
+                                                        {
+                                                            <option value="@item.id" @if(item.id == notebook.specialized_id){ @Html.Raw(" selected")}>@item.specialized_name</option>
+                                                        }
+                                                    }
+                                                </select>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Khóa học <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-lg-2">
+                                                <select name="course_id" id="course_id" >
+                                                    @{
+                                                        foreach (var item in lstCourse)
+                                                        {
+                                                            <option value="@item.id" @if(item.id == notebook.course_id){ @Html.Raw(" selected")}>@item.course_name</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                            <span class="col-lg-1 control-span m-l">
+                                                Lớp <font color="red">*</font> :
+                                            </span>
+                                            <div class="col-lg-2">
+                                                <input type="text" name="lop"
+                                                       class="form-control input-sm"
+                                                       value="@notebook.lop"
+                                                       data-required="true"
+                                                       data-required-message="Trường Lớp không được để trống" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Kỷ niệm khiến bạn cười khi nghĩ về Khoa CNTT <font color="red">*</font>:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <textarea cols="50" rows="3" class="form-control input-sm" name="remember" data-required="true"
+                                                          data-required-message="Không được để trống trường này">@notebook.remember</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Giảng viên trong Khoa được bạn giành nhiều tình cảm đặc biệt nhất <font color="red">*</font>:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <textarea cols="50" rows="3" class="form-control input-sm" data-required="true"
+                                                          data-required-message="Không được để trống trường này" name="teacher">@notebook.teacher</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Ước mơ sau khi tốt nghiệp <font color="red">*</font>:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <textarea cols="50" rows="3" class="form-control input-sm" data-required="true"
+                                                          data-required-message="Không được để trống trường này" name="dream"> @notebook.dream</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group m-b-xs" id="div-link">
+                                            <span class="col-lg-2 control-span m-l">
+                                                Lời nhắn các em sinh viên khóa sau <font color="red">*</font>:
+                                            </span>
+                                            <div class="col-lg-6">
+                                                <textarea cols="50" rows="3" class="form-control input-sm" data-required="true"
+                                                          data-required-message="Không được để trống trường này" name="note">@notebook.note</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="line line-dashed line-lg pull-in"></div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l-md"></span>
+                                            <div class="col-lg-6">
+                                                <input type="submit" class="btn btn-sm btn-primary"
+                                                       style="width: 90px;" value="Lưu" />
+                                                <a href="index" class="btn btn-sm btn-danger"
+                                                   data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<font color='red'><b>Cựu sinh viên không tồn tại, hoặc đã bị xóa!</b></font> Nhấn vào <a href='index' style='text-decoration: underline;'>đây</a> để quay lại");
+                                    }
+                                }
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#course_id').select2();
+    $('#specialized_id').select2();
+</script>

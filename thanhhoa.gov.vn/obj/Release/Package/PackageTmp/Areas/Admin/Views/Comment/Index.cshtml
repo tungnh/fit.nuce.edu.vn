@@ -1,0 +1,228 @@
+﻿@{
+    ViewBag.Title = "Danh sách bình luận";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var commentViewhelper = (thanhhoa.gov.vn.Viewhelper.CommentViewhelper)ViewData["commentViewhelper"];
+}
+
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-pencil"></i> Quản lý tin tức
+                </li>
+                <li class="active">
+                    <i class="fa fa-comment-o"></i> Danh sách bình luận
+                </li>
+            </ul>
+            <form class="bs-example form-horizontal" name="form" method="post"
+                  action="index">
+                @Html.Partial("_PartialErrMessage")
+                <input type="hidden" name="direction" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <section class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="form-group m-b-sm">
+                                    <div class="col-lg-9">
+                                        <label class="col-lg-2 control-label"
+                                               style="padding-right: 0px; text-align: left;">
+                                            Từ khóa
+                                        </label>
+                                        <div class="col-lg-9" style="padding-right: 0px;">
+                                            <input id="keysearch" type="text"
+                                                   class="form-control input-sm" placeholder="Từ khóa"
+                                                   name="keySearch" value="@commentViewhelper.KeySearch">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="pull-right">
+                                            <button type="submit" id="btn_search" onclick="search();" style="font-weight: bold;"
+                                                    class="btn btn-sm btn-s-sm btn-primary">
+                                                <i class="fa fa-search"></i> Tìm kiếm
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-danger" style="font-weight: bold;"
+                                                    onclick="clearAll();">
+                                                <i class="fa fa-trash-o"></i> Xóa điều kiện
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div class="row m-b-sm">
+                    <div class="col-lg-12">
+                        <select onchange="changeFilter(this.value);" style="width: 180px;" name="filterActive" id="slState">
+                            <option value="0" @if(commentViewhelper.FilterActive == 0){ @Html.Raw("selected")}>Lọc trạng thái (Tất cả)</option>
+                            <option value="1" @if(commentViewhelper.FilterActive == 1){ @Html.Raw("selected")} >Hiển thị</option>
+                            <option value="2" @if(commentViewhelper.FilterActive == 2){ @Html.Raw("selected")}>Không hiển thị (band) </option>
+                        </select>&nbsp;
+                        <select onchange="changeFilter(this.value);" style="width: 180px;" name="filterKey" id="slKey">
+                            <option value="0" @if (commentViewhelper.FilterKey == 0) { @Html.Raw("selected") }>Lọc từ khóa (Tất cả)</option>
+                            <option value="1" @if (commentViewhelper.FilterKey == 1) { @Html.Raw("selected") }>Từ khóa bị chặn</option>
+                            <option value="2" @if (commentViewhelper.FilterKey == 2) { @Html.Raw("selected") }>Bình thường</option>
+                        </select>
+                        
+                        <div class="pull-right">
+                            <select onchange="change(this.value);" name="changeState" id="slActive">
+                                <option value="" selected="selected" disabled>
+                                    Chuyển trạng thái thành
+                                </option>
+                                <option value="true">Hiển thị</option>
+                                <option value="false">Không hiển thị (band) </option>
+                            </select>
+                            <a href="regist" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Thêm từ khóa</a>
+                        </div>
+                    </div>
+                </div>
+                <section class="panel panel-default">
+                    <div class="table-responsive">
+                        <table class="table table-striped m-b-none">
+                            <thead>
+                                <tr style="background-color: #65bd77; color: white;">
+                                    <th class="text-center" style="vertical-align: middle; width: 40px;">
+                                        <input type="checkbox" />
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle; width : 40px;">STT</th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Nội dung bình luận
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Họ tên
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;">
+                                        Email
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;" width="10%">
+                                        Số lượt thích
+                                    </th>
+                                    <th class="text-center" style="vertical-align: middle;" width="12%">
+                                        Trạng thái hiển thị
+                                    </th>
+                                    <th width="40px;" class="text-center" style="vertical-align: middle;">
+                                        Xóa
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    int i = (commentViewhelper.Page - 1) * thanhhoa.gov.vn.Utility.Constant.limit + 1;
+                                    if (commentViewhelper.TotalCount > 0)
+                                    {
+                                        foreach (var item in commentViewhelper.LstComment)
+                                        {
+                                            <tr>
+                                                <td align="center" width="40px"><input type="checkbox" name="checkID" id="ckCheckID" value="@item.id"></td>
+                                                <td align="center">@i</td>
+                                                <td>@Html.Raw(item.comments_content)</td>
+                                                <td>@Html.Raw(item.full_name)</td>
+                                                <td align="center">@Html.Raw(item.email)</td>
+                                                <td align="center">@item.total_like</td>
+                                                <td align="center">
+                                                    @{
+                                                        if (!item.active_flg){<div class="label bg-danger">@Html.Raw("<b>Không hiển thị</b>")</div> }
+                                                    }    
+                                                </td>
+                                                <td width="40px;" class="text-center" style="vertical-align: middle;">
+                                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa bản ghi này không?')" href="delete?id=@item.id"><i class="fa fa-times text-danger text" style="font-size : 15px;"></i></a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                        <footer class="footer bg-white b-t">
+                            <div class="row text-center-xs">
+                                <div class="col-md-4 hidden-sm">
+                                    <p class="m-t" style="color: #2e3e4e;">
+                                        Tổng số <strong>@commentViewhelper.TotalCount</strong> dữ liệu
+                                    </p>
+                                </div>
+                                <c:if test="${list.totalCount > 0}">
+                                    <div class="col-md-4 hidden-sm">
+                                        <p class="m-t" style="color: #2e3e4e; text-align: center;">
+                                            Hiển thị trang <input type="text" size="5" name="page"
+                                                                  value="@commentViewhelper.Page" id="pageid"> / @commentViewhelper.TotalPage
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12 text-right text-center-xs">
+                                        <ul class="pagination pagination-sm m-t-sm m-b-none m-r-xs">
+                                            <li>
+                                                <a href="javascript: direction('first');">
+                                                    <i class="fa fa-step-backward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('ahead');">
+                                                    <i class="fa fa-backward"></i>
+                                                </a>
+                                            </li>
+                                            @{
+                                                for (int j = @commentViewhelper.FirstPage; j <= commentViewhelper.LastPage; j++)
+                                                {
+                                                    <li @if (j == commentViewhelper.Page){@Html.Raw(" class='active'")}>
+                                                        <a href="javascript: selectPage(@j);" >
+                                                            @j
+                                                        </a>
+                                                    </li>
+                                                }
+                                            }
+                                            <li>
+                                                <a href="javascript: direction('next');">
+                                                    <i class="fa fa-forward"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript: direction('end');">
+                                                    <i class="fa fa-step-forward"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </div>
+                        </footer>
+                    </div>
+                </section>
+            </form>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $('#slActive').select2();
+    $('#slState').select2();
+    $('#slKey').select2();
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function clearAll() {
+        $('#keysearch').val("");
+    }
+
+    function changeFilter(data) {
+        document.form.action = "Index";
+        document.form.submit();
+    }
+
+    function change(data) {
+        if (data != "") {
+            document.form.action = "changestate";
+            document.form.submit();
+        }
+    }
+</script>

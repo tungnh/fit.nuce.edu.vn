@@ -1,0 +1,121 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@using thanhhoa.gov.vn.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var newInfo = (thanhhoa.gov.vn.Viewhelper.NewViewhelper)ViewData["newViewHelper"];
+    ViewBag.Title = newInfo.MenuInfo.title;
+    var lstMenuChild = (List<thanhhoa.gov.vn.Models.gov_menu>)ViewData["lstMenuChild"];
+    var lstMenu = (List<thanhhoa.gov.vn.Models.gov_menu>)ViewData["lstMenu"];
+    
+}
+@functions {
+    public List<gov_menu> showBreackrum(List<gov_menu> lstBreak,List<gov_menu> lstMenu, int id_parent){
+            gov_menu menuInfo = lstMenu.Where(m => m.id == id_parent).FirstOrDefault();
+            if (menuInfo != null)
+            {
+                lstBreak.Add(menuInfo);
+                lstBreak = showBreackrum(lstBreak, lstMenu, menuInfo.id_parent);
+            }
+        return lstBreak;
+    }
+}
+<script src="~/Scripts/marquee.js"></script>
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="/">Trang chủ</a>
+            @{
+                //var lst = showBreackrum(lstBreackrum, lstMenu, newInfo.MenuInfo.id_parent);
+                var lstBreackrum = new List<thanhhoa.gov.vn.Models.gov_menu>();
+                lstBreackrum.Add(newInfo.MenuInfo);
+                lstBreackrum = showBreackrum(lstBreackrum, lstMenu, newInfo.MenuInfo.id_parent);
+                foreach (var item in Enumerable.Reverse(lstBreackrum))
+                {
+                    <a href="@item.link">@item.title</a>
+                }
+            }
+            
+        </div>
+        @{
+            if (lstMenuChild != null && lstMenuChild.Count > 0) {
+                foreach (var item in lstMenuChild)
+                {
+                    <div class="modMainNews1">
+                        <div class="title3">
+                            <h2><a href="@item.link" style="color : white;">@item.title</a></h2>
+                        </div>
+                        <!--end title 3 -->
+                        <div class="contMainNews1">
+                            <div class="colNews1">
+                                <div class="wrapImgNews"><a href="@item.link"><img src="@if(item.avatar != null){ @Html.Raw(item.avatar)} else { @Html.Raw("/Upload/TinTuc/no.jpg")}" alt="@item.title"></a></div>
+                                <a href="@item.link"><h3>@item.title </h3></a>
+                                <p>@Html.Raw(item.description)</p>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <!-- end main module -->
+                }
+            }
+            else
+            {
+                <!-- main module -->
+                <div class="modMainNews">
+                    <!--end title 3 -->
+                    <div class="contMainNews">
+                        <div class="colNews2">
+                            <ul class="ulList3">
+                                @{
+                                    if (newInfo.LstNew != null && newInfo.LstNew.Count > 0)
+                                    {
+                                        foreach (var item in newInfo.LstNew) { 
+                                        <li>
+                                            <div class="wrapImgNews"><a href="@Utils.getLinkNew(@item.id)"><img src="@item.avatar" alt="@item.title"></a></div>
+                                            <a href="@Utils.getLinkNew(@item.id)"><h3>@item.title </h3></a>
+                                            @Html.Raw(item.description)
+                                            <br class="clear">
+                                        </li>
+                                        }
+                                    }
+                            
+                                }
+                            </ul>
+
+                            @{
+                                if (newInfo.LstNew != null && newInfo.LstNew.Count > 0)
+                                {
+                                    <div class="pagingListnews">
+                                        <h4><span style="float: left; line-height: 22px; display: inline-block; color: #4679D0;">Tổng số @newInfo.TotalCount dữ liệu đã tìm thấy.</span></h4>
+                                        <a href="@Utils.getLinkMenu(newInfo.MenuInfo.id)-trang-@newInfo.Page-ahead">&larr;</a>
+                                        @if (newInfo.FirstPage > 1){@Html.Raw(" ... ")}
+                                        @{
+                                            for (int i = newInfo.FirstPage; i <= newInfo.LastPage; i++) { 
+                                                <a href="@Utils.getLinkMenu(newInfo.MenuInfo.id)-trang-@i-null" @if(i == newInfo.Page){@Html.Raw("class='act1'")}>@i</a>
+                                            }
+                                        }
+                                        @if(newInfo.LastPage < newInfo.TotalPage){@Html.Raw(" ... ")}
+                                        <a href="@Utils.getLinkMenu(newInfo.MenuInfo.id)-trang-@newInfo.Page-next">&rarr;</a>
+                                    </div>
+                                    <!--end paging list news -->
+                                }
+                                else
+                                {
+                                    <font color="red">Chúng tôi đang cập nhật thông tin của mục này, vui lòng quay lại sau!</font>
+                                }
+                            }   
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <!-- end main module -->
+            }
+        }
+    </div>
+    <!-- end left main w=670 -->
+
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->

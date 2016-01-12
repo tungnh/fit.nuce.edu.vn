@@ -1,0 +1,74 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@{
+    ViewBag.Title = "Iframe";
+    Layout = null;
+    var videoInfo = (thanhhoa.gov.vn.Models.gov_video)ViewData["videoInfo"];
+}
+
+<html lang="vi" dir="ltr" data-cast-api-enabled="true" data-player-size="small">
+<head>
+    <title>
+    @if(videoInfo != null){
+        @Html.Raw(videoInfo.title + " - Video")   
+    }</title>
+    <link href="~/Content/video.css" rel="stylesheet" />
+</head>
+<body>
+    @{
+        if (videoInfo == null) { 
+            <h1 style="font-family: Verdana; font-weight: normal; font-size: 18pt; color: red;">Dữ liệu không tồn tại hoặc đã bị xóa.<hr width="100%" size="1" color="silver"></h1>
+        }
+        else
+        {
+            
+            <div id="player" style="width: 100%; height: 100%;">
+                <div id="m_p" style="height: 100%;"></div>
+            </div>
+            <div class="html5-info-bar ytp-can-share">
+                <div class="html5-title">
+                    <div class="ytp-action-buttons">
+                        <div class="ytp-button ytp-button-share" role="button" aria-label="Chia sẻ" tabindex="3400"></div>
+                    </div>
+                    <div class="html5-title-text-wrapper">
+                        <a class="html5-title-text" title="Click để lấy mã nhúng - @videoInfo.title" target="_blank" tabindex="3100" href="@Utils.getLinkDefault(videoInfo.id, TypeLink.video)">@videoInfo.title</a>
+                    </div>
+                </div>
+            </div>
+            <script src="~/Scripts/jwplayer/jwplayer.js"></script>
+            <script type="text/javascript">
+                jwplayer.key = 'h9Hk94XPyRVLvp3o2cVctXdh/OSReDO/NMi60A==';
+            </script>
+            <script type="text/javascript">
+                loadPlayer("@videoInfo.attach_filepath", "@videoInfo.avatar", "@videoInfo.title");
+                function loadPlayer(urlVideo, urlImages, tile) {
+                    jwplayer("m_p").setup({
+                        'primary': 'flash',
+                        playlist: [{ file: urlVideo, image: urlImages }],
+                        advertising: {
+                            client: 'googima'
+                        },
+                        'bufferlength': '1',
+                        'mute': 'false',
+                        'controls': 'true',
+                        'width': '100%',
+                        'height': '100%',
+                        'aspectratio': '16:9',
+                        'repeat': 'always',
+                        'quality': 'high',
+                        'shownavigation': 'true',
+                        'autostart': 'false',
+                        'item': '0',
+                        'display.showmute': 'false',
+                        'dock': 'true',
+                        'skin': 'glow',
+                        'stretching': 'exactfit',
+                        ga: {},
+                        events: {
+                        }
+                    });
+                }
+            </script>
+        }
+    }
+</body>
+</html>

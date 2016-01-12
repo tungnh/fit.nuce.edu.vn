@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Tạo mới Album";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-film"></i> Quản lý media
+                </li>
+                <li class="active">
+                     Danh sách album
+                </li>
+                <li class="active">
+                     Tạo mới album
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Tạo mới album
+                                </h5>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Tên album <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="album_title" 
+                                               data-required="true"
+                                               data-required-message="Trường tiêu đề không được để trống"
+                                               class="form-control input-sm" placeholder="Đặt tên cho album" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-l">
+                                    <span class="col-lg-2 control-span">
+                                        Mô tả <font color="red">*</font>:
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <textarea cols="50" rows="3" class="form-control input-sm" name="description"
+                                                  data-required="true"
+                                                  data-required-message="Trường mô tả không được để trống"
+                                                  data-maxlength="200"
+                                                  data-maxlength-message="Trường mô tả không được vượt quá 200 ký tự"
+                                                  placeholder="Viết một vài điều gì đó về album này"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Số thứ tự <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="order_number"
+                                               data-required="true"
+                                               data-required-message="Trường số thứ tự không được để trống"
+                                               data-type="number"
+                                               data-type-number-message="Phải nhập đúng định dạng số"
+                                               class="form-control input-sm" placeholder="Số thứ tự" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                        Ảnh đại diện <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="hidden" name="avatar" value="/Images/no.jpg" id="avatar">
+                                        <input type="button" class="btnSearch" id="btnAvatar" value="Chọn ảnh" style="width : 200px;" /> &nbsp; <span id="urlAvatar"> Không có hình ảnh nào được chọn</span>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <img src="/Images/no.jpg" id="images" style="max-width: 200px;" />
+                                    </div>
+                                </div>
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;"></h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $(function () {
+        $('#btnAvatar').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#urlAvatar').html(fileUrl);
+                $('#avatar').val(fileUrl);
+                $('#images').attr("src", fileUrl);
+                urlImages = fileUrl;
+            };
+            ckfinder.popup();
+        });
+    });
+</script>

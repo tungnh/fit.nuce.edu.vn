@@ -1,0 +1,11 @@
+﻿@{
+    var lstQuangCaoBenPhai = (List<thanhhoa.gov.vn.Models.gov_advertise>)ViewData["lstQuangCaoBenPhai"];
+}
+<div class="ads3">
+    @{
+        foreach (var item in lstQuangCaoBenPhai)
+        {
+            <a href="@item.link" @{if (item.type_link == true) { @Html.Raw(" target=\"_blank\"") }}><img src="@item.attach_file" alt="@item.title"></a>
+        }
+    }
+</div>

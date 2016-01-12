@@ -1,0 +1,165 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@{
+    var lstVideo = (List<thanhhoa.gov.vn.Models.gov_video>)ViewData["lstVideo"];
+    var lstAlbum = (List<thanhhoa.gov.vn.Models.gov_album>)ViewData["lstAlbum"];
+    var lstMenuLeft = (List<thanhhoa.gov.vn.Models.gov_menu>)ViewData["lstMenuLeft"];
+}
+
+<!--end module opRight -->
+<div class="modRightMain">
+    <!--end module new -->
+    @foreach (var item in lstMenuLeft)
+    {
+        if(item.gov_news.Count > 0){
+            <div class="modTopRight">
+                <div class="wrapModTopRight">
+                    <div class="title2">
+                        <a href="@item.link"><p>@item.title</p></a>
+                    </div>
+                    <ul>
+                        @{
+                            var lstNew = item.gov_news.Where(n => n.active_flg == true).OrderByDescending(n => n.entry_datetime).Skip(0).Take(7).ToList();
+                            foreach(var newInfo in lstNew){
+                                <li><a href="@Utils.getLinkNew(newInfo.id)">@newInfo.title</a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+    <div class="modMuti">
+
+        <div id="tab_muti" class="title5">
+            <ul>
+                <li><a href="#" rel="videos">Kho Video</a></li>
+                <li><a href="#" rel="images" class="selected">Album ảnh</a></li>
+            </ul>
+        </div>
+
+        <div id="images" class="contMuti">
+            <div class="gallery">
+                <div class="image-preview">
+                    @{
+                        if (lstAlbum != null && lstAlbum.Count > 0)
+                        {
+                            <a id="link" href="@Utils.getLinkDefault(@lstAlbum.First().id, TypeLink.album)" >
+                                <img id="preview" src="@lstAlbum.First().avatar" alt="@lstAlbum.First().album_title" title="@lstAlbum.First().album_title" />
+                            </a>
+                        }
+                    }
+                </div>
+                <!-- Elastislide Carousel -->
+                <ul id="carousel" class="elastislide-list">
+                    @{
+                        foreach (var item in lstAlbum)
+                        {
+                            <li data-preview="@item.avatar"><a href="@Utils.getLinkDefault(item.id, TypeLink.album)" onclick="changeLink('@item.album_title', '@Utils.getLinkDefault(item.id, TypeLink.album)');"><img src="@item.avatar" alt="@item.album_title" title="@item.album_title" /></a></li>
+                        }
+                    }
+                </ul>
+                <!-- End Elastislide Carousel -->
+
+            </div>
+            @Scripts.Render("~/Scripts/Elastislide/set_slidemenu.js")
+
+            <div class="viewmore"><a href="/album/preview" class="moreBtn"></a></div>
+        </div>
+
+        <div id="videos" class="contMuti">
+            <div class="wrapVideo">
+                <div class="home-video-top">
+                    <ul>
+                        @{
+                            if (lstVideo.Count() > 0)
+                            {
+                                <li>
+                                    <a class="youtube" href="@Utils.getLinkDefault(lstVideo.First().id, TypeLink.video)" id="titleNewVideo" title="">Hiển thị tên bài viết ở đây</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="video-home" id="video_home_box">
+                    <script src="~/Scripts/jwplayer/jwplayer.js"></script>
+                    <script type="text/javascript">
+                        jwplayer.key = 'h9Hk94XPyRVLvp3o2cVctXdh/OSReDO/NMi60A==';
+                    </script>
+                    <div id="media_player" style="height: 200px;">
+                    </div>
+                    <script type="text/javascript">
+                                loadPlayer("@lstVideo.First().attach_filepath", "@lstVideo.First().avatar", "@lstVideo.First().title", "@Utils.getLinkDefault(lstVideo.First().id, TypeLink.video)");
+                                function loadPlayer(urlVideo, urlImages, tile, link) {
+                                    $('#titleNewVideo').html(tile);
+                                    $('#titleNewVideo').attr("href", link)
+                                    jwplayer("media_player").setup({
+                                        'primary': 'flash',
+                                        playlist: [{ file: urlVideo, image: urlImages }],
+                                        advertising: {
+                                            client: 'googima'
+                                        },
+                                        'bufferlength': '1',
+                                        'mute': 'false',
+                                        'controls': 'true',
+                                        'width': '278',
+                                        'height': '200',
+                                        'aspectratio': '16:9',
+                                        'repeat': 'always',
+                                        'quality': 'high',
+                                        'shownavigation': 'true',
+                                        'autostart': 'false',
+                                        'item': '0',
+                                        'display.showmute': 'false',
+                                        'dock': 'true',
+                                        'skin': 'glow',
+                                        'stretching': 'exactfit',
+                                        ga: {},
+                                        events: {
+                                        }
+                                    });
+                                }
+                    </script>
+                </div>
+                <div class="video-home-list">
+                    <div class="home-news-list">
+                        <ul>
+                            @{
+                                foreach (var item in lstVideo)
+                                {
+                                    <li>
+                                        <a href="javascript: loadPlayer('@item.attach_filepath','@item.avatar', '@item.title', '@Utils.getLinkDefault(item.id, TypeLink.video)');" title="@item.title">@item.title</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="viewmore"><a href="/video/index" class="moreBtn"></a></div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        var myflowers = new eetabcontent("tab_muti")
+        myflowers.setpersist(true)
+        myflowers.setselectedClassTarget("link")
+        myflowers.init()
+    </script>
+    @*<div style="width: 100%; margin-bottom: 10px;">
+        <div class="fb-page" data-href="https://www.facebook.com/cnttdhxd/?fref=ts" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/cnttdhxd/?fref=ts"><a href="https://www.facebook.com/cnttdhxd/?fref=ts">Khoa Công nghệ thông tin, Đại học Xây dựng</a></blockquote></div></div>
+    </div>*@
+    <!-- end module muntimedia-->
+    @Html.Partial("_PartialAdvertise")
+    <!-- end ads2 -->
+    @Html.Partial("_PartialStatisticsAccess")
+    <!-- end module Statistics -->
+
+</div>
+<!-- end right main w=300 -->
+<script>
+    function changeLink(title, link) {
+        $('#link').attr("href", link);
+        $('#preview').attr("title", title);
+    }
+</script>

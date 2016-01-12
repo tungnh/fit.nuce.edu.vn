@@ -1,0 +1,361 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@using thanhhoa.gov.vn.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var news = (thanhhoa.gov.vn.Models.gov_news)ViewData["new"];
+    var lstComment = (List<thanhhoa.gov.vn.Models.gov_comments>)ViewData["lstComment"];
+    var lstNew = (List<thanhhoa.gov.vn.Models.gov_news>)ViewData["listNew"];
+    var lstMenu = (List<thanhhoa.gov.vn.Models.gov_menu>)ViewData["lstMenu"];
+    if (news == null)
+    {
+        Response.Redirect("/error/error404");
+    }
+    var link = "http://fit.nuce.edu.vn" + @Utils.getLinkDefault(news.id, TypeLink.tintuc);
+    ViewBag.Title = news.title;
+    ViewBag.MetaImages = "http://fit.nuce.edu.vn" + @news.avatar;
+    ViewBag.MetaUrl = link;
+    ViewBag.MetaDescription = news.meta_desciption;
+    ViewBag.MetaKeywords = news.meta_keyword;
+    
+}
+
+@functions{
+    public List<thanhhoa.gov.vn.Models.CommentModels> getCommentChirld(int parentId, List<thanhhoa.gov.vn.Models.CommentModels> lstComment)
+    {
+        List<thanhhoa.gov.vn.Models.CommentModels> lstCommentChirld = new List<thanhhoa.gov.vn.Models.CommentModels>();
+        foreach (var item in lstComment)
+        {
+            if (item.ParentId == parentId)
+            {
+                lstCommentChirld.Add(item);
+            }
+        }
+        return lstCommentChirld;
+    }
+
+    public List<gov_menu> showBreackrum(List<gov_menu> lstBreak, List<gov_menu> lstMenu, int id_parent)
+    {
+        gov_menu menuInfo = lstMenu.Where(m => m.id == id_parent).FirstOrDefault();
+        if (menuInfo != null)
+        {
+            lstBreak.Add(menuInfo);
+            lstBreak = showBreackrum(lstBreak, lstMenu, menuInfo.id_parent);
+        }
+        return lstBreak;
+    }
+}
+
+@helper showComment(int commentRoot, List<thanhhoa.gov.vn.Models.CommentModels> lstComment)
+{
+    var lstCommentChirld = getCommentChirld(0, lstComment);
+    if (lstCommentChirld.Count() > 0)
+    {
+        foreach (var item in lstCommentChirld)
+        {
+            DateTime now = DateTime.Now;
+            TimeSpan result = new TimeSpan();
+            result = now - item.EntryDatetime;
+            <h4>@item.CommentsContent</h4>
+            String rs = "";
+            if (@result.TotalSeconds < 60)
+            {
+                rs = "Vài giây trước";
+            }
+            else if (@result.TotalMinutes < 60)
+            {
+                rs = Convert.ToInt32(result.TotalMinutes).ToString() + " phút trước";
+            }
+            else if (@result.TotalHours < 24)
+            {
+                rs = Convert.ToInt32(result.TotalHours).ToString() + " giờ trước";
+            }
+            else if (@result.TotalHours < 48)
+            {
+                rs = "Hôm qua lúc " + @item.EntryDatetime.ToString("HH:mm");
+            }
+            else
+            {
+                rs = item.EntryDatetime.ToString("dd 'Tháng' MM yyyy");
+            }
+            <span><a href="">@item.FullName - @rs</span>
+            var lst = getCommentChirld(item.Id, lstComment);
+            <div class="replyAndLike">
+                <a href="javascript: reply();" class="aReply"><img src="~/Images/i-reply.png"> Trả lời:</a> <strong>@lst.Count()</strong> |
+                <a href="javascript: like(@item.Id, @item.TotalLike);" class="aLike"> Thích </a><img src="~/Images/i-like.png"> <strong id="@item.Id">@item.TotalLike</strong>
+            </div>
+
+            foreach (var itemC in lst)
+            {
+                <div class="replyCom">
+                    <p>
+                        @itemC.CommentsContent
+
+                    </p>
+                    <span><a href="">@itemC.FullName</a> - 30 phút trước</span>
+                    <div class="replyAndLike">
+                        <a href="javascript: likeChild(@itemC.Id, @itemC.TotalLike);" class="aLike"> Thích </a><img src="~/Images/i-like.png"> <strong id="@itemC.Id">@itemC.TotalLike</strong>
+                    </div>
+                </div>
+            }
+        }
+    }
+}
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="/">Trang chủ</a>
+            @{
+                //var lst = showBreackrum(lstBreackrum, lstMenu, newInfo.MenuInfo.id_parent);
+                var lstBreackrum = new List<thanhhoa.gov.vn.Models.gov_menu>();
+                lstBreackrum.Add(news.gov_menu);
+                lstBreackrum = showBreackrum(lstBreackrum, lstMenu, news.gov_menu.id_parent);
+                foreach (var item in Enumerable.Reverse(lstBreackrum))
+                {
+                    <a href="@item.link">@item.title</a>
+                }
+            }
+
+        </div>
+        <!--end breackrum-->
+        <!-- main module -->
+        <div class="newsDetail">
+            <h1 style="color: #003c95; /*font-size : 17px;*/"> @news.title</h1>
+            <div class="updateActi">
+                @{
+                    DateTime date = news.entry_datetime;
+                    int thu = (int)date.DayOfWeek + 1;
+                    if (thu == 1)
+                    {
+                        @Html.Raw("Chủ nhật, " + @date.ToString("dd/MM/yyyy"))
+                    }
+                    else
+                    {
+                        @Html.Raw("Thứ " + thu + ", " + @date.ToString("dd/MM/yyyy"))
+                    }
+                }
+                @news.entry_datetime.ToString("HH:ss tt ")
+            </div>
+            
+
+            <h4 style="margin-bottom : 10px;"> @Html.Raw(news.description)</h4>
+            @{
+                if (news.is_shared)
+                {
+                    <div class="shareActi" style="margin-bottom: 15px;">
+                        <div class="shareSocial">
+                            <div style="float: left;" class="fb-like" data-href="@link" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+                            <div style="float: left; margin: 0px 4px;" class="fb-share-button" data-href="@link" data-layout="button"></div>
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
+                            <div class="g-plus" data-action="share" data-annotation="none" data-height="20" data-href="@link"></div>
+                        </div>
+                        <a href="/new/print?id=@news.id" target="_blank" title="In bài viết"><img src="~/Images/i-printer.png"></a>
+                    </div>
+                    <div class="clear"></div>
+                }
+            }
+            
+            <div class="contNewsDetail" style="line-height: 20px; font-size: 13px;">
+                @Html.Raw(news.new_content)
+
+            </div><!--end contNewsDetail-->
+
+            @{
+                if (news.is_comment)
+                {
+                    <form action="comment" method="post" name="fComment">
+                        <input type="hidden" id="newsId" name="newsId" value="@news.id" />
+                        <div class="boxComment">
+                            <div class="title_comment">
+                                <a name="viet_loi_binh" href=""></a>
+                                <a class="aTitle aComment" href="">Bình luận của bạn</a>
+                                <a class="alink" href="#xem_loi_binh">Xem lời bình &darr;</a>
+                                <div class="expadComment contenBoxcom">
+                                    <table class="tableWriteCom" width="100%" cellspacing="3" cellpadding="0">
+                                        <tr>
+                                            <td width="20%">Họ và tên:</td>
+                                            <td width="32%"><input type="text" onkeypress="removeError(this);" id="fullName" name="fullName" size="17"></td>
+                                            <td width="3%">&nbsp;</td>
+                                            <td width="13%">E-mail:</td>
+                                            <td width="32%"><input type="text" onkeypress="removeError(this);" id="email" name="email"></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5"><label>Nội dung:</label> <textarea onkeypress="removeError(this);" class="in_contComt" id="commentsContent" name="commentsContent"></textarea></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5"><a class="aSendCom" href="javascript: comment();">Gửi bình luận của bạn</a></td>
+                                        </tr>
+                                    </table>
+                                    <script>
+
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end box comment -->
+                    </form>
+                }
+            }
+            @{
+                if (news.is_tinlq)
+                {
+                    <div class="modTindadua">
+                        <h3>Tin liên quan</h3>
+                        <ul>
+                            @{
+                                foreach (var item in lstNew)
+                                {
+                                    <li><a href="@Utils.getLinkDefault(item.id, TypeLink.tintuc)">@item.title </a><span>(@item.entry_datetime)</span></li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <!-- end tin da dua -->
+                }
+            
+                if (news.is_comment)
+                {
+                    <div class="boxComment" id="boxComment">
+
+                    </div>
+                    <!-- end box comment -->
+                }
+            }
+            
+
+        </div>
+        <!-- end news detail -->
+
+
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+<script>
+    function fbs_click() {
+        u = location.href; t = document.title; window.open('http://www.facebook.com/sharer.php?u=' + encodeURIComponent(u) + '&t=' + encodeURIComponent(t), 'sharer', 'toolbar=0,status=0,width=626,height=436');
+        return false;
+    }
+
+    loadComment($('#newsId').val());
+    function loadComment(data) {
+        var url = "/new/loadComment?id=" + data;
+        $('#boxComment').load(url, function (data) {
+        });
+    }
+
+    function like(idComment, totalLike) {
+        $.ajax({
+            type: "GET",
+            url: "/new/likeComment",
+            data: "idComment=" + idComment,
+            success: function (data) {
+                if (data == 1) {
+                    $('#' + idComment).text(totalLike + 1);
+                } else if (data == 2) {
+                    alert("Bạn đã thực hiện chức năng này. Bạn cần 24h để thực hiện lại chức năng này!");
+                } else {
+                    alert("Bình luận đã bị xóa!");
+                }
+            }
+        });
+    }
+
+    function likeChild(idComment, totalLike) {
+        $.ajax({
+            type: "GET",
+            url: "/new/likeComment",
+            data: "idComment=" + idComment,
+            success: function (data) {
+                if (data == 1) {
+                    $('#' + idComment).text(totalLike + 1);
+                } else if (data == 2) {
+                    alert("Bạn đã thực hiện chức năng này. Bạn cần 24h để thực hiện lại chức năng này!");
+                } else {
+                    alert("Bình luận đã bị xóa!");
+                }
+            }
+        });
+    }
+
+    function removeError(e) {
+        $(e).removeClass("inp_error");
+        //if ($(e).val() == "") {
+        //$(e).addClass(" inp_error");
+        //}
+    }
+
+    function comment() {
+        var fullName = $('#fullName').val();
+        var email = $('#email').val();
+        var commentsContent = $('#commentsContent').val();
+        var newsId = $('#newsId').val();
+        var check = true;
+        if (email == "") {
+            $('#email').addClass(" inp_error");
+            check = false;
+        }
+        if (fullName == "") {
+            $('#fullName').addClass(" inp_error");
+            check = false;
+        }
+        if (commentsContent == "") {
+            $('#commentsContent').addClass(" inp_error");
+            check = false;
+        }
+        if (check) {
+            $.ajax({
+                type: "GET",
+                url: "/new/comment",
+                data: { "fullName": fullName, "email": email, "commentContent": commentsContent, "newsId": newsId, "idParent": 0 },
+                success: function (data) {
+                    if (data == 'True') {
+                        loadComment(@news.id);
+                        alert("Bình luận thành công! Thông tin bình luận của bạn sẽ được kiểm duyệt trước khi cho hiển thị lên website!");
+                        $('#fullName').val("");
+                        $('#email').val("");
+                        $('#commentsContent').val("");
+                    }
+                }
+            });
+        }
+    }
+
+    function commentReply(data) {
+        var fullName = $('#fullName_' + data).val();
+        var email = $('#email_' + data).val();
+        var commentsContent = $('#commentsContent_' + data).val();
+        var newsId = $('#newsId').val();
+        var check = true;
+        if (email == "") {
+            $('#email_' + data).addClass(" inp_error");
+            check = false;
+        }
+        if (fullName == "") {
+            $('#fullName_' + data).addClass(" inp_error");
+            check = false;
+        }
+        if (commentsContent == "") {
+            $('#commentsContent_' + data).addClass(" inp_error");
+            check = false;
+        }
+        if (check) {
+            $.ajax({
+                type: "GET",
+                url: "/new/comment",
+                data: { "fullName": fullName, "email": email, "commentContent": commentsContent, "newsId": newsId, "idParent": data },
+                success: function (data) {
+                    if (data == 'True') {
+                        loadComment(@news.id);
+                        alert("Bình luận thành công! Thông tin bình luận của bạn sẽ được kiểm duyệt trước khi cho hiển thị lên website!");
+                        $('#fullName').val("");
+                        $('#email').val("");
+                        $('#commentsContent').val("");
+                    }
+                }
+            });
+        }
+    }
+</script>

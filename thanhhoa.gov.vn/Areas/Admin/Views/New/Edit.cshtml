@@ -1,0 +1,241 @@
+﻿@{
+    ViewBag.Title = "Chỉnh sửa tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var newInfo = (thanhhoa.gov.vn.Models.gov_news)ViewData["newInfo"];
+    var lstMenu = (List<thanhhoa.gov.vn.Models.gov_menu>)ViewData["lstMenu"];
+}
+<script src="~/Areas/Admin/Resources/ckeditor/ckeditor.js"></script>
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-pencil"></i> Quản lý tin tức
+                </li>
+                <li class="active">
+                    <i class="fa fa-edit"></i> Cập nhật bài viết
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="Edit" onsubmit="save();">
+                                @{
+                                    if (newInfo != null)
+                                    {
+                                        <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                            <i class="fa fa-foursquare"></i> Cập nhật bài viết
+                                        </h5>
+                                        <div class="row">
+                                            <div class="col-lg-8" style="border-right: 1px dashed #808080;">
+                                                <input type="hidden" name="id" value="@newInfo.id"/>
+                                                <div class="form-group m-b-xs">
+                                                    <label class="col-lg-3 control-span">
+                                                        Tên bài viết:  <font color="red">*</font> :
+                                                    </label>
+                                                    <div class="col-lg-9">
+                                                        <input type="text" name="title" class="form-control input-sm"
+                                                               data-required="true"
+                                                               data-required-message="Trường tên bài viết không được để trống"
+                                                               value="@newInfo.title" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-sm">
+                                                    <label class="col-lg-3 control-span">
+                                                        Trích dẫn
+                                                    </label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <textarea id="newDescription" name="description">@newInfo.description</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-sm">
+                                                    <label class="col-lg-3 control-span">
+                                                        Nội dung
+                                                    </label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <textarea id="newContent" name="new_content" rows="30">@newInfo.new_content</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        Ảnh đại diện :
+                                                    </span>
+                                                    <div class="col-lg-7" style="height: 200px; margin-bottom: 10px;">
+                                                        <img id="images" src="@newInfo.avatar" style="max-width : 100%; max-height : 200px; "/>
+                                                    </div>
+                                            
+                                                </div>
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        <input type="hidden" id="avatarImage" name="avatar" value="@newInfo.avatar"></span>
+                                                    <div class="col-lg-7">
+                                                        <input type="button" class=" btnSearch" id="brower" value="Chọn ảnh" style="width : 100%;" />
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        Danh mục chứa :
+                                                    </span>
+                                                    <div class="col-lg-7">
+                                                        <select name="menu_id" id="slMenuParent" style="width : 100%;">
+                                                            @{
+                                                                foreach (var item in lstMenu)
+                                                                {
+                                                                    <option value="@item.id" @{if(newInfo.menu_id == item.id){ @Html.Raw("selected")}} >@item.title</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        Hiển thị:
+                                                    </span>
+                                                    <div class="col-lg-7">
+                                                        <label>
+                                                            <input type="checkbox" name="is_home" value="TRUE" @{if (newInfo.is_home) { @Html.Raw("checked")   }} />Trang nhất
+                                                        </label>
+                                                        <br />
+                                                        <label>
+                                                            <input type="checkbox" name="is_shared" value="TRUE" @{if (newInfo.is_shared) { @Html.Raw("checked")   }} />Chia sẻ
+                                                        </label>
+                                                        <br />
+                                                        <label>
+                                                            <input type="checkbox" name="is_comment" value="TRUE" @{if (newInfo.is_comment) { @Html.Raw("checked")   }} />Bình luận
+                                                        </label>
+                                                        <br />
+                                                        <label>
+                                                            <input type="checkbox" name="is_tinlq" value="TRUE" @{if (newInfo.is_tinlq) { @Html.Raw("checked")   }} />Tin liên quan
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        Meta keyword :
+                                                    </span>
+                                                    <div class="col-lg-7">
+                                                        <input type="text" name="meta_keyword" class="form-control input-sm"
+                                                               value="@newInfo.meta_keyword"
+                                                               data-required="true"
+                                                               data-required-message="Trường Meta keyword không được để trống"
+                                                               data-maxlength="500"
+                                                               data-maxlength-message="Trường Meta keyword không được vượt quá 500 ký tự" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        Meta description :
+                                                    </span>
+                                                    <div class="col-lg-7">
+                                                        <input type="text" name="meta_desciption" class="form-control input-sm"
+                                                               value="@newInfo.meta_desciption"
+                                                               data-required="true"
+                                                               data-required-message="Trường Meta desciption không được để trống"
+                                                               data-maxlength="500"
+                                                               data-maxlength-message="Trường Meta desciption không được vượt quá 500 ký tự" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        Trạng thái :
+                                                    </span>
+                                                    <div class="col-lg-7">
+                                                        <select name="active_flg" id="slStatus" style="width : 100%;">
+                                                            <option value="TRUE" @if(newInfo.active_flg){@Html.Raw(" selected")}>Hiển thị</option>
+                                                            <option value="FALSE" @if(!newInfo.active_flg) { @Html.Raw(" selected") }>Ẩn</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group m-b-xs m-t-md">
+                                                    <span class="col-lg-5 control-span">
+                                                        Người tạo:
+                                                    </span>
+                                                    <div class="col-lg-7">
+                                                        <strong><i>@newInfo.entry_username</i></strong>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        Thời gian tạo:
+                                                    </span>
+                                                    <div class="col-lg-7">
+                                                        <strong><i>@newInfo.entry_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        Người cập nhật cuối:
+                                                    </span>
+                                                    <div class="col-lg-7">
+                                                        <strong><i>@newInfo.update_username</i></strong>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-b-xs">
+                                                    <span class="col-lg-5 control-span">
+                                                        Thời gian cập nhật cuối:
+                                                    </span>
+                                                    <div class="col-lg-7">
+                                                        <strong><i>@newInfo.update_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="line line-dashed line-lg pull-in"></div>
+                                        <div class="form-group m-b-xs">
+                                            <span class="col-lg-2 control-span m-l-md"></span>
+                                            <div class="col-lg-6">
+                                                <input type="submit" class="btn btn-sm btn-primary"
+                                                       style="width: 90px;" value="Lưu" />
+                                                <a href="copy?id=@newInfo.id" class="btn btn-sm btn-primary"
+                                                   data-dismiss="modal" style="width: 90px;">Sao chép tin</a>
+                                                <a href="index" class="btn btn-sm btn-danger"
+                                                   data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<font color='red'><b>Bài viết không tồn tại, hoặc đã bị xóa!</b></font> Nhấn vào <a href='index' style='text-decoration: underline;'>đây</a> để quay lại");
+                                    }
+                                }
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+    $('#slStatus').select2();
+    $('#slType').select2();
+    
+    $(function () {
+        $('#brower').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#images').attr("src", fileUrl);
+                $('#avatarImage').val(fileUrl);
+            };
+            ckfinder.popup();
+        });
+    });
+    
+    var ckeditor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, { language: languageCode });
+    }
+    $(function () { createEditor('vi', 'newContent') });
+    $(function () { createEditor('vi', 'newDescription') });
+</script>

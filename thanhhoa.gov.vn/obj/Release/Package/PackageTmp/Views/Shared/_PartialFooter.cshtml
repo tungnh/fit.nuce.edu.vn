@@ -1,0 +1,36 @@
+﻿@{
+    var lstMenuFooter = (List<thanhhoa.gov.vn.Models.gov_menu>)ViewData["lstMenu"];
+}
+<footer>
+    <div class="clear"></div>
+    <div id="navFooter">
+        <div class="wrapper">
+            <ul class="ulNavFooter">
+                @{
+                    foreach (var item in lstMenuFooter.Where(m => m.id_parent == 0))
+                    {
+                        <li><a href="@item.link">@item.title</a></li>
+                        if(lstMenuFooter.Last().id != item.id){
+                            @Html.Raw("|");
+                        }
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <!-- end bottom -->
+
+    <div id="bottom" style="font-size: 12px;">
+        <div class="wrapper">
+            <div class="copyright">
+                <p class="pNameCom">Khoa công nghệ thông tin - trường đại học xây dựng</p>
+                <p>Khoa Công nghệ Thông tin, P.410, Nhà A1, Trường Đại học Xây dựng, Số 55 - Giải Phóng - Q.Hai Bà Trưng - Hà Nội.</p>
+                <p>Điện thoại: 04.38697940 - Fax: 04.38697940. Email: <a href="mailto:fit@nuce.edu.vn">fit@nuce.edu.vn</a> </p>
+                <p>Ghi rõ nguồn Khoa Công nghệ Thông tin - Đại học Xây Dựng (<a href="http://fit.nuce.edu.vn">fit.nuce.edu.vn</a>) khi trích dẫn lại tin từ địa chỉ này.</p>
+                <p>© Copyright 2015 by <a target="_blank" href="http://se.nuce.edu.vn">Bộ môn Công nghệ phần mềm</a> - Khoa CNTT - ĐHXD</p>
+                <p>Hosted by Cựu sinh viên K54 - Design by Cựu sinh viên K55</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</footer>

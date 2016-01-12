@@ -1,0 +1,206 @@
+﻿@{
+    ViewBag.Title = "Chuyên mục hỏi đáp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var questionViewhelper = (thanhhoa.gov.vn.Viewhelper.QuestionViewhelper)ViewData["questionViewhelper"];
+    
+    @functions {
+        public String getDisp(String input, int count)
+        {
+            if (input == null)
+            {
+                return  null;
+            }
+            if (input.Length > count)
+            {
+                int index = count;
+                while (index < input.Length && input.ElementAt(index) != ' ')
+                {
+                    index++;
+                }
+                String titleReturn = (index == input.Length) ? input.Substring(0, index) : input.Substring(0, index) + " ... ";
+                return  titleReturn;
+            }
+            return input;
+        }
+    }
+}
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<div class="mainMod">
+
+    
+
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href=""><b>HỎI ĐÁP</b></a>
+            <a href=""><b style=" text-transform: uppercase;">@questionViewhelper.QuestionCategoryName</b></a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modHoidap">
+            <form action="Index" method="post" name="form">
+                <input type="hidden" name="direction" />
+                <input type="hidden" name="page" value="@questionViewhelper.Page" />
+                <input type="hidden" name="questionCategoryId" id="questionCategoryId" value="@questionViewhelper.QuestionCategoryId" />
+                <input type="hidden" name="questionCategoryName" id="questionCategoryName" value="@questionViewhelper.QuestionCategoryName" />
+                <div id="colE">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td id="MSOZoneCell_WebPartctl00_m_g_ab356cfe_f518_4e68_b425_3a23e9ccb00a" valign="top" class="s4-wpcell-plain">
+                                    <table class="s4-wpTopTable" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tbody>
+                                            <tr>
+                                                <td valign="top">
+                                                    <div width="100%" class="ms-WPBody">
+                                                        <div>
+                                                            <div class="boxS2">
+                                                                <div class="topbox">
+                                                                    <div class="borderleft">
+                                                                    </div>
+                                                                    <div class="borderright">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="midbox">
+                                                                    <div class="detail_mid">
+
+                                                                        <table border="0" width="100%" cellpadding="5" cellspacing="5" style="margin: 0 auto">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td width="50px" align="left">
+                                                                                        Từ khóa:
+                                                                                    </td>
+                                                                                    <td align="center">
+                                                                                        <div class="input_l">
+                                                                                            <div class="input_r">
+                                                                                                <input name="keySearch" type="text" value="@questionViewhelper.KeySearch" class="input_style">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td width="15%" align="center">
+                                                                                        <div class="btn_style fr">
+                                                                                            <input type="submit" value="Tìm kiếm">
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td></td>
+                                                                                    <td align="center">
+                                                                                        <a href="regist" class="aSearchAdvancedVb">Đặt câu hỏi của bạn</a>
+                                                                                    </td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bottombox">
+                                                                    <div class="borderleft">
+                                                                    </div>
+                                                                    <div class="borderright">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="boxS2">
+                                                                <div class="topbox">
+                                                                    <div class="borderleft">
+                                                                    </div>
+                                                                    <div class="borderright">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="midbox">
+                                                                    <div class="detail_mid">
+                                                                        <h4 class="title">
+                                                                            <span class="icon9">
+                                                                                CÂU HỎI MỚI NHẤT
+                                                                            </span>
+                                                                        </h4>
+                                                                        @{
+                                                                            if (questionViewhelper.LstQuestion != null && questionViewhelper.LstQuestion.Count > 0)
+                                                                            {
+                                                                                foreach (var item in questionViewhelper.LstQuestion)
+                                                                                {
+                                                                                    <div class="listQuest">
+                                                                                        <p>
+                                                                                            <span class="typeQues">
+                                                                                                <a href="detail?id=@item.Id">@item.Title</a>
+                                                                                            </span> <span class="time">(@item.QuestionDatetime.ToString("dd/MM/yyy"))</span>
+                                                                                        </p>
+                                                                                        <p>
+                                                                                            <strong>Câu hỏi:</strong>
+                                                                                            &nbsp;@getDisp(item.QuestionContent, 200)
+                                                                                        </p>
+
+                                                                                    </div>
+                                                                                    <div class="dotline">
+                                                                                        &nbsp;
+                                                                                    </div>
+                                                                                }
+                                                                            }
+                                                                        }
+
+                                                                        <div class="surrounded">
+
+                                                                            <div class="pagingListnews">
+                                                                                <h4><span style="float: left; line-height: 22px; display: inline-block; color: #4679D0;">Tổng số @questionViewhelper.TotalCount dữ liệu đã tìm thấy.</span></h4>
+                                                                                <a href="javascript: direction('ahead');">&larr;</a>
+                                                                                @{
+                                                                                    for (int j = questionViewhelper.FirstPage; j <= questionViewhelper.LastPage; j++)
+                                                                                    {
+                                                                                        <a href="javascript: selectPage(@j)" @if (j == questionViewhelper.Page) { @Html.Raw("class='act1'") }>@j</a>
+                                                                                    }
+                                                                                }
+                                                                                <a href="javascript: direction('next')">&rarr;</a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bottombox">
+                                                                    <div class="borderleft">
+                                                                    </div>
+                                                                    <div class="borderright">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    <!-- end left main w=670 -->
+
+    @Html.Partial("_PartialLeft")
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+
+<script>
+    function direction(data) {
+        document.form.direction.value = data;
+        document.form.submit();
+    }
+
+    function selectPage(data) {
+        document.form.direction = null;
+        document.form.page.value = data;
+        document.form.submit();
+    }
+
+    function filterByCategory(id, name) {
+        $('#questionCategoryName').val(name);
+        $('#questionCategoryId').val(id);
+        document.form.submit();
+    }
+</script>

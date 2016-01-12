@@ -1,0 +1,64 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@using thanhhoa.gov.vn.Models;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Danh sách cựu sinh viên tiêu biểu";
+    var item = (thanhhoa.gov.vn.Models.gov_person)ViewData["studentInfo"];
+    if (item == null)
+    {
+        Response.Redirect("/error/error404");
+    }
+}
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="#"><b>Trang chủ</b></a>
+            <a href="javascript: void(0);"><b>Cựu sinh viên</b></a>
+            <a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu"><b>Cựu sinh viên tiêu biểu</b></a>
+            <a href="javascript: void(0);"><b>@item.full_name</b></a>
+        </div>
+        <!--end breackrum-->
+        <div style=" display: block; margin-bottom: 10px; height: 26px; line-height: 26px;">
+            <a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/@item.id/xac-nhan-mat-ma" class="aSearchAdvancedVb">Thay đổi thông tin cựu sinh viên</a>
+        </div>
+        <div class="updateActi"></div>
+        <!-- main module -->
+        <div class="newsDetail">
+            <div class="contNewsDetail" style="line-height: 20px; font-size: 10pt;">
+                <div class="item column-1" style="margin: 0px; padding: 0px; width: 100%; float: left;">
+                    <table width="100%">
+                        <tr>
+                            <td width="20%" valign="top">
+                                <img alt="@item.full_name" class="cke-resize" src="@{if(item.avatar != null){ @Html.Raw(item.avatar)} else {@Html.Raw("/Images/avatar_default.jpg")}}" style="margin: 0px 5px; padding: 0px; border: 0px none; width: 90%; float: left;">
+                            </td>
+                            <td style="vertical-align: top;">
+                                <p style="margin: 0px; padding: 0 0 0 5px; line-height: 1.7em; "><span style="color:#008080;"><strong style="font-size: 15px;">@item.full_name</strong></span>
+                                <p style="margin: 0px; padding: 0 0 0 5px; font-size: 10pt; font-family: Arial; "><strong>Chuyên nghành:</strong> @item.gov_specialized.specialized_name</p>
+                                <p style="margin: 0px; padding: 0 0 0 5px; font-size: 10pt; font-family: Arial; "><strong>Khóa học:</strong> @item.gov_course.course_name - <strong>Lớp:</strong> @item.lop</p>
+                                <p style="margin: 0px; padding: 0 0 0 5px; font-size: 10pt; font-family: Arial; "><strong>Email:</strong> @if(item.show_email){ <a href="mailto:@item.email" style="margin: 0px; padding: 0px; color: rgb(9, 81, 151); text-decoration: none;">@item.email</a>}
+                                                                                                                                          else { @Html.Raw("******")}
+                                <p style="margin: 0px; padding: 0 0 0 5px; font-size: 10pt; font-family: Arial;"><strong>Điện thoại LH:</strong> @if(item.show_tel) { @Html.Raw(item.phone)} else{ @Html.Raw("******")}</p>
+                                <p style="margin: 0px; padding: 0 0 0 5px; font-size: 10pt; font-family: Arial;"><strong>Cơ quan công tác:</strong> @if(item.show_department) {@Html.Raw(item.department)} else{ @Html.Raw("******")}</p>
+                                <p style="margin: 0px; padding: 0 0 0 5px; font-size: 10pt; font-family: Arial;"><strong>Địa chỉ:</strong> @if(item.show_address) {@Html.Raw(item.address)} else{ @Html.Raw("******")}</p>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </div>
+                <p>&nbsp;</p>
+                <p><strong>Đôi nét về bản thân</strong></p>
+                @if(item.show_shared){@Html.Raw(item.description)}
+                else { @Html.Raw("******")}
+            </div><!--end contNewsDetail-->
+        </div>
+        <!-- end news detail -->
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+<script>
+
+</script>

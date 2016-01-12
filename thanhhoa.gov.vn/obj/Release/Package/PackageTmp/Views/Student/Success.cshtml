@@ -1,0 +1,62 @@
+﻿@using thanhhoa.gov.vn.Models;
+@{
+    ViewBag.Title = "Hoàn thành hay đổi thông tin cựu sinh viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = (String)ViewData["message"];
+    var err = (String)ViewData["err"];
+}
+<link href="~/Content/step-bar-style.css" rel="stylesheet" />
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<link href="~/Content/sign-up.css" rel="stylesheet" />
+<script src="~/Scripts/map/select2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="~/Scripts/map/select2.css" />
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="modHoidap">
+            <form action="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/thay-doi-mat-ma" method="post" name="form" id="form" enctype="multipart/form-data">
+                <input hidden name="description" id="description" />
+                <div class="breackrum">
+                    <a class="bkHome" href="/"><b>Trang chủ</b></a>
+                    <a href="javascript: void(0);"><b>Cựu sinh viên</b></a>
+                    <a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu"><b>Cựu sinh viên tiêu biểu</b></a>
+                    <a href="javascript: void(0);"><b>Thay đổi thông tin cựu sinh viên</b></a>
+                </div>
+                <div style="min-height: 100px;">
+                    <div class="checkout-wrap">
+                        <ul class="checkout-bar">
+                            <li class="visited">Xác nhận mật mã</li>
+                            <li class="visited">Thay đổi thông tin</li>
+                            <li class="active">Thành công</li>
+                        </ul>
+                    </div>
+                </div>
+                @{
+                    if (message != null)
+                    {
+                        <div style="color: #118B11; background-color: #FAFAFA; border: 1px solid #118B11 ; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
+                            <strong>@Html.Raw(message)</strong>
+                        </div>
+                    }
+                }
+                @{
+                    if (err != null)
+                    {
+                        <div style="color: red; background-color: #FAFAFA; border: 1px solid red; ; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
+                            <strong>@Html.Raw(err)</strong>
+                        </div>
+                    }
+                }
+            </form>
+            <!-- end module dang ky -->
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+</div>
+<!--end main module-->
+
+<script type="text/javascript">
+</script>

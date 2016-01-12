@@ -1,0 +1,373 @@
+sup {
+	position: relative;
+	top: -0.4em;
+	vertical-align: baseline;
+}
+sub {
+	position: relative;
+	top: 0.4em;
+	vertical-align: baseline;
+}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+@media screen and (min-device-pixel-ratio:0), (-webkit-min-device-pixel-ratio:0), (min--moz-device-pixel-ratio: 0) { .view { font-size:10em; transform:scale(0.1); -moz-transform:scale(0.1); -webkit-transform:scale(0.1); -moz-transform-origin:top left; -webkit-transform-origin:top left; } }
+.layer { }.ie { font-size: 1pt; }
+.ie body { font-size: 12em; }
+.pg13htm01 {
+	position: absolute;
+	white-space: nowrap;
+}
+.pg13htm02 {
+	height: 66em;
+	font-size: 1em;
+	margin: 0em;
+	line-height: 0.0em;
+	display: block;
+	border-style: none;
+	width: 51em;
+}
+.pg13htm03 {
+	position: relative;
+	width: 51em;
+}
+.pg13htm04 {
+	height: 6.6em;
+}
+.ie .pg13htm04 {
+	height: 66em;
+}
+.pg13htm05 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.446286);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+@font-face {
+	font-family:"ONDDEW+TimesNewRomanPSMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=97fbceaa-0000-0000-0000-000000000000.woff") format("woff");
+}
+.pg13htm06 {
+	font-size: 0.938214em;
+	font-family: "ONDDEW+TimesNewRomanPSMT";
+	color: #000000;
+}
+.pg13htm07 {
+	line-height: 1.107422em;
+}
+.pg13htm08 {
+	letter-spacing: 0.0065em;
+}
+
+.ie .pg13htm08 {
+	letter-spacing: 0.098px;
+}
+@font-face {
+	font-family:"SUFAUH+TimesNewRomanPSMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=b5a34efd-0000-0000-0000-000000000000.woff") format("woff");
+}
+.pg13htm09 {
+	font-size: 0.938214em;
+	font-family: "SUFAUH+TimesNewRomanPSMT", "Times New Roman";
+	color: #000000;
+}
+@font-face {
+	font-family:"DKQIDG+TimesNewRomanPS-BoldMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=89857ad0-0001-0000-0000-000000000000.woff") format("woff");
+}
+.pg13htm10 {
+	font-size: 1.088328em;
+	font-family: "DKQIDG+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg13htm11 {
+	letter-spacing: 0.0056em;
+}
+
+.ie .pg13htm11 {
+	letter-spacing: 0.098px;
+}
+.pg13htm12 {
+	font-size: 1.088328em;
+	font-family: "ONDDEW+TimesNewRomanPSMT";
+	color: #000000;
+}
+.pg13htm13 {
+	font-size: 0.938214em;
+	font-family: "DKQIDG+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg13htm14 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.246798);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+@font-face {
+	font-family:"LWDWMQ+TimesNewRomanPS-BoldMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=ae34de87-0001-0000-0000-000000000000.woff") format("woff");
+}
+.pg13htm15 {
+	font-size: 0.938214em;
+	font-family: "LWDWMQ+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg13htm16 {
+	letter-spacing: -0.0016em;
+}
+
+.ie .pg13htm16 {
+	letter-spacing: -0.0245px;
+}
+.pg13htm17 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.147055);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+.pg13htm18 {
+	font-size: 0.863157em;
+	font-family: "DKQIDG+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg13htm19 {
+	letter-spacing: -0.0039em;
+}
+
+.ie .pg13htm19 {
+	letter-spacing: -0.0536px;
+}
+.pg13htm20 {
+	font-size: 0.863157em;
+	font-family: "LWDWMQ+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg13htm21 {
+	letter-spacing: 0.0008em;
+}
+
+.ie .pg13htm21 {
+	letter-spacing: 0.0121px;
+}
+.pg13htm22 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.346531);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+.pg13htm23 {
+	font-size: 1.013263em;
+	font-family: "LWDWMQ+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg13htm24 {
+	letter-spacing: 0.0021em;
+}
+
+.ie .pg13htm24 {
+	letter-spacing: 0.0333px;
+}
+.pg13htm25 {
+	font-size: 1.013263em;
+	font-family: "DKQIDG+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg13htm26 {
+	font-size: 1.088328em;
+	font-family: "LWDWMQ+TimesNewRomanPS-BoldMT";
+	color: #000000;
+}
+.pg13htm27 {
+	letter-spacing: 0.0073em;
+}
+
+.ie .pg13htm27 {
+	letter-spacing: 0.1265px;
+}
+.pg13htm28 {
+	letter-spacing: 0.0043em;
+}
+
+.ie .pg13htm28 {
+	letter-spacing: 0.0746px;
+}
+.pg13htm29 {
+	letter-spacing: 0em;
+}
+
+.ie .pg13htm29 {
+	letter-spacing: 0px;
+}
+.pg13htm30 {
+	letter-spacing: 0.0074em;
+}
+
+.ie .pg13htm30 {
+	letter-spacing: 0.1289px;
+}
+@font-face {
+	font-family:"MGFJWF+TimesNewRomanPS-ItalicMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=1dc94889-0002-0000-0000-000000000000.woff") format("woff");
+}
+.pg13htm31 {
+	font-size: 1.088328em;
+	font-family: "MGFJWF+TimesNewRomanPS-ItalicMT";
+	color: #000000;
+}
+.pg13htm32 {
+	letter-spacing: 0.0025em;
+}
+
+.ie .pg13htm32 {
+	letter-spacing: 0.0438px;
+}
+@font-face {
+	font-family:"RJSPJV+TimesNewRomanPS-ItalicMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=90cd8741-0002-0000-0000-000000000000.woff") format("woff");
+}
+.pg13htm33 {
+	font-size: 1.088328em;
+	font-family: "RJSPJV+TimesNewRomanPS-ItalicMT";
+	color: #000000;
+}
+.pg13htm34 {
+	letter-spacing: 0.0081em;
+}
+
+.ie .pg13htm34 {
+	letter-spacing: 0.1414px;
+}
+.pg13htm35 {
+	letter-spacing: 0.0033em;
+}
+
+.ie .pg13htm35 {
+	letter-spacing: 0.0572px;
+}
+.pg13htm36 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.5);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+.pg13htm37 {
+	letter-spacing: 0.0044em;
+}
+
+.ie .pg13htm37 {
+	letter-spacing: 0.0761px;
+}
+.pg13htm38 {
+	letter-spacing: 0.0058em;
+}
+
+.ie .pg13htm38 {
+	letter-spacing: 0.1014px;
+}
+.pg13htm39 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-2);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+.pg13htm40 {
+	letter-spacing: 0.0047em;
+}
+
+.ie .pg13htm40 {
+	letter-spacing: 0.0825px;
+}
+.pg13htm41 {
+	font-size: 1.088328em;
+	font-family: "SUFAUH+TimesNewRomanPSMT", "Times New Roman";
+	color: #000000;
+}
+.pg13htm42 {
+	letter-spacing: 0.0022em;
+}
+
+.ie .pg13htm42 {
+	letter-spacing: 0.0381px;
+}
+.pg13htm43 {
+	letter-spacing: 0.006em;
+}
+
+.ie .pg13htm43 {
+	letter-spacing: 0.1051px;
+}
+.pg13htm44 {
+	letter-spacing: 0.0051em;
+}
+
+.ie .pg13htm44 {
+	letter-spacing: 0.0881px;
+}
+.pg13htm45 {
+	letter-spacing: 0.0076em;
+}
+
+.ie .pg13htm45 {
+	letter-spacing: 0.1318px;
+}
+.pg13htm46 {
+	letter-spacing: 0.0035em;
+}
+
+.ie .pg13htm46 {
+	letter-spacing: 0.0608px;
+}
+.pg13htm47 {
+	letter-spacing: 0.0027em;
+}
+
+.ie .pg13htm47 {
+	letter-spacing: 0.0476px;
+}
+.pg13htm48 {
+	letter-spacing: 0.0015em;
+}
+
+.ie .pg13htm48 {
+	letter-spacing: 0.0259px;
+}
+.pg13htm49 {
+	letter-spacing: 0.0038em;
+}
+
+.ie .pg13htm49 {
+	letter-spacing: 0.0658px;
+}
+.pg13htm50 {
+	letter-spacing: 0.0052em;
+}
+
+.ie .pg13htm50 {
+	letter-spacing: 0.0914px;
+}
+.pg13htm51 {
+	letter-spacing: 0.0079em;
+}
+
+.ie .pg13htm51 {
+	letter-spacing: 0.1367px;
+}
+.pg13htm52 {
+	letter-spacing: 0.0125em;
+}
+
+.ie .pg13htm52 {
+	letter-spacing: 0.2184px;
+}
+.pg13htm53 {
+	letter-spacing: -0.0015em;
+}
+
+.ie .pg13htm53 {
+	letter-spacing: -0.0253px;
+}

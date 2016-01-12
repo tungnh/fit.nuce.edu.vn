@@ -1,0 +1,256 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Danh bạ và thư điện tử";
+    var lstUser = (List<thanhhoa.gov.vn.Models.gov_user>)ViewData["lstUser"];
+    var lstDepartment = (List<thanhhoa.gov.vn.Models.gov_department>)ViewData["lstDepartment"];
+}
+<script src="~/Scripts/marquee.js"></script>
+<script src="~/Scripts/scroll/jcarousellite_1.0.1.min.js"></script>
+<script src="~/Scripts/expandMenu/ddaccordion.js"></script>
+<script src="~/Scripts/expandMenu/ddaccordion_set.js"></script>
+<link href="~/Scripts/colorbox-master/colorbox.css" rel="stylesheet" />
+<link href="~/Scripts/colorbox-master/Com_colorbox.css" rel="stylesheet" />
+<script src="~/Scripts/colorbox-master/jquery.colorbox.js"></script>
+<script src="~/Scripts/colorbox-master/set_colorbox.js"></script>
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<style type="text/css">
+    .cssStyleLich {
+        padding: 0px 20px 10px 10px;
+    }
+
+        .cssStyleLich img {
+            font-size: 12pt;
+        }
+
+    .cssTable {
+        border-top: 1px solid #C6DBFF;
+        border-left: 1px solid #C6DBFF;
+        border-bottom: 1px solid #C6DBFF;
+        border-collapse: collapse;
+    }
+
+        .cssTable tr {
+        }
+
+    .cssTitle {
+        font-weight: bold;
+        text-align: center;
+        background: #E8EEF7;
+    }
+
+        .cssTitle td {
+            border-right: 1px solid #C6DBFF;
+            border-collapse: collapse;
+            height: 25px;
+        }
+
+    .cssTableTitle td {
+        font-weight: bold;
+        text-align: center;
+        height: 20px;
+        border-collapse: collapse;
+    }
+
+    .cssTableItems td {
+        height: 40px;
+        padding: 5px;
+    }
+
+    .cssItems td {
+        border-top: 1px solid #C6DBFF;
+        border-right: 1px solid #C6DBFF;
+        border-collapse: collapse;
+    }
+
+    .cssItems {
+    }
+
+    .cssDateH {
+        background-color: #FBFECD;
+    }
+
+    .cssTableNgayTrongTuan {
+        text-align: center;
+        font-size: 14pt;
+        font-weight: bold;
+        border-collapse: collapse;
+        color: Red;
+    }
+
+        .cssTableNgayTrongTuan td {
+            border-collapse: collapse;
+            height: 40px;
+        }
+
+    .cssMainTable {
+        border: 1px solid #C6DBFF;
+        border-collapse: collapse;
+    }
+
+        .cssMainTable td {
+            border-bottom: 1px solid #C6DBFF;
+            border-right: 1px solid #C6DBFF;
+            border-collapse: collapse;
+            text-align: center;
+            height: 60px;
+        }
+
+            .cssMainTable td:last-child {
+                border-right: none;
+            }
+
+        .cssMainTable > tr:nth-child(odd) > td {
+            border-bottom: none;
+        }
+
+    .cssMonthTitle {
+        color: Red;
+        font-size: 14pt;
+        font-weight: bold;
+    }
+
+    .cssTest {
+        display: none;
+        border: 1px red solid;
+    }
+
+    .divabc {
+        position: relative;
+    }
+
+    .divabc {
+        display: block;
+    }
+
+    .cssChiTietCV {
+        display: none;
+        border: 2px solid red;
+        position: absolute;
+        background-color: Lime;
+        padding: 5px;
+        width: 260px;
+        padding-top: 50px;
+    }
+
+    .cssTableNgayTrongThang td:hover {
+        background-color: #FBFECD;
+    }
+
+    .cssLichNumber {
+        font-size: 25pt;
+        font-weight: bold;
+        font-family: Arial;
+        color: Blue;
+    }
+
+    .stickytooltip {
+        box-shadow: 5px 5px 8px #FBFECD; /*shadow for CSS3 capable browsers.*/
+        -webkit-box-shadow: 2px 2px 8px #FBFECD;
+        -moz-box-shadow: 2px 2px 8px #FBFECD;
+        display: none;
+        position: absolute;
+        display: none;
+        border: 5px solid #FBFECD; /*Border around tooltip*/
+        background: white;
+        z-index: 3000;
+    }
+
+        .stickytooltip .stickystatus { /*Style for footer bar within tooltip*/
+            background: black;
+            color: Red;
+            padding-top: 5px;
+            text-align: center;
+            font: bold 11px Arial;
+        }
+
+    .atip {
+        width: 400px !important;
+        height: 200px;
+        scroll-x: auto;
+        display: auto;
+        overflow: scroll;
+        padding: 10px 10px;
+    }
+
+    .count {
+        color: Teal;
+        font-weight: bold;
+    }
+</style>
+<div class="mainMod">
+    <div class="modLeftMain">
+
+        <div class="breackrum">
+            <a class="bkHome" href="index.html">Trang chính</a>
+            <a href="#">Danh bạ và thư điện tử</a>
+        </div>
+        <!--end breackrum-->
+        <div class="modMulti">
+            <h2 style="color: Red; font-size: 12px; text-align: center; padding: 10px 0px;">
+                DANH BẠ ĐIỆN THOẠI VÀ THƯ ĐIỆN TỬ
+            </h2>
+        </div>
+        <form name="formCalendar" method="post" action="calendar">
+
+            <ul class="nav_v-menu">
+                @{
+                    foreach (var department in lstDepartment)
+                    {
+                        <li>
+                            <a href="#" title="" target="_top">@department.name</a>
+                            <i class="technology"></i>
+                            <ul class="thelanguage subli_v-menu">
+                                <li style="padding:0px 10px;">
+                                    @{
+                                        <table class="cssTableTitle" width="100%">
+                                            <tr class="cssTitle">
+                                                <td>Họ và tên</td>
+                                                <td>Chức vụ</td>
+                                                <td>Điện thoại</td>
+                                                <td>Di động</td>
+                                                <td>Thư điện tử</td>
+                                            </tr>
+                                            @{
+                                                foreach (var user in lstUser)
+                                                {
+                                                    if (user.department_id == department.id && user.is_shared)
+                                                    {
+                                                        <tr>
+                                                            <td>@user.family_name @user.first_name</td>
+                                                            <td>@user.gov_role.role_name</td>
+                                                            <td>@user.phone</td>
+                                                            <td>@user.mobile</td>
+                                                            <td>@user.email</td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            }
+                                        </table>
+                                    }
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                }
+
+            </ul>
+
+        </form>
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+<script>
+    function changeTime(data) {
+        document.formCalendar.submit();
+    }
+
+    function changeView(type) {
+        document.formCalendar.typeView.value = type;
+        document.formCalendar.submit();
+    }
+</script>

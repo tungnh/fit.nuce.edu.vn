@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "Thêm mới slide trang chủ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-pencil"></i> Quản lý tin tức
+                </li>
+                <li class="active">
+                     Danh sách slide trang chủ
+                </li>
+                <li class="active">
+                     Thêm mới slide trang chủ
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới slide trang chủ
+                                </h5>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Style :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <select id="style" name="type" style="width: 276px;">
+                                            <option value="">Chọn kiểu slide</option>
+                                            <option value="cube">cube</option>
+                                            <option value="cubeRandom">cubeRandom</option>
+                                            <option value="block">block</option>
+                                            <option value="cubeStopRandom">cubeStopRandom</option>
+                                            <option value="cubeHide">cubeHide</option>
+                                            <option value="cubeSize">cubeSize</option>
+                                            <option value="horizontal">horizontal</option>
+                                            <option value="showBars">showBars</option>
+                                            <option value="fade">fade</option>
+                                            <option value="fadeFour">fadeFour</option>
+                                            <option value="cut">cut</option>
+                                            <option value="circles">circles</option>
+                                            <option value="blind">blind</option>
+                                            <option value="cubeSpread">cubeSpread</option>
+                                            <option value="glassCube">glassCube</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Đường dẫn  :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="link"
+                                               class="form-control input-sm" placeholder="Đặt đường dẫn cho slide" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                        Mô tả :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <textarea cols="50" rows="3" class="form-control input-sm" name="description" placeholder="Viết một vài điều gì đó về slide này"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Số thứ tự <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="order_number"
+                                               data-type="number"
+                                               data-type-number-message="Phải nhập đúng định dạng số"
+                                               data-required="true"
+                                               data-required-message="Trường số thứ tự không được để trống"
+                                               class="form-control input-sm" placeholder="Số thứ tự" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                        Ảnh đại diện <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="hidden" value="/Images/no.jpg" name="attach_file_path" id="avatar">
+                                        <input type="button" class="btnSearch" id="btnAvatar" value="Chọn ảnh" style="width : 200px;" /> &nbsp; <span id="urlAvatar"> Không có hình ảnh nào được chọn</span>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <img src="/Images/no.jpg" id="images" style="max-width: 200px;" />
+                                    </div>
+                                </div>
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;"></h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $('#style').select2();
+    $(function () {
+        $('#btnAvatar').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#urlAvatar').html(fileUrl);
+                $('#avatar').val(fileUrl);
+                $('#images').attr("src", fileUrl);
+                urlImages = fileUrl;
+            };
+            ckfinder.popup();
+        });
+    });
+</script>

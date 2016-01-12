@@ -1,0 +1,218 @@
+sup {
+	position: relative;
+	top: -0.4em;
+	vertical-align: baseline;
+}
+sub {
+	position: relative;
+	top: 0.4em;
+	vertical-align: baseline;
+}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+@media screen and (min-device-pixel-ratio:0), (-webkit-min-device-pixel-ratio:0), (min--moz-device-pixel-ratio: 0) { .view { font-size:10em; transform:scale(0.1); -moz-transform:scale(0.1); -webkit-transform:scale(0.1); -moz-transform-origin:top left; -webkit-transform-origin:top left; } }
+.layer { }.ie { font-size: 1pt; }
+.ie body { font-size: 12em; }
+.pg9htm01 {
+	position: absolute;
+	white-space: nowrap;
+}
+.pg9htm02 {
+	height: 66em;
+	font-size: 1em;
+	margin: 0em;
+	line-height: 0.0em;
+	display: block;
+	border-style: none;
+	width: 51em;
+}
+.pg9htm03 {
+	position: relative;
+	width: 51em;
+}
+.pg9htm04 {
+	height: 6.6em;
+}
+.ie .pg9htm04 {
+	height: 66em;
+}
+.pg9htm05 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.446286);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+@font-face {
+	font-family:"SHIKBO+TimesNewRomanPSMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=950f0f92-0000-0000-0000-000000000000.woff") format("woff");
+}
+.pg9htm06 {
+	font-size: 1.088328em;
+	font-family: "SHIKBO+TimesNewRomanPSMT";
+	color: #000000;
+}
+.pg9htm07 {
+	line-height: 1.107422em;
+}
+.pg9htm08 {
+	letter-spacing: 0.0039em;
+}
+
+.ie .pg9htm08 {
+	letter-spacing: 0.0687px;
+}
+@font-face {
+	font-family:"VGSPSB+TimesNewRomanPSMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=af62b308-0000-0000-0000-000000000000.woff") format("woff");
+}
+.pg9htm09 {
+	font-size: 1.088328em;
+	font-family: "VGSPSB+TimesNewRomanPSMT";
+	color: #000000;
+}
+.pg9htm10 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.8);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+.pg9htm11 {
+	letter-spacing: 0.0038em;
+}
+
+.ie .pg9htm11 {
+	letter-spacing: 0.0667px;
+}
+.pg9htm12 {
+	letter-spacing: 0em;
+}
+
+.ie .pg9htm12 {
+	letter-spacing: 0px;
+}
+.pg9htm13 {
+	letter-spacing: 0.0022em;
+}
+
+.ie .pg9htm13 {
+	letter-spacing: 0.0391px;
+}
+.pg9htm14 {
+	letter-spacing: 0.0009em;
+}
+
+.ie .pg9htm14 {
+	letter-spacing: 0.0156px;
+}
+.pg9htm15 {
+	letter-spacing: 0.0031em;
+}
+
+.ie .pg9htm15 {
+	letter-spacing: 0.0546px;
+}
+.pg9htm16 {
+	letter-spacing: 0.0023em;
+}
+
+.ie .pg9htm16 {
+	letter-spacing: 0.0401px;
+}
+.pg9htm17 {
+	letter-spacing: 0.0027em;
+}
+
+.ie .pg9htm17 {
+	letter-spacing: 0.0463px;
+}
+.pg9htm18 {
+	letter-spacing: 0.0024em;
+}
+
+.ie .pg9htm18 {
+	letter-spacing: 0.0415px;
+}
+.pg9htm19 {
+	letter-spacing: 0.0037em;
+}
+
+.ie .pg9htm19 {
+	letter-spacing: 0.065px;
+}
+.pg9htm20 {
+	letter-spacing: 0.0041em;
+}
+
+.ie .pg9htm20 {
+	letter-spacing: 0.0721px;
+}
+.pg9htm21 {
+	letter-spacing: 0.0014em;
+}
+
+.ie .pg9htm21 {
+	letter-spacing: 0.0236px;
+}
+.pg9htm22 {
+	letter-spacing: 0.0025em;
+}
+
+.ie .pg9htm22 {
+	letter-spacing: 0.0436px;
+}
+.pg9htm23 {
+	letter-spacing: 0.003em;
+}
+
+.ie .pg9htm23 {
+	letter-spacing: 0.053px;
+}
+@font-face {
+	font-family:"EKPAUD+TimesNewRomanPS-ItalicMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=8820786d-0002-0000-0000-000000000000.woff") format("woff");
+}
+.pg9htm24 {
+	font-size: 1.088328em;
+	font-family: "EKPAUD+TimesNewRomanPS-ItalicMT";
+	color: #000000;
+}
+@font-face {
+	font-family:"KCJFEP+TimesNewRomanPS-ItalicMT";
+	src:url("http://localhost:17488/document-viewer/GetResourceForHtml?documentPath=07-20.1-quyet-dinh-kiem-giang-thinh-giang_2015-06-05-10-45-45.pdf&relativeToOriginal=False&resourcePath=8793c24c-0002-0000-0000-000000000000.woff") format("woff");
+}
+.pg9htm25 {
+	font-size: 1.088328em;
+	font-family: "KCJFEP+TimesNewRomanPS-ItalicMT";
+	color: #000000;
+}
+.pg9htm26 {
+	font-size: 0.938214em;
+	font-family: "EKPAUD+TimesNewRomanPS-ItalicMT";
+	color: #000000;
+}
+.pg9htm27 {
+	font-size: 0.938214em;
+	font-family: "KCJFEP+TimesNewRomanPS-ItalicMT";
+	color: #000000;
+}
+.pg9htm28 {
+	letter-spacing: 0.002em;
+}
+
+.ie .pg9htm28 {
+	letter-spacing: 0.0343px;
+}
+.pg9htm29 {
+	transform: scale(1,1.001904);
+	-o-transform: scale(1,1.001904);
+	-ms-transform: matrix(1,0,0,1.001904,0,-1.246798);
+	-moz-transform: scale(1,1.001904);
+	-webkit-transform: scale(1,1.001904);
+}
+.pg9htm30 {
+	font-size: 0.938214em;
+	font-family: "SHIKBO+TimesNewRomanPSMT";
+	color: #000000;
+}

@@ -1,0 +1,290 @@
+﻿@{
+    ViewBag.Title = "Cập nhật quảng cáo";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var advertiseInfo = (thanhhoa.gov.vn.Models.gov_advertise)ViewData["advertiseInfo"];
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-gears"></i> Quản trị hệ thống
+                </li>
+                <li class="active">
+                    <i class="fa fa-list-alt"></i> Danh sách quảng cáo
+                </li>
+                <li class="active">
+                    <i class="fa fa-edit"></i> Cập nhật quảng cáo
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveEdit">
+                                @{
+                                    if(advertiseInfo != null){
+                                        <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                        <i class="fa fa-foursquare"></i> Cập nhật quảng cáo
+                                    </h5>
+                                    <input hidden name="id" value="@advertiseInfo.id" />
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Tiêu đề <font color="red">*</font>:
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="title" class="form-control input-sm"
+                                                   value="@advertiseInfo.title"
+                                                   data-required="true"
+                                                   data-required-message="Trường tiêu đề không được bỏ trống" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Tên cơ quan, tổ chức <font color="red">*</font>:
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="department"
+                                                   value="@advertiseInfo.department"
+                                                   data-required="true"
+                                                   data-required-message="Trường cơ quan tổ chức không được bỏ trống"
+                                                   class="form-control input-sm" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Hình ảnh hiển thị <font color="red">*</font> :
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <input type="hidden" name="attach_file" id="attachFile" value="@advertiseInfo.attach_file" class="form-control input-sm" />
+                                            <input type="button" class="btnSearch" id="btnHinhAnh" value="File quảng cáo" style="width : 150px;" /> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                        </span>
+                                        <div class="col-lg-7">
+                                            <img src="@advertiseInfo.attach_file" id="images" style="max-height: 100px;" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Link quảng cáo <font color="red">*</font>:
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="link"
+                                                   value="@advertiseInfo.link"
+                                                   data-required="true"
+                                                   data-required-message="Trường Link quảng cáo không được bỏ trống"
+                                                   class="form-control input-sm" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <input type="checkbox" name="type_link" value="TRUE" @{if(advertiseInfo.type_link == true){ @Html.Raw(" checked") }} /> Hiển thị trong tab mới
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Vị trí hiển thị :
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <select name="location" id="location">
+                                                <option value="1" @{if (advertiseInfo.location == 1) { @Html.Raw(" selected")  }}>Trang nhất </option>
+                                                <option value="2" @{if (advertiseInfo.location == 2) { @Html.Raw(" selected")   }}>Menu bên phải </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    @*<div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Giá tiền <font color="red">*</font>:
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="price" 
+                                                   value="@advertiseInfo.Price"
+                                                   class="form-control input-sm" />
+                                        </div>
+                                    </div>*@
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Ngày bắt đầu <font color="red">*</font>:
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <input class="input-sm input-sm form-control" style="width: 276px;" name="begin_date" id="startDate"
+                                                   type="text"
+                                                   value="@Html.Raw(advertiseInfo.begin_date.ToString("yyyy/MM/dd"))" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Ngày kết thúc <font color="red">*</font>:
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <input class="input-sm input-s form-control" style="width: 276px;" name="end_date" id="endDate"
+                                                   type="text"
+                                                   value="@Html.Raw(advertiseInfo.end_date.ToString("yyyy/MM/dd"))" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Số thứ tự <font color="red">*</font> :
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <input type="text" name="order_number"
+                                                   value="@advertiseInfo.order_number"
+                                                   data-type="number"
+                                                   data-type-number-message="Phải nhập đúng định dạng số"
+                                                   data-required="true"
+                                                   data-required-message="Trường số thứ tự không được bỏ trống"
+                                                   class="form-control input-sm" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Ghi chú
+                                        </span>
+                                        <div class="col-lg-6">
+                                            <textarea cols="50" rows="3" class="form-control input-sm" 
+                                                      name="note">@advertiseInfo.note</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">Trạng thái hoạt động:</span>
+                                        <div class="col-lg-4">
+                                            <label>
+                                                <input type="radio" @{if (advertiseInfo.active_flg == true) { @Html.Raw(" checked ") }} name="active_flg" value="true" /> Hoạt động &nbsp;&nbsp;&nbsp;
+                                            </label>
+                                            <label>
+                                                <input type="radio" @{if (advertiseInfo.active_flg == false) { @Html.Raw(" checked ")   }} name="active_flg" value="false" /> Ngừng hoạt động
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs m-t-md">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Người tạo:
+                                        </span>
+                                        <div class="col-lg-4">
+                                             <strong><i>@advertiseInfo.entry_username</i></strong>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Thời gian tạo:
+                                        </span>
+                                        <div class="col-lg-4">
+                                             <strong><i>@advertiseInfo.entry_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Người cập nhật cuối:
+                                        </span>
+                                        <div class="col-lg-4">
+                                             <strong><i>@advertiseInfo.update_username</i></strong>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l">
+                                            Thời gian cập nhật cuối:
+                                        </span>
+                                        <div class="col-lg-4">
+                                            <strong><i>@advertiseInfo.update_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                        </div>
+                                    </div>
+                                    <div class="line line-dashed line-lg pull-in"></div>
+                                    <div class="form-group m-b-xs">
+                                        <span class="col-lg-2 control-span m-l-md"></span>
+                                        <div class="col-lg-6">
+                                            <input type="submit" class="btn btn-sm btn-primary"
+                                                   style="width: 90px;" value="Lưu" />
+                                            <a href="index" class="btn btn-sm btn-danger"
+                                               data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                        </div>
+                                    </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("<font color='red'><b>Quảng cáo không tồn tại, hoặc đã bị xóa!</b></font> Nhấn vào <a href='index' style='text-decoration: underline;'>đây</a> để quay lại");
+                                    }
+                                }
+                                
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+    $('#btnHinhAnh').click(function () {
+        var ckfinder = new CKFinder();
+        ckfinder.selectActionFunction = function (fileUrl) {
+            $('#attachFile').val(fileUrl);
+            $('#images').attr("src", fileUrl);
+        };
+        ckfinder.popup();
+    });
+
+    $(document).ready(
+		function () {
+		    $('#startDate').datepicker({
+		        format: "yyyy/mm/dd",
+		        todayBtn: true,
+		        clearBtn: true,
+		        autoclose: true,
+		        todayHighlight: true
+		    });
+
+		    $('#startDate').change(function (e) {
+		        $('#endDate').datepicker("remove");
+		        var find = '/';
+		        var re = new RegExp(find, 'g');
+		        var datestart = this.value.toString().replace(re, "-");
+		        if (datestart == "")
+		            datestart = "2014/01/01";
+		        $('#endDate').datepicker({
+		            format: "yyyy/mm/dd",
+		            startDate: datestart,
+		            todayBtn: true,
+		            clearBtn: true,
+		            autoclose: true,
+		            todayHighlight: true
+		        });
+		    });
+
+		    $('#endDate').datepicker({
+		        format: "yyyy/mm/dd",
+		        startDate: $('#startDate').val(),
+		        todayBtn: true,
+		        clearBtn: true,
+		        autoclose: true,
+		        todayHighlight: true
+		    });
+
+		    $('#endDate').change(function (e) {
+		        $('#startDate').datepicker("remove");
+		        var find = '/';
+		        var re = new RegExp(find, 'g');
+		        var dateend = this.value.toString().replace(re, "-");
+		        if (dateend == "" || dateend > new Date())
+		            dateend = "new Date()";
+		        $('#startDate').datepicker({
+		            format: "yyyy/mm/dd",
+		            endDate: dateend,
+		            todayBtn: true,
+		            clearBtn: true,
+		            autoclose: true,
+		            todayHighlight: true
+		        });
+		    });
+		});
+
+    $('#location').select2();
+</script>
+

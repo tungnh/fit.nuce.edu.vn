@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5b6fcc2d4223470aab4097c67f09e180" Name="Diagram1" ZoomLevel="61">
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_access_history" Width="1.5" PointX="19.25" PointY="16.875" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_access_module" Width="1.5" PointX="14.75" PointY="17.375" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_access_type" Width="1.5" PointX="17" PointY="17.125" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_advertise" Width="1.5" PointX="7.75" PointY="17.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_album_gallery" Width="1.5" PointX="15" PointY="13.375" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_answer" Width="1.5" PointX="10.25" PointY="13.5" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_comments" Width="1.5" PointX="9.75" PointY="17.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_course" Width="1.5" PointX="7.75" PointY="3" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_department" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_district" Width="1.5" PointX="18" PointY="6.875" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_doc_draft" Width="1.5" PointX="17.75" PointY="11.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_doc_kind" Width="1.5" PointX="9.75" PointY="2.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_gallery" Width="1.5" PointX="12.75" PointY="17.125" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_group" Width="1.5" PointX="3" PointY="10.5" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_group_members" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_group_permission" Width="1.5" PointX="5.25" PointY="16.875" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_key_band" Width="1.5" PointX="11.75" PointY="2.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_level_district" Width="1.5" PointX="15.75" PointY="7.375" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_menu" Width="1.5" PointX="0.75" PointY="18.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_message_system" Width="1.5" PointX="5.25" PointY="7.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_news" Width="1.5" PointX="3" PointY="18" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_notebook" Width="1.5" PointX="10" PointY="6.375" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_notify" Width="1.5" PointX="0.75" PointY="14.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_person" Width="1.5" PointX="13" PointY="5.5" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_question" Width="1.5" PointX="8" PointY="12.875" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_question_category" Width="1.5" PointX="5.75" PointY="13.75" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_role" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_slide_home" Width="1.5" PointX="11.75" PointY="20.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_specialized" Width="1.5" PointX="7.75" PointY="7" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_statistic_access" Width="1.5" PointX="2.75" PointY="14.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_system_config" Width="1.5" PointX="13.75" PointY="20.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_testscore" Width="1.5" PointX="15.75" PointY="20.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_type_news" Width="1.5" PointX="17.75" PointY="20.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_user" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_video" Width="1.5" PointX="19.75" PointY="11.625" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_work_schedule" Width="1.5" PointX="18" PointY="2.875" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_work_time" Width="1.5" PointX="15.75" PointY="3.5" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.sysdiagram" Width="1.5" PointX="19.75" PointY="20.625" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_access_history_fk1" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_access_type_fk1" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_album_gallery_ibfk_2" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_answer_question_fk" />
+        <AssociationConnector Association="CNTTDHXDModel.fk_gov_notebook_course" />
+        <AssociationConnector Association="CNTTDHXDModel.fk_gov_person_course" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_user_ibfk_2" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_district_ibfk_1" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_group_members_ibfk_1" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_group_permission_ibfk_2" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_group_members_ibfk_2" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_news_ibfk_4" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_message_system_user" />
+        <AssociationConnector Association="CNTTDHXDModel.fk_gov_specialized_class" />
+        <AssociationConnector Association="CNTTDHXDModel.fk_gov_person_specialized" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_question_ibfk_1" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_user_ibfk_1" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_work_schedule_ibfk_2" />
+        <EntityTypeShape EntityType="CNTTDHXDModel.gov_album" Width="1.5" PointX="12.75" PointY="12.875" />
+        <AssociationConnector Association="CNTTDHXDModel.gov_album_gallery_ibfk_1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

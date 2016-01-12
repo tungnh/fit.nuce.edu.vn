@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="thanhhoagovvnModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="gov_doc_kind">
+      <EntityTypeMapping TypeName="thanhhoa.gov.vnModel.gov_doc_kind">
+        <MappingFragment StoreEntitySet="gov_doc_kind">
+          <ScalarProperty Name="kid" ColumnName="kid" />
+          <ScalarProperty Name="kcode" ColumnName="kcode" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

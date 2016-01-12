@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Sơ đồ trang";
+    var lstSiteMap = (List<thanhhoa.gov.vn.Models.gov_menu>)ViewData["lstSiteMap"];
+}
+
+@helper GetTreeView(List<thanhhoa.gov.vn.Models.gov_menu> siteMenu, int parentID)
+{
+    foreach (var i in siteMenu.Where(a => a.id_parent.Equals(parentID)))
+    {
+        <li>
+            @{var submenu = siteMenu.Where(a => a.id_parent.Equals(i.id)).Count();}
+            @if (submenu > 0)
+            {
+                <span class="collapse collapsible">&nbsp;</span>
+            }
+            else
+            {
+                <span style="width:15px; display:inline-block">&nbsp;</span>
+            }
+            <span>
+                <a style="font-weight: 600;" href="@i.link">@i.title</a>
+            </span>
+            @if (submenu > 0)
+            {
+                <ul>
+                    @GetTreeView(siteMenu, i.id)
+                </ul>
+            }
+        </li>
+    }
+}
+<script src="~/Scripts/marquee.js"></script>
+<link href="~/Content/sitemap.css" rel="stylesheet" />
+<div class="mainMod">
+    <div class="modLeftMain">
+
+        <div class="breackrum">
+            <a class="bkHome" href="/"><b>Trang chủ</b></a>
+            <a href="javascript: void(0);"><b>Sơ đồ trang</b></a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modVanban" style="border: 1px solid #eee; padding: 10px 0px;">
+            <div class="treeview">
+                @if (lstSiteMap != null && lstSiteMap.Count() > 0)
+                {
+                    <ul>
+                        @GetTreeView(lstSiteMap, 0)
+                    </ul>
+                }
+            </div>
+
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+</div>
+<script>
+    $(document).ready(function () {
+        //$(".treeview li>ul").css('display', 'none'); // Hide all 2-level ul
+        $(".collapsible").click(function (e) {
+            e.preventDefault();
+            $(this).toggleClass("collapse expand");
+            $(this).closest('li').children('ul').slideToggle();
+        });
+    });
+</script>
+
+
+

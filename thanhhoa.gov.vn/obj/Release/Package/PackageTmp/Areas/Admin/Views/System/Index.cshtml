@@ -1,0 +1,259 @@
+﻿@{
+    ViewBag.Title = "Cấu hình hệ thống";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var sysAdmin = (thanhhoa.gov.vn.Models.SystemAdmin)ViewData["sysAdmin"];
+;}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-gears"></i> Quản trị hệ thống
+                </li>
+                <li class="active">
+                    <i class="fa fa-cog"></i> Cấu hình hệ thống
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            @Html.Partial("_PartialErrMessage")
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="Index">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thông tin cấu hình hệ thống
+                                </h5>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Tên cơ quan :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="office_name" value="@sysAdmin.office_name"
+                                               data-required="true"
+                                               data-required-message="Trường tên cơ quan không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Địa chỉ :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="adress" value="@sysAdmin.adress"
+                                               data-required="true"
+                                               data-required-message="Trường địa chỉ không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Điện thoại  :
+                                    </span>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="tel" value="@sysAdmin.tel"
+                                               data-required="true"
+                                               data-required-message="Trường điện thoại không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                    <span class="col-lg-1 control-span" style="padding-right: 0px;">
+                                        Fax  :
+                                    </span>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="fax" value="@sysAdmin.fax"
+                                               data-required="true"
+                                               data-required-message="Trường fax không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Email :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="email" value="@sysAdmin.email"
+                                               data-required="true"
+                                               data-required-message="Trường email không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Mật khẩu :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="password" name="password" value="@sysAdmin.password"
+                                               data-required="true"
+                                               data-required-message="Trường mật khẩu không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Email liên hệ:
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="email_contact" value="@sysAdmin.email_contact"
+                                               data-required="true"
+                                               data-required-message="Trường email liên hệ không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Thời gian làm việc <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="time_work" value="@sysAdmin.time_work"
+                                               data-required="true"
+                                               data-required-message="Trường thời gian làm việc được để trống"
+                                               class="form-control input-sm" placeholder="Số thứ tự" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Vĩ độ <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="maps_x" value="@sysAdmin.maps_x"
+                                               data-required="true"
+                                               data-required-message="Trường vĩ độ không được để trống"
+                                               class="form-control input-sm" placeholder="Số thứ tự" />
+                                    </div>
+                                    <span class="col-lg-1 control-span" style="padding-right: 0px;">
+                                        Kinh độ <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="maps_y" value="@sysAdmin.maps_y"
+                                               data-required="true"
+                                               data-required-message="Trường kinh độ không được để trống"
+                                               class="form-control input-sm" placeholder="Số thứ tự" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span" style="padding-right: 0px;">
+                                        Năm học bắt đầu :
+                                    </span>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="begin_course" value="@sysAdmin.begin_course"
+                                               data-required="true"
+                                               data-required-message="Trường năm học bắt đầu không được để trống"
+                                               class="form-control input-sm" />
+                                    </div>
+                                    <span class="col-lg-1 control-span" style="padding-right: 0px;">
+                                        Năm học kết thúc <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-3">
+                                        <input type="text" name="end_course" value="@sysAdmin.end_course"
+                                               data-required="true"
+                                               data-required-message="Trường năm học kết thúc không được để trống"
+                                               class="form-control input-sm" placeholder="Số thứ tự" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    
+                                </div>
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;"></h5>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <img src="@sysAdmin.logo_file_path" id="img_logo_file_path" style="height: 100px; border: 1px solid #dedede;" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                        Logo :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="hidden" name="logo_file_path" value="@sysAdmin.logo_file_path" id="logo_file_path">
+                                        <input type="button" class="btnSearch" id="btnLogo" value="Chọn ảnh" style="width : 200px;" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <img src="@sysAdmin.banner_file_path" id="img_banner_file_path" style="height: 100px; border: 1px solid #dedede;" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                        Banner :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="hidden" name="banner_file_path" id="banner_file_path" value="@sysAdmin.banner_file_path">
+                                        <input type="button" class="btnSearch" id="btnBanner" value="Chọn ảnh" style="width : 200px;" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <img src="@sysAdmin.slide_banner_file_path" id="img_slide_banner_file_path" style="height: 100px; border: 1px solid #dedede;" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-l">
+                                    <span class="col-lg-2 control-span">
+                                        Slide banner :
+                                    </span>
+                                    <div class="col-lg-7">
+                                        <input type="hidden" name="slide_banner_file_path" id="slide_banner_file_path" value="@sysAdmin.slide_banner_file_path">
+                                        <input type="button" class="btnSearch" id="btnSlide" value="Chọn ảnh" style="width : 200px;" />
+                                    </div>
+                                </div>
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;"></h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+
+<script>
+    $('#style').select2();
+    $(function () {
+        $('#btnBanner').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#banner_file_path').val(fileUrl);
+                $('#img_banner_file_path').attr("src", fileUrl);
+                urlImages = fileUrl;
+            };
+            ckfinder.popup();
+        });
+
+        $('#btnSlide').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#slide_banner_file_path').val(fileUrl);
+                $('#img_slide_banner_file_path').attr("src", fileUrl);
+                urlImages = fileUrl;
+            };
+            ckfinder.popup();
+        });
+
+        $('#btnLogo').click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $('#logo_file_path').val(fileUrl);
+                $('#img_logo_file_path').attr("src", fileUrl);
+                urlImages = fileUrl;
+            };
+            ckfinder.popup();
+        });
+    });
+</script>

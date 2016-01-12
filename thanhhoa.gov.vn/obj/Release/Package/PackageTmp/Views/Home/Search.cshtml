@@ -1,0 +1,98 @@
+﻿@using thanhhoa.gov.vn.Utility;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var newViewHelper = (thanhhoa.gov.vn.Viewhelper.NewViewhelper)ViewData["newViewHelper"];
+    ViewBag.Title = "Tìm kiếm thông tin";
+}
+<script src="~/Scripts/marquee.js"></script>
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="breackrum">
+            <a class="bkHome" href="/">Trang chủ</a>
+            <a href="javascript: void(0);">Tìm kiếm (@newViewHelper.TotalCount)</a>
+        </div>
+        <!-- main module -->
+        <div class="modMainNews">
+            <!--end title 3 -->
+            <div class="contMainNews">
+                <form name="fSearch" action="/home/index" method="post">
+                    <input hidden name="keySearch" value="@newViewHelper.KeySearch" />
+                    <input hidden name="direction" value="@newViewHelper.Direction" />
+                    <input hidden name="page" value="@newViewHelper.Page" />
+                    <div class="colNews2">
+                        <ul class="ulList3">
+                            @{
+                                if (newViewHelper != null && newViewHelper.TotalCount > 0)
+                                {
+                                    foreach (var item in newViewHelper.LstNew)
+                                    {
+                                        <li>
+                                            <div class="wrapImgNews"><a href="@Utils.getLinkDefault(item.id, TypeLink.tintuc)"><img src="@item.avatar" alt="@item.title"></a></div>
+                                            <a href="@Utils.getLinkDefault(item.id, TypeLink.tintuc)"><h3>@Html.Raw(item.title) </h3></a>
+                                            <p>
+                                                @Html.Raw(item.description)
+                                            </p><br class="clear">
+                                        </li>
+                                    }
+                                }
+
+                            }
+                        </ul>
+
+                        @{
+                            if (newViewHelper != null && newViewHelper.TotalCount > 0)
+                            {
+                                <div class="pagingListnews">
+                                    @if (newViewHelper.Page > 1)
+                                    {
+                                        <a href="javascript: direction('ahead');">&larr;</a>
+                                    }
+                                    @if (newViewHelper.FirstPage > 1)
+                                    {@Html.Raw(" ... ")}
+                                    @{
+                                for (int i = newViewHelper.FirstPage; i <= newViewHelper.LastPage; i++)
+                                {
+                                    <a href="javascript: selectPage(@i)" @if (i == newViewHelper.Page) { @Html.Raw("class='act1'")   }>@i</a>
+                                }
+                                    }
+                                    @if (newViewHelper.LastPage < newViewHelper.TotalPage)
+                                    {@Html.Raw(" ... ")}
+                                    @if (newViewHelper.Page < newViewHelper.TotalPage)
+                                    {
+                                        <a href="javascript: direction('next');">&rarr;</a>
+                                    }
+                                </div>
+                            <!--end paging list news -->
+                            }
+                            else
+                            {
+                                <font color="red">Không có dữ liệu. Vui lòng quay lại sau!</font>
+                            }
+                        }
+                    </div>
+                    <div class="clear"></div>
+                </form>
+            </div>
+        </div>
+        <!-- end main module -->
+
+    </div>
+    <!-- end left main w=670 -->
+
+    @Html.Partial("_PartialLeft")
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->
+<script>
+    function direction(data) {
+        document.fSearch.direction.value = data;
+        document.fSearch.submit();
+    }
+
+    function selectPage(data) {
+        document.fSearch.direction = null;
+        document.fSearch.page.value = data;
+        document.fSearch.submit();
+    }
+</script>

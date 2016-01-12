@@ -1,0 +1,164 @@
+﻿@using thanhhoa.gov.vn.Models;
+@{
+    ViewBag.Title = "Xác nhận mật mã";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var err = (String)ViewData["err"];
+    var message = (String)ViewData["message"];
+}
+<link href="~/Content/step-bar-style.css" rel="stylesheet" />
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<link href="~/Content/sign-up.css" rel="stylesheet" />
+<div class="mainMod">
+    <div class="modLeftMain">
+        <div class="modHoidap">
+            <form action="xac-nhan-mat-ma" method="post" name="form" id="form" enctype="multipart/form-data">
+                <input hidden name="description" id="description" />
+                <div class="breackrum">
+                    <a class="bkHome" href="/"><b>Trang chủ</b></a>
+                    <a href="javascript: void(0);"><b>Cựu sinh viên</b></a>
+                    <a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu"><b>Cựu sinh viên tiêu biểu</b></a>
+                    <a href="javascript: void(0);"><b>Thay đổi thông tin cựu sinh viên</b></a>
+                </div>
+                <div style="min-height: 100px;">
+                    <div class="checkout-wrap">
+                        <ul class="checkout-bar">
+                            <li class="active">Xác nhận mật mã</li>
+                            <li class="">Thay đổi thông tin</li>
+                            <li class="">Thành công</li>
+                        </ul>
+                    </div>
+                </div>
+                @{
+                    if (err != null)
+                    {
+                        <div style="color: red; background-color: #FAFAFA; border: 1px solid red; ; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
+                            <strong>@Html.Raw(err)</strong>
+                        </div>
+                    }
+                }
+                @{
+                    if (message != null)
+                    {
+                        <div style="color: green; background-color: #FAFAFA; border: 1px solid green; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
+                            <strong>@Html.Raw(message)</strong>
+                        </div>
+                    }
+                }
+                <fieldset style="border: 1px solid #c2cae6; padding: 10px; ">
+                    <legend style="padding: 0.2em 0.5em; border: 1px solid #c2cae6; text-align: left; font-weight: bold;">Xác nhận mật mã</legend>
+                    <table class="tableSignup" width="100%" cellspacing="0" cellpadding="0" style="border: none;">
+                        <tr id="tr_email">
+                            <td class="tdLeftSignup" style="width: 30%;">Nhập vào email của bạn<span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" type="text" id="email" name="email" required></td>
+                        </tr>
+                        <tr id="tr_code">
+                            <td class="tdLeftSignup" style="width: 30%;">Nhập vào mật mã của bạn<span class="spanRed">*</span>:</td>
+                            <td><input class="inp_signup" type="password" id="code" name="code" required></td>
+                        </tr>
+                        <tr>
+                            <td class="tdLeftSignup"></td>
+                            <td>
+                                <div>
+                                    <img id="img-captcha" src="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/get-captcha" alt="Captcha">
+                                    <img id="re-captcha" src="~/Images/i-reCapcha.png" style="margin-bottom: 15px; margin-left: 15px; cursor: pointer;" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="tr_captcha">
+                            <td class="tdLeftSignup">Mã xác nhận<span class="spanRed">*</span>:</td>
+                            <td>
+                                <div>
+                                    <input class="inp_signup" type="text" name="captcha" id="captcha" required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="tr_captcha">
+                            <td class="tdLeftSignup"></td>
+                            <td>
+                                <a href="lay-lai-mat-ma"><strong><i>Quên mật mã?</i></strong></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td class="tdOk">
+                                <input type="button" value="Xác nhận" onclick="save();" style="border: none;" class="btn_login" />
+                                <a href="/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu" class="btn_login">Quay lại</a>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </form>
+            <!-- end module dang ky -->
+        </div>
+        <!-- end module van ban phap quy -->
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+</div>
+<!--end main module-->
+
+<script type="text/javascript">
+    $('form').bind("keypress", function (e) {
+        if (e.keyCode == 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    function save() {
+        resetValidate();
+        if (validate()) {
+            $.ajax({
+                type: "GET",
+                url: "/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/check-captcha",
+                data: "captcha=" + $('#captcha').val(),
+                success: function (data) {
+                    if ($('#captcha').val() != data)
+                        $('#tr_captcha').addClass("trErr");
+                    else
+                        document.form.submit();
+                }
+            });
+        }
+    }
+
+    function resetValidate() {
+        $('#tr_email').removeClass("trErr");
+        $('#tr_code').removeClass("trErr");
+        $('#tr_captcha').removeClass("trErr");
+    }
+
+    function validate() {
+        var check = true;
+        var reg = /^([\w-]+(?:\.[\w-]+)*)@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+        if ($('#email').val() == "") {
+            $('#tr_email').addClass("trErr");
+            check = false;
+        } else if (!reg.test($('#email').val())) {
+            $('#tr_email').addClass("trErr");
+            check = false;
+        }
+        if ($('#code').val() == "") {
+            $('#tr_code').addClass("trErr");
+            check = false;
+        }
+        if ($('#captcha').val() == "") {
+            $('#tr_captcha').addClass("trErr");
+            check = false;
+        }
+        return check;
+    }
+
+    $('#re-captcha').bind("click", function () {
+        $.ajax({
+            type: 'GET',
+            url: "/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/get-captcha",
+            success: function (data) {
+                $('#img-captcha').attr("src", "/cuu-sinh-vien/cuu-sinh-vien-tieu-bieu/get-captcha");
+            }
+        });
+    });
+</script>
+

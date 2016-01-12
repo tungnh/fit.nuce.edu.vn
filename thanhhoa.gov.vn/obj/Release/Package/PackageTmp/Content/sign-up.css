@@ -1,0 +1,153 @@
+﻿@charset "utf-8";
+/* CSS login anh sign up */
+
+.wrap_PopLogin {
+	display:block;
+	width:400px;
+	height:auto;
+	background:white;
+	padding-bottom:10px;
+}
+.title10 {
+	display:block;
+	height:30px;
+	background:url(../../Images/bgTitle10.png) top left repeat-x;
+	margin-bottom:10px;
+}
+.title10 h2 {
+	background:url(../../Images/i-question.png) 6px 50% no-repeat;
+    padding-left: 25px; 
+    line-height: 30px; 
+    color: white; 
+    font-size: 12px; 
+    text-transform: uppercase; 
+    text-shadow: 1px 1px 1px black;
+}
+.tableLogin td {
+	padding:5px;
+	line-height:1.6em;
+}
+.tdLeftLogin {
+	font-weight:bold;
+	text-align:right;
+}
+.tableLogin td .inp_login {
+	width:80%;
+	height:22px;
+	border:1px solid #069;
+	background:white;
+}
+.tableLogin td .inp_login:focus {
+	border:1px solid orange;
+}
+.btn_login {
+	color:white;
+	background:#069;
+	padding:4px 25px;
+	cursor:pointer;
+	border-radius:2px;
+}
+
+.btn_login:hover {
+	background:#06b;
+	color:yellow;
+}
+/*#############################################*/
+/*                END login
+/*#############################################*/
+
+.MainSignup {
+	display:block;
+	width:auto;
+}
+.tableSignup {
+	border:1px solid #c2cae6;
+}
+.tableSignup td {
+	padding:5px 5px;
+}
+.tdLeftSignup {
+	font-weight:bold;
+	text-align:right;
+	width:20%;
+}
+
+.error{
+    border-color: #ff5f5f !important;
+}
+.inp_signup {
+	height:22px;
+	width:250px;
+	padding:0 5px;
+	border:1px solid #c2cae6;
+	background:#fff;
+}
+.inp_signup:focus {
+	border:1px solid #4cc0c1;
+	background:#fffff6;
+}
+
+.form-control {
+  border-color: #d9d9d9;
+  border-radius: 2px;
+}
+
+.input-sm {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+}
+
+.inp_error {
+    border:1px solid red;
+}
+.inp_cmnd {
+	width:120px;
+}
+.inp_cmndPlace {
+	width:180px;
+	padding-right:0;
+}
+.quydinhchung {
+	display:block;
+	height:150px;
+	overflow-y:auto;
+	padding:10px;
+	border:1px solid #c2cae6;
+	text-align:justify;
+}
+.quydinhchung p {
+	margin:10px 0;
+}
+.spanRed {
+	color:red;
+	padding:0 5px;
+	font-weight:bold;
+}
+.tdOk {
+}
+.tdOk p {
+	padding-bottom:10px;
+	color:#039;
+}
+/*#############################################*/
+/*                END sign up
+/*#############################################*/
+
+
+.trErr{
+    background-color: #FFB9B9;
+}
+

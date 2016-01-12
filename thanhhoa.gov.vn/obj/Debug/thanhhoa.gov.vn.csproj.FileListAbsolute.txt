@@ -1,0 +1,574 @@
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.dll.config
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Antlr3.Runtime.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.Mvc.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\CKFinder.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.AspNet.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.Core.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.Consumer.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\EntityFramework.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ICSharpCode.SharpZipLib.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\IFilter.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.Edm.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.OData.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Helpers.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Infrastructure.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.WebPages.OAuth.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\MySql.Data.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Newtonsoft.Json.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Spatial.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Helpers.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.OData.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Mvc.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Optimization.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Razor.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Deployment.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Razor.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebActivator.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebActivatorEx.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebGrease.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.Data.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.WebData.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.Mvc.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\CKFinder.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\EntityFramework.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Newtonsoft.Json.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Helpers.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Mvc.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Razor.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Deployment.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Razor.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebActivator.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.Data.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.WebPages.OAuth.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.WebData.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.AspNet.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.Core.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.Consumer.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.OData.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.Edm.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.OData.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Spatial.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\de\Microsoft.Data.Edm.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\es\Microsoft.Data.Edm.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\fr\Microsoft.Data.Edm.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\it\Microsoft.Data.Edm.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ja\Microsoft.Data.Edm.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ko\Microsoft.Data.Edm.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ru\Microsoft.Data.Edm.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\de\Microsoft.Data.OData.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\es\Microsoft.Data.OData.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\fr\Microsoft.Data.OData.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\it\Microsoft.Data.OData.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ja\Microsoft.Data.OData.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ko\Microsoft.Data.OData.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ru\Microsoft.Data.OData.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\de\System.Spatial.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\es\System.Spatial.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\fr\System.Spatial.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\it\System.Spatial.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ja\System.Spatial.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ko\System.Spatial.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ru\System.Spatial.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hans\System.Spatial.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hant\System.Spatial.resources.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.csproj.ResolveComReference.cache
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Quartz.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Quartz.pdb
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Quartz.xml
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.csprojResolveAssemblyReference.cache
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Groupdocs.Viewer.dll
+D:\Learning\DoAn\DATN\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Groupdocs.Viewer.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.csprojResolveAssemblyReference.cache
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.csproj.ResolveComReference.cache
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.dll.config
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Antlr3.Runtime.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.Mvc.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\CKFinder.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.AspNet.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.Core.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\EntityFramework.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ICSharpCode.SharpZipLib.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.Edm.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.OData.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Helpers.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Infrastructure.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\MySql.Data.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Newtonsoft.Json.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Quartz.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Net.Http.Formatting.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Spatial.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Helpers.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.OData.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.WebHost.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Mvc.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Optimization.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Razor.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Deployment.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Razor.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebActivator.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebActivatorEx.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebGrease.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.Data.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.WebData.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.Mvc.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\CKFinder.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Groupdocs.Viewer.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Quartz.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Quartz.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\EntityFramework.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Newtonsoft.Json.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Net.Http.Formatting.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Helpers.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.WebHost.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Mvc.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Razor.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Deployment.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Razor.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebActivator.pdb
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.Data.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.WebData.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.AspNet.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.Core.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.OData.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.Edm.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.OData.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Spatial.xml
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\de\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\es\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\it\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\de\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\es\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\fr\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\it\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ja\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ko\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ru\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\de\System.Spatial.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\es\System.Spatial.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\fr\System.Spatial.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\it\System.Spatial.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ja\System.Spatial.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ko\System.Spatial.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ru\System.Spatial.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hans\System.Spatial.resources.dll
+E:\Project\01. CNTT\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hant\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.dll.config
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Antlr3.Runtime.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.Mvc.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\CKFinder.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.AspNet.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.Core.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\EntityFramework.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ICSharpCode.SharpZipLib.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.Edm.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.OData.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Helpers.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Infrastructure.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\MySql.Data.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Newtonsoft.Json.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Quartz.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Net.Http.Formatting.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Spatial.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Helpers.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.OData.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.WebHost.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Mvc.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Optimization.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Razor.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Deployment.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Razor.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebActivator.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebActivatorEx.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebGrease.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.Data.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.WebData.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.Mvc.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\CKFinder.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Groupdocs.Viewer.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Quartz.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Quartz.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\EntityFramework.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Newtonsoft.Json.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Net.Http.Formatting.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Helpers.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.WebHost.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Mvc.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Razor.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Deployment.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Razor.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebActivator.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.Data.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\WebMatrix.WebData.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.AspNet.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.Core.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Web.Http.OData.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.Edm.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Microsoft.Data.OData.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\System.Spatial.xml
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\de\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\es\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\it\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\de\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\es\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\fr\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\it\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ja\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ko\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ru\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\de\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\es\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\fr\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\it\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ja\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ko\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\ru\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hans\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\zh-Hant\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.csprojResolveAssemblyReference.cache
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.csproj.ResolveComReference.cache
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.dll
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.pdb
+E:\Project\01. CNTT\Source\thanhhoa.gov.vn\thanhhoa.gov.vn\bin\Groupdocs.Viewer.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.dll.config
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\thanhhoa.gov.vn.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Antlr3.Runtime.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\AttributeRouting.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.Mvc.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\CKFinder.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Common.Logging.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.AspNet.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.Core.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.Consumer.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\EntityFramework.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Groupdocs.Viewer.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ICSharpCode.SharpZipLib.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Microsoft.Data.Edm.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Microsoft.Data.OData.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Helpers.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Infrastructure.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Microsoft.Web.WebPages.OAuth.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\MySql.Data.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Newtonsoft.Json.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Quartz.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Net.Http.Formatting.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Spatial.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Helpers.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Http.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Http.OData.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Http.WebHost.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Mvc.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Optimization.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Razor.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Deployment.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Razor.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\WebActivator.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\WebActivatorEx.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\WebGrease.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\WebMatrix.Data.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\WebMatrix.WebData.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\AttributeRouting.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\AttributeRouting.Web.Mvc.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\CKFinder.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Common.Logging.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Common.Logging.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Common.Logging.Core.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Groupdocs.Viewer.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Analyzers.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Core.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.FastVectorHighlighter.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Highlighter.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Memory.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Queries.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Regex.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SimpleFacetedSearch.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.Snowball.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Lucene.Net.Contrib.SpellChecker.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Quartz.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Quartz.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\EntityFramework.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Newtonsoft.Json.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Net.Http.Formatting.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Helpers.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Http.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Http.WebHost.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Mvc.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Razor.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Deployment.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.WebPages.Razor.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\WebActivator.pdb
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\WebMatrix.Data.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Microsoft.Web.WebPages.OAuth.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\WebMatrix.WebData.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.AspNet.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.Core.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.Consumer.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OAuth.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Web.Http.OData.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Microsoft.Data.Edm.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\Microsoft.Data.OData.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\System.Spatial.xml
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\de\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\es\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\fr\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\it\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ja\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ko\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ru\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\de\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\es\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\fr\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\it\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ja\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ko\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ru\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\de\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\es\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\fr\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\it\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ja\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ko\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\ru\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\zh-Hans\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\bin\zh-Hant\System.Spatial.resources.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.csprojResolveAssemblyReference.cache
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.csproj.ResolveComReference.cache
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.dll
+E:\Project\01. CNTT\Source\fit.nuce.edu.vn\thanhhoa.gov.vn\obj\Debug\thanhhoa.gov.vn.pdb

@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Cập nhật lĩnh vực hỏi đáp";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var questionCategory = (thanhhoa.gov.vn.Models.QuestionCategoryModels)ViewData["questionCategory"];
+}
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-file-text icon"></i> Quản lý văn bản
+                    </a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-edit"></i> Cập nhật cơ quan ban hành
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveEdit">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Cập nhật lĩnh vực câu hổi
+                                </h5>
+                                <input type="hidden" name="id" value="@questionCategory.Id" />
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Tên lĩnh vực hỏi đáp <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" size="30" name="name" 
+                                               value="@questionCategory.Name"
+                                               class="form-control input-sm parsley-validated"
+                                               data-required="true"
+                                               data-required-message="Trường Tên lĩnh vực hỏi đáp không được bỏ trống"
+                                               data-maxlength="200"
+                                               data-maxlength-message="Trường Tên lĩnh vực hỏi đáp không được vượt quá 200 ký tự" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Mô tả :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <textarea rows="4" name="description" cols="50" class="form-control input-sm">@questionCategory.Description</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Sắp xếp <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-sm-6">
+                                        <input type="text" size="30" name="orderNumber" class="form-control input-sm parsley-validated"
+                                               value="@questionCategory.OrderNumber"
+                                               data-required="true"
+                                               data-required-message="Trường sắp xếp không được bỏ trống"
+                                               data-type="number"
+                                               data-type-number-message="Trường sắp xếp phải đúng định dạng số" />
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+</script>

@@ -1,0 +1,121 @@
+﻿@using thanhhoa.gov.vn.Utility
+@{
+    ViewBag.Title = "Thêm mới điểm thi";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var data = (List<thanhhoa.gov.vn.Models.gov_system_config>)ViewData["data"];
+    var begin = int.Parse(data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_BEGIN_COURSE)).value_config);
+    var end = int.Parse(data.Single(d => d.key_config.Equals(Constant.CONFIG_KEY_END_COURSE)).value_config);
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-bookmark-o"></i> Quản lý điểm thi
+                    </a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Thêm mới điểm thi
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới điểm thi
+                                </h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Lớp <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="test_class"
+                                               class="form-control input-sm"
+                                               data-required="true"
+                                               data-required-message="Trường Lớp không được để trống" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Tên môn thi <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="test_name"
+                                               class="form-control input-sm"
+                                               data-required="true"
+                                               data-required-message="Trường tên môn học không được để trống" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Kỳ thi <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <select id="kythi" name="kythi" style="width: 276px;">
+                                            <option value="1">Kỳ 1</option>
+                                            <option value="2">Kỳ 2</option>
+                                            <option value="2">Kỳ 3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs" id="div-link">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Năm học <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <select id="namhoc" name="namhoc" style="width: 276px;">
+                                            @{
+                                                for (int i = end; i > begin; i--)
+                                                {
+                                                    <option value="@Html.Raw(i + " - " + (i - 1).ToString())">@Html.Raw(i + " - " + (i - 1).ToString())</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        File đính kèm <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="file" name="File" id="File" />
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#kythi').select2();
+    $('#namhoc').select2();
+    $(function () {
+        $('#test_date').datepicker({
+            format: "yyyy/mm/dd",
+            endDate: "new Date()",
+            todayBtn: true,
+            clearBtn: true,
+            autoclose: true,
+            todayHighlight: true
+        });
+    });
+</script>
+

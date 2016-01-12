@@ -1,0 +1,58 @@
+.logo {display:none;}
+.banner {
+	top:0;
+	left:0;
+	width:1000px;
+	height:130px;
+	z-index:1;
+	background:url(../img/banner_ie.png) top left no-repeat;
+}
+.banner img {
+	display:none;
+}
+
+.clicker {
+	width:150px;
+}
+.poAds {
+	display:none !important;
+}
+.hotTab li {
+	display:block;
+    float:left;
+    width:50%;
+}
+.aSearch:hover {
+	background:#3b5998 url(../img/i_search.png) 50% 50% no-repeat;
+}
+.iconHome {
+	background:url(../img/i_home2.png) no-repeat left 50%;
+}
+.hotTab li a {
+	font-size:11px;
+	padding:0 3px;
+}
+.title5 li {
+	display:block;
+	float:left;
+	width:50%;
+}
+.elastislide-list li {
+	display:block;
+	float:left;
+}
+.cont_tygia {
+	width:298px;
+	height:auto;
+	overflow:hidden;
+}
+.ul_list2 {
+	display:block;
+	width:228px;
+	float:left;
+}
+
+.ulNavFooter li {
+	display:block;
+	float:left;
+}

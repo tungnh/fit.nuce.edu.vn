@@ -1,0 +1,345 @@
+﻿@charset "utf-8";
+/* CSS by tienducdesign@gmail.com */
+
+.modMulti {
+	display:block;
+}
+.titleMultimedia {
+	display:block;
+	background:#fafafa;
+	padding:6px 10px;
+	position:relative;
+}
+.titleMultimedia h3 {
+	color:#000;
+	padding-left:30px;
+	height:24px;
+	line-height:24px;
+	background:url(../Images/i-photo.png) 0 50% no-repeat;
+}
+.cataVideo h3 {
+	background:url(../Images/i-video.png) 0 50% no-repeat;
+}
+.titleMultimedia a {
+	display:block;
+	padding:1px 8px;
+	background:#06f;
+	border-radius:2px;
+	color:white;
+	position:absolute;
+	top:10px;
+	right:10px;
+}
+.titleMultimedia a:hover {
+	background:#0C0;
+}
+
+.wrapMultimedia {
+	display:block;
+	/*padding:10px;*/
+	background:white;
+	border:1px solid #fcfcfc;
+}
+.albumImages {
+}
+.albumImages li {
+	display:block;
+	width:150px;
+	overflow:hidden;
+	float:left;
+	margin:7.5px;
+	border:1px solid #eee;
+}
+.albumImages li a {
+	display:block;
+	width:150px;
+	height:150px;
+	overflow:hidden;
+	position:relative;
+}
+.albumImages li a img {
+	display:block;
+	margin:0 auto;
+	width:auto;
+	position:absolute;
+	top:0;
+	left:0;
+	-webkit-transition-duration:0.5s;
+}
+.albumImages li:hover img {
+	-webkit-transform:scale(1.2,1.2);
+	top:auto;
+	left:auto;
+	right:0;
+	bottom:0;
+}
+.albumImages li p {
+	padding:0 5px;
+	color:#036;
+	font-weight:bold;
+}
+.albumImages li i {
+	padding:0 5px;
+}
+.albumImages li:hover {
+	background:#333;
+}
+.albumImages li:hover p,
+.albumImages li:hover i {
+	color:white;
+}
+/* end list anh */
+
+.descriptionAlbum {
+	margin:10px 0;
+	padding:15px;
+	color:#7cb2ff;
+	text-shadow:0 1px #fff;
+	line-height:1.3em;
+	text-align:justify;
+	text-indent:1.3em;
+	border-radius:3px;
+	background:#f3f6fa;
+}
+.listImg li {
+	height:150px;
+	position:relative;
+}
+.listImg li a img {
+	width:100%;
+	height:100%\0/;
+	min-height:100%;
+}
+.listImg li p {
+	position:absolute;
+	display:block;
+	height:15px;
+	width:140px;
+	bottom:-25px;
+	left:0;
+	color:white;
+	z-index:6985698;
+	margin:0;
+	padding:5px;
+	text-align:right;
+	background:url(../Images/bg_comment.png) bottom left repeat-x;
+	-webkit-transition-duration:0.2s;
+	-moz-transition-duration:0.2s;
+	-ms-transition-duration:0.2s;
+	-o-transition-duration:0.2s;
+}
+.listImg li:hover p {
+	bottom:0;
+	font-size:11px;
+	text-shadow:0 1px 2px black;
+}
+.listImg li p a {
+	color:white;
+	display:inline;
+	float:left;
+	width:auto;
+	height:auto;
+	padding:1px 3px;
+	border-radius:2px;
+}
+.listImg li p a:hover {
+	background:rgba(204,204,204,0.3);
+}
+.comTotal {
+	padding-left:18px;
+	background:url(../Images/i-com.png) top left no-repeat;
+}
+/* end chi tiet anh */
+
+.listvideoYou {
+}
+.listvideoYou li {
+	height:130px;
+	position:relative;
+}
+.listvideoYou li img {
+	height:95px;
+}
+.listvideoYou li a {
+	height:95px;
+	font-weight:normal;
+}
+.listvideoYou li p a {
+	font-weight:normal;
+	width:auto;
+	height:auto;
+}
+.listvideoYou li:hover a {
+	color:white;
+}
+.listvideoYou li a.a-play {
+	display:block;
+	position:absolute;
+	top:14px;
+	left:51px;
+	height:67px;
+	width:67px;
+	outline:none;
+	background:url(../lib/colorbox-master/images/i-play.png) top left no-repeat;
+	opacity:0.1;
+	-webkit-transition-duration:0.3s;
+	-moz-transition-duration:0.3s;
+	-ms-transition-duration:0.3s;
+	-o-transition-duration:0.3s;
+}
+.listvideoYou li:hover a.a-play {
+	opacity:0.8;
+}
+/*#############################################*/
+/*                END  hinh anh                */
+/*#############################################*/
+
+
+/*Home video*/
+.greenBox-t {
+    border-radius: 3px 3px 0 0;
+    background-color: #78b43d;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.box-ttcb {
+  border-left: #ebebeb solid 1px;
+  border-right: #ebebeb solid 1px;
+  border-bottom: #ebebeb solid 1px;
+  height: 370px;
+}
+
+ul.ttCanBiet-item {
+  margin: 0;
+  padding: 0 0 0 0px;
+  overflow: hidden;
+}
+
+ul.ttCanBiet-item li {
+  display: block;
+  vertical-align: top;
+  list-style: none;
+  background: url(../Images/red-star.gif) 0 8px no-repeat;
+}
+
+ul.ttCanBiet-item li a {
+  font-weight: bold;
+  border-bottom: #ebebeb solid 1px;
+  display: block;
+  width: 248px;
+  color: #333;
+  padding: 7px 0 8px 30px;
+  line-height: 15px;
+}
+
+.div-video-L {
+    width: 300px;
+    float: left;
+}
+
+.div-video-R {
+    width: 411px;
+    float: left;
+    margin-left: 9px;
+}
+
+.boxVideo-t {
+    width: 411px;
+    height: 27px;
+    overflow: hidden;
+    background: url(../Images/tab.gif) 0 -150px no-repeat;
+}
+
+.greenTab-L {
+    float: left;
+    width: 5px;
+    height: 27px;
+    background: url(../Images/tab.gif) 0 0px no-repeat;
+}
+
+.greenTab-R {
+    float: left;
+    height: 25px;
+    line-height: 14px;
+    padding: 2px 7px 0px 3px;
+    background: url(../Images/tab.gif) right 0px no-repeat;
+    font-size: 11px !important;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+
+.home-video-top {
+    width: 268px;
+    padding: 0 0 0 10px;
+    background: #e9f5d3;
+    padding-bottom: 4px;
+}
+
+    .home-video-top ul {
+        margin: 0;
+        padding: 0;
+    }
+
+        .home-video-top ul li {
+            display: block;
+            list-style: none;
+        }
+
+            .home-video-top ul li a {
+                display: block;
+                background: url(../Images/sprites.png) 0px 5px no-repeat;
+                padding: 2px 0px 2px 15px;
+                font-size: 12px;
+                line-height: 15px;
+                color: #333;
+                text-decoration: none;
+                text-align: left;
+            }
+
+.video-home {
+    width: 100%;
+    height: 200px;
+    background: #EEE;
+}
+
+.video-home-list {
+    background: #e9f5d3;
+    height: auto;
+    overflow: auto;
+    padding: 2px 0 2px 10px;
+    width: 266px;
+    border: 1px solid #dedede;
+}
+
+.home-news-list {
+    height: 100%;
+}
+
+    .home-news-list ul {
+        margin: 0;
+        padding: 0;
+    }
+
+        .home-news-list ul li {
+            display: block;
+            list-style: none outside none;
+        }
+
+            .home-news-list ul li a {
+                background: url(../Images/sprites.png) 1px -546px no-repeat;
+                color: #333333;
+                display: block;
+                font-size: 12px;
+                line-height: 15px;
+                padding: 2px 0 0 12px;
+                text-align: left;
+                text-decoration: none;
+            }
+
+
+

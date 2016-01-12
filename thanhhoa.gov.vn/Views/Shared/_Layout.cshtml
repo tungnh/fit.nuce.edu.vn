@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta content="text/html" http-equiv="content-type" charset="utf-8" />
+        <title>@ViewBag.Title - Khoa Công Nghệ Thông Tin - Đại học Xây Dựng Hà Nội</title>
+        <link href="~/LO_GO.png" rel="shortcut icon" type="image/x-icon" />
+        <meta name="description" content="@ViewBag.MetaDescription">
+        <meta name="keywords" content="@ViewBag.MetaKeywords">
+        <meta property="fb:app_id" content="1069710779724950">
+        <meta property="og:site_name" content="Fit">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="@ViewBag.Title">
+        <meta property="og:url" content="@ViewBag.MetaUrl">
+        <meta property="og:image" content="@ViewBag.MetaImages">
+        <meta property="og:description" content="@ViewBag.MetaDescription">
+        @*<meta property="og:locale" content="en_US">*@
+        
+        <link href="/Content/style.css" rel="stylesheet" />
+
+       @* @Styles.Render("~/Content/style.css")*@
+        @Styles.Render("~/Content/main.css")
+        @Styles.Render("~/Content/tcvb.css")
+        @Styles.Render("~/Content/news.css")
+        @Styles.Render("~/Content/multimedia.css")
+        
+
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/Scripts/jquery-1.8.1.min.js")
+        @Scripts.Render("~/Scripts/dropdow/setDropdow.js")
+        @Scripts.Render("~/Scripts/menu/jqueryslidemenu.js")
+        @Scripts.Render("~/Scripts/gotop/scrolltopcontrol.js")
+        @Scripts.Render("~/Scripts/tabs/tabcontent.js")
+
+        @*@Scripts.Render("~/Scripts/nivoslide/common-nav-nivoslide.js")
+        @Styles.Render("~/Scripts/nivoslide/nivo-slider.css")
+        @Scripts.Render("~/Scripts/nivoslide/jquery.nivo.slider.pack.js")*@
+
+        <!--gallery images-->
+        @Styles.Render("~/Scripts/Elastislide/elastislide.css")
+        @Scripts.Render("~/Scripts/Elastislide/modernizr.custom.17475.js")
+        @Scripts.Render("~/Scripts/Elastislide/jquerypp.custom.js")
+        @Scripts.Render("~/Scripts/Elastislide/jquery.elastislide.js")
+        
+        <!--Colorbox Video-->
+        <link rel="stylesheet" type="text/css" href="/Scripts/colorbox-master/colorbox.css">
+        <link href="~/Scripts/colorbox-master/Com_colorbox.css" rel="stylesheet" />
+        <script type="text/javascript" src="/Scripts/colorbox-master/jquery.colorbox.js"></script>
+        <script type="text/javascript" src="/Scripts/colorbox-master/set_colorbox.js"></script>
+
+        <script>
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.3&appId=1069710779724950";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script type="text/javascript">
+            (function () {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/platform.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            })();
+        </script>
+        <script src="https://apis.google.com/js/platform.js" async defer>
+            { lang: 'vi' }
+        </script>
+        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+    </head>
+    <body>
+        @Html.Partial("_PartialHeader")
+        <div id="middle">
+            <div class="wrapper">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div>
+            <div class="clear"></div>
+        </div>
+        @*<div class="text-center" style="position: fixed; bottom: 0px;  z-index: 112; width: 100%;  background-color: rgba(0, 0, 0, 0.3);background: rgba(0, 0, 0, 0.65);color: rgba(0, 0, 0, 0.3); padding: 5px;" id="divCountDown">
+            <div style="text-align: center;left: 50%;width: 100%;">
+                <font style="color: white; font-size:14px;">Thời gian thực hiện giao dịch của bạn còn</font>
+                <div id="countdown" style="width: 150px; margin: 0 auto;" class="xdsoft">
+                    <div class="xdsoft_flipcountdown xdsoft_size_sm">
+                        <div class="xdsoft_digit" style="background-position: 0px -211px;"></div>
+                        <div class="xdsoft_digit" style="background-position: 0px -1051px;"></div>
+                        <div class="xdsoft_digit xdsoft_space"></div>
+                        <div class="xdsoft_digit" style="background-position: 0px -1051px;"></div>
+                        <div class="xdsoft_digit" style="background-position: 0px -841px;"></div>
+                        <div class="xdsoft_clearex"></div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        @Html.Partial("_PartialFooter")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

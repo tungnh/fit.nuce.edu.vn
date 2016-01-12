@@ -1,0 +1,78 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var albumModel = (thanhhoa.gov.vn.Models.gov_album)ViewData["albumModel"];
+    //var lstAallery = (List<thanhhoa.gov.vn.Models.GalleryModels>)ViewData["lstAallery"];
+    ViewBag.Title = albumModel.album_title;
+}
+<link href="~/Content/hoidap.css" rel="stylesheet" />
+<div class="mainMod">
+    <div class="modLeftMain">
+
+        <div class="breackrum">
+            <a class="bkHome" href="/">Trang chủ</a>
+            <a href="/album/preview">Thư viện ảnh</a>
+            <a href="javascript: void(0);">@albumModel.album_title</a>
+        </div>
+        <!--end breackrum-->
+
+        <div class="modMulti">
+
+            <div class="titleMultimedia">
+                <h3>@albumModel.album_title</h3>
+                <span style="font-style: italic; padding-left: 30px;">Thời gian tạo: @albumModel.update_datetime - Lượt xem: @albumModel.total_view</span>
+            </div>
+
+            <div class="descriptionAlbum">
+                @albumModel.description
+            </div>
+            <!-- end mota album -->
+            <!-- chi tiet multimedia -->
+            <div class="wrapMultimedia">
+
+                <ul class="albumImages listImg">
+                    @{
+                        foreach (var album in albumModel.gov_album_gallery.ToList())
+                        {
+                            <li>
+                                <a class="group3 inline" href="#@album.gov_gallery.id" title=""><img src="@album.gov_gallery.attach_filepath" alt="@album.gov_gallery.title" title="@album.gov_gallery.title"></a>
+                                <p>@album.gov_gallery.title</p>
+                            </li>
+                        }
+                    }
+
+                    <br class="clear">
+                </ul>
+
+                <!--data for group3 lightbox -->
+                <div class="dataforgroup3" style="display:none;">
+                    @{
+                        foreach (var item in albumModel.gov_album_gallery.ToList())
+                        {
+                            <div class="wrapidData" id="@item.gov_gallery.id">
+                                <div class="wrapimgLightbox">
+                                    <div><img src="@item.gov_gallery.attach_filepath" alt="@item.gov_gallery.title" title="@item.gov_gallery.title"></div>
+
+                                </div>
+                            </div>
+                        }
+                    }
+                    <!--end data inline -->
+                </div>
+                <!--end data for group3 lightbox -->
+
+            </div>
+            <!-- end chi tiet multimedia -->
+
+        </div>
+        <!-- end module multimedia -->
+
+
+    </div>
+    <!-- end left main w=670 -->
+    @Html.Partial("_PartialLeft")
+
+    <!-- colum right 300 emtry -->
+    <div class="clear"></div>
+
+</div>
+<!--end main module-->

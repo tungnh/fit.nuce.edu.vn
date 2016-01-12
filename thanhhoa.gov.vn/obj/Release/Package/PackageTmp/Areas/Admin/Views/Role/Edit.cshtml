@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Thêm mới chức vụ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var roleInfo = (thanhhoa.gov.vn.Models.gov_role)ViewData["roleInfo"];
+}
+<script src="~/Areas/Admin/Resources/ckfinder/ckfinder.js"></script>
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li class="active">
+                    <i class="fa fa-gears"></i> Quản trị hệ thống
+                </li>
+                <li>
+                    <i class="fa fa-list-alt"></i> Danh sách chức vụ
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Cập nhật chức vụ
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form class="bs-example form-horizontal" data-validate="parsley"
+                                  enctype="multipart/form-data" action="Edit" method="post"
+                                  name="roleEditForm" onsubmit="return edit();">
+                                <input type="hidden" name="id" value="@roleInfo.id">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Cập nhật thông tin chức vụ
+                                </h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">Tên chức vụ <font color="red">*</font>:</span>
+                                    <div class="col-lg-7">
+                                        <input type="text" name="role_name" value="@roleInfo.role_name"
+                                               class="form-control input-sm" placeholder="Nhập vào tên chức vụ"
+                                               data-required="true"
+                                               data-required-message="Trường Tên chức vụ không được bỏ trống">
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs m-t-md">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Người tạo:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <strong><i>@roleInfo.entry_username</i></strong>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Thời gian tạo:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <strong><i>@roleInfo.entry_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Người cập nhật cuối:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <strong><i>@roleInfo.update_username</i></strong>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Thời gian cập nhật cuối:
+                                    </span>
+                                    <div class="col-lg-4">
+                                        <strong><i>@roleInfo.update_datetime.ToString("dd/MM/yyyy HH:mm")</i></strong>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l"></span>
+                                    <div class="col-lg-6">
+                                        <button type="submit" class="btn btn-sm btn-primary"
+                                                style="width: 90px;">
+                                            Lưu
+                                        </button>
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+
+</script>

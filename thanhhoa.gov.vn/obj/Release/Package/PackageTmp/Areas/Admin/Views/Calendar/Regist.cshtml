@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Thêm mới lịch công tác";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var lstTime = (List<thanhhoa.gov.vn.Models.WorktimeModels>)ViewData["lstTime"];
+}
+<section id="content">
+    <section class="vbox">
+        <section class="scrollable padder">
+            <ul class="breadcrumb no-border no-radius b-b b-light pull-in">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i> Trang
+                        chủ
+                    </a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-plus"></i> Thêm mới ban ngành, cơ quan, quận huyện
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel panel-default">
+                        <div class="panel-body">
+                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                                <h5 class="page-header m-t-xs" style="font-weight: 600;">
+                                    <i class="fa fa-foursquare"></i> Thêm mới ban, ngành, cơ quan, quận huyện
+                                </h5>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Thời gian :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <select name="time" id="slMenuParent" style="width : 276px;">
+                                            @{
+                                                foreach (var item in lstTime)
+                                                {
+                                                    <option value="@item.Id">@item.Name</option>
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Ngày :
+                                    </span>
+                                    <div class="col-sm-6">
+                                        <input class="input-sm input-s datepicker-input form-control" name="date" id="date"
+                                               size="16" type="text"
+                                               data-required="true"
+                                               data-required-message="Trường Ngày không được để trống"
+                                               value="@Html.Raw(DateTime.Now.ToString("yyyy/MM/dd"))">
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Địa điểm <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="location" class="form-control input-sm parsley-validated"
+                                               data-required="true"
+                                               data-required-message="Trường Địa điểm không được để trống" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Người chủ trì :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <input type="text" name="personExecute" class="form-control input-sm parsley-validated"/>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
+                                        Nội dung <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <textarea cols="50" rows="3" class="form-control input-sm parsley-validated"
+                                                  data-required="true"
+                                                  data-required-message="Trường Nội dung không được để trống"
+                                                  name="description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line line-dashed line-lg pull-in"></div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l-md"></span>
+                                    <div class="col-lg-6">
+                                        <input type="submit" class="btn btn-sm btn-primary"
+                                               style="width: 90px;" value="Lưu" />
+                                        <a href="index" class="btn btn-sm btn-danger"
+                                           data-dismiss="modal" style="width: 90px;">Hủy bỏ</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+        @Html.Partial("_PartialFooter")
+    </section>
+</section>
+<script>
+    $('#slMenuParent').select2();
+
+    $('#date').datepicker({
+        format: "yyyy/mm/dd",
+        startDate: "new Date();",
+        todayBtn: true,
+        clearBtn: true,
+        autoclose: true,
+        todayHighlight: true
+    });
+</script>
+
