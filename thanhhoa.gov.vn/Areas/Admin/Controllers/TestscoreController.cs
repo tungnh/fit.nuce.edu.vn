@@ -104,33 +104,38 @@ namespace thanhhoa.gov.vn.Areas.Admin.Controllers
             }
             if (Request.Files.Count > 0)
             {
-                // Add file in App_data
-                var fileName = string.Empty;
-                var file = Request.Files[0];
-                var bytes = new byte[file.ContentLength];
-                if (bytes.Length > 0)
+                var size = Request.Files.Count;
+                var lstFileName = "";
+                for (int i = 0; i < size; i++)
                 {
-                    file.InputStream.Read(bytes, 0, file.ContentLength);
-                    fileName = (file.FileName.IndexOf('\\') != -1 ? file.FileName.Substring(file.FileName.LastIndexOf('\\') + 1) : file.FileName);
-                    fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + fileName;
+                    // Add file in App_data
+                    var fileName = string.Empty;
+                    var file = Request.Files[i];
+                    var bytes = new byte[file.ContentLength];
+                    if (bytes.Length > 0)
+                    {
+                        file.InputStream.Read(bytes, 0, file.ContentLength);
+                        fileName = (file.FileName.IndexOf('\\') != -1 ? file.FileName.Substring(file.FileName.LastIndexOf('\\') + 1) : file.FileName);
+                        fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + fileName;
 
-                    var fileDir = FileRepository.RootStorage;
-                    if (!System.IO.Directory.Exists(fileDir))
-                        System.IO.Directory.CreateDirectory(fileDir);
-                    var filePath = fileDir + "\\" + fileName;
-                    System.IO.File.WriteAllBytes(filePath, bytes);
-                    
-                    //Add file in Upload
-                    var fileDirChirld = FileRepository.ChirldStorage;
-                    if (!System.IO.Directory.Exists(fileDirChirld))
-                        System.IO.Directory.CreateDirectory(fileDirChirld);
-                    var filePathChirld = fileDirChirld + "\\" + fileName;
-                    System.IO.File.WriteAllBytes(filePathChirld, bytes);
+                        var fileDir = FileRepository.RootStorage;
+                        if (!System.IO.Directory.Exists(fileDir))
+                            System.IO.Directory.CreateDirectory(fileDir);
+                        var filePath = fileDir + "\\" + fileName;
+                        System.IO.File.WriteAllBytes(filePath, bytes);
 
-                    String fileFormat = fileName.Substring(fileName.LastIndexOf("."));
-                    item.file_format = fileFormat;
-                    item.attach_file_name = fileName;
+                        //Add file in Upload
+                        var fileDirChirld = FileRepository.ChirldStorage;
+                        if (!System.IO.Directory.Exists(fileDirChirld))
+                            System.IO.Directory.CreateDirectory(fileDirChirld);
+                        var filePathChirld = fileDirChirld + "\\" + fileName;
+                        System.IO.File.WriteAllBytes(filePathChirld, bytes);
+                        lstFileName += fileName;
+                        if((i + 1) != size)
+                            lstFileName += Constant.COLON;
+                    }
                 }
+                item.attach_file_name = lstFileName;
             }
             item.entry_datetime = DateTime.Now;
             item.entry_username = Session.getCurrentUser().username;
@@ -181,7 +186,56 @@ namespace thanhhoa.gov.vn.Areas.Admin.Controllers
             gov_testscore testscoreInfo = _cnttDB.gov_testscore.Find(item.id);
             if (Request.Files.Count > 0)
             {
-                var fileName = string.Empty;
+                //Delete file
+                foreach (var file_delete in Utils.getFileInSplip(testscoreInfo.attach_file_name, ':'))
+                {
+                    //Delete file App_data
+                    var filePathDelete = FileRepository.RootStorage + "\\" + file_delete;
+                    if (System.IO.File.Exists(filePathDelete))
+                    {
+                        System.IO.File.Delete(filePathDelete);
+                    }
+
+                    //Delete file Upaload
+                    filePathDelete = FileRepository.ChirldStorage + "\\" + file_delete;
+                    if (System.IO.File.Exists(filePathDelete))
+                    {
+                        System.IO.File.Delete(filePathDelete);
+                    }
+                }
+
+                var size = Request.Files.Count;
+                var lstFileName = "";
+                for (int i = 0; i < size; i++)
+                {
+                    // Add file in App_data
+                    var fileName = string.Empty;
+                    var file = Request.Files[i];
+                    var bytes = new byte[file.ContentLength];
+                    if (bytes.Length > 0)
+                    {
+                        file.InputStream.Read(bytes, 0, file.ContentLength);
+                        fileName = (file.FileName.IndexOf('\\') != -1 ? file.FileName.Substring(file.FileName.LastIndexOf('\\') + 1) : file.FileName);
+                        fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + fileName;
+
+                        var fileDir = FileRepository.RootStorage;
+                        if (!System.IO.Directory.Exists(fileDir))
+                            System.IO.Directory.CreateDirectory(fileDir);
+                        var filePath = fileDir + "\\" + fileName;
+                        System.IO.File.WriteAllBytes(filePath, bytes);
+
+                        //Add file in Upload
+                        var fileDirChirld = FileRepository.ChirldStorage;
+                        if (!System.IO.Directory.Exists(fileDirChirld))
+                            System.IO.Directory.CreateDirectory(fileDirChirld);
+                        var filePathChirld = fileDirChirld + "\\" + fileName;
+                        System.IO.File.WriteAllBytes(filePathChirld, bytes);
+                        lstFileName += fileName;
+                        if ((i + 1) != size)
+                            lstFileName += Constant.COLON;
+                    }
+                }
+                /*var fileName = string.Empty;
                 var file = Request.Files[0];
                 var bytes = new byte[file.ContentLength];
                 if (bytes.Length > 0)
@@ -221,8 +275,10 @@ namespace thanhhoa.gov.vn.Areas.Admin.Controllers
                     String fileFormat = fileName.Substring(fileName.LastIndexOf("."));
                     testscoreInfo.file_format = fileFormat;
                     testscoreInfo.attach_file_name = fileName;
-                }
+                }*/
+                testscoreInfo.attach_file_name = lstFileName;
             }
+
             testscoreInfo.test_class = item.test_class;
             testscoreInfo.namhoc = item.namhoc;
             testscoreInfo.test_name = item.test_name;
@@ -266,6 +322,23 @@ namespace thanhhoa.gov.vn.Areas.Admin.Controllers
                     int rs = _cnttDB.SaveChanges();
                     if (rs > 0)
                     {
+                        foreach (var file_delete in Utils.getFileInSplip(testScoreInfo.attach_file_name, ':'))
+                        {
+                            //Delete file App_data
+                            var filePathDelete = FileRepository.RootStorage + "\\" + file_delete;
+                            if (System.IO.File.Exists(filePathDelete))
+                            {
+                                System.IO.File.Delete(filePathDelete);
+                            }
+
+                            //Delete file Upaload
+                            filePathDelete = FileRepository.ChirldStorage + "\\" + file_delete;
+                            if (System.IO.File.Exists(filePathDelete))
+                            {
+                                System.IO.File.Delete(filePathDelete);
+                            }
+                        }
+                        /*
                         //insertHistory(AccessType.xoaDanhMuc, Constant.XOA(Constant.ITEM_DANHMUC, Constant.ID, id.ToString()));
                         var filePath = FileRepository.RootStorage + "\\" + testScoreInfo.attach_file_name;
                         if (System.IO.File.Exists(filePath))
@@ -273,12 +346,12 @@ namespace thanhhoa.gov.vn.Areas.Admin.Controllers
                             System.IO.File.Delete(filePath);
                         }
 
-                        //Delete file Upaload
+                        //Delete file Upload
                         filePath = FileRepository.ChirldStorage + "\\" + testScoreInfo.attach_file_name;
                         if (System.IO.File.Exists(filePath))
                         {
                             System.IO.File.Delete(filePath);
-                        }
+                        }*/
                         insertHistory(AccessType.xoaDiemThi, Constant.XOA(Constant.ITEM_DIEMTHI, Constant.ID, id.ToString()));
                         TempData["message"] = "Xóa thông tin thành công!";
                     }

@@ -24,7 +24,7 @@
                 <div class="col-sm-12">
                     <section class="panel panel-default">
                         <div class="panel-body">
-                            <form data-validate="parsley" class="form-horizontal" enctype="multipart/form-data" name="fmenu" method="post" action="SaveRegist">
+                            <form data-validate="parsley" class="form-horizontal" onsubmit="return save();" enctype="multipart/form-data" name="f_test_score" method="post" action="SaveRegist">
                                 <h5 class="page-header m-t-xs" style="font-weight: 600;">
                                     <i class="fa fa-foursquare"></i> Thêm mới điểm thi
                                 </h5>
@@ -79,10 +79,29 @@
                                 </div>
                                 <div class="form-group m-b-xs">
                                     <span class="col-lg-2 control-span m-l">
+                                        Loại file <font color="red">*</font> :
+                                    </span>
+                                    <div class="col-lg-6">
+                                        <label style="cursor: pointer; margin-right: 10px;">
+                                            <input type="radio" name="file_format" onchange="changeFormat();" checked value="0" /> Hình ảnh (.gif, .jpg, .png, .bmp)
+                                        </label>
+                                        <label style="cursor: pointer;">
+                                            <input type="radio" name="file_format" onchange="changeFormat();" value="1" /> Office (.xls, .xlsx, xlsm, .doc, .docx, .pdf, .txt)
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l">
                                         File đính kèm <font color="red">*</font> :
                                     </span>
                                     <div class="col-lg-6">
-                                        <input type="file" name="File" id="File" />
+                                        <input type="file" name="files" id="files" multiple data-required="true"
+                                               data-required-message="Trường tên môn học không được để trống" />
+                                    </div>
+                                </div>
+                                <div class="form-group m-b-xs">
+                                    <span class="col-lg-2 control-span m-l"></span>
+                                    <div class="col-lg-6" id="lst_img_preview">
                                     </div>
                                 </div>
                                 <div class="line line-dashed line-lg pull-in"></div>
@@ -96,6 +115,7 @@
                                     </div>
                                 </div>
                             </form>
+                            
                         </div>
                     </section>
                 </div>
@@ -117,5 +137,64 @@
             todayHighlight: true
         });
     });
-</script>
 
+    function changeFormat() {
+        $('#files').val("");
+        $('#lst_img_preview').html("");
+    }
+
+    function save() {
+
+    }
+
+    function getValueRadioChecked(radio_name) {
+        var radios = document.getElementsByName(radio_name);
+
+        for (var i = 0, length = radios.length; i < length; i++) {
+            if (radios[i].checked) {
+                return radios[i].value;
+            }
+        }
+    }
+
+    function handleFileSelect(evt) {
+        $('#lst_img_preview').html("");
+        var files = evt.target.files;
+
+        if (getValueRadioChecked('file_format') == '0') {
+            //Ảnh
+            for (var i = 0, f; f = files[i]; i++) {
+                if (!f.type.match('image.*')) {
+                    bootbox.alert('Định dạng file không đúng. Bạn phải chọn các file là định dạng ảnh. Các định dạng được hỗ trợ: <strong>.gif, .jpg, .png, .bmp</strong>!');
+                    $('#files').val("");
+                    break;
+                }
+                var reader = new FileReader();
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        var span = document.createElement('span');
+                        span.innerHTML = ['<img style="margin: 5px 5px 5px 0px;" class="thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
+                        document.getElementById('lst_img_preview').insertBefore(span, null);
+                    };
+                })(f);
+                reader.readAsDataURL(f);
+            }
+        } else if (getValueRadioChecked('file_format') == '1') {
+            //Office
+            if (files.length > 1) {
+                bootbox.alert('Bạn chỉ được chọn 1 file. Các định dạng được hỗ trợ: <strong>.xls, .xlsx, xlsm, .doc, .docx, .pdf, .txt</strong>!');
+                $('#files').val("");
+            } else {
+                if (!files[0].type.match('application/msword') && !files[0].type.match('application/vnd.*') && !files[0].type.match('text/plain') && !files[0].type.match('application/pdf')) {
+                    bootbox.alert('Định dạng file không đúng. Bạn phải chọn các file là định dạng Office. Các định dạng được hỗ trợ: <strong>.xls, .xlsx, xlsm, .doc, .docx, .pdf, .txt</strong>!');
+                    $('#files').val("");
+                }
+            }
+        } else {
+            bootbox.alert('Đã có lỗi xảy ra!');
+        }
+
+        
+    }
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>

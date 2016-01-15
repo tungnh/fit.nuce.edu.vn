@@ -41,7 +41,7 @@
                                         <td align="center" colspan="3">
                                             <div class="input_l">
                                                 <div class="input_r">
-                                                    <input name="keySearch" type="text" class="input_style">
+                                                    <input name="keySearch" type="text" value="@lstTestscore.KeySearch" class="input_style">
                                                 </div>
                                             </div>
                                         </td>
@@ -78,7 +78,7 @@
                                 {
                                     <tr class="cssItems">
                                         <td align="center"><strong>@item.test_class</strong></td>
-                                        <td><a href="@if((".jpg").Equals(item.file_format) || (".pdf").Equals(item.file_format)){ @Html.Raw("/Upload/DiemThi/" + item.attach_file_name)} else{@Html.Raw("/Testscore/Viewer?Doc=" + item.attach_file_name)}" target="_blank">@item.test_name</a></td>
+                                        <td><a href="@if((Constant.TESTSCORE_IMAGE).Equals(item.file_format)){ @Html.Raw("/testscore/viewerimages?id=" + item.id)} else{@Html.Raw("/Testscore/Viewer?Doc=" + item.attach_file_name)}" target="_blank">@item.test_name</a></td>
                                         <td align="center">@item.namhoc</td>
                                         <td align="center">Kỳ @item.kythi</td>
                                         <td align="center">@item.entry_datetime.ToString("dd/MM/yyyy")</td>
@@ -93,7 +93,7 @@
                     <a href="javascript: direction('ahead');">&larr;</a>
                         @for (int j = 1; j <= @lstTestscore.TotalPage; j++)
                         {
-                            <a href="javascript: selectPage(@j);">@j</a>
+                            <a href="javascript: selectPage(@j);" @if (j == lstTestscore.Page) { @Html.Raw("class='act1'")      }>@j</a>
                         }
                     <a href="javascript: direction('next');">&rarr;</a>
                 </div>

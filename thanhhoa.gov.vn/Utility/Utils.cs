@@ -164,5 +164,10 @@ namespace thanhhoa.gov.vn.Utility
             }
             return str;
         }
+
+        public static String[] getFileInSplip(String str, Char delimiter)
+        {
+            return str.Split(delimiter);
+        }
     }
 }

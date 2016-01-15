@@ -88,5 +88,11 @@ namespace thanhhoa.gov.vn.Controllers
             ViewData["fileName"] = Doc;
             return View();
         }
+
+        public ActionResult ViewerImages(int id)
+        {
+            ViewData["lstImages"] = _cnttDB.gov_testscore.Find(id);
+            return View();
+        }
     }
 }

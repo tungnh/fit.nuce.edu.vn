@@ -410,6 +410,19 @@
 	color:#fff !important;
 }
 
+.collapse_open{
+    background: url(../Images/arrow5.png) no-repeat scroll left bottom transparent !important;
+    padding-left: 18px;
+    display: inline-block;
+    height: 14px;
+}
+
+.collapse_close{
+    background: url(../Images/arrow5x.png) no-repeat scroll left bottom transparent !important;
+    padding-left: 18px;
+    height: 14px;
+    display: inline-block;
+}
 
 /*#############################################*/
 /*                END right news               */

@@ -78,7 +78,7 @@
                                 {
                                     <tr class="cssItems">
                                         <td align="center"><strong>@item.test_class</strong></td>
-                                        <td><a href="@if((".jpg").Equals(item.file_format) || (".pdf").Equals(item.file_format)){ @Html.Raw("/Upload/DiemThi/" + item.attach_file_name)} else{@Html.Raw("/Testscore/Viewer?Doc=" + item.attach_file_name)}" target="_blank">@item.test_name</a></td>
+                                        <td><a href="@if((Constant.TESTSCORE_IMAGE).Equals(item.file_format)){ @Html.Raw("/testscore/viewerimages?id=" + item.id)} else{@Html.Raw("/Testscore/Viewer?Doc=" + item.attach_file_name)}" target="_blank">@item.test_name</a></td>
                                         <td align="center">@item.namhoc</td>
                                         <td align="center">Kỳ @item.kythi</td>
                                         <td align="center">@item.entry_datetime.ToString("dd/MM/yyyy")</td>

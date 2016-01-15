@@ -1541,6 +1541,7 @@
     <Content Include="Areas\Admin\Resources\images\uchi_logo.gif" />
     <Content Include="Areas\Admin\Resources\images\useravatar.png" />
     <Content Include="Areas\Admin\Resources\js\app.v2.js" />
+    <Content Include="Areas\Admin\Resources\js\bootbox.min.js" />
     <Content Include="Areas\Admin\Resources\js\bootstrap-datetimepicker\bootstrap-datetimepicker.min.css" />
     <Content Include="Areas\Admin\Resources\js\bootstrap-datetimepicker\bootstrap-datetimepicker.min.js" />
     <Content Include="Areas\Admin\Resources\js\bootstrap-filestyle.min.js" />
@@ -3040,7 +3041,7 @@
     <Content Include="Areas\Admin\Views\Shared\_PartialErrMessage.cshtml" />
     <Content Include="Views\TestScore\Index.cshtml" />
     <Content Include="Views\TestScore\Viewer.cshtml" />
-    <Content Include="Views\TestScore\ViewBrowser.cshtml" />
+    <Content Include="Views\TestScore\ViewerImages.cshtml" />
     <Content Include="Views\Student\ChangeCode.cshtml" />
     <Content Include="Views\Student\ChangeProfile.cshtml" />
     <Content Include="Views\Student\ConfirmCode.cshtml" />

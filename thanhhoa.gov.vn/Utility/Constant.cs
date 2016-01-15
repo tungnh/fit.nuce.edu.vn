@@ -13,6 +13,8 @@ namespace thanhhoa.gov.vn.Utility
         public static int limit = 20;
         public static int maxPageLine = 5;
 
+        public static String COLON = ":";
+
         public static String CONFIG_KEY_NAME = "office_name";
         public static String CONFIG_KEY_ADDRESS = "adress";
         public static String CONFIG_KEY_TEL = "tel";
@@ -89,6 +91,9 @@ namespace thanhhoa.gov.vn.Utility
         public static String MESSAGE_COMMENT_NOTEBOOK = " thêm mới lưu bút ra trường!";
 
         public static String AVATAR_DEFAULT = "/Images/avatar_default.jpg";
+
+        public static String TESTSCORE_IMAGE = "0";
+        public static String TESTSCORE_EXEL = "1";
 
         //Format lich su truy cap
         public static String THEM(String agr0, String agr1, String agr2){
