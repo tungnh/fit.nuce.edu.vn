@@ -169,6 +169,14 @@
                                                     <i class="fa fa-backward"></i>
                                                 </a>
                                             </li>
+                                            @if (testscoreViewhelper.FirstPage > 1)
+                                            {
+                                                <li>
+                                                    <a>
+                                                        <i class="fa fa-ellipsis-h"></i>
+                                                    </a>
+                                                </li>
+                                            }
                                             @{
                                                 for (int j = testscoreViewhelper.FirstPage; j <= testscoreViewhelper.LastPage; j++)
                                                 {
@@ -178,6 +186,14 @@
                                                         </a>
                                                     </li>
                                                 }
+                                            }
+                                            @if (testscoreViewhelper.TotalPage > testscoreViewhelper.LastPage)
+                                            {
+                                                <li>
+                                                    <a>
+                                                        <i class="fa fa-ellipsis-h"></i>
+                                                    </a>
+                                                </li>
                                             }
                                             <li>
                                                 <a href="javascript: direction('next');">
