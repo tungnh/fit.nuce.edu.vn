@@ -67,9 +67,9 @@
                         <tr class="cssTitle">
                             <td>Lớp môn học</td>
                             <td>Môn thi</td>
-                            <td>Năm học</td>
-                            <td>Kỳ thi</td>
-                            <td>Ngày nhập</td>
+                            <td width="80">Năm học</td>
+                            <td width="50">Kỳ thi</td>
+                            <td width="80">Ngày nhập</td>
                         </tr>
                         @{
                             if (lstTestscore.TotalCount > 0)
@@ -91,10 +91,18 @@
                 <div class="pagingListnews">
                     <span style="float: left; padding-left: 1px;">Tổng số: <b style="color: red;">@lstTestscore.TotalCount</b> môn thi</span>
                     <a href="javascript: direction('ahead');">&larr;</a>
-                        @for (int j = 1; j <= @lstTestscore.TotalPage; j++)
-                        {
-                            <a href="javascript: selectPage(@j);" @if (j == lstTestscore.Page) { @Html.Raw("class='act1'")      }>@j</a>
-                        }
+                    @if (lstTestscore.FirstPage > 1)
+                    {
+                        @Html.Raw("...");
+                    }
+                    @for (int j = lstTestscore.FirstPage; j <= lstTestscore.LastPage; j++)
+                    {
+                        <a href="javascript: selectPage(@j);" @if (j == lstTestscore.Page) { @Html.Raw("class='act1'")      }>@j</a>
+                    }
+                    @if (lstTestscore.LastPage < lstTestscore.TotalPage)
+                    {
+                        @Html.Raw("...");
+                    }
                     <a href="javascript: direction('next');">&rarr;</a>
                 </div>
             </form>

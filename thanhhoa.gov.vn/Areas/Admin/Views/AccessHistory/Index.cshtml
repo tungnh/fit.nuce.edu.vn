@@ -140,6 +140,12 @@
                                                     <i class="fa fa-backward"></i>
                                                 </a>
                                             </li>
+                                            @if (accessHistoryViewhelper.FirstPage > 1)
+                                            {
+                                                <li>
+                                                    <a>...</a>
+                                                </li>
+                                            }
                                             @{
                                                 for (int j = @accessHistoryViewhelper.FirstPage; j <= accessHistoryViewhelper.LastPage; j++)
                                                 {
@@ -149,6 +155,12 @@
                                                         </a>
                                                     </li>
                                                 }
+                                            }
+                                            @if (accessHistoryViewhelper.TotalPage > accessHistoryViewhelper.LastPage)
+                                            {
+                                                <li>
+                                                    <a>...</a>
+                                                </li>
                                             }
                                             <li>
                                                 <a href="javascript: direction('next');">
