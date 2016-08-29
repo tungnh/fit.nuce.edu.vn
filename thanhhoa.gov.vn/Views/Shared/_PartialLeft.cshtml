@@ -18,7 +18,7 @@
                     </div>
                     <ul>
                         @{
-                            var lstNew = item.gov_news.Where(n => n.active_flg == true).OrderByDescending(n => n.entry_datetime).Skip(0).Take(7).ToList();
+                            var lstNew = item.gov_news.Where(n => n.active_flg == true).OrderByDescending(n => n.entry_datetime).Skip(0).Take(5).ToList();
                             foreach(var newInfo in lstNew){
                                 <li><a href="@Utils.getLinkNew(newInfo.id)">@newInfo.title</a></li>
                             }

@@ -1,12 +1,13 @@
 ﻿@{
-    var soluottruycaptrongngay = ViewData["soluottruycaptrongngay"];
-    var tongsotruycap = ViewData["tongsotruycap"];
+    int soluottruycaptrongngay = (int)ViewData["soluottruycaptrongngay"];
+    int tongsotruycap = (int)ViewData["tongsotruycap"];
+    int soluottruycap = (int)HttpContext.Current.Application["soluottruycap"];
 }
 <div class="modStatistics">
     <h3>Thống kê truy cập</h3>
     <ul>
-        <li class="statis_1">Đang truy cập: <strong>@HttpContext.Current.Application["soluottruycap"]</strong></li>
-        <li class="statis_2">Hôm nay: <strong>@soluottruycaptrongngay</strong></li>
-        <li class="statis_3">Tổng truy cập: <strong>@tongsotruycap</strong></li>
+        <li class="statis_1">Đang truy cập: <strong>@soluottruycap.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR"))</strong></li>
+        <li class="statis_2">Hôm nay: <strong>@soluottruycaptrongngay.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR"))</strong></li>
+        <li class="statis_3">Tổng truy cập: <strong>@tongsotruycap.ToString("0,0", System.Globalization.CultureInfo.CreateSpecificCulture("el-GR"))</strong></li>
     </ul>
 </div>
