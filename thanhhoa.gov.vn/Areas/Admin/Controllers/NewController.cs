@@ -165,7 +165,10 @@ namespace thanhhoa.gov.vn.Areas.Admin.Controllers
                                     body += "<td style='padding:30px;font-size:13px;margin:0;border-radius:0px 0px 4px 4px;border:1px solid rgba(218,218,215,0.6);border-bottom:4px solid rgba(218,218,215,0.6)' colspan='2'>";
                                     body += "<h3 style='font-size:17px;font-weight:bold'><span style='color:#003c95'>" + item.title + "</h3></span>";
                                     body += "<h4 style='margin-bottom : 10px;'><p>" + item.description + "</p></h4>";
-                                    body += item.new_content.Replace("src=\"/Upload/", "src=\"http:fit.nuce.edu.vn/Upload/");
+                                    if (!string.IsNullOrEmpty(item.new_content))
+                                        body += item.new_content.Replace("src=\"/Upload/", "src=\"http:fit.nuce.edu.vn/Upload/");
+                                    else
+                                        body += "";
                                     body += "</td>";
                                     body += "</tr>";
                                     body += "</tbody></table>";
@@ -180,7 +183,7 @@ namespace thanhhoa.gov.vn.Areas.Admin.Controllers
                             }
                             catch (Exception ex)
                             {
-                                throw ex;
+                                //throw ex;
                             }
                         }
                     }
