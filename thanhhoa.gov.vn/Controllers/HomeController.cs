@@ -50,7 +50,7 @@ namespace thanhhoa.gov.vn.Controllers
             }
             ViewData["lstMenuHome"] = listMenuHome;
             ViewData["newHome"] = _cnttDB.gov_news.Where(n => n.is_home == true && n.active_flg == true).OrderByDescending(n => n.update_datetime).FirstOrDefault();
-            ViewData["lstSlideHome"] = _cnttDB.gov_slide_home.ToList();
+            ViewData["lstSlideHome"] = _cnttDB.gov_slide_home.OrderBy(x => x.order_number).ToList();
             return View();
         }
 

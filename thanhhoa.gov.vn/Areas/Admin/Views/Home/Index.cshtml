@@ -145,7 +145,7 @@
                         
                         <div id="div-content" style="display: none; padding: 5px">
                             <form class="bs-example form-horizontal" data-validate="parsley"
-                                  enctype="multipart/form-data" action="ChangeProfile" method="post"
+                                  enctype="multipart/form-data" action="/admin/home/ChangeProfile" method="post"
                                   name="changeProfileForm">
                                 <input type="hidden" name="id" value="@userInfo.id" />
                                 <input type="hidden" name="username" value="@userInfo.username" />
@@ -267,14 +267,15 @@
                         <div id="div-password" style="display: none; padding: 5px;">
                             
                             <form class="bs-example form-horizontal" data-validate="parsley"
-                                  enctype="multipart/form-data" action="ChangePassword" method="post"
-                                  name="changePasswordForm" >
+                                  enctype="multipart/form-data" action="/admin/home/ChangePassword" method="post"
+                                  name="changePasswordForm">
                                 <input type="hidden" name="username" value="@userInfo.username" />
                                 <h5 class="page-header m-t-xs" style="font-weight: 600;">
                                     <i class="fa fa-foursquare"></i> Thay đổi mật khẩu
                                 </h5>
                                 @{
-                                    if (error != null) { 
+                                    if (error != null)
+                                    {
                                         <div style="color: red; background-color: #FAFAFA; border: 1px solid red ; margin-bottom: 5px; padding: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px;">
                                             <strong>@Html.Raw(error)</strong>
                                         </div>
